@@ -1,0 +1,52 @@
+name: iSports API
+description: >-
+  Sports-data provider delivering real-time live scores, comprehensive match data, betting odds, and 20 years of
+  historical datasets for football (soccer) and basketball, covering 2,000+ football leagues and 800+ basketball leagues
+  via key-authenticated RESTful JSON endpoints.
+url: https://isports-api.apievangelist.com/apis.yml
+created: '2026-07-28'
+modified: '2026-07-28'
+specificationVersion: '0.21'
+tags:
+  - Sports Data
+  - Live Scores
+  - Football
+  - Soccer
+  - Basketball
+  - Betting Odds
+  - Statistics
+  - Historical Data
+  - Widgets
+  - REST
+  - JSON
+apis:
+  - name: iSports Sport Data API
+    description: >-
+      REST over HTTP returning JSON for football and basketball live scores, match stats, standings, player/team data,
+      historical datasets, and betting odds. Authenticated via a static api_key query parameter. Consistent JSON
+      envelope where code 0 indicates success.
+    humanURL: https://www.isportsapi.com/en/docs.html
+    baseURL: http://api.isportsapi.com/sport/
+    tags:
+      - Sports Data
+      - Live Scores
+      - Football
+      - Soccer
+      - Basketball
+      - Betting Odds
+      - Statistics
+      - Historical Data
+      - Widgets
+      - REST
+      - JSON
+    properties:
+      - type: Documentation
+        url: https://www.isportsapi.com/en/docs.html
+maintainers:
+  - FN: iSports API
+    url: https://www.isportsapi.com/en/
+generated:
+  by: apis.io/add
+  model: claude-opus-4-8
+  confidence: 80
+  at: '2026-07-28T08:12:27.582Z'
