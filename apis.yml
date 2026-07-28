@@ -1,44 +1,37 @@
 name: iSports API
 description: >-
-  Sports-data provider delivering real-time live scores, comprehensive match data, betting odds, and 20 years of
-  historical datasets for football (soccer) and basketball, covering 2,000+ football leagues and 800+ basketball leagues
-  via key-authenticated RESTful JSON endpoints.
+  Live sports data provider offering key-authenticated REST/HTTP feeds for football and basketball, including
+  livescores, schedules, results, events, stats, standings, odds, and embeddable widgets. Covers 2000+ football
+  leagues/cups and 800+ basketball leagues/cups.
 url: https://isports-api.apievangelist.com/apis.yml
 created: '2026-07-28'
 modified: '2026-07-28'
 specificationVersion: '0.21'
 tags:
-  - Sports Data
-  - Live Scores
+  - Sports API
   - Football
-  - Soccer
   - Basketball
-  - Betting Odds
-  - Statistics
-  - Historical Data
+  - Odds
+  - Live Data
+  - Sports Statistics
   - Widgets
-  - REST
-  - JSON
+  - REST API
 apis:
-  - name: iSports Sport Data API
+  - name: iSports REST API
     description: >-
-      REST over HTTP returning JSON for football and basketball live scores, match stats, standings, player/team data,
-      historical datasets, and betting odds. Authenticated via a static api_key query parameter. Consistent JSON
-      envelope where code 0 indicates success.
+      Query-param key-authenticated REST/HTTP API for live sports data (football and basketball): livescores, schedules,
+      results, events, stats, lineups, standings, player stats, and odds. GET-only with per-endpoint rate limits.
     humanURL: https://www.isportsapi.com/en/docs.html
-    baseURL: http://api.isportsapi.com/sport/
+    baseURL: http://api.isportsapi.com/
     tags:
-      - Sports Data
-      - Live Scores
+      - Sports API
       - Football
-      - Soccer
       - Basketball
-      - Betting Odds
-      - Statistics
-      - Historical Data
+      - Odds
+      - Live Data
+      - Sports Statistics
       - Widgets
-      - REST
-      - JSON
+      - REST API
     properties:
       - type: Documentation
         url: https://www.isportsapi.com/en/docs.html
@@ -48,5 +41,5 @@ maintainers:
 generated:
   by: apis.io/add
   model: claude-opus-4-8
-  confidence: 80
-  at: '2026-07-28T08:12:27.582Z'
+  confidence: 90
+  at: '2026-07-28T08:14:10.426Z'
