@@ -1,0 +1,60 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "matchId": "213671817",
+      "companyId": "3",
+      "odds": {
+        "single": "1.94",
+        "double": "1.93"
+      },
+      "changeTime": 1574835984
+    },
+    {
+      "matchId": "223671818",
+      "companyId": "3",
+      "odds": {
+        "single": "1.94",
+        "double": "1.93"
+      },
+      "changeTime": 1574836325
+    },
+    {
+      "matchId": "366291813",
+      "companyId": "3",
+      "odds": {
+        "single": "1.94",
+        "double": "1.93"
+      },
+      "changeTime": 1574836654
+    },
+    {
+      "matchId": "214391817",
+      "companyId": "3",
+      "odds": {
+        "single": "1.96",
+        "double": "1.91"
+      },
+      "changeTime": 1574844118
+    },
+    {
+      "matchId": "328391812",
+      "companyId": "3",
+      "odds": {
+        "single": "1.94",
+        "double": "1.93"
+      },
+      "changeTime": 1574843169
+    },
+    {
+      "matchId": "233671819",
+      "companyId": "3",
+      "odds": {
+        "single": "1.94",
+        "double": "1.93"
+      },
+      "changeTime": 1574839774
+    }
+  ]
+}

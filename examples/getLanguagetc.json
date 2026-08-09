@@ -1,0 +1,50 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "leagues": [
+        {
+          "leagueId": "1",
+          "name_tc": "愛超"
+        },
+        {
+          "leagueId": "2",
+          "name_tc": "阿甲"
+        },
+        {
+          "leagueId": "3",
+          "name_tc": "奧甲"
+        },
+        {
+          "leagueId": "4",
+          "name_tc": "巴西甲"
+        },
+        {
+          "leagueId": "5",
+          "name_tc": "比甲"
+        },
+        {
+          "leagueId": "6",
+          "name_tc": "波蘭超"
+        },
+        {
+          "leagueId": "7",
+          "name_tc": "丹麥超"
+        },
+        {
+          "leagueId": "8",
+          "name_tc": "德甲"
+        },
+        {
+          "leagueId": "9",
+          "name_tc": "德乙"
+        },
+        {
+          "leagueId": "10",
+          "name_tc": "俄超"
+        }
+      ]
+    }
+  ]
+}

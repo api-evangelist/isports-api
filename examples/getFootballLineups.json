@@ -1,0 +1,90 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "matchId": "496960921",
+      "homeFormation": "442",
+      "awayFormation": "4231",
+      "homeLineup": [
+        {
+          "playerId": "74341",
+          "name": "Damian Emiliano Martinez Romero",
+          "number": 23,
+          "position": 0,
+          "isCaptain": false
+        },
+        {
+          "playerId": "150042",
+          "name": "Facundo Medina",
+          "number": 25,
+          "position": 1,
+          "isCaptain": false
+        },
+        {
+          "playerId": "157463",
+          "name": "Lisandro Martinez",
+          "number": 6,
+          "position": 1,
+          "isCaptain": false
+        },
+        {
+          "playerId": "140566",
+          "name": "Cristian Gabriel Romero",
+          "number": 13,
+          "position": 1,
+          "isCaptain": false
+        },
+        {
+          "playerId": "97177",
+          "name": "Nahuel Molina",
+          "number": 26,
+          "position": 1,
+          "isCaptain": false
+        },
+        {
+          "playerId": "167372",
+          "name": "Thiago Almada",
+          "number": 16,
+          "position": 2,
+          "isCaptain": false
+        },
+        {
+          "playerId": "201501",
+          "name": "Enzo Fernandez",
+          "number": 24,
+          "position": 2,
+          "isCaptain": false
+        },
+        {
+          "playerId": "158778",
+          "name": "Alexis Mac Allister",
+          "number": 20,
+          "position": 2,
+          "isCaptain": false
+        },
+        {
+          "playerId": "110850",
+          "name": "Rodrigo De Paul",
+          "number": 7,
+          "position": 2,
+          "isCaptain": false
+        },
+        {
+          "playerId": "140322",
+          "name": "Lautaro Javier Martinez",
+          "number": 22,
+          "position": 3,
+          "isCaptain": false
+        },
+        {
+          "playerId": "24067",
+          "name": "Lionel Andres Messi",
+          "number": 10,
+          "position": 3,
+          "isCaptain": true
+        }
+      ]
+    }
+  ]
+}

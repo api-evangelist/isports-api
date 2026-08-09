@@ -1,0 +1,60 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "leagues": [
+        {
+          "leagueId": "1",
+          "name": "Ireland Premier Division",
+          "name_kr": "프리미어 디비전"
+        },
+        {
+          "leagueId": "2",
+          "name": "Argentine Division 1",
+          "name_kr": "토르네오 베타노"
+        },
+        {
+          "leagueId": "3",
+          "name": "Austrian Bundesliga",
+          "name_kr": "아드미랄 분데스리가"
+        },
+        {
+          "leagueId": "4",
+          "name": "Brazil Serie A",
+          "name_kr": "세리에 A 베타노"
+        },
+        {
+          "leagueId": "5",
+          "name": "Belgian Pro League",
+          "name_kr": "쥬필러 리그"
+        },
+        {
+          "leagueId": "6",
+          "name": "Poland Ekstraklasa",
+          "name_kr": "엑스트라클라사"
+        },
+        {
+          "leagueId": "7",
+          "name": "Denmark Superligaen",
+          "name_kr": "덴마크 슈퍼리그"
+        },
+        {
+          "leagueId": "8",
+          "name": "German Bundesliga",
+          "name_kr": "분데스리가"
+        },
+        {
+          "leagueId": "9",
+          "name": "German Bundesliga 2",
+          "name_kr": "분데스리가 2부리그"
+        },
+        {
+          "leagueId": "10",
+          "name": "Russia Premier League",
+          "name_kr": "프리미어 리그"
+        }
+      ]
+    }
+  ]
+}

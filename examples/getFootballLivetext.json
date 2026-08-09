@@ -1,0 +1,17 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "liveId": "1987833",
+      "matchId": "491788924",
+      "content": "Kick-off!",
+      "time": 1779355960,
+      "state": 1,
+      "happenTime": "1",
+      "teamID": 0,
+      "homePlayerID": 0,
+      "awayPlayerID": 0
+    }
+  ]
+}

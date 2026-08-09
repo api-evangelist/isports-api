@@ -1,0 +1,37 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "matchId": "353242",
+      "homeLineup": [
+        {
+          "playerId": "3476",
+          "number": 25,
+          "name": "Glory Johnson"
+        }
+      ],
+      "homeBackup": [
+        {
+          "playerId": "3799",
+          "number": 2,
+          "name": "Tayler Hill"
+        }
+      ],
+      "awayLineup": [
+        {
+          "playerId": "855",
+          "number": 4,
+          "name": "Candice Dupree"
+        }
+      ],
+      "awayBackup": [
+        {
+          "playerId": "3478",
+          "number": 42,
+          "name": "Shenise Johnson"
+        }
+      ]
+    }
+  ]
+}

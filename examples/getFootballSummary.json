@@ -1,0 +1,20 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": {
+    "briefing": [
+      {
+        "matchId": "306256920",
+        "briefing": "South Africa shows stronger recent form with a higher win rate, while Panama has many draws and weaker attack. Both teams have full squads. South Africa holds a psychological advantage at home.",
+        "updateTime": 1774492310
+      }
+    ],
+    "summary": [
+      {
+        "matchId": "242312923",
+        "summary": "Banfield dominated the match with better attacking efficiency and control. Real Pilar struggled offensively and failed to create effective chances.",
+        "updateTime": 1774491077
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "leagueId": "111",
+      "color": "#FF0000",
+      "leagueName": "National Basketball Association",
+      "leagueShortName": "NBA",
+      "leagueType": "4",
+      "currentMatchSeason": "25-26",
+      "countryId": "1",
+      "country": "USA",
+      "leagueKind": "1",
+      "logo": "http://nba.titan007.com/files/Sclass/1kp5ps6wbx.png?win007=sell",
+      "partTime": "12:00",
+      "rule": ""
+    },
+    {
+      "leagueId": "122",
+      "color": "#446DAB",
+      "leagueName": "Women’s National Basketball Association",
+      "leagueShortName": "WNBA",
+      "leagueType": "4",
+      "currentMatchSeason": "26",
+      "countryId": "1",
+      "country": "USA",
+      "leagueKind": "1",
+      "logo": "http://nba.titan007.com/files/Sclass/20210824163828.png?win007=sell",
+      "partTime": "10:00",
+      "rule": ""
+    },
+    {
+      "leagueId": "133",
+      "color": "#44AB6D",
+      "leagueName": "Stank Vic Basketball Champions LeagueChampions Cup",
+      "leagueShortName": "ISBCL",
+      "leagueType": "4",
+      "currentMatchSeason": "19",
+      "countryId": "20",
+      "country": "International",
+      "leagueKind": "2",
+      "logo": "http://nba.titan007.com/files/Sclass/20111219143150.jpg?win007=sell",
+      "partTime": "10:00",
+      "rule": ""
+    }
+  ]
+}

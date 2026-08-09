@@ -1,0 +1,48 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "leagueId": "111",
+      "leagueName": "National Basketball Association",
+      "leagueShortName": "NBA",
+      "leagueKind": "1"
+    },
+    {
+      "leagueId": "122",
+      "leagueName": "Women’s National Basketball Association",
+      "leagueShortName": "WNBA",
+      "leagueKind": "1"
+    },
+    {
+      "leagueId": "188",
+      "leagueName": "National Committee Association America",
+      "leagueShortName": "NCAA",
+      "leagueKind": "1"
+    },
+    {
+      "leagueId": "1437",
+      "leagueName": "NBA ALL STAR",
+      "leagueShortName": "NBA All Star",
+      "leagueKind": "2"
+    },
+    {
+      "leagueId": "1246",
+      "leagueName": "NBA Summer League",
+      "leagueShortName": "NBASL",
+      "leagueKind": "1"
+    },
+    {
+      "leagueId": "1459",
+      "leagueName": "WNBA All Star",
+      "leagueShortName": "WNBA All Star",
+      "leagueKind": "2"
+    },
+    {
+      "leagueId": "17311",
+      "leagueName": "National Invitation Tournament",
+      "leagueShortName": "NIT",
+      "leagueKind": "1"
+    }
+  ]
+}

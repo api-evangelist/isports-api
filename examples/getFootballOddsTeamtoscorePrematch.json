@@ -1,0 +1,42 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "matchId": "350596612",
+      "companyId": "3",
+      "odds": {
+        "firstIsHome": "4.15",
+        "firstIsAway": "1.18",
+        "lastIsHome": "4.15",
+        "lastIsAway": "1.18",
+        "noGoal": "31"
+      },
+      "changeTime": 1574844037
+    },
+    {
+      "matchId": "350596612",
+      "companyId": "1",
+      "odds": {
+        "firstIsHome": "4",
+        "firstIsAway": "1.12",
+        "lastIsHome": "0",
+        "lastIsAway": "0",
+        "noGoal": "22"
+      },
+      "changeTime": 1574830828
+    },
+    {
+      "matchId": "220596619",
+      "companyId": "3",
+      "odds": {
+        "firstIsHome": "1.52",
+        "firstIsAway": "2.46",
+        "lastIsHome": "1.52",
+        "lastIsAway": "2.46",
+        "noGoal": "18.5"
+      },
+      "changeTime": 1574843301
+    }
+  ]
+}

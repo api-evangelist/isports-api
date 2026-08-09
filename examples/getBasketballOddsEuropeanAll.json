@@ -1,0 +1,54 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "matchId": "37377633",
+      "matchTime": 1569342600,
+      "leagueName": "FIBA AC(W)",
+      "homeName": "USA Woman's",
+      "awayName": "Colombia Women",
+      "odds": [
+        {
+          "oddsId": "6883289",
+          "changeTime": 1569342407,
+          "oddsDetail": "9,NordicBet,1,90,1,90"
+        },
+        {
+          "oddsId": "6883192",
+          "changeTime": 1569325022,
+          "oddsDetail": "19,Unibet,1,25,1,25"
+        },
+        {
+          "oddsId": "6882912",
+          "changeTime": 1569309138,
+          "oddsDetail": "531,iFortuna.cz,1,25,1,25"
+        }
+      ]
+    },
+    {
+      "matchId": "10210632",
+      "matchTime": 1569344400,
+      "leagueName": "BBL",
+      "homeName": "Ratiopharm Ulm",
+      "awayName": "RASTA Vechta",
+      "odds": [
+        {
+          "oddsId": "6881230",
+          "changeTime": 1569344402,
+          "oddsDetail": "3,Interwetten,1.18,4.4,1.2,4.1"
+        },
+        {
+          "oddsId": "6882937",
+          "changeTime": 1569344402,
+          "oddsDetail": "17,Pinnacle Sports,1.2,4.75,1.2,4.92"
+        },
+        {
+          "oddsId": "6881681",
+          "changeTime": 1569331892,
+          "oddsDetail": "122,Betfred,1.14,5,1.2,4.33"
+        }
+      ]
+    }
+  ]
+}

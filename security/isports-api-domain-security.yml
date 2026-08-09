@@ -1,0 +1,26 @@
+generated: '2026-08-09'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.isportsapi.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 23 23:59:59 2026 GMT
+  hsts: false
+- host: api.isportsapi.com
+  https: true
+  tls_version: TLSv1.2
+  cert_expires: Aug 23 23:59:59 2026 GMT
+  hsts: null
+- host: api2.isportsapi.com
+  https: true
+  tls_version: TLSv1.2
+  cert_expires: Aug 23 23:59:59 2026 GMT
+  hsts: null
+domains:
+- domain: isportsapi.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: none

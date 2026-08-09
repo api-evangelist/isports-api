@@ -1,0 +1,38 @@
+{
+  "list": [
+    {
+      "id": 44519,
+      "matchId": "266231031",
+      "companyId": 3,
+      "oddsType": 3,
+      "type": 1,
+      "datatype": 3,
+      "odds1_first": "3.05",
+      "odds2_first": "1.66",
+      "odds3_first": "5.2",
+      "odds1": "26",
+      "odds2": "8.8",
+      "odds3": "1.03",
+      "running": false,
+      "close": false,
+      "changeTime": 1783269379
+    },
+    {
+      "id": 44518,
+      "matchId": "266231031",
+      "companyId": 3,
+      "oddsType": 2,
+      "type": 1,
+      "datatype": 3,
+      "odds1_first": "0.9",
+      "odds2_first": "0.5",
+      "odds3_first": "0.92",
+      "odds1": "4.16",
+      "odds2": "1.5",
+      "odds3": "0.06",
+      "running": false,
+      "close": false,
+      "changeTime": 1783269379
+    }
+  ]
+}

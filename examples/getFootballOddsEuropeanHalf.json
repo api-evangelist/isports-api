@@ -1,0 +1,79 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "matchId": "377370925",
+      "matchTime": 1782752400,
+      "leagueName": "FIFA World Cup",
+      "homeName": "Brazil",
+      "awayName": "Japan",
+      "odds": [
+        {
+          "oddsId": "11263149",
+          "changeTime": 1782690333,
+          "oddsDetail": "1,Macauslot,2.28,2.05,5,2.16,2.2,4.85"
+        },
+        {
+          "oddsId": "11263150",
+          "changeTime": 1782720169,
+          "oddsDetail": "3,Crown,2.44,2.18,4.7,2.25,2.2,5.5"
+        },
+        {
+          "oddsId": "11263035",
+          "changeTime": 1782700674,
+          "oddsDetail": "4,Ladbrokes,2.25,2.2,4.8,2.2,2.2,4.8"
+        },
+        {
+          "oddsId": "11263038",
+          "changeTime": 1782708900,
+          "oddsDetail": "8,Bet365,2.3,2.2,5,2.25,2.2,5.5"
+        },
+        {
+          "oddsId": "11263779",
+          "changeTime": 1782716526,
+          "oddsDetail": "12,Easybet,2.28,2.2,5,2.23,2.2,5.5"
+        }
+      ]
+    },
+    {
+      "matchId": "368542926",
+      "matchTime": 1782760500,
+      "leagueName": "Iceland Premier Division",
+      "homeName": "IA Akranes",
+      "awayName": "Fram Reykjavik",
+      "odds": [
+        {
+          "oddsId": "11259451",
+          "changeTime": 1782296601,
+          "oddsDetail": "1,Macauslot,2.77,2.48,2.35,2.77,2.48,2.35"
+        },
+        {
+          "oddsId": "11257482",
+          "changeTime": 1782717796,
+          "oddsDetail": "3,Crown,2.82,2.63,2.59,2.86,2.66,2.54"
+        },
+        {
+          "oddsId": "11272501",
+          "changeTime": 1782675037,
+          "oddsDetail": "4,Ladbrokes,2.87,2.7,2.5,2.9,2.7,2.5"
+        },
+        {
+          "oddsId": "11267914",
+          "changeTime": 1782544211,
+          "oddsDetail": "8,Bet365,2.88,2.63,2.6,2.88,2.63,2.6"
+        },
+        {
+          "oddsId": "11257126",
+          "changeTime": 1782675539,
+          "oddsDetail": "12,Easybet,3.1,2.49,2.6,3.1,2.6,2.6"
+        },
+        {
+          "oddsId": "11259889",
+          "changeTime": 1782719759,
+          "oddsDetail": "17,Mansion88,3,2.44,2.65,3.05,2.46,2.58"
+        }
+      ]
+    }
+  ]
+}

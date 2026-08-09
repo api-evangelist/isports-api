@@ -1,0 +1,66 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "matchId": "11109179",
+      "homeTeamName": "Paris",
+      "awayTeamName": "Monaco",
+      "costTime": "",
+      "homeScore": 95,
+      "homeFastScore": 0,
+      "homeInsideScore": 0,
+      "homeLeadingScore": 0,
+      "homeTotalMiss": 10,
+      "awayScore": 91,
+      "awayFastScore": 0,
+      "awayInsideScore": 0,
+      "awayLeadingScore": 0,
+      "awayTotalMiss": 11,
+      "homePlayers": [
+        {
+          "playerId": "5926",
+          "playerName": "Justin Robinson",
+          "location": "G",
+          "playingTime": 22,
+          "shootHit": 4,
+          "shoot": 10,
+          "threePointHit": 2,
+          "threePointShot": 7,
+          "penaltyShotHit": 7,
+          "penaltyShot": 9,
+          "attack": 0,
+          "defend": 0,
+          "assist": 3,
+          "foul": 4,
+          "rob": 1,
+          "miss": 2,
+          "cover": 0,
+          "score": 17,
+          "onFloor": false
+        },
+        {
+          "playerId": "16253",
+          "playerName": "Jared Rhoden",
+          "location": "G",
+          "playingTime": 19,
+          "shootHit": 2,
+          "shoot": 6,
+          "threePointHit": 1,
+          "threePointShot": 3,
+          "penaltyShotHit": 0,
+          "penaltyShot": 0,
+          "attack": 1,
+          "defend": 2,
+          "assist": 2,
+          "foul": 2,
+          "rob": 0,
+          "miss": 2,
+          "cover": 0,
+          "score": 5,
+          "onFloor": false
+        }
+      ]
+    }
+  ]
+}

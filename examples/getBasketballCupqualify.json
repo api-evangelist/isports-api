@@ -1,0 +1,39 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "recordId": "6642",
+      "leagueId": "18345",
+      "name": "match",
+      "season": "25",
+      "groupCount": 0,
+      "roundCount": 0,
+      "sortNumber": 1,
+      "currentGroup": true,
+      "group": false
+    },
+    {
+      "recordId": "6644",
+      "leagueId": "12530",
+      "name": "Match",
+      "season": "25",
+      "groupCount": 0,
+      "roundCount": 0,
+      "sortNumber": 1,
+      "currentGroup": true,
+      "group": false
+    },
+    {
+      "recordId": "6645",
+      "leagueId": "15241",
+      "name": "Match",
+      "season": "25",
+      "groupCount": 0,
+      "roundCount": 0,
+      "sortNumber": 1,
+      "currentGroup": true,
+      "group": false
+    }
+  ]
+}

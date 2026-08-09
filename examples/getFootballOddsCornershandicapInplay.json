@@ -1,0 +1,20 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "matchId": "333587927",
+      "companyId": "3",
+      "matchTime": "45",
+      "homeCorner": "1",
+      "awayCorner": "1",
+      "odds": {
+        "handicapCorners": "2",
+        "home": "0.8",
+        "away": "0.9",
+        "close": false
+      },
+      "changeTime": 1778121236
+    }
+  ]
+}

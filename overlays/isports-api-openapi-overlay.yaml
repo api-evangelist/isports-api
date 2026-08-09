@@ -1,0 +1,32 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for iSports API
+  version: 1.0.0
+extends: openapi/isports-api-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-slug: isports-api
+    x-apievangelist-derived: true
+    x-apievangelist-derived-from: https://www.isportsapi.com/en/docs.html
+    x-apievangelist-note: iSports API publishes no machine-readable contract. This document was derived by API Evangelist
+      from the endpoint definitions the provider serves on its own documentation pages; it is not a provider artifact
+      and the provider has not adopted it.
+- target: $.info
+  update:
+    x-artifacts:
+      authentication: authentication/isports-api-authentication.yml
+      conventions: conventions/isports-api-conventions.yml
+      errors: errors/isports-api-problem-types.yml
+      rate_limits: rate-limits/isports-api-rate-limits.yml
+      lifecycle: lifecycle/isports-api-lifecycle.yml
+      data_model: data-model/isports-api-data-model.yml
+      plans: plans/isports-api-plans.yml
+      examples: examples/_index.yml
+- target: $.servers
+  update:
+    x-note: The provider documents both http:// and https:// forms. API Evangelist lists only the https hosts; plaintext
+      http is live and should not be used.
+- target: $.paths..get[?(@['x-rate-limit'])]
+  description: Every operation carries the provider-published minimum call interval as x-rate-limit and the recommended
+    polling frequency as x-recommended-call-frequency.

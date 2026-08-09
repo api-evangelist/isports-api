@@ -1,0 +1,20 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "leagueId": "111",
+      "name": "Ireland Premier Division",
+      "shortName": "IRE PR",
+      "type": 1,
+      "subLeagueName": "League"
+    },
+    {
+      "leagueId": "122",
+      "name": "Argentine Division 1",
+      "shortName": "ARG D1",
+      "type": 1,
+      "subLeagueName": "League"
+    }
+  ]
+}

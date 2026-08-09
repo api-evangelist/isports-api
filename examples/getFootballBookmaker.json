@@ -1,0 +1,21 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "companyIdEu": 1,
+      "companyName": "Vikingbet",
+      "companyIdMain": 0
+    },
+    {
+      "companyIdEu": 2,
+      "companyName": "Betfair",
+      "companyIdMain": 0
+    },
+    {
+      "companyIdEu": 4,
+      "companyName": "Nordicbet",
+      "companyIdMain": 0
+    }
+  ]
+}

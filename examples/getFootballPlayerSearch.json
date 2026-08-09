@@ -1,0 +1,31 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "recordId": "365854",
+      "playerId": "24067",
+      "name": "Lionel Andres Messi",
+      "birthday": "1987-06-24",
+      "height": 170,
+      "country": "Argentina",
+      "feet": "Left",
+      "weight": 67,
+      "photo": "http://zq.titan007.com/Image/player/images/166900237557.png?win007=sell",
+      "value": 1500,
+      "teamId": "47140",
+      "position": "Right Winger",
+      "number": 10,
+      "introduce": "",
+      "contractEndDate": "2028-12-31",
+      "PAC": "76",
+      "SHO": "84",
+      "PAS": "84",
+      "DRI": "89",
+      "DEF": "33",
+      "PHY": "64",
+      "country2": "Spain",
+      "country2Id": 772
+    }
+  ]
+}

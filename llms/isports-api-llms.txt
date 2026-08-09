@@ -1,0 +1,182 @@
+# iSports API
+
+> Key-authenticated REST/HTTP sports data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, team/player/referee profiles, transfers, multi-language name packs, live-animation embeds, and pre-match, in-play and historical odds across 200+ bookmakers. Coverage is 2,000+ football leagues and cups and 800+ basketball leagues and cups.
+
+All 113 documented operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` JSON envelope over HTTP 200 — including on failure, where `code` is non-zero (`2` = invalid api_key). There is no OpenAPI definition, no webhook or streaming surface, and no `/.well-known/` discovery; change detection is poll-based through paired `/changes` and `/modify` endpoints. Access is by paid subscription per product, with a 15-day free trial (200 calls/day per sport, ~2 minute live-data delay).
+
+## Docs
+- [Documentation](https://www.isportsapi.com/en/docs.html)
+- [Getting started](https://www.isportsapi.com/en/docs.html?id=news_0)
+- [Changelog](https://www.isportsapi.com/en/docs.html?id=log_1)
+- [FAQ](https://www.isportsapi.com/en/faq.html)
+- [Football products and pricing](https://www.isportsapi.com/en/products/football.html)
+- [Basketball products and pricing](https://www.isportsapi.com/en/products/basketball.html)
+- [Widgets](https://www.isportsapi.com/en/widgets.html)
+- [Sign up](https://www.isportsapi.com/en/auth/register)
+- [Terms of service](https://www.isportsapi.com/en/home/terms.html)
+- [Privacy policy](https://www.isportsapi.com/en/home/privacy.html)
+
+## SDKs and collections
+- [Python SDK (source only)](https://github.com/isportsapiofficial/isports-sdk): first-party; not on PyPI
+- [Java SDK (source only)](https://github.com/isportsapiofficial/isports-sdk-java): first-party; not on Maven Central
+- [Public Postman workspace](https://www.postman.com/isportsapi-1841883/isports-api/): Authentication, Football, Basketball, Livescore Widget
+
+## API Evangelist artifacts
+- [OpenAPI 3.1 (derived)](openapi/isports-api-openapi.yml): derived from the provider documentation; iSports API publishes no spec
+- [Authentication](authentication/isports-api-authentication.yml): api_key query parameter
+- [Conventions](conventions/isports-api-conventions.yml): envelope, batching, delta endpoints, no pagination
+- [Error catalog](errors/isports-api-problem-types.yml): code 0 / code 2, HTTP 200 on failure
+- [Rate limits](rate-limits/isports-api-rate-limits.yml): per-endpoint minimum call interval for all 113 operations
+- [Plans](plans/isports-api-plans.yml): 14 subscription products, USD, monthly/quarterly/yearly
+- [Lifecycle](lifecycle/isports-api-lifecycle.yml): no versioning, no deprecation policy, no status page
+- [Changelog](changelog/isports-api-changelog.yml): dated documentation update log
+- [Data model](data-model/isports-api-data-model.yml): entity graph keyed on matchId
+- [Components](components/isports-api-components.yml): iframe live-animation and livescore widgets
+- [Sandbox](sandbox/isports-api-sandbox.yml): free trial and in-docs request console
+- [Examples](examples/_index.yml): 111 verbatim sample responses
+- [Agent skills](skills/_index.yml): 4 packaged skills
+
+## Endpoints by area
+
+### Basketball Live Data
+- `GET /sport/basketball/lineups` — Lineups (`getBasketballLineups`)
+- `GET /sport/basketball/livescores` — Livescores for Today (`getBasketballLivescores`)
+- `GET /sport/basketball/livescores/changes` — Livescores Changes (`getBasketballLivescoresChanges`)
+- `GET /sport/basketball/livetext` — Live Text (`getBasketballLivetext`)
+- `GET /sport/basketball/livetext/list` — Match List of Live Text (`getBasketballLivetextList`)
+- `GET /sport/basketball/schedule` — Schedule & Results (`getBasketballSchedule`)
+- `GET /sport/basketball/transfer` — NBA Transfer (`getBasketballTransfer`)
+
+### Football Live Data
+- `GET /sport/football/events` — Events / Shooting events (`getFootballEvents`)
+- `GET /sport/football/events/corner` — Corner (`getFootballEventsCorner`)
+- `GET /sport/football/injury` — Injury (`getFootballInjury`)
+- `GET /sport/football/lineups` — Lineups (`getFootballLineups`)
+- `GET /sport/football/livescores` — Livescores for Today (`getFootballLivescores`)
+- `GET /sport/football/livescores/changes` — Livescores Changes (`getFootballLivescoresChanges`)
+- `GET /sport/football/livetext` — Live Text (`getFootballLivetext`)
+- `GET /sport/football/livetext/list` — Match List of Live Text (`getFootballLivetextList`)
+- `GET /sport/football/schedule` — Schedule & Results (`getFootballSchedule`)
+- `GET /sport/football/scheduleChange` — Schedule Changes (`getFootballScheduleChange`)
+- `GET /sport/football/stats` — Stats (`getFootballStats`)
+- `GET /sport/football/summary` — Match Insights (`getFootballSummary`)
+- `GET /sport/football/transfer` — Transfer (`getFootballTransfer`)
+
+### Football Profile
+- `GET /sport/football/league` — League & Cup Profile (`getFootballLeague`)
+- `GET /sport/football/league/stage` — Cup Stage Profile (`getFootballLeagueStage`)
+- `GET /sport/football/league/sub` — Subleague Profile (`getFootballLeagueSub`)
+- `GET /sport/football/player` — Player Profile / Teamlist with Player Profile (`getFootballPlayer`)
+- `GET /sport/football/player/search` — Player Profile for Search (`getFootballPlayerSearch`)
+- `GET /sport/football/referee` — Referee Profile (`getFootballReferee`)
+- `GET /sport/football/team` — Team Profile (`getFootballTeam`)
+- `GET /sport/football/team/search` — Team Profile for Search (`getFootballTeamSearch`)
+
+### Football Odds (18 Agencies)
+- `GET /sport/football/odds/all` — Pre-match and In-play Odds (All) (`getFootballOddsAll`)
+- `GET /sport/football/odds/all/changes` — Live Odds Changes (All) (`getFootballOddsAllChanges`)
+- `GET /sport/football/odds/all/future` — Future Odds (All) (`getFootballOddsAllFuture`)
+- `GET /sport/football/odds/all/history` — Historical Odds (All) (`getFootballOddsAllHistory`)
+- `GET /sport/football/odds/european/half` — European Odds (Halftime) (`getFootballOddsEuropeanHalf`)
+- `GET /sport/football/odds/inplay` — In-play Odds (`getFootballOddsInplay`)
+- `GET /sport/football/odds/inplay/half` — In-play Odds (Halftime) (`getFootballOddsInplayHalf`)
+- `GET /sport/football/odds/main` — Pre-match and In-play Odds (Main) (`getFootballOddsMain`)
+- `GET /sport/football/odds/main/changes` — Live Odds Changes (Main) (`getFootballOddsMainChanges`)
+- `GET /sport/football/odds/main/future` — Future Odds (Main) (`getFootballOddsMainFuture`)
+- `GET /sport/football/odds/main/history` — Historical Odds (Main) (`getFootballOddsMainHistory`)
+- `GET /sport/football/odds/oddsbyid` — Odd Modify Record (`getFootballOddsOddsbyid`)
+
+### Basketball Profile
+- `GET /sport/basketball/cupqualify` — Cup Stage Profile (`getBasketballCupqualify`)
+- `GET /sport/basketball/league` — League & Cup Profile (`getBasketballLeague`)
+- `GET /sport/basketball/player` — Player Profile (`getBasketballPlayer`)
+- `GET /sport/basketball/player/search` — Player Profile for Search (`getBasketballPlayerSearch`)
+- `GET /sport/basketball/playoffs` — Playoffs Stage Profile (`getBasketballPlayoffs`)
+- `GET /sport/basketball/team` — Team Profile (`getBasketballTeam`)
+- `GET /sport/basketball/team/search` — Team Profile for Search (`getBasketballTeamSearch`)
+
+### Basketball Odds
+- `GET /sport/basketball/odds/european/all` — Money Line (80+ bookmakers) (`getBasketballOddsEuropeanAll`)
+- `GET /sport/basketball/odds/fulltime` — Pre-match and In-play Odds (`getBasketballOddsFulltime`)
+- `GET /sport/basketball/odds/fulltime/changes` — Live Odds Changes (`getBasketballOddsFulltimeChanges`)
+- `GET /sport/basketball/odds/half` — Pre-match Odds (Halftime) (`getBasketballOddsHalf`)
+- `GET /sport/basketball/odds/history` — Historical Odds (`getBasketballOddsHistory`)
+- `GET /sport/basketball/odds/inplay` — In-play Odds (`getBasketballOddsInplay`)
+- `GET /sport/basketball/odds/quarter` — Pre-match Odds (Quarter) (`getBasketballOddsQuarter`)
+
+### Football Common API
+- `GET /sport/football/bookmaker` — Providers for European Markets  (`getFootballBookmaker`)
+- `GET /sport/football/country` — List of Countries (`getFootballCountry`)
+- `GET /sport/football/league/basic` — League & Cup Profile (Basic) (`getFootballLeagueBasic`)
+- `GET /sport/football/odds/books` — Providers for Asian Markets (`getFootballOddsBooks`)
+- `GET /sport/football/player/modify` — Player Modify Record (`getFootballPlayerModify`)
+- `GET /sport/football/schedule/basic` — Schedule & Results (Basic) (`getFootballScheduleBasic`)
+- `GET /sport/football/schedule/modify` — Match Modify Record (`getFootballScheduleModify`)
+- `GET /sport/football/team/modify` — Team Modify Record (`getFootballTeamModify`)
+
+### Basketball Common API
+- `GET /sport/basketball/bookmaker` — List of Agencies (`getBasketballBookmaker`)
+- `GET /sport/basketball/country` — List of Countries (`getBasketballCountry`)
+- `GET /sport/basketball/league/basic` — League & Cup Profile (Basic) (`getBasketballLeagueBasic`)
+- `GET /sport/basketball/schedule/basic` — Schedule & Results (Basic) (`getBasketballScheduleBasic`)
+- `GET /sport/basketball/schedule/modify` — Match Modify Record (`getBasketballScheduleModify`)
+
+### Football Stats
+- `GET /sport/football/analysis` — Matches Analysis (`getFootballAnalysis`)
+- `GET /sport/football/fifaranking` — FIFA Ranking (`getFootballFifaranking`)
+- `GET /sport/football/playerstats/league` — Player Stats (League & Cup) (`getFootballPlayerstatsLeague`)
+- `GET /sport/football/playerstats/league/list` — List of Player Stats (League & Cup) (`getFootballPlayerstatsLeagueList`)
+- `GET /sport/football/playerstats/match` — Player Stats (Match) (`getFootballPlayerstatsMatch`)
+- `GET /sport/football/playerstats/match/list` — List of Player Stats (Match) (`getFootballPlayerstatsMatchList`)
+- `GET /sport/football/standing/cup` — Cup Standing (`getFootballStandingCup`)
+- `GET /sport/football/standing/league` — League Standing (`getFootballStandingLeague`)
+- `GET /sport/football/standing/league/getsub` — League Standing (Get Subleague) (`getFootballStandingLeagueGetsub`)
+- `GET /sport/football/topscorer` — Top Scorer (`getFootballTopscorer`)
+
+### Football European Odds (200+ Agencies)
+- `GET /sport/football/odds/european/all` — European Odds (200+ Bookmakers) (`getFootballOddsEuropeanAll`)
+
+### Basketball Stats
+- `GET /sport/basketball/analysis` — Matches Analysis (`getBasketballAnalysis`)
+- `GET /sport/basketball/standing/cup` — Cup Standing (`getBasketballStandingCup`)
+- `GET /sport/basketball/standing/league` — League Standing (`getBasketballStandingLeague`)
+- `GET /sport/basketball/stats` — Match Stats / Quarters Stats (`getBasketballStats`)
+
+### Football Other Odds
+- `GET /sport/football/odds/bothScore` — Both Teams to Score (`getFootballOddsBothScore`)
+- `GET /sport/football/odds/card` — Card (`getFootballOddsCard`)
+- `GET /sport/football/odds/corners1x2/prematch` — Corners 1x2 (pre-match) (`getFootballOddsCorners1x2Prematch`)
+- `GET /sport/football/odds/cornershandicap/inplay` — Handicap Corners (In-play) (`getFootballOddsCornershandicapInplay`)
+- `GET /sport/football/odds/cornershandicap/prematch` — Handicap Corners (pre-match) (`getFootballOddsCornershandicapPrematch`)
+- `GET /sport/football/odds/cornerstotal/inplay` — Total Corners (In-play) (`getFootballOddsCornerstotalInplay`)
+- `GET /sport/football/odds/cornerstotal/prematch` — Total Corners (pre-match) (`getFootballOddsCornerstotalPrematch`)
+- `GET /sport/football/odds/doublechance/prematch` — Double Chance (pre-match) (`getFootballOddsDoublechancePrematch`)
+- `GET /sport/football/odds/eurohandicap/prematch` — EuroHandicap (pre-match) (`getFootballOddsEurohandicapPrematch`)
+- `GET /sport/football/odds/halffull/inplay` — Half Time/Full Time (In-play) (`getFootballOddsHalffullInplay`)
+- `GET /sport/football/odds/halffull/prematch` — Half Time/Full Time (pre-match) (`getFootballOddsHalffullPrematch`)
+- `GET /sport/football/odds/oddeven/inplay` — Goals Odd/Even (In-play) (`getFootballOddsOddevenInplay`)
+- `GET /sport/football/odds/oddeven/prematch` — Goals Odd/Even (pre-match) (`getFootballOddsOddevenPrematch`)
+- `GET /sport/football/odds/outrights` — Outrights (`getFootballOddsOutrights`)
+- `GET /sport/football/odds/overtime` — Overtime & Penalty Shootout  (`getFootballOddsOvertime`)
+- `GET /sport/football/odds/score/half/inplay` — Half Time Correct Score (In-play) (`getFootballOddsScoreHalfInplay`)
+- `GET /sport/football/odds/score/half/prematch` — Half Time Correct Score (pre-match) (`getFootballOddsScoreHalfPrematch`)
+- `GET /sport/football/odds/score/inplay` — Correct Score (In-play) (`getFootballOddsScoreInplay`)
+- `GET /sport/football/odds/score/prematch` — Correct Score (pre-match) (`getFootballOddsScorePrematch`)
+- `GET /sport/football/odds/teamGoals` — Team Goals (`getFootballOddsTeamGoals`)
+- `GET /sport/football/odds/teamtoscore/prematch` — First/Last Team To Score (pre-match) (`getFootballOddsTeamtoscorePrematch`)
+- `GET /sport/football/odds/totalgoals/inplay` — Number of Goals in Match (In-play) (`getFootballOddsTotalgoalsInplay`)
+- `GET /sport/football/odds/totalgoals/prematch` — Number of Goals in Match (pre-match) (`getFootballOddsTotalgoalsPrematch`)
+
+### Football Live animation
+- `GET /sport/football/liveanimation/schedule` — Schedule & Results (`getFootballLiveanimationSchedule`)
+
+### Basketball Live animation
+- `GET /sport/basketball/liveanimation/schedule` — Schedule & Results (`getBasketballLiveanimationSchedule`)
+
+### Football Multiple languages
+- `GET /sport/languagebra` — Portuguese (`getLanguagebra`)
+- `GET /sport/languageidn` — Indonesian (`getLanguageidn`)
+- `GET /sport/languagekr` — Korean (`getLanguagekr`)
+- `GET /sport/languagetc` — Traditional Chinese (`getLanguagetc`)
+- `GET /sport/languageth` — Thai (`getLanguageth`)
+- `GET /sport/languagevn` — Vietnamese (`getLanguagevn`)

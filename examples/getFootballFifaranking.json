@@ -1,0 +1,50 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "type": "MEN'S RANKING",
+      "teamId": "766",
+      "teamName": "Argentina",
+      "continent": "South America",
+      "rank": 1,
+      "rankChange": 0,
+      "score": 1907,
+      "scoreChange": 11,
+      "updateDate": "2026-6"
+    },
+    {
+      "type": "MEN'S RANKING",
+      "teamId": "649",
+      "teamName": "France",
+      "continent": "Europe",
+      "rank": 2,
+      "rankChange": 1,
+      "score": 1906,
+      "scoreChange": 16,
+      "updateDate": "2026-6"
+    },
+    {
+      "type": "MEN'S RANKING",
+      "teamId": "772",
+      "teamName": "Spain",
+      "continent": "Europe",
+      "rank": 3,
+      "rankChange": -1,
+      "score": 1879,
+      "scoreChange": -18,
+      "updateDate": "2026-6"
+    },
+    {
+      "type": "MEN'S RANKING",
+      "teamId": "744",
+      "teamName": "England",
+      "continent": "Europe",
+      "rank": 4,
+      "rankChange": 0,
+      "score": 1840,
+      "scoreChange": 0,
+      "updateDate": "2026-6"
+    }
+  ]
+}

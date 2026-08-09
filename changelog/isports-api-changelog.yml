@@ -1,0 +1,433 @@
+generated: '2026-08-09'
+method: searched
+source: https://www.isportsapi.com/en/docs.html?id=log_1
+description: Dated update log iSports API publishes alongside its documentation. Entries are per-endpoint and additive
+  — field additions, new markets, clarified parameter semantics. Nothing in the published window is marked breaking,
+  and no version numbers are assigned.
+scheme: dated entries, no version numbers
+current_version: null
+breaking_changes_flagged: false
+window:
+  newest: '2026-07-07'
+  oldest: '2020-05-18'
+  count: 78
+entries:
+- date: '2026-07-07'
+  endpoint: 'Other Odds - Overtime & Penalty Shootout '
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=273
+  change: Added odds for extra time and penalty shootouts, and supports Handicap, Total Goals, and 1x2 European
+    odds data.
+- date: '2026-06-13'
+  endpoint: Other Odds - Outrights
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=138
+  change: 'Updated typeId list to include additional group types for the 2026 World Cup expanded 48-team format:
+    Added: 23 (Winner of group I), 24 (Winner of group J), 25 (Winner of group K), 26 (Winner of group L), 29 (Qualified
+    from group I), 30 (Qualified from group J), 31 (Qualified from group K), 32 (Qualified from group L), 35 (Round
+    of 16)'
+- date: '2026-06-11'
+  endpoint: Stats - Player Stats (Match)
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=40
+  change: 'Added 2 goalkeeper-specific fields to Player Stats (Match): saves (saves made by the goalkeeper) and
+    punches (times the goalkeeper punched the ball clear).'
+- date: '2026-06-04'
+  endpoint: Live Data - Lineups
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=17
+  change: Updated the description for the isPreview parameter to provide clearer guidance on its behavior and scope.
+- date: '2026-05-29'
+  endpoint: Live Data - Events
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=15
+  change: Added penalty shootout kick records to the Events endpoint response. A new penalty list is now returned
+    for matches that include a penalty shootout, providing a detailed breakdown of each kick. The penalty list includes
+    the following fields per kick:eventId、homeEvent、playerId、playerName、homeScore、awayScore、missed、oprTime
+- date: '2026-05-29'
+  endpoint: Live Data - Shooting events
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=270
+  change: Added XY coordinate fields to the shooting event response, providing precise spatial data for each shot.
+    The following new fields are now available:startX / startY、endX / endY、goalX / goalY、blockX / blockY
+- date: '2026-05-21'
+  endpoint: Live Data - Live Text
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=66
+  change: 'Renamed field "matchTime" to "time", and added five new fields: "state","happenTime", "teamID", "homePlayerID",
+    "awayPlayerID".'
+- date: '2026-05-07'
+  endpoint: Other Odds - Handicap Corners (In-play)
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=128
+  change: Added three parameters "matchTime", "homeCorner" and "awayCorner", and updated providers.
+- date: '2026-05-07'
+  endpoint: Other Odds - Total Corners (In-play)
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=130
+  change: Added three parameters "matchTime", "homeCorner" and "awayCorner", and updated providers.
+- date: '2026-05-07'
+  endpoint: Other Odds - Total Corners (In-play)
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=130
+  change: The form of data updates has changed.
+- date: '2026-05-07'
+  endpoint: Other Odds - Handicap Corners (In-play)
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=128
+  change: The form of data updates has changed.
+- date: '2026-04-29'
+  endpoint: Live Data - Shooting events
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=270
+  change: Add coordinate data to the shot event interface.
+- date: '2026-04-23'
+  endpoint: Live Data - Lineups
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=17
+  change: 'Added one parameter "isCaptain" to Lineups. Upgraded Product: [Live Data]'
+- date: '2026-04-23'
+  endpoint: Stats - Player Stats (Match)
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=40
+  change: 'Added 3 parameters: duelTotal, aerialTotal and highClaims to Player Stats (Match). Upgraded Product:
+    [Stats]'
+- date: '2026-03-26'
+  endpoint: Live Data - Match Insights
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=272
+  change: 'Add Match Insights, Upgrade Product: [Live data]'
+- date: '2026-02-26'
+  endpoint: Common API - Player Modify Record
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=269
+  change: 'Add Player Modify Record, Upgrade Product: [Common API]'
+- date: '2026-02-26'
+  endpoint: Common API - Team Modify Record
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=268
+  change: 'Add Team Modify Record, Upgrade Product: [Common API]'
+- date: '2026-01-29'
+  endpoint: Common API - Providers for Asian Markets
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=267
+  change: 'Add Providers for Asian Markets, Upgrade Product: [Common API]'
+- date: '2026-01-28'
+  endpoint: Profile - Referee Profile
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=108
+  change: Extended the referee statistics API with additional performance data, including home and away results
+    and recent match-based metrics.
+- date: '2026-01-28'
+  endpoint: Other Odds - Card
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=266
+  change: 'Add Card, Upgrade Product: [Odds PRO]'
+- date: '2026-01-28'
+  endpoint: Other Odds - Both Teams to Score
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=265
+  change: 'Add Both Team to Score, Upgrade Product: [Odds PRO]'
+- date: '2026-01-28'
+  endpoint: Other Odds - Team Goals
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=264
+  change: 'Add Team Goals , Upgrade Product: [Odds PRO]'
+- date: '2026-01-28'
+  endpoint: Other Odds - Corners 1x2 (pre-match)
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=263
+  change: 'Add Corners 1x2(pre-match) , Upgrade Product: [Odds PRO]'
+- date: '2026-01-28'
+  endpoint: Profile - Player Profile
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=23
+  change: Add 2 fields "country2 " "country2Id".
+- date: '2025-11-24'
+  endpoint: Live Data - Events
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=15
+  change: The Events API now supports the parameter "cmd=new". Use this to return data updated in the last 3 minutes.
+- date: '2025-11-21'
+  endpoint: Live Data - Stats
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=16
+  change: 'Expanded the returned dataset for the type field in the Stats API. New statistic items have been added
+    starting from index 47, including multiple popular xG-related metrics. Newly added fields with descriptions:
+    47: BigChances – Number of clear goal-scoring opportunities. 48: BigChancesMissed – Number of clear chances
+    that were not converted. 49: ShotsInsideBox – Total shots taken from inside the penalty box. 50: ShotsOutsideBox
+    – Total shots taken from outside the penalty box. 51: DuelsWon – Number of duels successfully won. 52: ExpectedGoals
+    (xG) – Estimated probability of scoring based on shot quality. 53: xGOpenPlay – Expected goals generated from
+    open-play situations. 54: xGSetPlay – Expected goals generated from set-piece situations. 55: xGNonPenalty –
+    Expected goals excluding penalties. 56: xGOT (Expected Goals On Target) – Expected goals based on shots that
+    hit the target. 57: TouchesInOppositionBox – Number of ball touches inside the opponent’s penalty area. 58:
+    AccurateCrosses – Number of successfully completed/correct crosses. 59: GroundDuelsWon – Number of ground duels
+    won. 60: AerialDuelsWon – Number of aerial duels won. 61: Clearances – Number of defensive clearances made.'
+- date: '2025-11-21'
+  endpoint: Profile - Player Profile
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=23
+  change: 'Added six new player attribute fields to the Player Profile API: 1.PAC– Speed. 2.SHO– Shooting ability
+    3.PAS – Passing ability 4.DRI – Ball control 5.DEF – Defensive ability 6.PHY – Strength & stamina Included concise
+    English descriptions for each attribute. Updated API response examples and field definitions accordingly.'
+- date: '2024-11-07'
+  endpoint: Live animation - Time line
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=250
+  change: Add API Time line.
+- date: '2024-08-05'
+  endpoint: Profile - Player Profile
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=23
+  change: Add cmd=more parameter. Get player honor data.
+- date: '2024-08-05'
+  endpoint: Profile - Team Profile
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=22
+  change: 1.Add cmd=more parameter. Get team introduction and team honors data. 2.Add 1 field "country_logo" .
+- date: '2024-05-13'
+  endpoint: Stats - Matches Analysis
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=109
+  change: "Add 4 fields \"homeSingleDouble\" \"awaySingleDouble\t\"\"homeDataVs\"and \"awayDataVs\"."
+- date: '2024-04-22'
+  endpoint: Other Odds - Total Corners (In-play)
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=130
+  change: Add half time total odds of corner.
+- date: '2024-04-22'
+  endpoint: Other Odds - Total Corners (pre-match)
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=121
+  change: Add half time total odds of corner.
+- date: '2024-03-20'
+  endpoint: Other Odds - Double Chance (pre-match)
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=249
+  change: 'Add Double Chance odds ,  Upgrade Product: [Odds PRO]'
+- date: '2024-03-20'
+  endpoint: Other Odds - EuroHandicap (pre-match)
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=248
+  change: 'Add EuroHandicap odds ,  Upgrade Product: [Odds PRO]'
+- date: '2024-03-07'
+  endpoint: Profile - Team Profile
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=22
+  change: Add day parameter. After adding this parameter, only the data added or modified within this time will
+    be returned. It is recommended to enter day=1 or day=2.
+- date: '2023-09-13'
+  endpoint: Live Data - Schedule & Results
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=21
+  change: Add 1 field "var".
+- date: '2023-09-13'
+  endpoint: Live Data - Livescores Changes
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=14
+  change: Add 1 field "var".
+- date: '2023-09-13'
+  endpoint: Live Data - Livescores for Today
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=20
+  change: Add 1 field "var".
+- date: '2023-06-21'
+  endpoint: Profile - Team Profile
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=22
+  change: Add 1 field "isNational" .
+- date: '2022-12-06'
+  endpoint: Live Data - Schedule Changes
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=247
+  change: Update Example Response
+- date: '2022-12-06'
+  endpoint: Stats - Player Stats (Match)
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=40
+  change: Update Example Response
+- date: '2022-12-06'
+  endpoint: Live Data - Schedule & Results
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=21
+  change: Update Example Response
+- date: '2022-12-06'
+  endpoint: Live Data - Livescores Changes
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=14
+  change: Update Example Response
+- date: '2022-12-06'
+  endpoint: Live Data - Livescores for Today
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=20
+  change: Update Example Response
+- date: '2022-12-06'
+  endpoint: Live Data - Schedule Changes
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=247
+  change: Add 2 fields "injuryTime"  and "updateTime".
+- date: '2022-12-03'
+  endpoint: Live Data - Schedule & Results
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=21
+  change: Add 2 fields "injuryTime"  and "updateTime".
+- date: '2022-12-02'
+  endpoint: Stats - Player Stats (Match)
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=40
+  change: Add 1 fields "isBest" .
+- date: '2022-12-02'
+  endpoint: Live Data - Livescores Changes
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=14
+  change: Add 1 fields "injuryTime" .
+- date: '2022-12-02'
+  endpoint: Live Data - Livescores for Today
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=20
+  change: Add 2 fields "injuryTime"  and "updateTime".
+- date: '2022-08-16'
+  endpoint: Live Data - Schedule Changes
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=247
+  change: Add API Schedule Changes.
+- date: '2022-08-03'
+  endpoint: Stats - Player Stats (Match)
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=40
+  change: Added "penaltySave" field.
+- date: '2022-06-23'
+  endpoint: Profile - Teamlist with Player Profile
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=246
+  change: Add API Teamlist with Player Profile.
+- date: '2022-06-21'
+  endpoint: Odds (18 Agencies) - Odd Modify Record
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=245
+  change: Add API Odd Modify Record.
+- date: '2022-05-20'
+  endpoint: Other Odds - Outrights
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=138
+  change: Add 3 fields "type" "item""company".
+- date: '2022-05-19'
+  endpoint: Stats - List of Player Stats (Match)
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=37
+  change: Add one field "modifyTime".
+- date: '2022-05-19'
+  endpoint: Profile - Player Profile
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=23
+  change: Added the parameter "day" to get the player data that has been modified within the specified number of
+    days.
+- date: '2022-05-19'
+  endpoint: Live Data - Live Text
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=66
+  change: Add one field "matchId".
+- date: '2022-05-19'
+  endpoint: Common API - Schedule & Results (Basic)
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=41
+  change: Add 4 fields "homeId" "awayId""homeHalfScore""awayHalfScore".
+- date: '2022-04-27'
+  endpoint: Odds (18 Agencies) - Historical Odds (All)
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=62
+  change: By default, it returns the match data from GMT+0 0:00 to the currently completed match.
+- date: '2022-04-27'
+  endpoint: Odds (18 Agencies) - Historical Odds (Main)
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=52
+  change: By default, it returns the match data from GMT+0 0:00 to the currently completed match.
+- date: '2022-04-27'
+  endpoint: Stats - Top Scorer
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=39
+  change: Add two fields "matchNum" and "subNum".
+- date: '2022-04-27'
+  endpoint: Stats - League Standing
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=43
+  change: Add one field "scoreCountType". Whether to show the additional points column, if the value is not 0 then
+    show.
+- date: '2022-04-27'
+  endpoint: Stats - League Standing
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=43
+  change: Add two fields "beginRank" and "endRank".
+- date: '2022-04-27'
+  endpoint: Stats - Cup Standing
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=45
+  change: Without parameter, return the list of cups whose points have been updated in the last 24 hours.
+- date: '2022-04-27'
+  endpoint: Stats - League Standing
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=43
+  change: Without parameter, return the list of leagues whose points have been updated in the last 24 hours.
+- date: '2022-04-27'
+  endpoint: Stats - Player Stats (League & Cup)
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=51
+  change: Add one field "wasFouledCount".
+- date: '2022-04-27'
+  endpoint: Stats - Player Stats (Match)
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=40
+  change: Add two fields "shotOnPost" and "errorLeadToGoal".
+- date: '2022-04-27'
+  endpoint: Stats - Matches Analysis
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=109
+  change: The field "matchTime" is adjusted to the timestamp of GMT+0.
+- date: '2022-04-27'
+  endpoint: Profile - Cup Stage Profile
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=112
+  change: 'Add one field "groupLineupCount".The number of qualifying teams in each group. eg. "groupLineupCount":
+    "A,2;B,1;C,2;D,1;E,2;F,1;G,2;H,2" This item may not be available, if there is, it will take precedence over
+    lineCount.'
+- date: '2022-04-27'
+  endpoint: Profile - League & Cup Profile
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=67
+  change: Add the description of the competition system. If there is no data, it will not be returned. eg. http://api.isportsapi.com/sport/football/league?api_key=<YOUR_API_KEY>&cmd=rule
+- date: '2022-04-21'
+  endpoint: Live Data - Injury
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=64
+  change: 4.21 Updated to get the data of the injured players list for the next 3 days.
+- date: '2022-04-14'
+  endpoint: Live Data - Transfer
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=69
+  change: 2022.4.14 Add two fields "endTime" and "modifyTime".
+- date: '2022-04-14'
+  endpoint: Live Data - Events
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=15
+  change: 2022.4.14 Added penalty shootout data set
+- date: '2022-01-04'
+  endpoint: Stats - League Standing
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=43
+  change: 2022.1.4      The "totalAddScore" field is added to the league ranking to display the group stage score
+    (if any).
+- date: '2020-10-30'
+  endpoint: Stats - Player Stats (Match)
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=40
+  change: Type of "passRate" was changed to string.
+- date: '2020-05-18'
+  endpoint: Stats - Player Stats (League & Cup)
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=51
+  change: Type of "rating" was changed to string.
+- date: '2020-05-18'
+  endpoint: Stats - Player Stats (Match)
+  sport: football
+  documentation: https://www.isportsapi.com/en/docs.html?id=40
+  change: Type of "rating" was changed to string.

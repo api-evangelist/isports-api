@@ -1,0 +1,61 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "recordId": "2335",
+      "leagueId": "114",
+      "name": "Groups",
+      "season": "18",
+      "groupCount": 2,
+      "roundCount": 0,
+      "sortNumber": 1,
+      "currentGroup": true,
+      "group": true
+    },
+    {
+      "recordId": "2336",
+      "leagueId": "196",
+      "name": "1/8 finals",
+      "season": "18",
+      "groupCount": 0,
+      "roundCount": 0,
+      "sortNumber": 1,
+      "currentGroup": false,
+      "group": false
+    },
+    {
+      "recordId": "2337",
+      "leagueId": "148",
+      "name": "Preliminary Final",
+      "season": "18",
+      "groupCount": 0,
+      "roundCount": 0,
+      "sortNumber": 2,
+      "currentGroup": false,
+      "group": false
+    },
+    {
+      "recordId": "2338",
+      "leagueId": "148",
+      "name": "Quarter Final",
+      "season": "18",
+      "groupCount": 0,
+      "roundCount": 0,
+      "sortNumber": 1,
+      "currentGroup": false,
+      "group": false
+    },
+    {
+      "recordId": "2339",
+      "leagueId": "145",
+      "name": "Quarter Final",
+      "season": "18",
+      "groupCount": 0,
+      "roundCount": 0,
+      "sortNumber": 1,
+      "currentGroup": false,
+      "group": false
+    }
+  ]
+}

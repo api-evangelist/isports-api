@@ -1,0 +1,27 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "matchId": "15022638",
+      "matchTime": 1570575600,
+      "leagueName": "National Basketball Association",
+      "homeName": "Philadelphia 76ers",
+      "awayName": "Guangzhou Longlions"
+    },
+    {
+      "matchId": "37539532",
+      "matchTime": 1570577400,
+      "leagueName": "National Basketball Association",
+      "homeName": "Miami Heat",
+      "awayName": "San Antonio Spurs"
+    },
+    {
+      "matchId": "16022639",
+      "matchTime": 1570579200,
+      "leagueName": "National Basketball Association",
+      "homeName": "Oklahoma City Thunder",
+      "awayName": "Dallas Mavericks"
+    }
+  ]
+}

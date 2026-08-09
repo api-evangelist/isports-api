@@ -1,0 +1,39 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "recordId": "2621",
+      "playerId": "463",
+      "transferTime": 1566835200,
+      "fromTeam": "Memphis Grizzlies",
+      "fromTeamId": "22",
+      "toTeam": "Los Angeles Lakers",
+      "toTeamId": "1",
+      "season": "19-20",
+      "type": "Free Transfer"
+    },
+    {
+      "recordId": "2623",
+      "playerId": "3052",
+      "transferTime": 1566835200,
+      "fromTeam": "Toronto Raptors",
+      "fromTeamId": "15",
+      "toTeam": "Beijing Ducks",
+      "toTeamId": "159",
+      "season": "19-20",
+      "type": "Free Transfer"
+    },
+    {
+      "recordId": "2620",
+      "playerId": "5171",
+      "transferTime": 1564848000,
+      "fromTeam": "Los Angeles Clippers",
+      "fromTeamId": "29",
+      "toTeam": "Cleveland Cavaliers",
+      "toTeamId": "16",
+      "season": "19-20",
+      "type": "Free Transfer"
+    }
+  ]
+}

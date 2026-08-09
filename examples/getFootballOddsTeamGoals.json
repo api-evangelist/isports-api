@@ -1,0 +1,66 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "matchId": "327841923",
+      "companyId": "3",
+      "home": {
+        "total": "1.75",
+        "over": "0.95",
+        "under": "0.87"
+      },
+      "away": {
+        "total": "0.75",
+        "over": "0.7",
+        "under": "1.12"
+      },
+      "changeTime": 1769558155
+    },
+    {
+      "matchId": "392152920",
+      "companyId": "3",
+      "home": {
+        "total": "0.5",
+        "over": "0.74",
+        "under": "1.08"
+      },
+      "away": {
+        "total": "3",
+        "over": "1.01",
+        "under": "0.81"
+      },
+      "changeTime": 1769556299
+    },
+    {
+      "matchId": "282051927",
+      "companyId": "3",
+      "home": {
+        "total": "2.25",
+        "over": "0.9",
+        "under": "0.92"
+      },
+      "away": {
+        "total": "0.5",
+        "over": "0.83",
+        "under": "0.99"
+      },
+      "changeTime": 1769540017
+    },
+    {
+      "matchId": "217027827",
+      "companyId": "3",
+      "home": {
+        "total": "1.25",
+        "over": "1.05",
+        "under": "0.77"
+      },
+      "away": {
+        "total": "1.5",
+        "over": "1.01",
+        "under": "0.81"
+      },
+      "changeTime": 1766467094
+    }
+  ]
+}

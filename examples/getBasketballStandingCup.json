@@ -1,0 +1,45 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "round": "Groups",
+      "groupName": "A",
+      "rank": 1,
+      "teamId": 2434,
+      "win": 3,
+      "lose": 0,
+      "totalScore": 249,
+      "totalLoss": 230,
+      "streak": 3,
+      "outLine": true,
+      "matchSeason": "23"
+    },
+    {
+      "round": "Groups",
+      "groupName": "A",
+      "rank": 2,
+      "teamId": 737,
+      "win": 2,
+      "lose": 1,
+      "totalScore": 253,
+      "totalLoss": 237,
+      "streak": 1,
+      "outLine": true,
+      "matchSeason": "23"
+    },
+    {
+      "round": "Groups",
+      "groupName": "A",
+      "rank": 3,
+      "teamId": 87,
+      "win": 1,
+      "lose": 2,
+      "totalScore": 214,
+      "totalLoss": 226,
+      "streak": -1,
+      "outLine": false,
+      "matchSeason": "23"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "leagueId": "111",
+      "type": 1,
+      "color": "#9933FF",
+      "logo": "http://zq.titan007.com/Image/league_match/images/20200420184115.jpg?win007=sell",
+      "name": "Ireland Premier Division",
+      "shortName": "IRE PR",
+      "subLeagueName": "League",
+      "totalRound": 36,
+      "currentRound": 23,
+      "currentSeason": "2026",
+      "countryId": "16",
+      "country": "Ireland",
+      "countryLogo": "http://zq.titan007.com/Image/info/images/1k7b5vqkmr1f.jpg?win007=sell",
+      "areaId": 1
+    },
+    {
+      "leagueId": "122",
+      "type": 1,
+      "color": "#00CCCC",
+      "logo": "http://zq.titan007.com/Image/league_match/images/20210531102310.png?win007=sell",
+      "name": "Argentine Division 1",
+      "shortName": "ARG D1",
+      "subLeagueName": "Final",
+      "totalRound": 0,
+      "currentRound": 0,
+      "currentSeason": "2026",
+      "countryId": "38",
+      "country": "Argentina",
+      "countryLogo": "http://zq.titan007.com/Image/info/images/164327632011.png?win007=sell",
+      "areaId": 2
+    },
+    {
+      "leagueId": "133",
+      "type": 1,
+      "color": "#2f3fd2",
+      "logo": "http://zq.titan007.com/Image/league_match/images/20210519120032.png?win007=sell",
+      "name": "Austrian Bundesliga",
+      "shortName": "AUT D1",
+      "subLeagueName": "League",
+      "totalRound": 22,
+      "currentRound": 1,
+      "currentSeason": "2026-2027",
+      "countryId": "14",
+      "country": "Austria",
+      "countryLogo": "http://zq.titan007.com/Image/info/images/164326586578.png?win007=sell",
+      "areaId": 1
+    },
+    {
+      "leagueId": "144",
+      "type": 1,
+      "color": "#996600",
+      "logo": "http://zq.titan007.com/Image/league_match/images/1ka8jt39av1h.png?win007=sell",
+      "name": "Brazil Serie A",
+      "shortName": "BRA D1",
+      "subLeagueName": "",
+      "totalRound": 38,
+      "currentRound": 19,
+      "currentSeason": "2026",
+      "countryId": "39",
+      "country": "Brazil",
+      "countryLogo": "http://zq.titan007.com/Image/info/images/164327631176.png?win007=sell",
+      "areaId": 2
+    }
+  ]
+}

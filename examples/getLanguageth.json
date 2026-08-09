@@ -1,0 +1,80 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "leagues": [
+        {
+          "leagueId": "1",
+          "name": "Ireland Premier Division",
+          "name_th": "ไอร์แลนด์ พรีเมียร์ ลิก"
+        },
+        {
+          "leagueId": "2",
+          "name": "Argentine Division 1",
+          "name_th": "อาร์เจนติน่า พรีเมียร์ดิวิชั่น"
+        },
+        {
+          "leagueId": "3",
+          "name": "Austrian Bundesliga",
+          "name_th": "ออสเตรีย บุนเดสลีก้า"
+        },
+        {
+          "leagueId": "4",
+          "name": "Brazil Serie A",
+          "name_th": "กังเปโอนาตู บราซีเลย์รู แซรียีอา"
+        },
+        {
+          "leagueId": "5",
+          "name": "Belgian Pro League",
+          "name_th": "จูบิแลร์ ลีก เบลเยียม"
+        },
+        {
+          "leagueId": "6",
+          "name": "Poland Ekstraklasa",
+          "name_th": "โปแลนด์เอ็คสตรัคลาซ่า"
+        },
+        {
+          "leagueId": "7",
+          "name": "Denmark Superligaen",
+          "name_th": "เดนมาร์ค แซซ ลิกาเอน"
+        },
+        {
+          "leagueId": "8",
+          "name": "German Bundesliga",
+          "name_th": "บุนเดิสลีกา"
+        },
+        {
+          "leagueId": "9",
+          "name": "German Bundesliga 2",
+          "name_th": "บุนเดสลีก้า 2 เยอรมัน"
+        },
+        {
+          "leagueId": "10",
+          "name": "Russia Premier League",
+          "name_th": "รัสเซียนพรีเมียร์ลีก"
+        },
+        {
+          "leagueId": "11",
+          "name": "France Ligue 1",
+          "name_th": "ลีกเอิง ฝรั่งเศส"
+        },
+        {
+          "leagueId": "12",
+          "name": "France Ligue 2",
+          "name_th": "ลีกเดอซ์"
+        },
+        {
+          "leagueId": "13",
+          "name": "Finland Veikkausliga",
+          "name_th": "ไวเคาส์ลีกา"
+        },
+        {
+          "leagueId": "15",
+          "name": "K League 1",
+          "name_th": "เค-ลีก"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "matchId": "219331030",
+      "companyId": "3",
+      "odds": {
+        "halfWinFullWin": "2.75",
+        "halfWinFullDraw": "11.5",
+        "halfWinFullLose": "14.5",
+        "halfDrawFullWin": "6.2",
+        "halfDrawFullDraw": "7.8",
+        "halfDrawFullLose": "5.3",
+        "halfLoseFullWin": "16",
+        "halfLoseFullDraw": "11.5",
+        "halfLoseFullLose": "2.1"
+      },
+      "changeTime": 1782957273
+    },
+    {
+      "matchId": "219331030",
+      "companyId": "24",
+      "odds": {
+        "halfWinFullWin": "3.1",
+        "halfWinFullDraw": "12",
+        "halfWinFullLose": "18",
+        "halfDrawFullWin": "6",
+        "halfDrawFullDraw": "8.2",
+        "halfDrawFullLose": "6.8",
+        "halfLoseFullWin": "12",
+        "halfLoseFullDraw": "9",
+        "halfLoseFullLose": "2.55"
+      },
+      "changeTime": 1782962499
+    }
+  ]
+}

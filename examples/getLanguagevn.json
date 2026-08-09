@@ -1,0 +1,60 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "leagues": [
+        {
+          "leagueId": "1",
+          "name": "Ireland Premier Division",
+          "name_vn": "VĐQG Ireland"
+        },
+        {
+          "leagueId": "2",
+          "name": "Argentine Division 1",
+          "name_vn": "VĐQG Argentina"
+        },
+        {
+          "leagueId": "3",
+          "name": "Austrian Bundesliga",
+          "name_vn": "VĐQG Áo"
+        },
+        {
+          "leagueId": "4",
+          "name": "Brazil Serie A",
+          "name_vn": "VĐQG Brazil"
+        },
+        {
+          "leagueId": "5",
+          "name": "Belgian Pro League",
+          "name_vn": "VĐQG Bỉ"
+        },
+        {
+          "leagueId": "6",
+          "name": "Poland Ekstraklasa",
+          "name_vn": "VĐQG  Ba Lan"
+        },
+        {
+          "leagueId": "7",
+          "name": "Denmark Superligaen",
+          "name_vn": "VĐQG Đan Mạch"
+        },
+        {
+          "leagueId": "8",
+          "name": "German Bundesliga",
+          "name_vn": "VĐQG Đức"
+        },
+        {
+          "leagueId": "9",
+          "name": "German Bundesliga 2",
+          "name_vn": "Hạng hai Đức"
+        },
+        {
+          "leagueId": "10",
+          "name": "Russia Premier League",
+          "name_vn": "VĐQG Nga"
+        }
+      ]
+    }
+  ]
+}

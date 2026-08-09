@@ -1,0 +1,70 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "matchId": "372967618",
+      "teamId": "469",
+      "playerId": "74917",
+      "name": "Rodolfo Alves de Melo",
+      "reasonType": 34,
+      "reason": "Red card Suspended"
+    },
+    {
+      "matchId": "372967618",
+      "teamId": "4175",
+      "playerId": "47948",
+      "name": "Ebert Willian Amancio, Betao",
+      "reasonType": 34,
+      "reason": "Red card Suspended"
+    },
+    {
+      "matchId": "372967618",
+      "teamId": "469",
+      "playerId": "144472",
+      "name": "Yuri Oliveira Lima",
+      "reasonType": 56,
+      "reason": "Yellow card total suspension"
+    },
+    {
+      "matchId": "372967618",
+      "teamId": "4175",
+      "playerId": "168895",
+      "name": "Daniel Amorim Dias da Silva",
+      "reasonType": 71,
+      "reason": "Muscle Injury"
+    },
+    {
+      "matchId": "372967618",
+      "teamId": "469",
+      "playerId": "154154",
+      "name": "Matheus Mascarenhas Dos Santos Raimundo",
+      "reasonType": 99,
+      "reason": "injured"
+    },
+    {
+      "matchId": "372967618",
+      "teamId": "4175",
+      "playerId": "121691",
+      "name": "Alex da Silva",
+      "reasonType": 99,
+      "reason": "injured"
+    },
+    {
+      "matchId": "372967618",
+      "teamId": "469",
+      "playerId": "113390",
+      "name": "Matheus Ferraz Pereira",
+      "reasonType": 128,
+      "reason": "Ruptured knee ligament"
+    },
+    {
+      "matchId": "372967618",
+      "teamId": "469",
+      "playerId": "150802",
+      "name": "Pedro Guilherme Abreu dos Santos",
+      "reasonType": 131,
+      "reason": "Thigh problems"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+generated: '2026-08-09'
+method: searched
+source: https://www.isportsapi.com/en/docs.html
+versioning:
+  scheme: null
+  current: null
+  note: iSports API publishes no API version. Endpoint paths are unversioned (/sport/<sport>/<resource>) and no
+    version header or date pin is documented.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No deprecation or sunset policy is published. Field- and endpoint-level changes appear in the documentation
+    changelog after the fact.
+change_communication:
+  changelog: https://www.isportsapi.com/en/docs.html?id=log_1
+  per_endpoint: Each documentation page carries an "Update Time" stamp and an update log.
+  console_notice: A site-wide notice banner announces newly added endpoints per plan.
+  artifact: changelog/isports-api-changelog.yml
+sla:
+  url: null
+  uptime_target: null
+  published_latency: Typical end-to-end latency generally under 10 seconds (support FAQ).
+  source: https://www.isportsapi.com/en/faq/integration-27.html
+status_page: null
+status_page_note: No status page found. status.isportsapi.com does not resolve; isportsapi.statuspage.io 302s to
+  statuspage.io (unclaimed subdomain), probed 2026-08-09.
+deprecated_operations: []
+support:
+  ticket_system: https://www.isportsapi.com/en/user/tickets
+  faq: https://www.isportsapi.com/en/faq/support-26.html
+  channels:
+  - Telegram
+  - WhatsApp
+  - email
+  email: isportsapibd@gmail.com
+  languages:
+  - English

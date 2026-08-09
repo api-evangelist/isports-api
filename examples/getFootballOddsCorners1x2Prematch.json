@@ -1,0 +1,26 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "matchId": "377128926",
+      "companyId": "3",
+      "odds": {
+        "home": "2.22",
+        "draw": "7.6",
+        "away": "1.85"
+      },
+      "changeTime": 1782937642
+    },
+    {
+      "matchId": "309542921",
+      "companyId": "3",
+      "odds": {
+        "home": "5.7",
+        "draw": "11.5",
+        "away": "1.16"
+      },
+      "changeTime": 1782936151
+    }
+  ]
+}

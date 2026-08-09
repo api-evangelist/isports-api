@@ -1,0 +1,36 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "matchId": "219331030",
+      "companyId": "8",
+      "odds": {
+        "totalCorners": "9",
+        "over": "0.8",
+        "under": "1"
+      },
+      "changeTime": 1782912810
+    },
+    {
+      "matchId": "288331036",
+      "companyId": "8",
+      "odds": {
+        "totalCorners": "8.5",
+        "over": "0.925",
+        "under": "0.875"
+      },
+      "changeTime": 1782917389
+    },
+    {
+      "matchId": "341932920",
+      "companyId": "8",
+      "odds": {
+        "totalCorners": "8.5",
+        "over": "0.85",
+        "under": "0.95"
+      },
+      "changeTime": 1782920276
+    }
+  ]
+}

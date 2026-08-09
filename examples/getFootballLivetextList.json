@@ -1,0 +1,13 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "matchId": "372967618",
+      "matchTime": 1567465200,
+      "leagueName": "Brazil Serie A",
+      "homeName": "Fluminense RJ",
+      "awayName": "Avai FC SC"
+    }
+  ]
+}

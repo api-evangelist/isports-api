@@ -1,0 +1,54 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "teamId": "8791",
+      "leagueId": "188",
+      "name": "Mercyhurst Lakers",
+      "shortName": "Mercyhurst Lakers",
+      "logo": "http://nba.titan007.com/files/team/1jc0cazd8r22.png?win007=sell",
+      "website": "",
+      "conference": "NO",
+      "division": "",
+      "city": "",
+      "venue": "",
+      "capacity": 0,
+      "joinYear": 0,
+      "championCount": 0,
+      "coach": ""
+    },
+    {
+      "teamId": "1",
+      "leagueId": "111",
+      "name": "Los Angeles Lakers",
+      "shortName": "Lakers",
+      "logo": "http://nba.titan007.com/files/team/1k82cbnkb829.png?win007=sell",
+      "website": "http://www.nba.com/lakers/",
+      "conference": "NBA Western",
+      "division": "Pacific",
+      "city": "Los Angeles, California",
+      "venue": "Crypto.com Arena",
+      "capacity": 19282,
+      "joinYear": 1948,
+      "championCount": 11,
+      "coach": "Jonathan Clay Redick"
+    },
+    {
+      "teamId": "7684",
+      "leagueId": "19649",
+      "name": "South Bay Lakers",
+      "shortName": "South Bay Lakers",
+      "logo": "http://nba.titan007.com/files/team/1hns7297d01f.png?win007=sell",
+      "website": "",
+      "conference": "NO",
+      "division": "",
+      "city": "",
+      "venue": "",
+      "capacity": 0,
+      "joinYear": 0,
+      "championCount": 0,
+      "coach": ""
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "subLeagueId": "18143",
+      "currentSubLeague": true
+    }
+  ]
+}

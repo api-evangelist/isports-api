@@ -1,0 +1,46 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "matchId": "143030426",
+      "companyId": "19",
+      "odds": {
+        "home_draw": "1.3",
+        "home_away": "0.22",
+        "draw_away": "0.15"
+      },
+      "changeTime": 1710847090
+    },
+    {
+      "matchId": "378540420",
+      "companyId": "19",
+      "odds": {
+        "home_draw": "0.27",
+        "home_away": "0.3",
+        "draw_away": "0.75"
+      },
+      "changeTime": 1710720054
+    },
+    {
+      "matchId": "114701429",
+      "companyId": "19",
+      "odds": {
+        "home_draw": "0.3",
+        "home_away": "0.3",
+        "draw_away": "0.73"
+      },
+      "changeTime": 1710163671
+    },
+    {
+      "matchId": "106031527",
+      "companyId": "19",
+      "odds": {
+        "home_draw": "1.1",
+        "home_away": "0.25",
+        "draw_away": "0.2"
+      },
+      "changeTime": 1710686794
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "matchId": "235291819",
+      "companyId": "3",
+      "odds": {
+        "single": "1.79",
+        "double": "2.07",
+        "close": false
+      },
+      "changeTime": 1574844423
+    },
+    {
+      "matchId": "360990712",
+      "companyId": "3",
+      "odds": {
+        "single": "1.94",
+        "double": "1.92",
+        "close": false
+      },
+      "changeTime": 1574844401
+    },
+    {
+      "matchId": "201990717",
+      "companyId": "3",
+      "odds": {
+        "single": "1.95",
+        "double": "1.91",
+        "close": false
+      },
+      "changeTime": 1574844412
+    }
+  ]
+}

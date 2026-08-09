@@ -1,0 +1,55 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "leagues": [
+        {
+          "leagueId": "1",
+          "name": "Ireland Premier Division",
+          "name_bra": "Divisão Premier"
+        },
+        {
+          "leagueId": "2",
+          "name": "Argentine Division 1",
+          "name_bra": "Torneo Betano"
+        },
+        {
+          "leagueId": "3",
+          "name": "Austrian Bundesliga",
+          "name_bra": "Bundesliga"
+        },
+        {
+          "leagueId": "4",
+          "name": "Brazil Serie A",
+          "name_bra": "Brasileirão Betano"
+        },
+        {
+          "leagueId": "5",
+          "name": "Belgian Pro League",
+          "name_bra": "Liga Jupiler"
+        },
+        {
+          "leagueId": "6",
+          "name": "Poland Ekstraklasa",
+          "name_bra": "Ekstraklasa"
+        },
+        {
+          "leagueId": "7",
+          "name": "Denmark Superligaen",
+          "name_bra": "Superliga"
+        },
+        {
+          "leagueId": "8",
+          "name": "German Bundesliga",
+          "name_bra": "Bundesliga"
+        },
+        {
+          "leagueId": "9",
+          "name": "German Bundesliga 2",
+          "name_bra": "2. Bundesliga"
+        }
+      ]
+    }
+  ]
+}

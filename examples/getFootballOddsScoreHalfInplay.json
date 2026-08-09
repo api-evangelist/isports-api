@@ -1,0 +1,27 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "matchId": "235291819",
+      "companyId": "3",
+      "odds": {
+        "bettingOddsItems": [
+          {
+            "homeScore": 1,
+            "awayScore": 0,
+            "odds": "0"
+          },
+          {
+            "homeScore": 2,
+            "awayScore": 0,
+            "odds": "0"
+          }
+        ],
+        "otherScoresOdds": "151",
+        "close": true
+      },
+      "changeTime": 1574844627
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "matchId": "27802568",
+      "leagueId": "111",
+      "leagueName": "NBA",
+      "quarterCount": 4,
+      "matchTime": 1759420800,
+      "status": -1,
+      "homeId": "7",
+      "homeName": "Philadelphia 76ers",
+      "awayId": "5",
+      "awayName": "New York Knicks",
+      "homeScore": 84,
+      "awayScore": 99,
+      "explain": "[76ers]Malcolm Hill misses 2pt jump shot",
+      "neutral": true
+    },
+    {
+      "matchId": "44989662",
+      "leagueId": "111",
+      "leagueName": "NBA",
+      "quarterCount": 4,
+      "matchTime": 1759483800,
+      "status": -1,
+      "homeId": "11",
+      "homeName": "New Orleans Pelicans",
+      "awayId": "852",
+      "awayName": "Melbourne United",
+      "homeScore": 107,
+      "awayScore": 97,
+      "explain": "Period End",
+      "neutral": true
+    }
+  ]
+}

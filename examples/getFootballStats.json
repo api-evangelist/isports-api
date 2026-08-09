@@ -1,0 +1,62 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "matchId": "475179920",
+      "stats": [
+        {
+          "type": 6,
+          "home": "2",
+          "away": "7"
+        },
+        {
+          "type": 45,
+          "home": "2",
+          "away": "2"
+        },
+        {
+          "type": 11,
+          "home": "2",
+          "away": "3"
+        },
+        {
+          "type": 3,
+          "home": "18",
+          "away": "15"
+        },
+        {
+          "type": 4,
+          "home": "7",
+          "away": "2"
+        },
+        {
+          "type": 34,
+          "home": "11",
+          "away": "13"
+        },
+        {
+          "type": 14,
+          "home": "31%",
+          "away": "69%"
+        },
+        {
+          "type": 46,
+          "home": "2%",
+          "away": "98%"
+        },
+        {
+          "type": 43,
+          "home": "164",
+          "away": "143"
+        },
+        {
+          "type": 44,
+          "home": "70",
+          "away": "60"
+        }
+      ],
+      "oprTime": 1782698398
+    }
+  ]
+}

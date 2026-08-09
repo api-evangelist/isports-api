@@ -1,0 +1,53 @@
+generated: '2026-08-09'
+method: generated
+source: openapi/isports-api-openapi.yml
+description: Packaged agent skills for the iSports API, grounded in operationIds that exist verbatim in openapi/isports-api-openapi.yml.
+  iSports API publishes no AGENTS.md or skill files of its own.
+skills:
+- file: isports-api-football-livescores.md
+  name: Poll football livescores efficiently
+  description: Pull today's football fixtures and keep them current using the delta endpoint instead of re-pulling
+    the full snapshot.
+  api: openapi/isports-api-openapi.yml
+  operations:
+  - getFootballLivescores
+  - getFootballLivescoresChanges
+  - getFootballSchedule
+  - getFootballScheduleModify
+- file: isports-api-football-odds.md
+  name: Read football odds and track line movement
+  description: Fetch pre-match, in-play and historical football odds by bookmaker and follow line moves through
+    the changes feed.
+  api: openapi/isports-api-openapi.yml
+  operations:
+  - getFootballOddsMain
+  - getFootballOddsMainChanges
+  - getFootballOddsMainHistory
+  - getFootballOddsInplay
+  - getFootballOddsAll
+  - getFootballOddsAllChanges
+  - getFootballBookmaker
+- file: isports-api-basketball-livescores.md
+  name: Poll basketball livescores and standings
+  description: Pull basketball fixtures, live scores and league tables, using the delta endpoint for live updates.
+  api: openapi/isports-api-openapi.yml
+  operations:
+  - getBasketballLivescores
+  - getBasketballLivescoresChanges
+  - getBasketballSchedule
+  - getBasketballStandingLeague
+  - getBasketballStats
+- file: isports-api-reference-data.md
+  name: Load and cache iSports reference data
+  description: Load the slow-moving league, team, player, country and bookmaker reference data once and keep it
+    fresh from the modify feeds.
+  api: openapi/isports-api-openapi.yml
+  operations:
+  - getFootballLeague
+  - getFootballLeagueBasic
+  - getFootballTeam
+  - getFootballPlayer
+  - getFootballCountry
+  - getFootballBookmaker
+  - getFootballTeamSearch
+  - getFootballPlayerSearch

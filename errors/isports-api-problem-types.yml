@@ -1,0 +1,53 @@
+generated: '2026-08-09'
+method: derived
+source: openapi/isports-api-openapi.yml + live probe of https://api.isportsapi.com/sport/football/livescores
+format: custom-envelope
+description: 'iSports API does not use RFC 9457 problem+json and does not signal failure through the HTTP status
+  line: every documented endpoint answers HTTP 200 and carries the outcome in a JSON envelope. `code` 0 means success;
+  a non-zero `code` carries a human-readable `message`. The provider publishes no consolidated error-code reference,
+  so the codes below are the ones observed live plus the mapping the provider''s own Python SDK implements.'
+envelope:
+  field_code: code
+  field_message: message
+  field_payload: data
+  success_code: 0
+  http_status_on_error: 200
+problems:
+- code: 0
+  title: success
+  meaning: Request succeeded; `data` carries the payload.
+  evidence: every published sample response on https://www.isportsapi.com/en/docs.html
+- code: 2
+  title: Invalid [api_key], illegal access.
+  meaning: The api_key query parameter is missing, malformed, expired, or not entitled to the requested endpoint.
+    Returned with HTTP 200.
+  remediation: Check the key in the account settings page and confirm the plan covers this endpoint.
+  evidence: 'observed 2026-08-09: GET https://api.isportsapi.com/sport/football/livescores -> HTTP 200 {"code":2,"message":"Invalid
+    [api_key], illegal access."}'
+client_side_classification:
+  source: https://github.com/isportsapiofficial/isports-sdk/blob/main/src/isports/http.py
+  note: The first-party Python SDK classifies envelope messages into typed exceptions; these are SDK behaviours,
+    not documented provider error codes.
+  rules:
+  - condition: code == 2 or message contains "Invalid" / "illegal access"
+    raises: AuthenticationError
+  - condition: message contains "Missing parameter" / "parameter"
+    raises: ValidationError
+  - condition: message contains "not found"
+    raises: NotFoundError
+  - condition: message contains "rate limit" / "too many"
+    raises: RateLimitError
+  - condition: HTTP 401 / 403
+    raises: AuthenticationError
+  - condition: HTTP 404
+    raises: NotFoundError
+  - condition: HTTP 429
+    raises: RateLimitError
+  - condition: HTTP 422
+    raises: ValidationError
+  - condition: HTTP >= 500
+    raises: ServerError
+gaps:
+- No published error-code registry — only code 0 and code 2 are observable without a paid key.
+- No machine-readable error schema; errors are free-text messages inside a 200 response.
+- A non-existent path still answers HTTP 200 with code 2 rather than 404 (observed 2026-08-09).

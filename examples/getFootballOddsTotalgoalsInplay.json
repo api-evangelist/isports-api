@@ -1,0 +1,54 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "matchId": "206255929",
+      "companyId": "3",
+      "odds": {
+        "zeroToOne": "1.59",
+        "twoToThree": "0.58",
+        "fourToSix": "6.1",
+        "moreThanSix": "40",
+        "close": false
+      },
+      "changeTime": 1782962535
+    },
+    {
+      "matchId": "396790034",
+      "companyId": "3",
+      "odds": {
+        "zeroToOne": "0",
+        "twoToThree": "0",
+        "fourToSix": "0.34",
+        "moreThanSix": "1.48",
+        "close": false
+      },
+      "changeTime": 1782962536
+    },
+    {
+      "matchId": "316255920",
+      "companyId": "3",
+      "odds": {
+        "zeroToOne": "3.75",
+        "twoToThree": "0.67",
+        "fourToSix": "2.05",
+        "moreThanSix": "25",
+        "close": false
+      },
+      "changeTime": 1782962502
+    },
+    {
+      "matchId": "367790032",
+      "companyId": "3",
+      "odds": {
+        "zeroToOne": "0",
+        "twoToThree": "0",
+        "fourToSix": "0.99",
+        "moreThanSix": "0.71",
+        "close": false
+      },
+      "changeTime": 1782962536
+    }
+  ]
+}

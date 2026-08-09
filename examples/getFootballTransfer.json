@@ -1,0 +1,62 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "recordId": "1500749",
+      "playerId": "134153",
+      "transferTime": 1756483200,
+      "endTime": 0,
+      "fromTeam": "Chelsea",
+      "fromTeamId": "24",
+      "toTeam": "AC Milan",
+      "toTeamId": "150",
+      "money": 3700,
+      "season": "2025-2026",
+      "type": "Owned Wholly",
+      "modifyTime": 1781628953
+    },
+    {
+      "recordId": "1500748",
+      "playerId": "167802",
+      "transferTime": 1723824000,
+      "endTime": 0,
+      "fromTeam": "Monaco",
+      "fromTeamId": "197",
+      "toTeam": "AC Milan",
+      "toTeamId": "150",
+      "money": 2600,
+      "season": "2024-2025",
+      "type": "Owned Wholly",
+      "modifyTime": 1781628947
+    },
+    {
+      "recordId": "1500746",
+      "playerId": "67894",
+      "transferTime": 1781539200,
+      "endTime": 0,
+      "fromTeam": "Manchester United",
+      "fromTeamId": "27",
+      "toTeam": "AC Milan",
+      "toTeamId": "150",
+      "money": 0,
+      "season": "2026-2027",
+      "type": "Owned Wholly",
+      "modifyTime": 1781628902
+    },
+    {
+      "recordId": "1500745",
+      "playerId": "7438",
+      "transferTime": 1781539200,
+      "endTime": 0,
+      "fromTeam": "Eintracht Frankfurt",
+      "fromTeamId": "423",
+      "toTeam": "Lens",
+      "toTeamId": "202",
+      "money": 0,
+      "season": "2026-2027",
+      "type": "Owned Wholly",
+      "modifyTime": 1781601247
+    }
+  ]
+}

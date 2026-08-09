@@ -1,0 +1,74 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "matchId": "233350813",
+      "matchTime": 1570694400,
+      "leagueName": "Indonesia Liga 3",
+      "homeName": "Prima Con FC",
+      "awayName": "PSIT Kota Cirebon",
+      "odds": [
+        {
+          "oddsId": "90797951",
+          "changeTime": 1570684680,
+          "oddsDetail": "777,1Bet,2.1,3.25,3,1.95,3.15,3.5"
+        },
+        {
+          "oddsId": "90797715",
+          "changeTime": 1570678560,
+          "oddsDetail": "281,Bet 365,2.1,3.25,3,,,"
+        },
+        {
+          "oddsId": "90799427",
+          "changeTime": 1570687320,
+          "oddsDetail": "90,Easybets,2.1,3.2,3,2.1,3.2,3"
+        },
+        {
+          "oddsId": "90797914",
+          "changeTime": 1570687140,
+          "oddsDetail": "1229,22Bet,2.12,3.24,2.99,2.12,3.22,3"
+        },
+        {
+          "oddsId": "90797913",
+          "changeTime": 1570687380,
+          "oddsDetail": "1047,1xBet,2.12,3.24,2.99,2.12,3.24,2.99"
+        }
+      ]
+    },
+    {
+      "matchId": "243350814",
+      "matchTime": 1570694400,
+      "leagueName": "Indonesia Liga 3",
+      "homeName": "PSGJ Kabupaten Cirebon",
+      "awayName": "Perses Sumedang",
+      "odds": [
+        {
+          "oddsId": "90797962",
+          "changeTime": 1570683840,
+          "oddsDetail": "777,1Bet,2.15,3.8,2.6,2.3,3.7,2.45"
+        },
+        {
+          "oddsId": "90797716",
+          "changeTime": 1570678560,
+          "oddsDetail": "281,Bet 365,2.15,3.75,2.6,,,"
+        },
+        {
+          "oddsId": "90799426",
+          "changeTime": 1570687320,
+          "oddsDetail": "90,Easybets,2.15,3.8,2.6,2.15,3.8,2.6"
+        },
+        {
+          "oddsId": "90797944",
+          "changeTime": 1570684020,
+          "oddsDetail": "1229,22Bet,2.17,3.74,2.59,2.16,3.74,2.6"
+        },
+        {
+          "oddsId": "90797941",
+          "changeTime": 1570684200,
+          "oddsDetail": "1047,1xBet,2.17,3.74,2.59,2.16,3.74,2.6"
+        }
+      ]
+    }
+  ]
+}

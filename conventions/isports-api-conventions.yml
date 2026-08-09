@@ -1,0 +1,98 @@
+generated: '2026-08-09'
+method: searched
+source: https://www.isportsapi.com/en/docs.html
+description: Cross-cutting request/response semantics for the iSports API REST feeds.
+transport:
+  protocols:
+  - https
+  - http
+  note: The documentation shows both http:// and https:// forms of every request path; https is live on api.isportsapi.com
+    and api2.isportsapi.com (TLS 1.2, verified 2026-08-09). No HSTS is served.
+  hosts:
+  - https://api.isportsapi.com
+  - https://api2.isportsapi.com
+  failover: The docs instruct callers to switch to api2.isportsapi.com when the primary host is unreachable or slow.
+authentication:
+  style: api key in query string
+  parameter: api_key
+  artifact: authentication/isports-api-authentication.yml
+  docs: https://www.isportsapi.com/en/docs.html?id=news_0
+methods:
+  verbs:
+  - GET
+  note: Every documented operation is a GET; there are no write operations.
+idempotency:
+  supported: false
+  reason: Read-only GET surface. The provider documents no idempotency key, and there are no state-changing operations
+    that would need one.
+pagination:
+  supported: false
+  note: No cursor, offset, page or limit parameter appears on any of the 113 documented endpoints. Result sets are
+    scoped instead by date, leagueId, matchId, season or comma-separated id batches.
+  batching: matchId, leagueId and companyId accept comma-separated lists, e.g. matchId=322964610,322964611
+filtering:
+  common_parameters:
+  - date
+  - leagueId
+  - subLeagueId
+  - stageId
+  - season
+  - matchId
+  - companyId
+  - teamId
+  - playerId
+  - day
+  - cmd
+  date_format: yyyy-MM-dd, GMT+0
+  timestamps: Unix epoch seconds, GMT+0
+response_envelope:
+  shape: '{ "code": <int>, "message": <string>, "data": <array|object> }'
+  success: code == 0, message == "success"
+  errors: errors/isports-api-problem-types.yml
+rate_limiting:
+  style: minimum interval per endpoint, per key
+  headers: null
+  artifact: rate-limits/isports-api-rate-limits.yml
+  guidance: The provider recommends caching and polling only the "changes" endpoints (e.g. /sport/football/livescores/changes)
+    between full pulls.
+change_detection:
+  pattern: Delta endpoints sit alongside the full-snapshot endpoints.
+  examples:
+  - /sport/football/livescores/changes
+  - /sport/basketball/livescores/changes
+  - /sport/football/odds/main/changes
+  - /sport/football/odds/all/changes
+  - /sport/football/schedule/modify
+  - /sport/basketball/schedule/modify
+  - /sport/football/odds/oddsbyid
+  note: There is no push/webhook surface — change detection is poll-based.
+versioning:
+  scheme: null
+  note: No version segment, header or date pins the contract. Changes are announced in the dated documentation changelog
+    only.
+  artifact: changelog/isports-api-changelog.yml
+request_tracing:
+  request_id_header: null
+content_type: application/json
+localization:
+  note: Names are returned in English by default; separate language-pack endpoints return translated league, country,
+    team and player names.
+  languages:
+  - Thai
+  - Vietnamese
+  - Indonesian
+  - Korean
+  - Portuguese
+  - Traditional Chinese
+  endpoints:
+  - /sport/languageth
+  - /sport/languagevn
+  - /sport/languageidn
+  - /sport/languagekr
+  - /sport/languagebra
+  - /sport/languagetc
+cross_links:
+- errors/isports-api-problem-types.yml
+- rate-limits/isports-api-rate-limits.yml
+- authentication/isports-api-authentication.yml
+- lifecycle/isports-api-lifecycle.yml

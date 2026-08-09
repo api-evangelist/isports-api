@@ -1,0 +1,29 @@
+generated: '2026-08-09'
+method: searched
+source: https://www.isportsapi.com/en/faq/free-trial-20.html
+description: iSports API has no separate test environment and no test-mode key prefix — there is one live key and
+  one live host. What it does publish is a 15-day free trial on the production data and an interactive request console
+  inside the documentation.
+test_mode:
+  separate_environment: false
+  key_prefixes: null
+  note: Trial and paid keys are the same shape and hit the same production hosts; the trial is a quota and a delay,
+    not a sandbox.
+free_trial:
+  days: 15
+  quota: 200 calls/day per sport
+  live_data_delay: ~2 minutes
+  payment_required: false
+  auto_billing_after_trial: false
+  on_expiry: The API key deactivates and calls return an error until a plan is purchased.
+  signup: https://www.isportsapi.com/en/auth/register
+  source: https://www.isportsapi.com/en/faq/free-trial-20.html
+console:
+  type: in-documentation request console
+  url: https://www.isportsapi.com/en/docs.html
+  behaviour: Each endpoint page renders an editable request URL plus "Example Request" and "Example Response" panes,
+    and executes the call against the signed-in account's real API key.
+  requires_login: true
+published_test_values: null
+published_test_values_note: No magic match IDs, test leagues or fixture triggers are published. The sample responses
+  on each documentation page (captured verbatim in examples/) are the only published fixtures.

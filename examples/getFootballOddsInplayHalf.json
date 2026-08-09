@@ -1,0 +1,36 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "recordId": "163491161",
+      "matchId": "355981817",
+      "matchTime": 6,
+      "homeScore": 0,
+      "awayScore": 0,
+      "homeRedCount": 0,
+      "awayRedCount": 0,
+      "type": 4,
+      "companyId": "17",
+      "odds1": "3.7",
+      "odds2": "2.21",
+      "odds3": "2.34",
+      "changeTime": 1574935689
+    },
+    {
+      "recordId": "163491160",
+      "matchId": "355981817",
+      "matchTime": 6,
+      "homeScore": 0,
+      "awayScore": 0,
+      "homeRedCount": 0,
+      "awayRedCount": 0,
+      "type": 2,
+      "companyId": "17",
+      "odds1": "1.01",
+      "odds2": "1.25",
+      "odds3": "0.75",
+      "changeTime": 1574935689
+    }
+  ]
+}

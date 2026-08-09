@@ -1,0 +1,34 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": {
+    "headToHead": [
+      "20785235,111,NBA,#FF0000,2018-11-27 10:00,Regular,1022,Jazz,1011,Pacers,88,47,121,58,1,-33,4.5,1,209,206.5,1",
+      "23185232,111,NBA,#FF0000,2018-11-20 08:00,Regular,1011,Pacers,1022,Jazz,121,57,94,47,1,27,-2.5,1,215,204.5,1"
+    ],
+    "homeLastMatches": [
+      "22842635,111,NBA,#FF0000,2019-11-26 08:00,Regular,1011,Pacers,1224,Grizzlies,126,67,114,56,1,12,9.5,1,240,217.5,1",
+      "28642639,111,NBA,#FF0000,2019-11-24 08:00,Regular,1011,Pacers,166,Magic,111,55,106,45,1,5,6.5,-1,217,201.5,1"
+    ],
+    "awayLastMatches": [
+      "20942634,111,NBA,#FF0000,2019-11-26 09:00,Regular,1213,Milwaukee,1022,Jazz,122,48,118,57,-1,4,6.5,1,240,222.5,1",
+      "26742638,111,NBA,#FF0000,2019-11-24 10:00,Regular,1022,Jazz,1112,Pelicans,128,74,120,54,1,8,7.5,1,248,222.5,1"
+    ],
+    "homeSchedule": [
+      "23342631,111,NBA,#FF0000,2019-11-19 08:30,144,Brooklyn Nets,86-115,1011,Indiana Pacers,-9",
+      "28642639,111,NBA,#FF0000,2019-11-24 08:00,1011,Indiana Pacers,111-106,166,Orlando Magic,-4",
+      "22842635,111,NBA,#FF0000,2019-11-26 08:00,1011,Indiana Pacers,126-114,1224,Memphis Grizzlies,-2",
+      "24152631,111,NBA,#FF0000,2019-11-30 09:00,1011,Indiana Pacers,VS,1314,Atlanta Hawks,2",
+      "23252631,111,NBA,#FF0000,2019-12-01 08:00,177,Philadelphia 76ers,VS,1011,Indiana Pacers,3",
+      "29352638,111,NBA,#FF0000,2019-12-03 09:00,1224,Memphis Grizzlies,VS,1011,Indiana Pacers,5"
+    ],
+    "awaySchedule": [
+      "25642636,111,NBA,#FF0000,2019-11-23 10:00,1022,Utah Jazz,113-109,1729,Golden State Warriors,-5",
+      "26742638,111,NBA,#FF0000,2019-11-24 10:00,1022,Utah Jazz,128-120,1112,New Orleans Pelicans,-4",
+      "20942634,111,NBA,#FF0000,2019-11-26 09:00,1213,Milwaukee Bucks,122-118,1022,Utah Jazz,-2",
+      "27152634,111,NBA,#FF0000,2019-11-30 09:00,1224,Memphis Grizzlies,VS,1022,Utah Jazz,2",
+      "22352631,111,NBA,#FF0000,2019-12-02 07:00,1516,Toronto Raptors,VS,1022,Utah Jazz,4",
+      "25352634,111,NBA,#FF0000,2019-12-03 08:00,177,Philadelphia 76ers,VS,1022,Utah Jazz,5"
+    ]
+  }
+}

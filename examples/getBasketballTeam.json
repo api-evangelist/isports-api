@@ -1,0 +1,38 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "teamId": "1",
+      "leagueId": "111",
+      "name": "Los Angeles Lakers",
+      "shortName": "Lakers",
+      "logo": "http://nba.titan007.com/files/team/1k82cbnkb829.png?win007=sell",
+      "website": "http://www.nba.com/lakers/",
+      "conference": "NBA Western",
+      "division": "Pacific",
+      "city": "Los Angeles, California",
+      "venue": "Crypto.com Arena",
+      "capacity": 19282,
+      "joinYear": 1948,
+      "championCount": 11,
+      "coach": "Jonathan Clay Redick"
+    },
+    {
+      "teamId": "2",
+      "leagueId": "111",
+      "name": "Boston Celtics",
+      "shortName": "Celtics",
+      "logo": "http://nba.titan007.com/files/team/1k71f2e7vge.png?win007=sell",
+      "website": "http://www.nba.com/celtics/",
+      "conference": "NBA Eastern",
+      "division": "Atlantic",
+      "city": "Boston Massachusetts",
+      "venue": "The Boston Garden",
+      "capacity": 18624,
+      "joinYear": 1946,
+      "championCount": 17,
+      "coach": "Joe Mazura"
+    }
+  ]
+}

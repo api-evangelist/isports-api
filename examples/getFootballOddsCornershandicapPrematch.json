@@ -1,0 +1,56 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "matchId": "330596610",
+      "companyId": "8",
+      "odds": {
+        "handicapCorners": "-1.5",
+        "home": "0.95",
+        "away": "0.85"
+      },
+      "changeTime": 1574775864
+    },
+    {
+      "matchId": "330596610",
+      "companyId": "3",
+      "odds": {
+        "handicapCorners": "-1.5",
+        "home": "0.97",
+        "away": "0.85"
+      },
+      "changeTime": 1574843094
+    },
+    {
+      "matchId": "312568710",
+      "companyId": "8",
+      "odds": {
+        "handicapCorners": "0.5",
+        "home": "0.95",
+        "away": "0.85"
+      },
+      "changeTime": 1574760700
+    },
+    {
+      "matchId": "312568710",
+      "companyId": "3",
+      "odds": {
+        "handicapCorners": "0.5",
+        "home": "0.9",
+        "away": "0.92"
+      },
+      "changeTime": 1574843808
+    },
+    {
+      "matchId": "333568713",
+      "companyId": "8",
+      "odds": {
+        "handicapCorners": "-0.5",
+        "home": "0.82",
+        "away": "0.98"
+      },
+      "changeTime": 1574697811
+    }
+  ]
+}

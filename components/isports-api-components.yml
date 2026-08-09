@@ -1,0 +1,94 @@
+generated: '2026-08-09'
+method: searched
+source: https://www.isportsapi.com/en/docs.html?id=242
+description: 'Embeddable, pre-built UI surfaces iSports API ships alongside the data feeds. These are iframe/WebView
+  components hosted on isportslive8.com, not client-side SDK widgets: they are authorised with an Access Key plus
+  a domain whitelist configured in the customer console, not with the api_key used by the REST feeds.'
+auth:
+  mechanism: accessKey query parameter + domain whitelist
+  console: https://www.isportsapi.com/en/user/animConfig
+  note: Distinct from the REST api_key. The whitelist is what makes iframe embedding safe; unauthorised domains
+    do not render.
+families:
+- name: Football Live Animation
+  embed: https://www.isportslive8.com/football/detail.html?matchId=${matchId}&accessKey=${accessKey}
+  parameters:
+  - name: matchId
+    type: int
+    description: Match ID
+  - name: accessKey
+    type: string
+    description: Issued in Console Panel > Animation > Access Key
+  - name: lang
+    type: string
+    default: en
+    values:
+    - en
+    - th
+    - vi
+    - id
+  - name: statsPanel
+    type: string
+    values:
+    - hide
+    - simple
+  - name: teamPanel
+    type: string
+    values:
+    - '1'
+  coverage_endpoint: /sport/football/liveanimation/schedule
+  configuration: https://www.isportsapi.com/en/animation
+  documentation: https://www.isportsapi.com/en/docs.html?id=242
+- name: Basketball Live Animation
+  embed: https://www.isportslive8.com/basketball/detail.html?matchId=${matchId}&accessKey=${accessKey}
+  parameters:
+  - name: matchId
+    type: int
+    description: Match ID
+  - name: accessKey
+    type: string
+    description: Issued in Console Panel > Animation > Access Key
+  - name: lang
+    type: string
+    default: en
+    values:
+    - en
+    - th
+    - vi
+    - id
+  - name: statsPanel
+    type: string
+    values:
+    - hide
+    - simple
+  coverage_endpoint: /sport/basketball/liveanimation/schedule
+  configuration: https://www.isportsapi.com/en/bskAnimation
+  documentation: https://www.isportsapi.com/en/docs.html?id=243
+- name: Football Time Line
+  embed: https://www.isportslive8.com/football/process/attackdetail.aspx?matchId=${matchId}&accessKey=${accessKey}
+  parameters:
+  - name: matchId
+    type: int
+  - name: accessKey
+    type: string
+  - name: lang
+    type: string
+    default: en
+    values:
+    - en
+    - th
+    - vi
+    - id
+  - name: isDark
+    type: string
+    values:
+    - '1'
+  note: Component of the Live Animation product; shares its Access Key and domain whitelist.
+  documentation: https://www.isportsapi.com/en/docs.html?id=250
+- name: Livescore Widget
+  description: Pre-built iframe widgets for live scores, fixtures, stats, lineups and odds; copy-paste embed code,
+    no backend required. Requires domain authorisation.
+  documentation: https://www.isportsapi.com/en/widgets.html
+  postman: https://www.postman.com/isportsapi-1841883/isports-api/
+embed_hosts:
+- https://www.isportslive8.com

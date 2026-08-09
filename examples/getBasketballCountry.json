@@ -1,0 +1,82 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "countryId": 1,
+      "country": "USA"
+    },
+    {
+      "countryId": 2,
+      "country": "China"
+    },
+    {
+      "countryId": 3,
+      "country": "France"
+    },
+    {
+      "countryId": 6,
+      "country": "Italy"
+    },
+    {
+      "countryId": 7,
+      "country": "Germany"
+    },
+    {
+      "countryId": 8,
+      "country": "Spain"
+    },
+    {
+      "countryId": 9,
+      "country": "Greece"
+    },
+    {
+      "countryId": 10,
+      "country": "Australia"
+    },
+    {
+      "countryId": 11,
+      "country": "Russia"
+    },
+    {
+      "countryId": 12,
+      "country": "Turkey"
+    },
+    {
+      "countryId": 13,
+      "country": "Britain"
+    },
+    {
+      "countryId": 16,
+      "country": "Europe"
+    },
+    {
+      "countryId": 17,
+      "country": "Asia"
+    },
+    {
+      "countryId": 18,
+      "country": "Americas"
+    },
+    {
+      "countryId": 19,
+      "country": "Africa"
+    },
+    {
+      "countryId": 20,
+      "country": "International"
+    },
+    {
+      "countryId": 22,
+      "country": "Japan"
+    },
+    {
+      "countryId": 23,
+      "country": "Korea"
+    },
+    {
+      "countryId": 24,
+      "country": "Israel"
+    }
+  ]
+}

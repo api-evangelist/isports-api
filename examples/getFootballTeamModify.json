@@ -1,0 +1,129 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "id": 3721,
+      "teamId": 4572,
+      "type": "merge",
+      "toTeamId": 8746,
+      "modifyTime": 1771469686
+    },
+    {
+      "id": 3722,
+      "teamId": 4572,
+      "type": "delete",
+      "modifyTime": 1771469710
+    },
+    {
+      "id": 3725,
+      "teamId": 25173,
+      "type": "merge",
+      "toTeamId": 2887,
+      "modifyTime": 1771732360
+    },
+    {
+      "id": 3726,
+      "teamId": 3160,
+      "type": "merge",
+      "toTeamId": 4491,
+      "modifyTime": 1771732529
+    },
+    {
+      "id": 3727,
+      "teamId": 3160,
+      "type": "delete",
+      "modifyTime": 1771732542
+    },
+    {
+      "id": 3728,
+      "teamId": 25173,
+      "type": "delete",
+      "modifyTime": 1771732560
+    },
+    {
+      "id": 3729,
+      "teamId": 3113,
+      "type": "merge",
+      "toTeamId": 5999,
+      "modifyTime": 1771732725
+    },
+    {
+      "id": 3730,
+      "teamId": 3113,
+      "type": "delete",
+      "modifyTime": 1771732735
+    },
+    {
+      "id": 3733,
+      "teamId": 75610,
+      "type": "merge",
+      "toTeamId": 71541,
+      "modifyTime": 1771744072
+    },
+    {
+      "id": 3734,
+      "teamId": 75610,
+      "type": "delete",
+      "modifyTime": 1771744099
+    },
+    {
+      "id": 3744,
+      "teamId": 60444,
+      "type": "merge",
+      "toTeamId": 45112,
+      "modifyTime": 1771899763
+    },
+    {
+      "id": 3745,
+      "teamId": 60444,
+      "type": "delete",
+      "modifyTime": 1771899771
+    },
+    {
+      "id": 3746,
+      "teamId": 72680,
+      "type": "merge",
+      "toTeamId": 10874,
+      "modifyTime": 1771900240
+    },
+    {
+      "id": 3747,
+      "teamId": 72680,
+      "type": "delete",
+      "modifyTime": 1771900270
+    },
+    {
+      "id": 3748,
+      "teamId": 73437,
+      "type": "merge",
+      "toTeamId": 66109,
+      "modifyTime": 1771900436
+    },
+    {
+      "id": 3749,
+      "teamId": 73437,
+      "type": "delete",
+      "modifyTime": 1771900444
+    },
+    {
+      "id": 3750,
+      "teamId": 49377,
+      "type": "merge",
+      "toTeamId": 52625,
+      "modifyTime": 1771900600
+    },
+    {
+      "id": 3751,
+      "teamId": 49377,
+      "type": "delete",
+      "modifyTime": 1771900613
+    },
+    {
+      "id": 3758,
+      "teamId": 78085,
+      "type": "delete",
+      "modifyTime": 1772012526
+    }
+  ]
+}

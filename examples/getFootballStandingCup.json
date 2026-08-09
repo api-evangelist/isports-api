@@ -1,0 +1,70 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "leagueId": "1572",
+      "season": "2026",
+      "roundScoreItems": [
+        {
+          "roundName": "Group stage",
+          "groupScoreItems": [
+            {
+              "groupName": "Group A",
+              "scoreItems": [
+                {
+                  "rank": 1,
+                  "teamId": "819",
+                  "teamName": "Mexico",
+                  "color": "#ff0000",
+                  "totalCount": 3,
+                  "winCount": 3,
+                  "drawCount": 0,
+                  "loseCount": 0,
+                  "getScore": 6,
+                  "loseScore": 0,
+                  "goalDifference": 6,
+                  "integral": 9,
+                  "deduction": "",
+                  "deductionExplain": ""
+                },
+                {
+                  "rank": 2,
+                  "teamId": "803",
+                  "teamName": "South Africa",
+                  "color": "#ff0000",
+                  "totalCount": 3,
+                  "winCount": 1,
+                  "drawCount": 1,
+                  "loseCount": 1,
+                  "getScore": 2,
+                  "loseScore": 3,
+                  "goalDifference": -1,
+                  "integral": 4,
+                  "deduction": "",
+                  "deductionExplain": ""
+                },
+                {
+                  "rank": 3,
+                  "teamId": "898",
+                  "teamName": "South Korea",
+                  "color": "",
+                  "totalCount": 3,
+                  "winCount": 1,
+                  "drawCount": 0,
+                  "loseCount": 2,
+                  "getScore": 2,
+                  "loseScore": 3,
+                  "goalDifference": -1,
+                  "integral": 3,
+                  "deduction": "",
+                  "deductionExplain": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "id": 3723,
+      "playerId": 272768,
+      "type": "merge",
+      "toPlayerId": 349183,
+      "modifyTime": 1771633242
+    },
+    {
+      "id": 3724,
+      "playerId": 272768,
+      "type": "delete",
+      "modifyTime": 1771633270
+    },
+    {
+      "id": 3731,
+      "playerId": 269869,
+      "type": "merge",
+      "toPlayerId": 296036,
+      "modifyTime": 1771741552
+    },
+    {
+      "id": 3732,
+      "playerId": 269869,
+      "type": "delete",
+      "modifyTime": 1771741564
+    },
+    {
+      "id": 3735,
+      "playerId": 185313,
+      "type": "merge",
+      "toPlayerId": 182608,
+      "modifyTime": 1771748818
+    },
+    {
+      "id": 3736,
+      "playerId": 262981,
+      "type": "merge",
+      "toPlayerId": 233407,
+      "modifyTime": 1771749384
+    },
+    {
+      "id": 3737,
+      "playerId": 262981,
+      "type": "delete",
+      "modifyTime": 1771749460
+    },
+    {
+      "id": 3738,
+      "playerId": 355887,
+      "type": "merge",
+      "toPlayerId": 142992,
+      "modifyTime": 1771831052
+    },
+    {
+      "id": 3739,
+      "playerId": 355887,
+      "type": "delete",
+      "modifyTime": 1771831132
+    },
+    {
+      "id": 3740,
+      "playerId": 355605,
+      "type": "merge",
+      "toPlayerId": 328291,
+      "modifyTime": 1771831518
+    },
+    {
+      "id": 3741,
+      "playerId": 206503,
+      "type": "merge",
+      "toPlayerId": 223050,
+      "modifyTime": 1771831677
+    },
+    {
+      "id": 3742,
+      "playerId": 206503,
+      "type": "delete",
+      "modifyTime": 1771832121
+    },
+    {
+      "id": 3743,
+      "playerId": 285645,
+      "type": "merge",
+      "toPlayerId": 301301,
+      "modifyTime": 1771889163
+    },
+    {
+      "id": 3752,
+      "playerId": 363722,
+      "type": "merge",
+      "toPlayerId": 340436,
+      "modifyTime": 1771909031
+    },
+    {
+      "id": 3753,
+      "playerId": 363722,
+      "type": "delete",
+      "modifyTime": 1771909515
+    }
+  ]
+}

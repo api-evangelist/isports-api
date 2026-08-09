@@ -1,0 +1,66 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "recordId": "614511284",
+      "matchId": "359250810",
+      "matchTime": 85,
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeRedCount": 0,
+      "awayRedCount": 0,
+      "type": 4,
+      "companyId": "12",
+      "odds1": "29",
+      "odds2": "6",
+      "odds3": "1.13",
+      "changeTime": 1570689977
+    },
+    {
+      "recordId": "614511283",
+      "matchId": "359250810",
+      "matchTime": 86,
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeRedCount": 0,
+      "awayRedCount": 0,
+      "type": 1,
+      "companyId": "24",
+      "odds1": "0.56",
+      "odds2": "0",
+      "odds3": "1.28",
+      "changeTime": 1570689975
+    },
+    {
+      "recordId": "614511282",
+      "matchId": "359250810",
+      "matchTime": 86,
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeRedCount": 0,
+      "awayRedCount": 0,
+      "type": 1,
+      "companyId": "17",
+      "odds1": "0.58",
+      "odds2": "0",
+      "odds3": "1.25",
+      "changeTime": 1570689974
+    },
+    {
+      "recordId": "614511281",
+      "matchId": "359250810",
+      "matchTime": 85,
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeRedCount": 0,
+      "awayRedCount": 0,
+      "type": 4,
+      "companyId": "8",
+      "odds1": "29",
+      "odds2": "6",
+      "odds3": "1.12",
+      "changeTime": 1570689971
+    }
+  ]
+}

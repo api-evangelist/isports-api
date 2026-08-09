@@ -1,0 +1,34 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "recordId": "226066914",
+      "matchId": "23641745",
+      "matchTime": "3rd 06:55",
+      "homeScore": 57,
+      "awayScore": 37,
+      "type": 1,
+      "companyId": "31",
+      "odds1": "1.11",
+      "odds2": "20.5",
+      "odds3": "0.66",
+      "oddsType": 6,
+      "changeTime": 1651629402
+    },
+    {
+      "recordId": "226066913",
+      "matchId": "36670740",
+      "matchTime": "1st 06:25",
+      "homeScore": 10,
+      "awayScore": 8,
+      "type": 2,
+      "companyId": "2",
+      "odds1": "0.81",
+      "odds2": "107.5",
+      "odds3": "0.81",
+      "oddsType": 3,
+      "changeTime": 1651629401
+    }
+  ]
+}

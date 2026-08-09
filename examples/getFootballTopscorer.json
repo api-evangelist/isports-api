@@ -1,0 +1,48 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "playerId": "24067",
+      "playerName": "Lionel Andres Messi",
+      "teamId": "766",
+      "teamName": "Argentina",
+      "country": "Argentina",
+      "goalsCount": 6,
+      "homeGoals": 5,
+      "awayGoals": 1,
+      "homePenalty": 0,
+      "awayPenalty": 0,
+      "matchNum": 3,
+      "subNum": 1
+    },
+    {
+      "playerId": "144812",
+      "playerName": "Kylian Mbappe",
+      "teamId": "649",
+      "teamName": "France",
+      "country": "France",
+      "goalsCount": 4,
+      "homeGoals": 4,
+      "awayGoals": 0,
+      "homePenalty": 0,
+      "awayPenalty": 0,
+      "matchNum": 3,
+      "subNum": 0
+    },
+    {
+      "playerId": "139091",
+      "playerName": "Ousmane Dembele",
+      "teamId": "649",
+      "teamName": "France",
+      "country": "France",
+      "goalsCount": 4,
+      "homeGoals": 1,
+      "awayGoals": 3,
+      "homePenalty": 0,
+      "awayPenalty": 0,
+      "matchNum": 3,
+      "subNum": 0
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "recordId": "46573673",
+      "matchId": "33894071",
+      "remainTime": "10:00",
+      "teamKind": 3,
+      "matchState": 1,
+      "score": "0-0",
+      "content": "Start of the 1st Quarter",
+      "playerId1": "",
+      "playerId2": "",
+      "playerId3": "",
+      "refereeId": ""
+    },
+    {
+      "recordId": "46573674",
+      "matchId": "33894071",
+      "remainTime": "10:00",
+      "teamKind": 2,
+      "matchState": 1,
+      "score": "0-0",
+      "content": "Aaliyah Edwards vs. Luisa Geiselsoder (Aneesah Morrow gains possession)",
+      "playerId1": "",
+      "playerId2": "",
+      "playerId3": "",
+      "refereeId": ""
+    },
+    {
+      "recordId": "46573675",
+      "matchId": "33894071",
+      "remainTime": "09:47",
+      "teamKind": 2,
+      "matchState": 1,
+      "score": "0-2",
+      "content": "Aneesah Morrow makes 3-foot layup (Saniya Rivers assists)",
+      "playerId1": "",
+      "playerId2": "",
+      "playerId3": "",
+      "refereeId": ""
+    }
+  ]
+}

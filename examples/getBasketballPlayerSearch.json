@@ -1,0 +1,51 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "playerId": "306",
+      "number": 0,
+      "name": "James Posey",
+      "teamId": "766",
+      "place": "Forward",
+      "birthday": 221932800,
+      "height": 203,
+      "weight": 98,
+      "photo": "http://nba.titan007.com/files/Player/306.jpg?win007=sell",
+      "nbaAge": 11,
+      "salary": "",
+      "country": "",
+      "isNational": false
+    },
+    {
+      "playerId": "567",
+      "number": 0,
+      "name": "Nate James",
+      "teamId": "766",
+      "place": "Forward",
+      "birthday": 239731200,
+      "height": 198,
+      "weight": 90,
+      "photo": "http://nba.titan007.com/files/player/noflag.gif?win007=sell",
+      "nbaAge": 1,
+      "salary": "",
+      "country": "",
+      "isNational": false
+    },
+    {
+      "playerId": "2938",
+      "number": 0,
+      "name": "Damion James",
+      "teamId": "766",
+      "place": "Forward",
+      "birthday": 560534400,
+      "height": 201,
+      "weight": 102,
+      "photo": "http://nba.titan007.com/files/Player/20141004080144.png?win007=sell",
+      "nbaAge": 4,
+      "salary": "",
+      "country": "",
+      "isNational": false
+    }
+  ]
+}

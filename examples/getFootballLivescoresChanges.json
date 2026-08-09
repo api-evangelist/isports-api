@@ -1,0 +1,39 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "matchId": "103111321",
+      "startTime": 1670483181,
+      "matchTime": 1670479200,
+      "status": 3,
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeHalfScore": 1,
+      "awayHalfScore": 1,
+      "homeRed": 0,
+      "awayRed": 0,
+      "homeYellow": 3,
+      "awayYellow": 2,
+      "homeCorner": 4,
+      "awayCorner": 2,
+      "hasLineup": true,
+      "explain": "",
+      "extraExplain": {
+        "kickOff": 0,
+        "minute": 0,
+        "homeScore": 0,
+        "awayScore": 0,
+        "extraTimeStatus": 0,
+        "extraHomeScore": 0,
+        "extraAwayScore": 0,
+        "penHomeScore": 0,
+        "penAwayScore": 0,
+        "twoRoundsHomeScore": 0,
+        "twoRoundsAwayScore": 0,
+        "winner": 0
+      },
+      "injuryTime": 3
+    }
+  ]
+}

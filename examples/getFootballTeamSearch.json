@@ -1,0 +1,45 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "teamId": "15",
+      "leagueId": "1514",
+      "name": "SC Bregenz",
+      "logo": "",
+      "foundingDate": "1919",
+      "address": "Sagerstrasse16900Bregenz",
+      "area": "",
+      "venue": "",
+      "capacity": 0,
+      "coach": "",
+      "website": "http://www.swbregenz.at/"
+    },
+    {
+      "teamId": "7",
+      "leagueId": "1426",
+      "name": "Grazer AK",
+      "logo": "",
+      "foundingDate": "1902-8-18",
+      "address": "Stadionplatz 18041Graz",
+      "area": "",
+      "venue": "",
+      "capacity": 0,
+      "coach": "",
+      "website": "http://www.gak.at/"
+    },
+    {
+      "teamId": "8",
+      "leagueId": "3",
+      "name": "Austria Wien",
+      "logo": "",
+      "foundingDate": "1911",
+      "address": "Fischhofgasse 14 1100 Wien",
+      "area": "Wien",
+      "venue": "Franz Horr Stadion",
+      "capacity": 12200,
+      "coach": "Thomas Letsch",
+      "website": "http://www.fk-austria.at"
+    }
+  ]
+}

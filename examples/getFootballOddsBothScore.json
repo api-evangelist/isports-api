@@ -1,0 +1,41 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "matchId": "140821038",
+      "companyId": "4",
+      "yes": "0.61",
+      "no": "1.15",
+      "changeTime": 1782941589
+    },
+    {
+      "matchId": "140821038",
+      "companyId": "49",
+      "yes": "2.4",
+      "no": "0.09",
+      "changeTime": 1782941619
+    },
+    {
+      "matchId": "140821038",
+      "companyId": "49",
+      "yes": "0.6",
+      "no": "1.15",
+      "changeTime": 1782941619
+    },
+    {
+      "matchId": "219331030",
+      "companyId": "4",
+      "yes": "0.22",
+      "no": "2.8",
+      "changeTime": 1782949771
+    },
+    {
+      "matchId": "219331030",
+      "companyId": "9",
+      "yes": "0.615",
+      "no": "0.444",
+      "changeTime": 1782961814
+    }
+  ]
+}

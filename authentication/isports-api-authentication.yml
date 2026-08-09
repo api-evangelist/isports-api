@@ -1,0 +1,49 @@
+generated: '2026-08-09'
+method: searched
+source: openapi/isports-api-openapi.yml
+docs: https://www.isportsapi.com/en/docs.html?id=news_0
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - query
+schemes:
+- name: apiKeyQuery
+  type: apiKey
+  in: query
+  parameter: api_key
+  description: >-
+    Personal API key issued automatically when an account is created and shown in the account settings page.
+    It is passed on every request as the `api_key` query parameter — there is no header form, no bearer token,
+    no OAuth, and no signing.
+  sources:
+  - openapi/isports-api-openapi.yml
+  docs: https://www.isportsapi.com/en/docs.html?id=news_0
+key_lifecycle:
+  issued_at: account creation (one key per account)
+  console: https://www.isportsapi.com/en/user/accountSettings
+  rotation_documented: false
+  expiry: >-
+    The key deactivates when the free trial or subscription lapses; calls then return the standard envelope with
+    a non-zero `code`.
+  entitlement: >-
+    A single key is scoped by the products the account has subscribed to. Calling an endpoint outside the
+    subscribed plan fails the same way an invalid key does.
+observations:
+- >-
+  The key travels in the query string, so it is written to server access logs, browser history, and any
+  intermediary proxy log. There is no header alternative documented.
+- >-
+  Authentication failure returns HTTP 200 with `{"code":2,"message":"Invalid [api_key], illegal access."}` —
+  not 401. Verified live 2026-08-09 against https://api.isportsapi.com/sport/football/livescores.
+- >-
+  The documentation shows both `http://` and `https://` request forms. HTTPS is live on both hosts (TLS 1.2,
+  verified 2026-08-09) but no HSTS is served, so a plaintext http:// call carrying the key will go through.
+- >-
+  The embeddable widget/animation products use a different credential entirely — an `accessKey` plus a domain
+  whitelist. See components/isports-api-components.yml.
+x-evidence:
+  fetched: '2026-08-09'
+  url: https://api.isportsapi.com/sport/football/livescores
+  http_status: 200
+  body: '{"code":2,"message":"Invalid [api_key], illegal access."}'

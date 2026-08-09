@@ -1,0 +1,21 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "companyId": 1,
+      "name": "Macauslot",
+      "europenCompanyId": 80
+    },
+    {
+      "companyId": 3,
+      "name": "Crown",
+      "europenCompanyId": 545
+    },
+    {
+      "companyId": 4,
+      "name": "Ladbrokes",
+      "europenCompanyId": 82
+    }
+  ]
+}

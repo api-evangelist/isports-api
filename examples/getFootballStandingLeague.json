@@ -1,0 +1,24 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "leagueId": "16523",
+      "subLeagueId": "",
+      "season": "2025-2026",
+      "modifyTime": 1782718696
+    },
+    {
+      "leagueId": "15128",
+      "subLeagueId": "",
+      "season": "2025-2026",
+      "modifyTime": 1782718696
+    },
+    {
+      "leagueId": "1572",
+      "subLeagueId": "",
+      "season": "2026",
+      "modifyTime": 1782718695
+    }
+  ]
+}

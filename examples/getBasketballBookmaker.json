@@ -1,0 +1,24 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "companyIdEu": 3,
+      "companyName": "Interwetten",
+      "companyIdMainSpread": 0,
+      "companyIdMainTotal": 0
+    },
+    {
+      "companyIdEu": 4,
+      "companyName": "Admiral",
+      "companyIdMainSpread": 0,
+      "companyIdMainTotal": 0
+    },
+    {
+      "companyIdEu": 5,
+      "companyName": "Bets4all",
+      "companyIdMainSpread": 0,
+      "companyIdMainTotal": 0
+    }
+  ]
+}

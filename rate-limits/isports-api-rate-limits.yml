@@ -1,0 +1,899 @@
+generated: '2026-08-09'
+method: searched
+source: https://www.isportsapi.com/en/docs.html
+description: iSports API publishes a per-endpoint minimum call interval ("This interface is limited to N seconds/call")
+  and a recommended polling frequency on every endpoint documentation page. Limits are enforced per API key; the
+  free trial adds a separate daily quota of 200 calls per sport. There is no documented rate-limit response header
+  — exceeding a limit is surfaced in the JSON envelope message.
+enforcement:
+  style: minimum interval between calls, per endpoint, per api_key
+  response_headers: null
+  signal: error message in the {code, message} envelope; HTTP status remains 200
+quotas:
+- name: Free trial
+  limit_count: 200
+  interval: day
+  scope: per sport
+  notes: 15-day trial, ~2 minute delay on live data, calls blocked until next reset once exceeded
+  source: https://www.isportsapi.com/en/faq/free-trial-20.html
+limit_count: 113
+endpoints:
+- operationId: getBasketballLivescoresChanges
+  path: /sport/basketball/livescores/changes
+  name: Livescores Changes
+  min_interval_seconds: 1
+  limit_published: This interface is limited to 1 second/call
+  recommended_interval_seconds: 10
+  recommended_published: 2~10 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=13
+- operationId: getFootballLivescoresChanges
+  path: /sport/football/livescores/changes
+  name: Livescores Changes
+  min_interval_seconds: 1
+  limit_published: This interface is limited to 1 second/call
+  recommended_interval_seconds: 10
+  recommended_published: 2~10 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=14
+- operationId: getFootballEvents
+  path: /sport/football/events
+  name: Events / Shooting events
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 60
+  recommended_published: 1 minute/call
+  source: https://www.isportsapi.com/en/docs.html?id=15
+- operationId: getFootballStats
+  path: /sport/football/stats
+  name: Stats
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 60
+  recommended_published: 1 minute/call
+  source: https://www.isportsapi.com/en/docs.html?id=16
+- operationId: getFootballLineups
+  path: /sport/football/lineups
+  name: Lineups
+  min_interval_seconds: 60
+  limit_published: This interface is limited to 60 seconds/call
+  recommended_interval_seconds: 90
+  recommended_published: 90 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=17
+- operationId: getBasketballLivescores
+  path: /sport/basketball/livescores
+  name: Livescores for Today
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 60
+  recommended_published: 1 minute/call
+  source: https://www.isportsapi.com/en/docs.html?id=19
+- operationId: getFootballLivescores
+  path: /sport/football/livescores
+  name: Livescores for Today
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 60
+  recommended_published: 1 minute/call
+  source: https://www.isportsapi.com/en/docs.html?id=20
+- operationId: getFootballSchedule
+  path: /sport/football/schedule
+  name: Schedule & Results
+  min_interval_seconds: 60
+  limit_published: This interface is limited to 60 seconds/call
+  recommended_interval_seconds: 43200
+  recommended_published: 12 hours/call
+  source: https://www.isportsapi.com/en/docs.html?id=21
+- operationId: getFootballTeam
+  path: /sport/football/team
+  name: Team Profile
+  min_interval_seconds: 1800
+  limit_published: This interface is limited to 1,800 seconds/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=22
+- operationId: getFootballPlayer
+  path: /sport/football/player
+  name: Player Profile / Teamlist with Player Profile
+  min_interval_seconds: 60
+  limit_published: This interface is limited to 60 seconds/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=23
+- operationId: getFootballOddsMain
+  path: /sport/football/odds/main
+  name: Pre-match and In-play Odds (Main)
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 60
+  recommended_published: 1 minute/call
+  source: https://www.isportsapi.com/en/docs.html?id=24
+- operationId: getFootballOddsMainChanges
+  path: /sport/football/odds/main/changes
+  name: Live Odds Changes (Main)
+  min_interval_seconds: 1
+  limit_published: This interface is limited to 1 second/call
+  recommended_interval_seconds: 2
+  recommended_published: 2 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=25
+- operationId: getBasketballSchedule
+  path: /sport/basketball/schedule
+  name: Schedule & Results
+  min_interval_seconds: 60
+  limit_published: This interface is limited to 60 seconds/call
+  recommended_interval_seconds: 43200
+  recommended_published: 12 hours/call
+  source: https://www.isportsapi.com/en/docs.html?id=26
+- operationId: getBasketballTeam
+  path: /sport/basketball/team
+  name: Team Profile
+  min_interval_seconds: 300
+  limit_published: This interface is limited to 300 seconds/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=27
+- operationId: getBasketballPlayer
+  path: /sport/basketball/player
+  name: Player Profile
+  min_interval_seconds: 300
+  limit_published: This interface is limited to 300 seconds/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=28
+- operationId: getBasketballOddsFulltime
+  path: /sport/basketball/odds/fulltime
+  name: Pre-match and In-play Odds
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 60
+  recommended_published: 1 minute/call
+  source: https://www.isportsapi.com/en/docs.html?id=29
+- operationId: getBasketballOddsFulltimeChanges
+  path: /sport/basketball/odds/fulltime/changes
+  name: Live Odds Changes
+  min_interval_seconds: 1
+  limit_published: This interface is limited to 1 second/call
+  recommended_interval_seconds: 2
+  recommended_published: 2 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=30
+- operationId: getFootballScheduleModify
+  path: /sport/football/schedule/modify
+  name: Match Modify Record
+  min_interval_seconds: 60
+  limit_published: This interface is limited to 60 seconds/call
+  recommended_interval_seconds: 90
+  recommended_published: 90 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=33
+- operationId: getBasketballScheduleModify
+  path: /sport/basketball/schedule/modify
+  name: Match Modify Record
+  min_interval_seconds: 60
+  limit_published: This interface is limited to 60 seconds/call
+  recommended_interval_seconds: 90
+  recommended_published: 90 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=34
+- operationId: getBasketballLineups
+  path: /sport/basketball/lineups
+  name: Lineups
+  min_interval_seconds: 60
+  limit_published: This interface is limited to 60 seconds/call
+  recommended_interval_seconds: 43200
+  recommended_published: 12 hours/call
+  source: https://www.isportsapi.com/en/docs.html?id=35
+- operationId: getFootballPlayerstatsMatchList
+  path: /sport/football/playerstats/match/list
+  name: List of Player Stats (Match)
+  min_interval_seconds: 60
+  limit_published: This interface is limited to 60 seconds/call
+  recommended_interval_seconds: 43200
+  recommended_published: 12 hours/call
+  source: https://www.isportsapi.com/en/docs.html?id=37
+- operationId: getFootballStandingLeagueGetsub
+  path: /sport/football/standing/league/getsub
+  name: League Standing (Get Subleague)
+  min_interval_seconds: 3
+  limit_published: This interface is limited to 3 seconds/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=38
+- operationId: getFootballTopscorer
+  path: /sport/football/topscorer
+  name: Top Scorer
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=39
+- operationId: getFootballPlayerstatsMatch
+  path: /sport/football/playerstats/match
+  name: Player Stats (Match)
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 60
+  recommended_published: 1 minute/call
+  source: https://www.isportsapi.com/en/docs.html?id=40
+- operationId: getFootballScheduleBasic
+  path: /sport/football/schedule/basic
+  name: Schedule & Results (Basic)
+  min_interval_seconds: 60
+  limit_published: This interface is limited to 60 seconds/call
+  recommended_interval_seconds: 43200
+  recommended_published: 12 hours/call
+  source: https://www.isportsapi.com/en/docs.html?id=41
+- operationId: getFootballLeagueBasic
+  path: /sport/football/league/basic
+  name: League & Cup Profile (Basic)
+  min_interval_seconds: 1800
+  limit_published: This interface is limited to 1,800 seconds/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=42
+- operationId: getFootballStandingLeague
+  path: /sport/football/standing/league
+  name: League Standing
+  min_interval_seconds: 3
+  limit_published: This interface is limited to 3 seconds/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=43
+- operationId: getFootballOddsEuropeanAll
+  path: /sport/football/odds/european/all
+  name: European Odds (200+ Bookmakers)
+  min_interval_seconds: 60
+  limit_published: This interface is limited to 60 seconds/call
+  recommended_interval_seconds: 90
+  recommended_published: 90 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=44
+- operationId: getFootballStandingCup
+  path: /sport/football/standing/cup
+  name: Cup Standing
+  min_interval_seconds: 3
+  limit_published: This interface is limited to 3 seconds/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=45
+- operationId: getFootballFifaranking
+  path: /sport/football/fifaranking
+  name: FIFA Ranking
+  min_interval_seconds: 1800
+  limit_published: This interface is limited to 1,800 seconds/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=47
+- operationId: getBasketballScheduleBasic
+  path: /sport/basketball/schedule/basic
+  name: Schedule & Results (Basic)
+  min_interval_seconds: 60
+  limit_published: This interface is limited to 60 seconds/call
+  recommended_interval_seconds: 43200
+  recommended_published: 12 hours/call
+  source: https://www.isportsapi.com/en/docs.html?id=48
+- operationId: getFootballPlayerstatsLeagueList
+  path: /sport/football/playerstats/league/list
+  name: List of Player Stats (League & Cup)
+  min_interval_seconds: 60
+  limit_published: This interface is limited to 60 seconds/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=49
+- operationId: getBasketballLeagueBasic
+  path: /sport/basketball/league/basic
+  name: League & Cup Profile (Basic)
+  min_interval_seconds: 1800
+  limit_published: This interface is limited to 1,800 seconds/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=50
+- operationId: getFootballPlayerstatsLeague
+  path: /sport/football/playerstats/league
+  name: Player Stats (League & Cup)
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=51
+- operationId: getFootballOddsMainHistory
+  path: /sport/football/odds/main/history
+  name: Historical Odds (Main)
+  min_interval_seconds: 60
+  limit_published: This interface is limited to 60 seconds/call
+  recommended_interval_seconds: 600
+  recommended_published: 10 minutes/call
+  source: https://www.isportsapi.com/en/docs.html?id=52
+- operationId: getBasketballStandingLeague
+  path: /sport/basketball/standing/league
+  name: League Standing
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=53
+- operationId: getBasketballStandingCup
+  path: /sport/basketball/standing/cup
+  name: Cup Standing
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=54
+- operationId: getBasketballStats
+  path: /sport/basketball/stats
+  name: Match Stats / Quarters Stats
+  min_interval_seconds: 3
+  limit_published: This interface is limited to 3 seconds/call
+  recommended_interval_seconds: 10
+  recommended_published: 10 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=55
+- operationId: getBasketballOddsHalf
+  path: /sport/basketball/odds/half
+  name: Pre-match Odds (Halftime)
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 60
+  recommended_published: 1 minute/call
+  source: https://www.isportsapi.com/en/docs.html?id=56
+- operationId: getBasketballOddsQuarter
+  path: /sport/basketball/odds/quarter
+  name: Pre-match Odds (Quarter)
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 60
+  recommended_published: 1 minute/call
+  source: https://www.isportsapi.com/en/docs.html?id=57
+- operationId: getBasketballOddsHistory
+  path: /sport/basketball/odds/history
+  name: Historical Odds
+  min_interval_seconds: 60
+  limit_published: This interface is limited to 60 seconds/call
+  recommended_interval_seconds: 900
+  recommended_published: 15 minutes/call
+  source: https://www.isportsapi.com/en/docs.html?id=58
+- operationId: getBasketballOddsEuropeanAll
+  path: /sport/basketball/odds/european/all
+  name: Money Line (80+ bookmakers)
+  min_interval_seconds: 60
+  limit_published: This interface is limited to 60 seconds/call
+  recommended_interval_seconds: 90
+  recommended_published: 90 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=59
+- operationId: getFootballOddsMainFuture
+  path: /sport/football/odds/main/future
+  name: Future Odds (Main)
+  min_interval_seconds: 60
+  limit_published: This interface is limited to 60 seconds/call
+  recommended_interval_seconds: 600
+  recommended_published: 10 minutes/call
+  source: https://www.isportsapi.com/en/docs.html?id=60
+- operationId: getFootballOddsAllHistory
+  path: /sport/football/odds/all/history
+  name: Historical Odds (All)
+  min_interval_seconds: 60
+  limit_published: This interface is limited to 60 seconds/call
+  recommended_interval_seconds: 600
+  recommended_published: 10 minutes/call
+  source: https://www.isportsapi.com/en/docs.html?id=62
+- operationId: getFootballEventsCorner
+  path: /sport/football/events/corner
+  name: Corner
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 20
+  recommended_published: 20 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=63
+- operationId: getFootballInjury
+  path: /sport/football/injury
+  name: Injury
+  min_interval_seconds: 60
+  limit_published: This interface is limited to 60 seconds/call
+  recommended_interval_seconds: 90
+  recommended_published: 90 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=64
+- operationId: getFootballLivetextList
+  path: /sport/football/livetext/list
+  name: Match List of Live Text
+  min_interval_seconds: 60
+  limit_published: This interface is limited to 60 seconds/call
+  recommended_interval_seconds: 3600
+  recommended_published: 1 hour/call
+  source: https://www.isportsapi.com/en/docs.html?id=65
+- operationId: getFootballLivetext
+  path: /sport/football/livetext
+  name: Live Text
+  min_interval_seconds: 3
+  limit_published: This interface is limited to 3 seconds/call
+  recommended_interval_seconds: 15
+  recommended_published: 15 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=66
+- operationId: getFootballLeague
+  path: /sport/football/league
+  name: League & Cup Profile
+  min_interval_seconds: 1800
+  limit_published: This interface is limited to 1,800 seconds/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=67
+- operationId: getFootballLeagueSub
+  path: /sport/football/league/sub
+  name: Subleague Profile
+  min_interval_seconds: 1800
+  limit_published: This interface is limited to 1,800 seconds/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=68
+- operationId: getFootballTransfer
+  path: /sport/football/transfer
+  name: Transfer
+  min_interval_seconds: 300
+  limit_published: This interface is limited to 300 seconds/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=69
+- operationId: getFootballOddsEuropeanHalf
+  path: /sport/football/odds/european/half
+  name: European Odds (Halftime)
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 15
+  recommended_published: 15 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=70
+- operationId: getFootballOddsAll
+  path: /sport/football/odds/all
+  name: Pre-match and In-play Odds (All)
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 60
+  recommended_published: 1 minute/call
+  source: https://www.isportsapi.com/en/docs.html?id=71
+- operationId: getFootballOddsAllChanges
+  path: /sport/football/odds/all/changes
+  name: Live Odds Changes (All)
+  min_interval_seconds: 1
+  limit_published: This interface is limited to 1 second/call
+  recommended_interval_seconds: 2
+  recommended_published: 2 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=72
+- operationId: getFootballOddsInplay
+  path: /sport/football/odds/inplay
+  name: In-play Odds
+  min_interval_seconds: 3
+  limit_published: This interface is limited to 3 seconds/call
+  recommended_interval_seconds: 15
+  recommended_published: 15 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=73
+- operationId: getFootballOddsAllFuture
+  path: /sport/football/odds/all/future
+  name: Future Odds (All)
+  min_interval_seconds: 60
+  limit_published: This interface is limited to 60 seconds/call
+  recommended_interval_seconds: 600
+  recommended_published: 10 minutes/call
+  source: https://www.isportsapi.com/en/docs.html?id=74
+- operationId: getFootballOddsInplayHalf
+  path: /sport/football/odds/inplay/half
+  name: In-play Odds (Halftime)
+  min_interval_seconds: 3
+  limit_published: This interface is limited to 3 seconds/call
+  recommended_interval_seconds: 15
+  recommended_published: 15 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=75
+- operationId: getBasketballTransfer
+  path: /sport/basketball/transfer
+  name: NBA Transfer
+  min_interval_seconds: 300
+  limit_published: This interface is limited to 300 seconds/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=76
+- operationId: getBasketballCupqualify
+  path: /sport/basketball/cupqualify
+  name: Cup Stage Profile
+  min_interval_seconds: 1800
+  limit_published: This interface is limited to 1,800 seconds/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=77
+- operationId: getBasketballPlayoffs
+  path: /sport/basketball/playoffs
+  name: Playoffs Stage Profile
+  min_interval_seconds: 1800
+  limit_published: This interface is limited to 1,800 seconds/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=78
+- operationId: getBasketballLeague
+  path: /sport/basketball/league
+  name: League & Cup Profile
+  min_interval_seconds: 1800
+  limit_published: This interface is limited to 1,800 seconds/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=79
+- operationId: getBasketballLivetextList
+  path: /sport/basketball/livetext/list
+  name: Match List of Live Text
+  min_interval_seconds: 60
+  limit_published: This interface is limited to 60 seconds/call
+  recommended_interval_seconds: 43200
+  recommended_published: 12 hours/call
+  source: https://www.isportsapi.com/en/docs.html?id=80
+- operationId: getBasketballLivetext
+  path: /sport/basketball/livetext
+  name: Live Text
+  min_interval_seconds: 3
+  limit_published: This interface is limited to 3 seconds/call
+  recommended_interval_seconds: 10
+  recommended_published: 10 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=81
+- operationId: getFootballReferee
+  path: /sport/football/referee
+  name: Referee Profile
+  min_interval_seconds: 60
+  limit_published: This interface is limited to 60 seconds/call
+  recommended_interval_seconds: 43200
+  recommended_published: 12 hours/call
+  source: https://www.isportsapi.com/en/docs.html?id=108
+- operationId: getFootballAnalysis
+  path: /sport/football/analysis
+  name: Matches Analysis
+  min_interval_seconds: 1
+  limit_published: This interface is limited to 1 second/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=109
+- operationId: getFootballLeagueStage
+  path: /sport/football/league/stage
+  name: Cup Stage Profile
+  min_interval_seconds: 1800
+  limit_published: This interface is limited to 1,800 seconds/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=112
+- operationId: getFootballOddsTeamtoscorePrematch
+  path: /sport/football/odds/teamtoscore/prematch
+  name: First/Last Team To Score (pre-match)
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 15
+  recommended_published: 15 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=113
+- operationId: getFootballOddsOddevenPrematch
+  path: /sport/football/odds/oddeven/prematch
+  name: Goals Odd/Even (pre-match)
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 15
+  recommended_published: 15 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=114
+- operationId: getFootballOddsTotalgoalsPrematch
+  path: /sport/football/odds/totalgoals/prematch
+  name: Number of Goals in Match (pre-match)
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 15
+  recommended_published: 15 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=115
+- operationId: getFootballOddsHalffullPrematch
+  path: /sport/football/odds/halffull/prematch
+  name: Half Time/Full Time (pre-match)
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 15
+  recommended_published: 15 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=116
+- operationId: getFootballOddsScorePrematch
+  path: /sport/football/odds/score/prematch
+  name: Correct Score (pre-match)
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 15
+  recommended_published: 15 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=117
+- operationId: getFootballOddsScoreHalfPrematch
+  path: /sport/football/odds/score/half/prematch
+  name: Half Time Correct Score (pre-match)
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 15
+  recommended_published: 15 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=118
+- operationId: getFootballOddsCornershandicapPrematch
+  path: /sport/football/odds/cornershandicap/prematch
+  name: Handicap Corners (pre-match)
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 15
+  recommended_published: 15 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=119
+- operationId: getFootballOddsCornerstotalPrematch
+  path: /sport/football/odds/cornerstotal/prematch
+  name: Total Corners (pre-match)
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 15
+  recommended_published: 15 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=121
+- operationId: getFootballOddsOddevenInplay
+  path: /sport/football/odds/oddeven/inplay
+  name: Goals Odd/Even (In-play)
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 15
+  recommended_published: 15 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=123
+- operationId: getFootballOddsTotalgoalsInplay
+  path: /sport/football/odds/totalgoals/inplay
+  name: Number of Goals in Match (In-play)
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 15
+  recommended_published: 15 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=124
+- operationId: getFootballOddsHalffullInplay
+  path: /sport/football/odds/halffull/inplay
+  name: Half Time/Full Time (In-play)
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 15
+  recommended_published: 15 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=125
+- operationId: getFootballOddsScoreInplay
+  path: /sport/football/odds/score/inplay
+  name: Correct Score (In-play)
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 15
+  recommended_published: 15 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=126
+- operationId: getFootballOddsScoreHalfInplay
+  path: /sport/football/odds/score/half/inplay
+  name: Half Time Correct Score (In-play)
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 15
+  recommended_published: 15 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=127
+- operationId: getFootballOddsCornershandicapInplay
+  path: /sport/football/odds/cornershandicap/inplay
+  name: Handicap Corners (In-play)
+  min_interval_seconds: 5
+  limit_published: This interface is limited to 5 seconds/call
+  recommended_published: 10 secondscall
+  source: https://www.isportsapi.com/en/docs.html?id=128
+- operationId: getFootballOddsCornerstotalInplay
+  path: /sport/football/odds/cornerstotal/inplay
+  name: Total Corners (In-play)
+  min_interval_seconds: 5
+  limit_published: This interface is limited to 5 seconds/call
+  recommended_interval_seconds: 10
+  recommended_published: 10 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=130
+- operationId: getBasketballAnalysis
+  path: /sport/basketball/analysis
+  name: Matches Analysis
+  min_interval_seconds: 1
+  limit_published: This interface is limited to 1 second/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=131
+- operationId: getFootballTeamSearch
+  path: /sport/football/team/search
+  name: Team Profile for Search
+  min_interval_seconds: 60
+  limit_published: This interface is limited to 60 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=134
+- operationId: getFootballPlayerSearch
+  path: /sport/football/player/search
+  name: Player Profile for Search
+  min_interval_seconds: 60
+  limit_published: This interface is limited to 60 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=135
+- operationId: getBasketballTeamSearch
+  path: /sport/basketball/team/search
+  name: Team Profile for Search
+  min_interval_seconds: 60
+  limit_published: This interface is limited to 60 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=136
+- operationId: getBasketballPlayerSearch
+  path: /sport/basketball/player/search
+  name: Player Profile for Search
+  min_interval_seconds: 60
+  limit_published: This interface is limited to 60 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=137
+- operationId: getFootballOddsOutrights
+  path: /sport/football/odds/outrights
+  name: Outrights
+  min_interval_seconds: 60
+  limit_published: This interface is limited to 60 seconds/call
+  recommended_interval_seconds: 300
+  recommended_published: 5 minutes/call
+  source: https://www.isportsapi.com/en/docs.html?id=138
+- operationId: getFootballCountry
+  path: /sport/football/country
+  name: List of Countries
+  min_interval_seconds: 1800
+  limit_published: This interface is limited to 1,800 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=222
+- operationId: getFootballBookmaker
+  path: /sport/football/bookmaker
+  name: 'Providers for European Markets '
+  min_interval_seconds: 1800
+  limit_published: This interface is limited to 1,800 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=223
+- operationId: getBasketballCountry
+  path: /sport/basketball/country
+  name: List of Countries
+  min_interval_seconds: 1800
+  limit_published: This interface is limited to 1,800 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=224
+- operationId: getBasketballBookmaker
+  path: /sport/basketball/bookmaker
+  name: List of Agencies
+  min_interval_seconds: 1800
+  limit_published: This interface is limited to 1,800 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=225
+- operationId: getFootballLiveanimationSchedule
+  path: /sport/football/liveanimation/schedule
+  name: Schedule & Results
+  min_interval_seconds: 60
+  limit_published: This interface is limited to 60 seconds/call
+  recommended_interval_seconds: 300
+  recommended_published: 5 minutes/call
+  source: https://www.isportsapi.com/en/docs.html?id=238
+- operationId: getBasketballLiveanimationSchedule
+  path: /sport/basketball/liveanimation/schedule
+  name: Schedule & Results
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 60
+  recommended_published: 60 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=240
+- operationId: getBasketballOddsInplay
+  path: /sport/basketball/odds/inplay
+  name: In-play Odds
+  min_interval_seconds: 3
+  limit_published: This interface is limited to 3 seconds/call
+  recommended_interval_seconds: 15
+  recommended_published: 15 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=244
+- operationId: getFootballOddsOddsbyid
+  path: /sport/football/odds/oddsbyid
+  name: Odd Modify Record
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 20
+  recommended_published: 20 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=245
+- operationId: getFootballScheduleChange
+  path: /sport/football/scheduleChange
+  name: Schedule Changes
+  min_interval_seconds: 1200
+  limit_published: 20 minutes/call
+  recommended_interval_seconds: 1800
+  recommended_published: 30 minutes/call
+  source: https://www.isportsapi.com/en/docs.html?id=247
+- operationId: getFootballOddsEurohandicapPrematch
+  path: /sport/football/odds/eurohandicap/prematch
+  name: EuroHandicap (pre-match)
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 15
+  recommended_published: 15 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=248
+- operationId: getFootballOddsDoublechancePrematch
+  path: /sport/football/odds/doublechance/prematch
+  name: Double Chance (pre-match)
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 15
+  recommended_published: 15 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=249
+- operationId: getLanguageth
+  path: /sport/languageth
+  name: Thai
+  min_interval_seconds: 1800
+  limit_published: This interface is limited to 30 minutes/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=251
+- operationId: getLanguagevn
+  path: /sport/languagevn
+  name: Vietnamese
+  min_interval_seconds: 1800
+  limit_published: This interface is limited to 30 minutes/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=252
+- operationId: getLanguageidn
+  path: /sport/languageidn
+  name: Indonesian
+  min_interval_seconds: 1800
+  limit_published: This interface is limited to 30 minutes/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=253
+- operationId: getLanguagekr
+  path: /sport/languagekr
+  name: Korean
+  min_interval_seconds: 1800
+  limit_published: This interface is limited to 30 minutes/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=254
+- operationId: getLanguagebra
+  path: /sport/languagebra
+  name: Portuguese
+  min_interval_seconds: 1800
+  limit_published: This interface is limited to 30 minutes/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=255
+- operationId: getLanguagetc
+  path: /sport/languagetc
+  name: Traditional Chinese
+  min_interval_seconds: 1800
+  limit_published: This interface is limited to 30 minutes/call
+  recommended_interval_seconds: 86400
+  recommended_published: 1 day/call
+  source: https://www.isportsapi.com/en/docs.html?id=256
+- operationId: getFootballOddsCorners1x2Prematch
+  path: /sport/football/odds/corners1x2/prematch
+  name: Corners 1x2 (pre-match)
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 15
+  recommended_published: 15 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=263
+- operationId: getFootballOddsTeamGoals
+  path: /sport/football/odds/teamGoals
+  name: Team Goals
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 15
+  recommended_published: 15 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=264
+- operationId: getFootballOddsBothScore
+  path: /sport/football/odds/bothScore
+  name: Both Teams to Score
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 15
+  recommended_published: 15 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=265
+- operationId: getFootballOddsCard
+  path: /sport/football/odds/card
+  name: Card
+  min_interval_seconds: 10
+  limit_published: This interface is limited to 10 seconds/call
+  recommended_interval_seconds: 15
+  recommended_published: 15 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=266
+- operationId: getFootballOddsBooks
+  path: /sport/football/odds/books
+  name: Providers for Asian Markets
+  min_interval_seconds: 1800
+  limit_published: This interface is limited to 1,800 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=267
+- operationId: getFootballTeamModify
+  path: /sport/football/team/modify
+  name: Team Modify Record
+  min_interval_seconds: 3600
+  limit_published: This interface is limited to 60 minutes/call
+  source: https://www.isportsapi.com/en/docs.html?id=268
+- operationId: getFootballPlayerModify
+  path: /sport/football/player/modify
+  name: Player Modify Record
+  min_interval_seconds: 3600
+  limit_published: This interface is limited to 60 minutes/call
+  source: https://www.isportsapi.com/en/docs.html?id=269
+- operationId: getFootballSummary
+  path: /sport/football/summary
+  name: Match Insights
+  min_interval_seconds: 90
+  limit_published: This interface is limited to 90 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=272
+- operationId: getFootballOddsOvertime
+  path: /sport/football/odds/overtime
+  name: 'Overtime & Penalty Shootout '
+  min_interval_seconds: 15
+  limit_published: This interface is limited to 15 seconds/call
+  recommended_interval_seconds: 30
+  recommended_published: 30 seconds/call
+  source: https://www.isportsapi.com/en/docs.html?id=273

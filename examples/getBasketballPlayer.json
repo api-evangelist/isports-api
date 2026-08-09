@@ -1,0 +1,51 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "playerId": "3296",
+      "number": 0,
+      "name": "Will McDonald",
+      "teamId": "766",
+      "place": "Forward",
+      "birthday": 307900800,
+      "height": 212,
+      "weight": 105,
+      "photo": "http://nba.titan007.com/files/Player/20121205170713.jpg?win007=sell",
+      "nbaAge": 0,
+      "salary": "",
+      "country": "",
+      "isNational": false
+    },
+    {
+      "playerId": "9",
+      "number": 0,
+      "name": "Shareef Abdur-Rahim",
+      "teamId": "766",
+      "place": "Forward",
+      "birthday": 219081600,
+      "height": 206,
+      "weight": 111,
+      "photo": "http://nba.titan007.com/files/Player/9.jpg?win007=sell",
+      "nbaAge": 11,
+      "salary": "",
+      "country": "",
+      "isNational": false
+    },
+    {
+      "playerId": "18",
+      "number": 0,
+      "name": "Shandon Anderson",
+      "teamId": "766",
+      "place": "Forward",
+      "birthday": 126115200,
+      "height": 198,
+      "weight": 95,
+      "photo": "http://nba.titan007.com/Player/images/2006420171817.jpg?win007=sell",
+      "nbaAge": 9,
+      "salary": "",
+      "country": "",
+      "isNational": false
+    }
+  ]
+}

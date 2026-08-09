@@ -1,0 +1,18 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "countryId": 1,
+      "country": "England"
+    },
+    {
+      "countryId": 2,
+      "country": "Italy"
+    },
+    {
+      "countryId": 3,
+      "country": "Spain"
+    }
+  ]
+}

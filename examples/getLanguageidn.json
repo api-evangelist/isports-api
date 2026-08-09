@@ -1,0 +1,60 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "leagues": [
+        {
+          "leagueId": "1",
+          "name": "Ireland Premier Division",
+          "name_idn": "Irlandia: Divisi Primer"
+        },
+        {
+          "leagueId": "2",
+          "name": "Argentine Division 1",
+          "name_idn": "Argentina: Liga Profesional"
+        },
+        {
+          "leagueId": "3",
+          "name": "Austrian Bundesliga",
+          "name_idn": "Austria: Bundesliga"
+        },
+        {
+          "leagueId": "4",
+          "name": "Brazil Serie A",
+          "name_idn": "Brazil: Serie A"
+        },
+        {
+          "leagueId": "5",
+          "name": "Belgian Pro League",
+          "name_idn": "Belgia: Liga Jupiler"
+        },
+        {
+          "leagueId": "6",
+          "name": "Poland Ekstraklasa",
+          "name_idn": "Polandia: Ekstraklasa"
+        },
+        {
+          "leagueId": "7",
+          "name": "Denmark Superligaen",
+          "name_idn": "Denmark: Superliga"
+        },
+        {
+          "leagueId": "8",
+          "name": "German Bundesliga",
+          "name_idn": "Jerman: Bundesliga"
+        },
+        {
+          "leagueId": "9",
+          "name": "German Bundesliga 2",
+          "name_idn": "Jerman: 2. Bundesliga"
+        },
+        {
+          "leagueId": "10",
+          "name": "Russia Premier League",
+          "name_idn": "Rusia: Liga Primer"
+        }
+      ]
+    }
+  ]
+}

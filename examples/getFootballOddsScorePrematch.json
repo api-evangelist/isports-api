@@ -1,0 +1,121 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "matchId": "202865719",
+      "companyId": "3",
+      "odds": {
+        "bettingOddsItems": [
+          {
+            "homeScore": 1,
+            "awayScore": 0,
+            "odds": "8.9"
+          },
+          {
+            "homeScore": 2,
+            "awayScore": 0,
+            "odds": "10.5"
+          },
+          {
+            "homeScore": 2,
+            "awayScore": 1,
+            "odds": "8"
+          },
+          {
+            "homeScore": 3,
+            "awayScore": 0,
+            "odds": "17.5"
+          },
+          {
+            "homeScore": 3,
+            "awayScore": 1,
+            "odds": "13.5"
+          },
+          {
+            "homeScore": 3,
+            "awayScore": 2,
+            "odds": "21"
+          },
+          {
+            "homeScore": 4,
+            "awayScore": 0,
+            "odds": "41"
+          },
+          {
+            "homeScore": 4,
+            "awayScore": 1,
+            "odds": "31"
+          },
+          {
+            "homeScore": 4,
+            "awayScore": 2,
+            "odds": "46"
+          },
+          {
+            "homeScore": 4,
+            "awayScore": 3,
+            "odds": "101"
+          },
+          {
+            "homeScore": 0,
+            "awayScore": 0,
+            "odds": "16"
+          },
+          {
+            "homeScore": 1,
+            "awayScore": 1,
+            "odds": "7"
+          },
+          {
+            "homeScore": 2,
+            "awayScore": 2,
+            "odds": "12.5"
+          },
+          {
+            "homeScore": 3,
+            "awayScore": 3,
+            "odds": "46"
+          },
+          {
+            "homeScore": 4,
+            "awayScore": 4,
+            "odds": "201"
+          },
+          {
+            "homeScore": 0,
+            "awayScore": 1,
+            "odds": "12"
+          },
+          {
+            "homeScore": 0,
+            "awayScore": 2,
+            "odds": "19"
+          },
+          {
+            "homeScore": 1,
+            "awayScore": 2,
+            "odds": "11"
+          },
+          {
+            "homeScore": 0,
+            "awayScore": 3,
+            "odds": "41"
+          },
+          {
+            "homeScore": 1,
+            "awayScore": 3,
+            "odds": "26"
+          },
+          {
+            "homeScore": 2,
+            "awayScore": 3,
+            "odds": "31"
+          }
+        ],
+        "otherScoresOdds": "17.5"
+      },
+      "changeTime": 1574844711
+    }
+  ]
+}

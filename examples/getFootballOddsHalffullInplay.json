@@ -1,0 +1,40 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "matchId": "206255929",
+      "companyId": "3",
+      "odds": {
+        "halfWinFullWin": "50",
+        "halfWinFullDraw": "50",
+        "halfWinFullLose": "50",
+        "halfDrawFullWin": "18.5",
+        "halfDrawFullDraw": "25",
+        "halfDrawFullLose": "35",
+        "halfLoseFullWin": "4",
+        "halfLoseFullDraw": "2.4",
+        "halfLoseFullLose": "0.82",
+        "close": true
+      },
+      "changeTime": 1782962594
+    },
+    {
+      "matchId": "206255929",
+      "companyId": "19",
+      "odds": {
+        "halfWinFullWin": "2.05",
+        "halfWinFullDraw": "13",
+        "halfWinFullLose": "39",
+        "halfDrawFullWin": "4",
+        "halfDrawFullDraw": "3.8",
+        "halfDrawFullLose": "6.5",
+        "halfLoseFullWin": "26",
+        "halfLoseFullDraw": "14",
+        "halfLoseFullLose": "4.75",
+        "close": false
+      },
+      "changeTime": 1782955564
+    }
+  ]
+}

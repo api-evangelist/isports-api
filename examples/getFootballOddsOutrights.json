@@ -1,0 +1,66 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "leagueId": "188",
+      "leagueShortName": "GER D1",
+      "season": "2025-2026",
+      "typeId": 1,
+      "type": "Outright",
+      "itemList": [
+        {
+          "itemId": "88",
+          "item": "Bayern Munchen",
+          "oddsList": [
+            {
+              "companyId": "38",
+              "company": "Crown",
+              "odds": "1.07"
+            },
+            {
+              "companyId": "39",
+              "company": "Bet365",
+              "odds": "1.16"
+            }
+          ],
+          "valid": true
+        },
+        {
+          "itemId": "99",
+          "item": "Borussia Dortmund",
+          "oddsList": [
+            {
+              "companyId": "38",
+              "company": "Crown",
+              "odds": "10"
+            },
+            {
+              "companyId": "39",
+              "company": "Bet365",
+              "odds": "11"
+            }
+          ],
+          "valid": true
+        },
+        {
+          "itemId": "13201",
+          "item": "RB Leipzig",
+          "oddsList": [
+            {
+              "companyId": "38",
+              "company": "Crown",
+              "odds": "26"
+            },
+            {
+              "companyId": "39",
+              "company": "Bet365",
+              "odds": "15"
+            }
+          ],
+          "valid": true
+        }
+      ]
+    }
+  ]
+}

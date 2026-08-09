@@ -1,0 +1,228 @@
+generated: '2026-08-09'
+method: derived
+source: openapi/isports-api-openapi.yml
+description: Entity-relationship graph derived from the id-reference fields that appear across the 113 documented
+  iSports API responses. Identifiers are opaque numeric strings, are not prefixed by type, and are scoped per sport
+  — a football leagueId and a basketball leagueId are different namespaces served by different endpoints.
+id_conventions:
+  type: string containing a numeric id
+  prefixed: false
+  namespacing: per sport (football and basketball ids are not interchangeable)
+  batching: matchId, leagueId and companyId accept comma-separated lists on most endpoints
+entities:
+- name: League
+  key: leagueId
+  description: A football or basketball competition (league or cup). leagueType distinguishes 1=League from 2=Cup.
+  endpoints:
+  - /sport/football/league
+  - /sport/football/league/basic
+  - /sport/basketball/league
+  - /sport/basketball/league/basic
+- name: SubLeague
+  key: subLeagueId
+  description: A division or conference inside a league (e.g. Western Play-off).
+  endpoints:
+  - /sport/football/league/sub
+- name: Stage
+  key: stageId
+  description: A cup stage / qualifying round within a competition.
+  endpoints:
+  - /sport/football/league/stage
+  - /sport/basketball/cupqualify
+  - /sport/basketball/playoffs
+- name: Match
+  key: matchId
+  description: A single fixture. The hub entity — nearly every other feed is keyed by matchId.
+  endpoints:
+  - /sport/football/livescores
+  - /sport/football/schedule
+  - /sport/football/schedule/basic
+  - /sport/basketball/livescores
+  - /sport/basketball/schedule
+- name: Team
+  key: teamId
+  description: A club or national team. Appears on a match as homeId / awayId.
+  endpoints:
+  - /sport/football/team
+  - /sport/football/team/search
+  - /sport/basketball/team
+  - /sport/basketball/team/search
+- name: Player
+  key: playerId
+  description: An individual player, belonging to a team.
+  endpoints:
+  - /sport/football/player
+  - /sport/football/player/search
+  - /sport/basketball/player
+  - /sport/basketball/player/search
+- name: Referee
+  key: refereeId
+  description: A match official.
+  endpoints:
+  - /sport/football/referee
+- name: Country
+  key: countryId
+  description: A country / association used to group leagues and players.
+  endpoints:
+  - /sport/football/country
+  - /sport/basketball/country
+- name: Bookmaker
+  key: companyId
+  description: An odds provider. Every odds record is keyed by matchId + companyId.
+  endpoints:
+  - /sport/football/bookmaker
+  - /sport/basketball/bookmaker
+- name: Event
+  key: eventId
+  description: An in-match incident (goal, card, substitution, corner, shot).
+  endpoints:
+  - /sport/football/events
+  - /sport/football/events/corner
+- name: Odds
+  key: oddsId
+  description: A quoted market for one match from one bookmaker, in pre-match, in-play, future or historical form.
+  endpoints:
+  - /sport/football/odds/main
+  - /sport/football/odds/all
+  - /sport/football/odds/inplay
+  - /sport/basketball/odds/fulltime
+- name: Transfer
+  key: null
+  description: A player move between teams (fromTeamId / toTeamId).
+  endpoints:
+  - /sport/football/transfer
+  - /sport/basketball/transfer
+- name: Standing
+  key: null
+  description: A team's position in a league or cup table for a season.
+  endpoints:
+  - /sport/football/standing/league
+  - /sport/football/standing/cup
+  - /sport/basketball/standing/league
+  - /sport/basketball/standing/cup
+- name: PlayerStats
+  key: null
+  description: Per-match or per-season statistics for a player.
+  endpoints:
+  - /sport/football/playerstats/match
+  - /sport/football/playerstats/league
+relationships:
+- from: Match
+  type: belongs_to
+  to: League
+  via: leagueId
+- from: Match
+  type: belongs_to
+  to: SubLeague
+  via: subLeagueId
+- from: Match
+  type: belongs_to
+  to: Stage
+  via: stageId
+- from: Match
+  type: has_one
+  to: Team
+  via: homeId (home team)
+- from: Match
+  type: has_one
+  to: Team
+  via: awayId (away team)
+- from: Match
+  type: has_many
+  to: Event
+  via: matchId
+- from: Match
+  type: has_many
+  to: Odds
+  via: matchId
+- from: Match
+  type: has_many
+  to: PlayerStats
+  via: matchId
+- from: Match
+  type: has_one
+  to: Referee
+  via: refereeId
+- from: League
+  type: has_many
+  to: SubLeague
+  via: leagueId
+- from: League
+  type: has_many
+  to: Stage
+  via: leagueId
+- from: League
+  type: has_many
+  to: Standing
+  via: leagueId + season
+- from: League
+  type: belongs_to
+  to: Country
+  via: countryId
+- from: Team
+  type: has_many
+  to: Player
+  via: teamId
+- from: Team
+  type: belongs_to
+  to: Country
+  via: countryId
+- from: Player
+  type: belongs_to
+  to: Team
+  via: teamId
+- from: Player
+  type: belongs_to
+  to: Country
+  via: countryId
+- from: Odds
+  type: belongs_to
+  to: Bookmaker
+  via: companyId
+- from: Odds
+  type: belongs_to
+  to: Match
+  via: matchId
+- from: Event
+  type: belongs_to
+  to: Match
+  via: matchId
+- from: Event
+  type: has_one
+  to: Player
+  via: playerId / assistPlayerId
+- from: Transfer
+  type: belongs_to
+  to: Player
+  via: playerId
+- from: Transfer
+  type: has_one
+  to: Team
+  via: fromTeamId
+- from: Transfer
+  type: has_one
+  to: Team
+  via: toTeamId
+- from: Standing
+  type: belongs_to
+  to: Team
+  via: teamId
+- from: PlayerStats
+  type: belongs_to
+  to: Player
+  via: playerId
+hub: Match
+observed_id_fields:
+  matchId: 118
+  companyId: 86
+  leagueId: 42
+  teamId: 34
+  playerId: 31
+  countryId: 16
+  homeId: 9
+  awayId: 9
+  stageId: 7
+  subLeagueId: 7
+  eventId: 4
+  refereeId: 2
+note: Counts are the number of documented response schemas in which each id field appears.

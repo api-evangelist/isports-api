@@ -1,0 +1,30 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": [
+    {
+      "leagueId": "111",
+      "season": "2026"
+    },
+    {
+      "leagueId": "122",
+      "season": "2026"
+    },
+    {
+      "leagueId": "144",
+      "season": "2026"
+    },
+    {
+      "leagueId": "188",
+      "season": "2025-2026"
+    },
+    {
+      "leagueId": "199",
+      "season": "2025-2026"
+    },
+    {
+      "leagueId": "1314",
+      "season": "2026"
+    }
+  ]
+}

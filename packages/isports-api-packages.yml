@@ -1,0 +1,52 @@
+generated: '2026-08-09'
+method: searched
+source: https://github.com/isportsapiofficial
+description: iSports API publishes two first-party client libraries from its official GitHub account (profile links
+  to isportsapi.com). Neither is published to a package registry yet — PyPI isports-sdk 404s and Maven Central has
+  no com.isports group (checked 2026-08-09) — so both install from source.
+packages:
+- language: python
+  registry: null
+  name: isports-sdk
+  url: https://github.com/isportsapiofficial/isports-sdk
+  install: git clone https://github.com/isportsapiofficial/isports-sdk.git && pip install -e .
+  official: true
+  features:
+  - sync ISportsClient + async ISportsAsyncClient
+  - type hints
+  - typed exception hierarchy
+  - football + basketball grouped by live_data / profile / stats / odds / common
+  registry_status: README advertises "pip install isports-sdk (when published)"; https://pypi.org/pypi/isports-sdk/json
+    returned 404 on 2026-08-09
+- language: java
+  registry: null
+  name: com.isports:isports-sdk
+  url: https://github.com/isportsapiofficial/isports-sdk-java
+  install: git clone https://github.com/isportsapiofficial/isports-sdk-java.git
+  official: true
+  version_declared: 0.1.0
+  features:
+  - sync ISportsClient + async ISportsAsyncClient (CompletableFuture)
+  - Jackson deserialization
+  - typed exception hierarchy
+  - MIT licence
+  registry_status: README publishes a Maven coordinate com.isports:isports-sdk:0.1.0; Maven Central search for g:com.isports
+    returned no artifacts on 2026-08-09
+code_samples:
+  note: Every endpoint documentation page ships a copy-ready "Example Request" in five languages.
+  languages:
+  - Java
+  - Python
+  - Go
+  - PHP
+  - C#
+  source: https://www.isportsapi.com/en/docs.html
+postman:
+  workspace: https://www.postman.com/isportsapi-1841883/isports-api/
+  publisher: iSports API's Team
+  collections:
+  - Authentication
+  - Football
+  - Basketball
+  - Livescore Widget
+  visibility: public
