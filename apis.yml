@@ -26,43 +26,373 @@ tags:
   - Widgets
   - REST API
 apis:
-  - name: iSports REST API
-    description: >-
-      Query-param key-authenticated REST/HTTP API for live sports data (football and basketball): livescores,
-      schedules, results, events, shooting data, stats, lineups, live text, standings, team and player
-      profiles, transfers, language packs, and pre-match, in-play, future and historical odds. GET-only, with a
-      published minimum call interval on every endpoint and paired /changes and /modify delta feeds for polling.
-    humanURL: https://www.isportsapi.com/en/docs.html
-    baseURL: https://api.isportsapi.com/
-    tags:
-      - Sports API
-      - Sports Data
-      - Football
-      - Basketball
-      - Odds
-      - Live Data
-      - Sports Statistics
-      - Livescores
-      - REST API
-    properties:
-      - type: Documentation
-        url: https://www.isportsapi.com/en/docs.html
-      - type: APIReference
-        url: https://www.isportsapi.com/en/docs.html
-      - type: GettingStarted
-        url: https://www.isportsapi.com/en/docs.html?id=news_0
-      - type: OpenAPI
-        url: openapi/isports-api-openapi.yml
-      - type: Overlay
-        url: overlays/isports-api-openapi-overlay.yaml
-      - type: Examples
-        url: examples/_index.yml
-      - type: RateLimits
-        url: rate-limits/isports-api-rate-limits.yml
-      - type: ErrorCatalog
-        url: errors/isports-api-problem-types.yml
-      - type: DataModel
-        url: data-model/isports-api-data-model.yml
+- aid: isports-api:isports-api-basketball-common-api-api
+  name: iSports API Basketball Common API API
+  description: >-
+    The Basketball Common API API from iSports API — 5 operation(s) for basketball common api.
+  humanURL: https://www.isportsapi.com/en/docs.html
+  baseURL: https://api.isportsapi.com/
+  tags:
+  - Basketball Common API
+  properties:
+  - type: OpenAPI
+    url: openapi/isports-api-basketball-common-api-api-openapi.yml
+  - type: Documentation
+    url: https://www.isportsapi.com/en/docs.html
+  - type: APIReference
+    url: https://www.isportsapi.com/en/docs.html
+  - type: GettingStarted
+    url: https://www.isportsapi.com/en/docs.html?id=news_0
+  - type: Examples
+    url: examples/_index.yml
+  - type: RateLimits
+    url: rate-limits/isports-api-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/isports-api-problem-types.yml
+  - type: DataModel
+    url: data-model/isports-api-data-model.yml
+- aid: isports-api:isports-api-basketball-live-animation-api
+  name: iSports API Basketball Live animation API
+  description: >-
+    The Basketball Live animation API from iSports API — 1 operation(s) for basketball live animation.
+  humanURL: https://www.isportsapi.com/en/docs.html
+  baseURL: https://api.isportsapi.com/
+  tags:
+  - Basketball Live animation
+  properties:
+  - type: OpenAPI
+    url: openapi/isports-api-basketball-live-animation-api-openapi.yml
+  - type: Documentation
+    url: https://www.isportsapi.com/en/docs.html
+  - type: APIReference
+    url: https://www.isportsapi.com/en/docs.html
+  - type: GettingStarted
+    url: https://www.isportsapi.com/en/docs.html?id=news_0
+  - type: Examples
+    url: examples/_index.yml
+  - type: RateLimits
+    url: rate-limits/isports-api-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/isports-api-problem-types.yml
+  - type: DataModel
+    url: data-model/isports-api-data-model.yml
+- aid: isports-api:isports-api-basketball-live-data-api
+  name: iSports API Basketball Live Data API
+  description: The Basketball Live Data API from iSports API — 7 operation(s) for basketball live data.
+  humanURL: https://www.isportsapi.com/en/docs.html
+  baseURL: https://api.isportsapi.com/
+  tags:
+  - Basketball Live Data
+  properties:
+  - type: OpenAPI
+    url: openapi/isports-api-basketball-live-data-api-openapi.yml
+  - type: Documentation
+    url: https://www.isportsapi.com/en/docs.html
+  - type: APIReference
+    url: https://www.isportsapi.com/en/docs.html
+  - type: GettingStarted
+    url: https://www.isportsapi.com/en/docs.html?id=news_0
+  - type: Examples
+    url: examples/_index.yml
+  - type: RateLimits
+    url: rate-limits/isports-api-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/isports-api-problem-types.yml
+  - type: DataModel
+    url: data-model/isports-api-data-model.yml
+- aid: isports-api:isports-api-basketball-odds-api
+  name: iSports API Basketball Odds API
+  description: The Basketball Odds API from iSports API — 7 operation(s) for basketball odds.
+  humanURL: https://www.isportsapi.com/en/docs.html
+  baseURL: https://api.isportsapi.com/
+  tags:
+  - Basketball Odds
+  properties:
+  - type: OpenAPI
+    url: openapi/isports-api-basketball-odds-api-openapi.yml
+  - type: Documentation
+    url: https://www.isportsapi.com/en/docs.html
+  - type: APIReference
+    url: https://www.isportsapi.com/en/docs.html
+  - type: GettingStarted
+    url: https://www.isportsapi.com/en/docs.html?id=news_0
+  - type: Examples
+    url: examples/_index.yml
+  - type: RateLimits
+    url: rate-limits/isports-api-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/isports-api-problem-types.yml
+  - type: DataModel
+    url: data-model/isports-api-data-model.yml
+- aid: isports-api:isports-api-basketball-profile-api
+  name: iSports API Basketball Profile API
+  description: The Basketball Profile API from iSports API — 7 operation(s) for basketball profile.
+  humanURL: https://www.isportsapi.com/en/docs.html
+  baseURL: https://api.isportsapi.com/
+  tags:
+  - Basketball Profile
+  properties:
+  - type: OpenAPI
+    url: openapi/isports-api-basketball-profile-api-openapi.yml
+  - type: Documentation
+    url: https://www.isportsapi.com/en/docs.html
+  - type: APIReference
+    url: https://www.isportsapi.com/en/docs.html
+  - type: GettingStarted
+    url: https://www.isportsapi.com/en/docs.html?id=news_0
+  - type: Examples
+    url: examples/_index.yml
+  - type: RateLimits
+    url: rate-limits/isports-api-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/isports-api-problem-types.yml
+  - type: DataModel
+    url: data-model/isports-api-data-model.yml
+- aid: isports-api:isports-api-basketball-stats-api
+  name: iSports API Basketball Stats API
+  description: The Basketball Stats API from iSports API — 4 operation(s) for basketball stats.
+  humanURL: https://www.isportsapi.com/en/docs.html
+  baseURL: https://api.isportsapi.com/
+  tags:
+  - Basketball Stats
+  properties:
+  - type: OpenAPI
+    url: openapi/isports-api-basketball-stats-api-openapi.yml
+  - type: Documentation
+    url: https://www.isportsapi.com/en/docs.html
+  - type: APIReference
+    url: https://www.isportsapi.com/en/docs.html
+  - type: GettingStarted
+    url: https://www.isportsapi.com/en/docs.html?id=news_0
+  - type: Examples
+    url: examples/_index.yml
+  - type: RateLimits
+    url: rate-limits/isports-api-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/isports-api-problem-types.yml
+  - type: DataModel
+    url: data-model/isports-api-data-model.yml
+- aid: isports-api:isports-api-football-common-api-api
+  name: iSports API Football Common API API
+  description: The Football Common API API from iSports API — 8 operation(s) for football common api.
+  humanURL: https://www.isportsapi.com/en/docs.html
+  baseURL: https://api.isportsapi.com/
+  tags:
+  - Football Common API
+  properties:
+  - type: OpenAPI
+    url: openapi/isports-api-football-common-api-api-openapi.yml
+  - type: Documentation
+    url: https://www.isportsapi.com/en/docs.html
+  - type: APIReference
+    url: https://www.isportsapi.com/en/docs.html
+  - type: GettingStarted
+    url: https://www.isportsapi.com/en/docs.html?id=news_0
+  - type: Examples
+    url: examples/_index.yml
+  - type: RateLimits
+    url: rate-limits/isports-api-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/isports-api-problem-types.yml
+  - type: DataModel
+    url: data-model/isports-api-data-model.yml
+- aid: isports-api:isports-api-football-european-odds-200-agencies-api
+  name: iSports API Football European Odds (200+ Agencies) API
+  description: >-
+    The Football European Odds (200+ Agencies) API from iSports API — 1 operation(s) for football european
+    odds (200+ agencies).
+  humanURL: https://www.isportsapi.com/en/docs.html
+  baseURL: https://api.isportsapi.com/
+  tags:
+  - Football European Odds (200+ Agencies)
+  properties:
+  - type: OpenAPI
+    url: openapi/isports-api-football-european-odds-200-agencies-api-openapi.yml
+  - type: Documentation
+    url: https://www.isportsapi.com/en/docs.html
+  - type: APIReference
+    url: https://www.isportsapi.com/en/docs.html
+  - type: GettingStarted
+    url: https://www.isportsapi.com/en/docs.html?id=news_0
+  - type: Examples
+    url: examples/_index.yml
+  - type: RateLimits
+    url: rate-limits/isports-api-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/isports-api-problem-types.yml
+  - type: DataModel
+    url: data-model/isports-api-data-model.yml
+- aid: isports-api:isports-api-football-live-animation-api
+  name: iSports API Football Live animation API
+  description: >-
+    The Football Live animation API from iSports API — 1 operation(s) for football live animation.
+  humanURL: https://www.isportsapi.com/en/docs.html
+  baseURL: https://api.isportsapi.com/
+  tags:
+  - Football Live animation
+  properties:
+  - type: OpenAPI
+    url: openapi/isports-api-football-live-animation-api-openapi.yml
+  - type: Documentation
+    url: https://www.isportsapi.com/en/docs.html
+  - type: APIReference
+    url: https://www.isportsapi.com/en/docs.html
+  - type: GettingStarted
+    url: https://www.isportsapi.com/en/docs.html?id=news_0
+  - type: Examples
+    url: examples/_index.yml
+  - type: RateLimits
+    url: rate-limits/isports-api-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/isports-api-problem-types.yml
+  - type: DataModel
+    url: data-model/isports-api-data-model.yml
+- aid: isports-api:isports-api-football-live-data-api
+  name: iSports API Football Live Data API
+  description: The Football Live Data API from iSports API — 13 operation(s) for football live data.
+  humanURL: https://www.isportsapi.com/en/docs.html
+  baseURL: https://api.isportsapi.com/
+  tags:
+  - Football Live Data
+  properties:
+  - type: OpenAPI
+    url: openapi/isports-api-football-live-data-api-openapi.yml
+  - type: Documentation
+    url: https://www.isportsapi.com/en/docs.html
+  - type: APIReference
+    url: https://www.isportsapi.com/en/docs.html
+  - type: GettingStarted
+    url: https://www.isportsapi.com/en/docs.html?id=news_0
+  - type: Examples
+    url: examples/_index.yml
+  - type: RateLimits
+    url: rate-limits/isports-api-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/isports-api-problem-types.yml
+  - type: DataModel
+    url: data-model/isports-api-data-model.yml
+- aid: isports-api:isports-api-football-multiple-languages-api
+  name: iSports API Football Multiple languages API
+  description: >-
+    The Football Multiple languages API from iSports API — 6 operation(s) for football multiple languages.
+  humanURL: https://www.isportsapi.com/en/docs.html
+  baseURL: https://api.isportsapi.com/
+  tags:
+  - Football Multiple languages
+  properties:
+  - type: OpenAPI
+    url: openapi/isports-api-football-multiple-languages-api-openapi.yml
+  - type: Documentation
+    url: https://www.isportsapi.com/en/docs.html
+  - type: APIReference
+    url: https://www.isportsapi.com/en/docs.html
+  - type: GettingStarted
+    url: https://www.isportsapi.com/en/docs.html?id=news_0
+  - type: Examples
+    url: examples/_index.yml
+  - type: RateLimits
+    url: rate-limits/isports-api-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/isports-api-problem-types.yml
+  - type: DataModel
+    url: data-model/isports-api-data-model.yml
+- aid: isports-api:isports-api-football-odds-18-agencies-api
+  name: iSports API Football Odds (18 Agencies) API
+  description: >-
+    The Football Odds (18 Agencies) API from iSports API — 12 operation(s) for football odds (18 agencies).
+  humanURL: https://www.isportsapi.com/en/docs.html
+  baseURL: https://api.isportsapi.com/
+  tags:
+  - Football Odds (18 Agencies)
+  properties:
+  - type: OpenAPI
+    url: openapi/isports-api-football-odds-18-agencies-api-openapi.yml
+  - type: Documentation
+    url: https://www.isportsapi.com/en/docs.html
+  - type: APIReference
+    url: https://www.isportsapi.com/en/docs.html
+  - type: GettingStarted
+    url: https://www.isportsapi.com/en/docs.html?id=news_0
+  - type: Examples
+    url: examples/_index.yml
+  - type: RateLimits
+    url: rate-limits/isports-api-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/isports-api-problem-types.yml
+  - type: DataModel
+    url: data-model/isports-api-data-model.yml
+- aid: isports-api:isports-api-football-other-odds-api
+  name: iSports API Football Other Odds API
+  description: The Football Other Odds API from iSports API — 23 operation(s) for football other odds.
+  humanURL: https://www.isportsapi.com/en/docs.html
+  baseURL: https://api.isportsapi.com/
+  tags:
+  - Football Other Odds
+  properties:
+  - type: OpenAPI
+    url: openapi/isports-api-football-other-odds-api-openapi.yml
+  - type: Documentation
+    url: https://www.isportsapi.com/en/docs.html
+  - type: APIReference
+    url: https://www.isportsapi.com/en/docs.html
+  - type: GettingStarted
+    url: https://www.isportsapi.com/en/docs.html?id=news_0
+  - type: Examples
+    url: examples/_index.yml
+  - type: RateLimits
+    url: rate-limits/isports-api-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/isports-api-problem-types.yml
+  - type: DataModel
+    url: data-model/isports-api-data-model.yml
+- aid: isports-api:isports-api-football-profile-api
+  name: iSports API Football Profile API
+  description: The Football Profile API from iSports API — 8 operation(s) for football profile.
+  humanURL: https://www.isportsapi.com/en/docs.html
+  baseURL: https://api.isportsapi.com/
+  tags:
+  - Football Profile
+  properties:
+  - type: OpenAPI
+    url: openapi/isports-api-football-profile-api-openapi.yml
+  - type: Documentation
+    url: https://www.isportsapi.com/en/docs.html
+  - type: APIReference
+    url: https://www.isportsapi.com/en/docs.html
+  - type: GettingStarted
+    url: https://www.isportsapi.com/en/docs.html?id=news_0
+  - type: Examples
+    url: examples/_index.yml
+  - type: RateLimits
+    url: rate-limits/isports-api-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/isports-api-problem-types.yml
+  - type: DataModel
+    url: data-model/isports-api-data-model.yml
+- aid: isports-api:isports-api-football-stats-api
+  name: iSports API Football Stats API
+  description: The Football Stats API from iSports API — 10 operation(s) for football stats.
+  humanURL: https://www.isportsapi.com/en/docs.html
+  baseURL: https://api.isportsapi.com/
+  tags:
+  - Football Stats
+  properties:
+  - type: OpenAPI
+    url: openapi/isports-api-football-stats-api-openapi.yml
+  - type: Documentation
+    url: https://www.isportsapi.com/en/docs.html
+  - type: APIReference
+    url: https://www.isportsapi.com/en/docs.html
+  - type: GettingStarted
+    url: https://www.isportsapi.com/en/docs.html?id=news_0
+  - type: Examples
+    url: examples/_index.yml
+  - type: RateLimits
+    url: rate-limits/isports-api-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/isports-api-problem-types.yml
+  - type: DataModel
+    url: data-model/isports-api-data-model.yml
 maintainers:
   - FN: iSports API
     url: https://www.isportsapi.com/en/
@@ -73,6 +403,8 @@ generated:
   confidence: 90
   at: '2026-07-28T08:14:10.426Z'
 common:
+- type: Overlay
+  url: overlays/isports-api-openapi-overlay.yaml
 - type: DeveloperPortal
   url: https://www.isportsapi.com/en/
 - type: Documentation
