@@ -1,0 +1,882 @@
+openapi: 3.2.0
+info:
+  title: iSports Basketball Odds API
+  version: '2026-08-09'
+  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.
+
+
+    All operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).
+
+
+    This document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.'
+  termsOfService: https://www.isportsapi.com/en/home/terms.html
+  contact:
+    name: iSports API
+    url: https://www.isportsapi.com/en/
+  x-derived-by: API Evangelist enrichment pipeline
+  x-derived-from: https://www.isportsapi.com/en/docs.html
+  x-derived-on: '2026-08-09'
+servers:
+- url: https://api.isportsapi.com
+  description: Primary API host
+- url: https://api2.isportsapi.com
+  description: Alternate host, documented for when the primary host is slow or unreachable
+security:
+- apiKeyQuery: []
+tags:
+- name: Basketball Odds
+paths:
+  /sport/basketball/odds/fulltime:
+    get:
+      operationId: getBasketballOddsFulltime
+      summary: Pre-match and In-play Odds
+      description: "• This API endpoint returns basketball odds for Spread, Money Line, and Total markets, covering all upcoming unplayed matches and matches currently in play.\n\n\n\n• Odds type corresponds to company ID and company name:\n\n- Spread/Money Line（1x2 Odds）\n\n 1: Marcauslot；2: Easybet；3: Crown；8: Bet365；9：Vcbet；10： William Hill；19：Interwetten；20：Ladbrokes；31: Sbobet ；24: 12bet; 30：China Sports Lottery; 49:BWin \n\n- Total\n\n 4：Marcauslot；5: Easybet；6：Crown；11:Bet365；12：Vcbet；13： William Hill；22：Interwetten；23：Ladbrokes；34:Sbobet；27:12bett; 33: China Sports Lottery; 52: BWin\n\n\n\n• By using endpoints <a href=\"/docs.html?id=48\" style=\"color:blue\">Schedule & Results (Basic)\n</a> and <a href=\"/docs.html?id=34\" style=\"color:blue\">Match Modify Record</a>, you can get basic information of matches."
+      tags:
+      - Basketball Odds
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        spread:
+                          type: object
+                          description: Each entry is a comma-separated string containing the following fields in order.
+                          properties:
+                            matchId:
+                              type: string
+                              description: Unique ID of the match.
+                            companyId:
+                              type: string
+                              description: "Company id for Spread: \n 1: Macauslot\n 2: Easybets\n 3: Crown\n 8: Bet365\n 9: Vcbet\n 10: William Hill\n 19: Interwetten\n 20: Ladbrokes\n 31: Sbobet\n 24: 12bet\n 30: China Sports Lottery\n 49: BWin"
+                            initialHandicap:
+                              type: string
+                              description: Opening Asian Handicap line.
+                            initialHome:
+                              type: string
+                              description: Opening odds for the home team (Hong Kong Odds).
+                            initialAway:
+                              type: string
+                              description: Opening odds for the away team (Hong Kong Odds).
+                            instantHandicap:
+                              type: string
+                              description: Current Asian Handicap line. Instant odds, excluding in-play odds.
+                            instantHome:
+                              type: string
+                              description: Current odds for the home team (Hong Kong Odds). Instant odds, excluding in-play odds.
+                            instantAway:
+                              type: string
+                              description: Current odds for the away team (Hong Kong Odds). Instant odds, excluding in-play odds.
+                            inPlayHandicap:
+                              type: string
+                              description: In-play Asian Handicap line. Mirrors instantHandicap if the match has not yet started in-play trading.
+                            inPlayHome:
+                              type: string
+                              description: In-play odds for the home team (Hong Kong Odds). Mirrors instantHome if the match has not yet started in-play trading.
+                            inPlayAway:
+                              type: string
+                              description: In-play odds for the away team (Hong Kong Odds). Mirrors instantAway if the match has not yet started in-play trading.
+                        moneyLine:
+                          type: object
+                          description: Each entry is a comma-separated string containing the following fields in order.
+                          properties:
+                            matchId:
+                              type: string
+                              description: Unique ID of the match.
+                            companyId:
+                              type: string
+                              description: "Company id for moneyLine: \n 1: Macauslot\n 2: Easybets\n 3: Crown\n 8: Bet365\n 9: Vcbet\n 10: William Hill\n 19: Interwetten\n 20: Ladbrokes\n 31: Sbobet\n 24: 12bet\n 30: China Sports Lottery\n 49: BWin"
+                            initialHome:
+                              type: string
+                              description: Opening odds for the home team (Hong Kong Odds).
+                            initialAway:
+                              type: string
+                              description: Opening odds for the away team (Hong Kong Odds).
+                            instantHome:
+                              type: string
+                              description: Current odds for the home team (Hong Kong Odds). Instant odds, excluding in-play odds.
+                            instantAway:
+                              type: string
+                              description: Current odds for the away team (Hong Kong Odds). Instant odds, excluding in-play odds.
+                        total:
+                          type: object
+                          description: Each entry is a comma-separated string containing the following fields in order.
+                          properties:
+                            matchId:
+                              type: string
+                              description: Unique ID of the match.
+                            companyId:
+                              type: string
+                              description: "Company id for total: \n 4: Macauslot\n 5: Easybets\n 6: Crown\n 11: Bet365\n 12: Vcbet\n 13: William Hill\n 22: Interwetten\n 23: Ladbrokes\n 34: Sbobet\n 27: 12bet\n 33: China Sports Lottery\n 52: BWin"
+                            initialTotal:
+                              type: string
+                              description: Opening Over/Under line.
+                            initialOver:
+                              type: string
+                              description: Opening odds for Over (Hong Kong Odds).
+                            initialUnder:
+                              type: string
+                              description: Opening odds for Under (Hong Kong Odds).
+                            instantTotal:
+                              type: string
+                              description: Current Over/Under line. Instant odds, excluding in-play odds.
+                            instantOver:
+                              type: string
+                              description: Current odds for Over (Hong Kong Odds). Instant odds, excluding in-play odds.
+                            instantUnder:
+                              type: string
+                              description: Current odds for Under (Hong Kong Odds). Instant odds, excluding in-play odds.
+                            inPlayTotal:
+                              type: string
+                              description: In-play Over/Under line. Mirrors instantTotal if the match has not yet started in-play trading.
+                            inPlayOver:
+                              type: string
+                              description: In-play odds for Over (Hong Kong Odds). Mirrors instantOver if the match has not yet started in-play trading.
+                            inPlayUnder:
+                              type: string
+                              description: In-play odds for Under (Hong Kong Odds). Mirrors instantUnder if the match has not yet started in-play trading.
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=29
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=29
+      x-rate-limit: This interface is limited to 10 seconds/call;
+      x-recommended-call-frequency: 1 minute/call
+      x-plan-products:
+      - Odds
+      x-doc-modified: '2026-07-16'
+  /sport/basketball/odds/fulltime/changes:
+    get:
+      operationId: getBasketballOddsFulltimeChanges
+      summary: Live Odds Changes
+      description: "• This API endpoint returns changes to basketball odds — Spread, Money Line, and Total — within the last 30 seconds. \n\n\n\n• This is a delta feed of the Pre-match and In-play Odds endpoint; use that endpoint to obtain the full current odds snapshot, and use this endpoint to track what has changed since the last update."
+      tags:
+      - Basketball Odds
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        spread:
+                          type: object
+                          description: Each string contains all parameters below, separated by comma.
+                          properties:
+                            matchId:
+                              type: string
+                              description: Unique ID of the match.
+                            companyId:
+                              type: string
+                              description: "Company id for Spread: \n 1: Macauslot\n 2: Easybets\n 3: Crown\n 8: Bet365\n 9: Vcbet\n 10: William Hill\n 19: Interwetten\n 20: Ladbrokes\n 31: Sbobet\n 24: 12bet\n 30: China Sports Lottery\n 49: BWin"
+                            instantHandicap:
+                              type: string
+                              description: Current Asian Handicap line.
+                            instantHome:
+                              type: string
+                              description: Current odds for the home team (Hong Kong Odds).
+                            instantAway:
+                              type: string
+                              description: Current odds for the away team (Hong Kong Odds).
+                            changeTime:
+                              type: integer
+                              description: Time this change occurred (Unix timestamp, GMT+0).
+                        moneyLine:
+                          type: object
+                          description: Each string contains all parameters below, separated by comma.
+                          properties:
+                            matchId:
+                              type: string
+                              description: Unique ID of the match.
+                            companyId:
+                              type: string
+                              description: "Company id for moneyLine: \n 1: Macauslot\n 2: Easybets\n 3: Crown\n 8: Bet365\n 9: Vcbet\n 10: William Hill\n 19: Interwetten\n 20: Ladbrokes\n 31: Sbobet\n 24: 12bet\n 30: China Sports Lottery\n 49: BWin"
+                            instantHome:
+                              type: string
+                              description: Current odds for the home team (Hong Kong Odds).
+                            instantAway:
+                              type: string
+                              description: Current odds for the away team (Hong Kong Odds).
+                            changeTime:
+                              type: integer
+                              description: Time this change occurred (Unix timestamp, GMT+0).
+                        total:
+                          type: object
+                          description: Each string contains all parameters below, separated by comma.
+                          properties:
+                            matchId:
+                              type: string
+                              description: Unique ID of the match.
+                            companyId:
+                              type: string
+                              description: "Company id for total: \n 4: Macauslot\n 5: Easybets\n 6: Crown\n 11: Bet365\n 12: Vcbet\n 13: William Hill\n 22: Interwetten\n 23: Ladbrokes\n 34: Sbobet\n 27:12bet\n 33: China Sports Lottery\n 52: BWin"
+                            instantTotal:
+                              type: string
+                              description: Current Over/Under line.
+                            instantOver:
+                              type: string
+                              description: Current odds for Over (Hong Kong Odds).
+                            instantUnder:
+                              type: string
+                              description: Current odds for Under (Hong Kong Odds).
+                            changeTime:
+                              type: integer
+                              description: Time this change occurred (Unix timestamp, GMT+0).
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=30
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=30
+      x-rate-limit: This interface is limited to 1 second/call;
+      x-recommended-call-frequency: 2 seconds/call
+      x-plan-products:
+      - Odds
+      x-doc-modified: '2026-07-16'
+  /sport/basketball/odds/half:
+    get:
+      operationId: getBasketballOddsHalf
+      summary: Pre-match Odds (Halftime)
+      description: "• This interface returns pre-match odds for the halftime (1st half) Spread and Total markets of basketball matches. Values reflect halftime-specific lines only, not full-match odds.\n\n\n\n• Returns data for all matches that have not yet started, as well as matches currently in play. For matches in play, the instant* fields retain the last pregame value recorded before kickoff and do not update with live/in-play odds movement (see field notes below).\n\n\n\n• Odds type corresponds to company ID and company name:\n\n- Spread/Money Line（1x2 Odds）\n\n 1: Marcauslot；2: Easybet；3: Crown；8: Bet365；9：Vcbet；10： William Hill；19：Interwetten；20：Ladbrokes；31: Sbobet；24: 12bet; 30：China Sports Lottery; 49:BWin；\n\n-Total\n\n 4：Marcauslot；5: Easybet；6：Crown；11:Bet365；12：Vcbet；13： William Hill；22：Interwetten；23：Ladbrokes；34:Sbobet；27:12bet; 33: China Sports Lottery; 52: BWin\n\n\n\n• Note: company ID numbering differs between the Spread and Total sections for the same bookmaker (e.g., Bet365 is 8 for Spread, 11 for Total). Always match the ID against the correct section.\n\n\n\n• By using endpoints <a href=\"/docs.html?id=48\" style=\"color:blue\">Schedule & Results (Basic)\n</a> and <a href=\"/docs.html?id=34\" style=\"color:blue\">Match Modify Record</a>, you can get basic information of matches."
+      tags:
+      - Basketball Odds
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        spread:
+                          type: object
+                          description: Each string contains all parameters below, separated by comma.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "Company id for Spread: \n 1: Macauslot\n 2: Easybets\n 3: Crown\n 8: Bet365\n 9: Vcbet\n 10: William Hill\n 19: Interwetten\n 20: Ladbrokes\n 31: Sbobet\n 24: 12bet\n 30: China Sports Lottery\n 49: BWin"
+                            initialHandicap:
+                              type: string
+                              description: Opening handicap for the halftime spread market. This is the first line posted by the bookmaker for this match and does not change afterward.
+                            initialHome:
+                              type: string
+                              description: Opening odds for the home team, corresponding to initialHandicap.
+                            initialAway:
+                              type: string
+                              description: Opening odds for the away team, corresponding to initialHandicap.
+                            instantHandicap:
+                              type: string
+                              description: "Latest pregame handicap for the halftime spread market. \n\n Reflects the most recent line before kickoff; excludes in-play odds — does not update once the match is live."
+                            instantHome:
+                              type: string
+                              description: Latest pregame odds for the home team, excluding in-play odds.
+                            instantAway:
+                              type: string
+                              description: Latest pregame odds for the away team, excluding in-play odds.
+                        total:
+                          type: object
+                          description: Each string contains all parameters below, separated by comma.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "Company id for total: \n 4: Macauslot\n 5: Easybets\n 6: Crown\n 11: Bet365\n 12: Vcbet\n 13: William Hill\n 22: Interwetten\n 23: Ladbrokes\n 34: Sbobet\n 27: 12bet\n 33: China Sports Lottery\n 52: BWin"
+                            initialHandicap:
+                              type: string
+                              description: Opening total line (points) for the halftime total market.
+                            initialOver:
+                              type: string
+                              description: Opening odds for Over, corresponding to initialHandicap.
+                            initialUnder:
+                              type: string
+                              description: Opening odds for Under, corresponding to initialHandicap.
+                            instantHandicap:
+                              type: string
+                              description: Latest pregame total line, excluding in-play odds.
+                            instantOver:
+                              type: string
+                              description: Latest pregame odds for Over, excluding in-play odds.
+                            instantUnder:
+                              type: string
+                              description: Latest pregame odds for Under, excluding in-play odds.
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=56
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=56
+      x-rate-limit: This interface is limited to 10 seconds/call;
+      x-recommended-call-frequency: 1 minute/call
+      x-plan-products:
+      - Odds
+      x-doc-modified: '2026-07-03'
+  /sport/basketball/odds/quarter:
+    get:
+      operationId: getBasketballOddsQuarter
+      summary: Pre-match Odds (Quarter)
+      description: "• This interface returns pre-match odds for the Spread and Total markets of each quarter (Q1–Q4) of a basketball match.\n\n\n\n• Returns data for all matches that have not yet started, as well as matches currently in play. All values in this response reflect pregame lines only. In-play/live odds are not included in this endpoint at any point, even after the match or a given quarter has started — this applies to both the initial and non-initial field groups. \n\n\n\n• If you need live/in-play odds (including quarter-level), use our dedicated In-play Odds endpoint (/sport/basketball/odds/inplay), which uses an oddsType field to distinguish Full time / Half time / Q1–Q4.\n\n\n\n• Odds type corresponds to company ID and company name:\n\n- Spread/Money Line（1x2 Odds）\n\n 1: Marcauslot；2: Easybet；3: Crown；8: Bet365；9：Vcbet；10： William Hill；19：Interwetten；20：Ladbrokes；31: Sbobet ；24: 12bet; 30：China Sports Lottery; 49:BWin；\n\n-Total\n\n 4：Marcauslot；5: Easybet；6：Crown；11:Bet365；12：Vcbet；13： William Hill；22：Interwetten；23：Ladbrokes；34:Sbobet；27:12bet; 33: China Sports Lottery; 52: BWin\n\n\n\n• By using endpoints <a href=\"/docs.html?id=48\" style=\"color:blue\">Schedule & Results (Basic)\n</a> and <a href=\"/docs.html?id=34\" style=\"color:blue\">Match Modify Record</a>, you can get basic information of matches."
+      tags:
+      - Basketball Odds
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        spread:
+                          type: object
+                          description: Each string contains all parameters below, separated by comma.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "Company id for Spread: \n 1: Macauslot\n 2: Easybets\n 3: Crown\n 8: Bet365\n 9: Vcbet\n 10: William Hill\n 19: Interwetten\n 20: Ladbrokes\n 31: Sbobet\n 24: 12bet\n 30: China Sports Lottery\n 49: BWin"
+                            firstHandicap:
+                              type: string
+                              description: Latest pregame Q1 handicap and odds, excluding in-play odds. Empty if not yet quoted or not updated since opening.
+                            firstHome:
+                              type: string
+                              description: Latest pregame odds for the home team in Q1, corresponding to firstHandicap. Excludes in-play odds.
+                            firstAway:
+                              type: string
+                              description: Latest pregame odds for the away team in Q1, corresponding to firstHandicap. Excludes in-play odds.
+                            secondHandicap:
+                              type: string
+                              description: Same as above, for Q2.
+                            secondHome:
+                              type: string
+                            secondAway:
+                              type: string
+                            thirdHandicap:
+                              type: string
+                              description: Same as above, for Q3.
+                            thirdHome:
+                              type: string
+                            thirdAway:
+                              type: string
+                            fourthHandicap:
+                              type: string
+                              description: Same as above, for Q4.
+                            fourthHome:
+                              type: string
+                            fourthAway:
+                              type: string
+                            initial firstHandicap:
+                              type: string
+                              description: Opening Q1 handicap and odds. Empty if not yet quoted.
+                            initial firstHome:
+                              type: string
+                              description: Opening odds for the home team in Q1, corresponding to initial firstHandicap.
+                            initial firstAway:
+                              type: string
+                              description: Opening odds for the away team in Q1, corresponding to initial firstHandicap.
+                            initial secondHandicap:
+                              type: string
+                              description: Same as above, for Q2.
+                            initial secondHome:
+                              type: string
+                            initial secondAway:
+                              type: string
+                            initial thirdHandicap:
+                              type: string
+                              description: Same as above, for Q3.
+                            initial thirdHome:
+                              type: string
+                            initial thirdAway:
+                              type: string
+                            initial fourthHandicap:
+                              type: string
+                              description: Same as above, for Q4.
+                            initial fourthHome:
+                              type: string
+                            initial fourthAway:
+                              type: string
+                        total:
+                          type: object
+                          description: Each string contains all parameters below, separated by comma.
+                          properties:
+                            matchId:
+                              type: string
+                              description: Unique ID of the match.
+                            companyId:
+                              type: string
+                              description: "Company id for total: \n 4: Macauslot\n 5: Easybets\n 6: Crown\n 11: Bet365\n 12: Vcbet\n 13: William Hill\n 22: Interwetten\n 23: Ladbrokes\n 34: Sbobet\n 27: 12bet\n 33: China Sports Lottery\n 52: BWin"
+                            firstHandicap:
+                              type: string
+                              description: Latest pregame Q1 total line and odds, excluding in-play odds. Empty if not yet quoted or not updated since opening.
+                            firstOver:
+                              type: string
+                              description: Latest pregame odds for Over in Q1, corresponding to firstHandicap. Excludes in-play odds.
+                            firstUnder:
+                              type: string
+                              description: Latest pregame odds for Under in Q1, corresponding to firstHandicap. Excludes in-play odds.
+                            secondHandicap:
+                              type: string
+                              description: Same as above, for Q2.
+                            secondOver:
+                              type: string
+                            secondUnder:
+                              type: string
+                            thirdHandicap:
+                              type: string
+                              description: Same as above, for Q3.
+                            thirdOver:
+                              type: string
+                            thirdUnder:
+                              type: string
+                            fourthHandicap:
+                              type: string
+                              description: Same as above, for Q4.
+                            fourthOver:
+                              type: string
+                            fourthUnder:
+                              type: string
+                            initial firstHandicap:
+                              type: string
+                              description: Opening Q1 total line and odds. Empty if not yet quoted.
+                            initial firstOver:
+                              type: string
+                              description: Opening odds for Over in Q1, corresponding to initial firstHandicap.
+                            initial firstUnder:
+                              type: string
+                              description: Opening odds for Under in Q1, corresponding to initial firstHandicap.
+                            initial secondHandicap:
+                              type: string
+                              description: Same as above, for Q2.
+                            initial secondOver:
+                              type: string
+                            initial secondUnder:
+                              type: string
+                            initial thirdHandicap:
+                              type: string
+                              description: Same as above, for Q3.
+                            initial thirdOver:
+                              type: string
+                            initial thirdUnder:
+                              type: string
+                            initial fourthHandicap:
+                              type: string
+                              description: Same as above, for Q4.
+                            initial fourthOver:
+                              type: string
+                            initial fourthUnder:
+                              type: string
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=57
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=57
+      x-rate-limit: This interface is limited to 10 seconds/call;
+      x-recommended-call-frequency: 1 minute/call
+      x-plan-products:
+      - Odds
+      x-doc-modified: '2026-07-16'
+  /sport/basketball/odds/history:
+    get:
+      operationId: getBasketballOddsHistory
+      summary: Historical Odds
+      description: "• This interface returns history odds of basketball match of specified date(GMT +0 0:00-23:59), including Spread, Money Line, Total.\n\n\n\n• Odds type corresponds to company ID and company name:\n\n- Spread/Money Line（1x2 Odds）\n\n 1:Marcauslot；2:Easybet；3:Crown；8:Bet365；9:Vcbet；10：William Hill；19：Interwetten；20：Ladbrokes；31:Sbobet;24: 12bet; 30：China Sports Lottery; 49:BWin.\n\n- Total\n\n 4：Marcauslot；5: Easybet；6：Crown；11:Bet365；12：Vcbet；13： William Hill；22：Interwetten；23：Ladbrokes；34:Sbobet；27:12bet; 33: China Sports Lottery; 52: BWin"
+      tags:
+      - Basketball Odds
+      parameters:
+      - name: date
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Returns historical odds for the specified date (up to three months ago). Format yyyy-MM-dd.
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        spread:
+                          type: object
+                          description: Each string contains all parameters below, separated by comma.
+                          properties:
+                            matchId:
+                              type: string
+                              description: Unique ID of the match.
+                            companyId:
+                              type: string
+                              description: "Company id for Spread: \n 1: Macauslot\n 2: Easybets\n 3: Crown\n 8: Bet365\n 9: Vcbet\n 10: William Hill\n 19: Interwetten\n 20: Ladbrokes\n 31: Sbobet\n 24: 12bet\n 30: China Sports Lottery\n 49: BWin"
+                            initialHandicap:
+                              type: string
+                              description: Opening Asian Handicap line.
+                            initialHome:
+                              type: string
+                              description: Opening odds for the home team (Hong Kong Odds).
+                            initialAway:
+                              type: string
+                              description: Opening odds for the away team (Hong Kong Odds).
+                            lastHandicap:
+                              type: string
+                              description: Closing Asian Handicap line (the last line recorded before the match).
+                            lastHome:
+                              type: string
+                              description: Closing odds for the home team (Hong Kong Odds).
+                            lastAway:
+                              type: string
+                              description: Closing odds for the away team (Hong Kong Odds).
+                        moneyLine:
+                          type: object
+                          description: Each string contains all parameters below, separated by comma.
+                          properties:
+                            matchId:
+                              type: string
+                              description: Unique ID of the match.
+                            companyId:
+                              type: string
+                              description: "Company id for moneyLine: \n 1: Macauslot\n 2: Easybets\n 3: Crown\n 8: Bet365\n 9: Vcbet\n 10: William Hill\n 19: Interwetten\n 20: Ladbrokes\n 31: Sbobet\n 24: 12bet\n 30: China Sports Lottery\n 49: BWin"
+                            initialHome:
+                              type: string
+                              description: Opening odds for the home team (Hong Kong Odds).
+                            initialAway:
+                              type: string
+                              description: Opening odds for the away team (Hong Kong Odds).
+                            lastHome:
+                              type: string
+                              description: Closing odds for the home team (Hong Kong Odds).
+                            lastAway:
+                              type: string
+                              description: Closing odds for the away team (Hong Kong Odds).
+                        total:
+                          type: object
+                          description: Each string contains all parameters below, separated by comma.
+                          properties:
+                            matchId:
+                              type: string
+                              description: Unique ID of the match.
+                            companyId:
+                              type: string
+                              description: "Company id for total: \n 4: Macauslot\n 5: Easybets\n 6: Crown\n 11: Bet365\n 12: Vcbet\n 13: William Hill\n 22: Interwetten\n 23: Ladbrokes\n 34: Sbobet\n 27: 12bet\n 33: China Sports Lottery\n 52: BWin"
+                            initialHandicap:
+                              type: string
+                              description: Opening Over/Under line.
+                            initialOver:
+                              type: string
+                              description: Opening odds for Over (Hong Kong Odds).
+                            initialUnder:
+                              type: string
+                              description: Opening odds for Under (Hong Kong Odds).
+                            lastHandicap:
+                              type: string
+                              description: Closing Over/Under line (the last line recorded before the match).
+                            lastOver:
+                              type: string
+                              description: Closing odds for Over (Hong Kong Odds).
+                            lastUnder:
+                              type: string
+                              description: Closing odds for Under (Hong Kong Odds).
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=58
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=58
+      x-rate-limit: This interface is limited to 60 seconds/call;
+      x-recommended-call-frequency: 15 minutes/call
+      x-plan-products:
+      - Odds
+      x-doc-modified: '2026-07-16'
+  /sport/basketball/odds/european/all:
+    get:
+      operationId: getBasketballOddsEuropeanAll
+      summary: Money Line (80+ bookmakers)
+      description: '• This API endpoint returns Money Line odds from nearly 100 international bookmakers, along with basic match information (matchId, matchTime, league, and team names) — no need to call Schedule & Results separately for this endpoint.
+
+
+
+
+        • Parameter
+
+
+        -No parameters: returns all odds for today (GMT+0 00:00–23:59).
+
+
+        -day=n: returns all odds for the next n days from now (maximum 3).
+
+
+        -date=yyyy-MM-dd: returns all odds for the specified date. Supports querying up to the next 10 days.
+
+
+        -min=5: returns odds that changed within the last 5 minutes (recommended for tracking updates).
+
+
+
+
+        • Win rate and return rate calculation method:
+
+
+        - Return rate = (float)Math.Round(1 / (1/home odds + 1/away odds) * 100, 2);
+
+
+        - Home team win rate = (float)Math.Round((1/home odds) / (1/home odds + 1/away odds) * 100, 2);
+
+
+        - Away team win rate = (float)Math.Round((1/away odds) / (1/home odds + 1/away odds) * 100, 2);
+
+
+        (Note: The win rate can also be simply calculated as Return rate / odds)
+
+
+
+
+        • For a visual reference of this data, see: https://www.goaloo.com/basketball/women%E2%80%99s-national-basketball-association-dallas-wings-vs-new-york-liberty/1x2-705113'
+      tags:
+      - Basketball Odds
+      parameters:
+      - name: day
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Returns odds for all matches from today through the specified number of days into the future. Maximum 3.
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: "Returns odds for all matches on the specified date. Format yyyy-MM-dd. \n\n\n\nSupports querying up to the next 10 days."
+      - name: min
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Returns odds that were updated within the specified number of minutes.
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                          description: Unique ID of the match.
+                        matchTime:
+                          type: integer
+                          description: Match scheduled time (Unix timestamp, GMT+0).
+                        leagueName:
+                          type: string
+                          description: Name of the league.
+                        homeName:
+                          type: string
+                          description: Name of the home team.
+                        awayName:
+                          type: string
+                          description: Name of the away team.
+                        odds:
+                          type: array
+                          description: List of odds records from different bookmakers for this match.
+                          items:
+                            type: object
+                            properties:
+                              oddsId:
+                                type: string
+                                description: Unique ID of this odds record.
+                              changeTime:
+                                type: integer
+                                description: Time this odds record was last updated (Unix timestamp, GMT+0).
+                              oddsDetail:
+                                type: object
+                                description: Each string contains all parameters below, separated by comma.
+                                properties:
+                                  companyId:
+                                    type: string
+                                    description: Bookmaker ID.
+                                  companyName:
+                                    type: string
+                                    description: Name of the bookmaker.
+                                  initialHome:
+                                    type: string
+                                    description: Opening odds for the home team (Hong Kong Odds).
+                                  initialAway:
+                                    type: string
+                                    description: Opening odds for the away team (Hong Kong Odds).
+                                  instantHome:
+                                    type: string
+                                    description: Current odds for the home team (Hong Kong Odds).
+                                  instantAway:
+                                    type: string
+                                    description: Current odds for the away team (Hong Kong Odds).
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=59
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=59
+      x-rate-limit: This interface is limited to 60 seconds/call;
+      x-recommended-call-frequency: 90 seconds/call
+      x-plan-products:
+      - Odds
+      x-doc-modified: '2026-07-20'
+  /sport/basketball/odds/inplay:
+    get:
+      operationId: getBasketballOddsInplay
+      summary: In-play Odds
+      description: "• This endpoint returns in-play (live) odds for basketball matches, covering the Handicap and Over/Under markets across Full time, Half time, and each individual quarter.\n\n\n\n• By default, returns all odds changes recorded within the past 3 minutes. Use matchId to retrieve the full in-play odds history for a specific match, and/or companyId to filter to one or more bookmakers (e.g. companyId=3,8).\n\n\n\n• Company ID mapping (shared across both Handicap and Over/Under markets — unlike the separate ID sets used in our pregame odds endpoints):\n\n1: Marcauslot；2: Easybet；3: Crown；8: Bet365；9：Vcbet；10： William Hill；19：Interwetten；20：Ladbrokes；31: Sbobet ；24: 12bet; 30：China Sports Lottery; 49:BWin \n\n\n\n• Not every record carries an odds value. Records with type=4 or type=5 indicate that a bookmaker has closed/suspended the Handicap or Over/Under market for that stage of the match — odds1/odds2/odds3 will always be 0 in this case. See the type field description below for how to interpret each record.\n\n\n\n• This endpoint returns in-play data only. For pregame odds, see Pre-match Odds (Halftime) and Pre-match Odds (Quarter)."
+      tags:
+      - Basketball Odds
+      parameters:
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Returns in-play odds for the specified match only. If omitted, returns odds changes for all matches within the past 3 minutes.
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filters results to the specified bookmaker(s). Use a comma to separate multiple IDs, e.g. companyId=3,8. If omitted, returns odds from all bookmakers.
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        recordId:
+                          type: string
+                          description: Unique ID for this odds record.
+                        matchId:
+                          type: string
+                        matchTime:
+                          type: string
+                          description: "Match clock at the moment this odds record was captured, formatted as <period> <mm:ss>. \n\n Period is 1st/2nd/3rd/4th (quarter), HT (Half-time), or OT (Overtime); mm:ss is elapsed time within that period."
+                        homeScore:
+                          type: integer
+                          description: Home team score at the time of this odds record.
+                        awayScore:
+                          type: integer
+                          description: Away team score at the time of this odds record.
+                        type:
+                          type: integer
+                          description: "Market type: \n 1=Handicap, \n 2=Over/Under, \n 4=Handicap Closing, \n 5=Over/Under Closing. \n\n 4 and 5 mark that this market has been closed/suspended by the bookmaker — these records do not carry odds values (see odds1/odds2/odds3 below). Determines how to read odds1/odds2/odds3."
+                        companyId:
+                          type: string
+                          description: "1: Macauslot\n 2: Easybets\n 3: Crown\n 8: Bet365\n 9: Vcbet\n 10: William Hill\n 19: Interwetten\n 20: Ladbrokes\n 31: Sbobet\n 24: 12bet\n 30: China Sports Lottery\n 49: BWin"
+                        odds1:
+                          type: string
+                          description: "If type=1: home team odds. \n If type=2: Over odds.\n If type=4 or 5: always 0 — the market is closed, no odds value applies."
+                        odds2:
+                          type: string
+                          description: "If type=1: the handicap line. \n If type=2: the total (points) line. \n If type=4 or 5: always 0."
+                        odds3:
+                          type: string
+                          description: "If type=1: away team odds. \n If type=2: Under odds. \n If type=4 or 5: always 0."
+                        oddsType:
+                          type: integer
+                          description: "Match stage this record belongs to: \n 6=Full time, \n 3=Half time, \n 1=Q1, 2=Q2, 4=Q3, 5=Q4."
+                        changeTime:
+                          type: integer
+                          description: Unix timestamp of when this odds change occurred.
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=244
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=244
+      x-rate-limit: This interface is limited to 3 seconds/call;
+      x-recommended-call-frequency: 15 seconds/call
+      x-plan-products:
+      - Odds
+      x-doc-modified: '2026-07-03'
+components:
+  securitySchemes:
+    apiKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key
+      description: Personal API key issued from the iSports account settings page and passed on every request as the `api_key` query parameter.
+externalDocs:
+  description: iSports API documentation
+  url: https://www.isportsapi.com/en/docs.html

@@ -1,0 +1,140 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "iSports Football Multiple languages API",
+    "version": "2026-08-09"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Football Multiple languages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Thai",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/languageth",
+            "params": [
+              {
+                "name": "sport",
+                "value": "",
+                "type": "query",
+                "description": "Sport type. Currently only football is supported."
+              }
+            ]
+          },
+          "docs": "**Thai** (sport=football)\n\nThis API endpoint returns Thai language translations for league and cup names, country names, team names, and player names.\n\n**Thai** (sport=basketball)\n\nThis API endpoint returns Thai language translations for league and cup names, country names, team names, and player names."
+        },
+        {
+          "info": {
+            "name": "Vietnamese",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/languagevn",
+            "params": [
+              {
+                "name": "sport",
+                "value": "",
+                "type": "query",
+                "description": "Sport type. Currently only football is supported."
+              }
+            ]
+          },
+          "docs": "**Vietnamese** (sport=football)\n\nThis API endpoint returns Vietnamese language translations for league and cup names, country names, team names, and player names.\n\n**Vietnamese** (sport=basketball)\n\nThis API endpoint returns Vietnamese language translations for league and cup names, country names, team names, and player names."
+        },
+        {
+          "info": {
+            "name": "Indonesian",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/languageidn",
+            "params": [
+              {
+                "name": "sport",
+                "value": "",
+                "type": "query",
+                "description": "Sport type. Currently only football is supported."
+              }
+            ]
+          },
+          "docs": "**Indonesian** (sport=football)\n\nThis API endpoint returns Indonesian language translations for league and cup names, country names, team names, and player names.\n\n**Indonesian** (sport=basketball)\n\nThis API endpoint returns Indonesian language translations for league and cup names, country names, team names, and player names."
+        },
+        {
+          "info": {
+            "name": "Korean",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/languagekr",
+            "params": [
+              {
+                "name": "sport",
+                "value": "",
+                "type": "query",
+                "description": "Sport type. Currently only football is supported."
+              }
+            ]
+          },
+          "docs": "**Korean** (sport=football)\n\nThis API endpoint returns Korean language translations for league and cup names, country names, team names, and player names.\n\n**Korean** (sport=basketball)\n\nThis API endpoint returns Korean language translations for league and cup names, country names, team names, and player names."
+        },
+        {
+          "info": {
+            "name": "Portuguese",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/languagebra",
+            "params": [
+              {
+                "name": "sport",
+                "value": "",
+                "type": "query",
+                "description": "Sport type. Currently only football is supported."
+              }
+            ]
+          },
+          "docs": "**Portuguese** (sport=football)\n\nThis API endpoint returns Brazilian Portuguese language translations for league and cup names, country names, team names, and player names.\n\n**Portuguese** (sport=basketball)\n\nThis API endpoint returns Brazilian Portuguese language translations for league and cup names, country names, team names, and player names."
+        },
+        {
+          "info": {
+            "name": "Traditional Chinese",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/languagetc",
+            "params": [
+              {
+                "name": "sport",
+                "value": "",
+                "type": "query",
+                "description": "Sport type. Currently only football is supported."
+              }
+            ]
+          },
+          "docs": "**Traditional Chinese** (sport=football)\n\nThis API endpoint returns Traditional Chinese translations for league and cup names, country names, team names, and player names.\n\n**Traditional Chinese** (sport=basketball)\n\nThis API endpoint returns Traditional Chinese translations for league and cup names, country names, team names, and player names."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

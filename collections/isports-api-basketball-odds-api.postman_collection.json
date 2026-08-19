@@ -1,0 +1,683 @@
+{
+  "item": [
+    {
+      "id": "0f951165-75c4-4c04-939b-a45f3d4e9536",
+      "name": "Basketball Odds",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "007f4a42-8370-4139-b81a-b59943a259d5",
+          "name": "Pre-match and In-play Odds",
+          "request": {
+            "name": "Pre-match and In-play Odds",
+            "description": {
+              "content": "• This API endpoint returns basketball odds for Spread, Money Line, and Total markets, covering all upcoming unplayed matches and matches currently in play.\n\n\n\n• Odds type corresponds to company ID and company name:\n\n- Spread/Money Line（1x2 Odds）\n\n 1: Marcauslot；2: Easybet；3: Crown；8: Bet365；9：Vcbet；10： William Hill；19：Interwetten；20：Ladbrokes；31: Sbobet ；24: 12bet; 30：China Sports Lottery; 49:BWin \n\n- Total\n\n 4：Marcauslot；5: Easybet；6：Crown；11:Bet365；12：Vcbet；13： William Hill；22：Interwetten；23：Ladbrokes；34:Sbobet；27:12bett; 33: China Sports Lottery; 52: BWin\n\n\n\n• By using endpoints <a href=\"/docs.html?id=48\" style=\"color:blue\">Schedule & Results (Basic)\n</a> and <a href=\"/docs.html?id=34\" style=\"color:blue\">Match Modify Record</a>, you can get basic information of matches.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "basketball",
+                "odds",
+                "fulltime"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f77c1b83-eebb-4aec-9bdd-9212b2733ad4",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "basketball",
+                    "odds",
+                    "fulltime"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7857,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"spread\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"inPlayHandicap\": \"string\",\n        \"inPlayHome\": \"string\",\n        \"inPlayAway\": \"string\"\n      },\n      \"moneyLine\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\"\n      },\n      \"total\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialTotal\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"instantTotal\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"inPlayTotal\": \"string\",\n        \"inPlayOver\": \"string\",\n        \"inPlayUnder\": \"string\"\n      }\n    },\n    {\n      \"spread\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"inPlayHandicap\": \"string\",\n        \"inPlayHome\": \"string\",\n        \"inPlayAway\": \"string\"\n      },\n      \"moneyLine\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\"\n      },\n      \"total\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialTotal\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"instantTotal\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"inPlayTotal\": \"string\",\n        \"inPlayOver\": \"string\",\n        \"inPlayUnder\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d3d30b1e-4fa2-4da4-b832-6733161aa2af",
+          "name": "Live Odds Changes",
+          "request": {
+            "name": "Live Odds Changes",
+            "description": {
+              "content": "• This API endpoint returns changes to basketball odds — Spread, Money Line, and Total — within the last 30 seconds. \n\n\n\n• This is a delta feed of the Pre-match and In-play Odds endpoint; use that endpoint to obtain the full current odds snapshot, and use this endpoint to track what has changed since the last update.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "basketball",
+                "odds",
+                "fulltime",
+                "changes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd261fbd-5b78-43b6-b7ff-06e4320487ec",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "basketball",
+                    "odds",
+                    "fulltime",
+                    "changes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4758,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"spread\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"changeTime\": 1642\n      },\n      \"moneyLine\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"changeTime\": 875\n      },\n      \"total\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"instantTotal\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"changeTime\": 988\n      }\n    },\n    {\n      \"spread\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"changeTime\": 7593\n      },\n      \"moneyLine\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"changeTime\": 4557\n      },\n      \"total\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"instantTotal\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"changeTime\": 3361\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff618394-27b0-4fbb-9e8b-bf3cbdb8bafc",
+          "name": "Pre-match Odds (Halftime)",
+          "request": {
+            "name": "Pre-match Odds (Halftime)",
+            "description": {
+              "content": "• This interface returns pre-match odds for the halftime (1st half) Spread and Total markets of basketball matches. Values reflect halftime-specific lines only, not full-match odds.\n\n\n\n• Returns data for all matches that have not yet started, as well as matches currently in play. For matches in play, the instant* fields retain the last pregame value recorded before kickoff and do not update with live/in-play odds movement (see field notes below).\n\n\n\n• Odds type corresponds to company ID and company name:\n\n- Spread/Money Line（1x2 Odds）\n\n 1: Marcauslot；2: Easybet；3: Crown；8: Bet365；9：Vcbet；10： William Hill；19：Interwetten；20：Ladbrokes；31: Sbobet；24: 12bet; 30：China Sports Lottery; 49:BWin；\n\n-Total\n\n 4：Marcauslot；5: Easybet；6：Crown；11:Bet365；12：Vcbet；13： William Hill；22：Interwetten；23：Ladbrokes；34:Sbobet；27:12bet; 33: China Sports Lottery; 52: BWin\n\n\n\n• Note: company ID numbering differs between the Spread and Total sections for the same bookmaker (e.g., Bet365 is 8 for Spread, 11 for Total). Always match the ID against the correct section.\n\n\n\n• By using endpoints <a href=\"/docs.html?id=48\" style=\"color:blue\">Schedule & Results (Basic)\n</a> and <a href=\"/docs.html?id=34\" style=\"color:blue\">Match Modify Record</a>, you can get basic information of matches.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "basketball",
+                "odds",
+                "half"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7a0bdbd0-5fe8-4489-b154-1cd66eb9eacf",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "basketball",
+                    "odds",
+                    "half"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 656,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"spread\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\"\n      },\n      \"total\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\"\n      }\n    },\n    {\n      \"spread\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\"\n      },\n      \"total\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cc93e652-88f6-478e-8306-af3a74569ae1",
+          "name": "Pre-match Odds (Quarter)",
+          "request": {
+            "name": "Pre-match Odds (Quarter)",
+            "description": {
+              "content": "• This interface returns pre-match odds for the Spread and Total markets of each quarter (Q1–Q4) of a basketball match.\n\n\n\n• Returns data for all matches that have not yet started, as well as matches currently in play. All values in this response reflect pregame lines only. In-play/live odds are not included in this endpoint at any point, even after the match or a given quarter has started — this applies to both the initial and non-initial field groups. \n\n\n\n• If you need live/in-play odds (including quarter-level), use our dedicated In-play Odds endpoint (/sport/basketball/odds/inplay), which uses an oddsType field to distinguish Full time / Half time / Q1–Q4.\n\n\n\n• Odds type corresponds to company ID and company name:\n\n- Spread/Money Line（1x2 Odds）\n\n 1: Marcauslot；2: Easybet；3: Crown；8: Bet365；9：Vcbet；10： William Hill；19：Interwetten；20：Ladbrokes；31: Sbobet ；24: 12bet; 30：China Sports Lottery; 49:BWin；\n\n-Total\n\n 4：Marcauslot；5: Easybet；6：Crown；11:Bet365；12：Vcbet；13： William Hill；22：Interwetten；23：Ladbrokes；34:Sbobet；27:12bet; 33: China Sports Lottery; 52: BWin\n\n\n\n• By using endpoints <a href=\"/docs.html?id=48\" style=\"color:blue\">Schedule & Results (Basic)\n</a> and <a href=\"/docs.html?id=34\" style=\"color:blue\">Match Modify Record</a>, you can get basic information of matches.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "basketball",
+                "odds",
+                "quarter"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "442c8d96-165a-4d37-814c-931c0e3c32c3",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "basketball",
+                    "odds",
+                    "quarter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7201,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"spread\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"firstHandicap\": \"string\",\n        \"firstHome\": \"string\",\n        \"firstAway\": \"string\",\n        \"secondHandicap\": \"string\",\n        \"secondHome\": \"string\",\n        \"secondAway\": \"string\",\n        \"thirdHandicap\": \"string\",\n        \"thirdHome\": \"string\",\n        \"thirdAway\": \"string\",\n        \"fourthHandicap\": \"string\",\n        \"fourthHome\": \"string\",\n        \"fourthAway\": \"string\",\n        \"initial firstHandicap\": \"string\",\n        \"initial firstHome\": \"string\",\n        \"initial firstAway\": \"string\",\n        \"initial secondHandicap\": \"string\",\n        \"initial secondHome\": \"string\",\n        \"initial secondAway\": \"string\",\n        \"initial thirdHandicap\": \"string\",\n        \"initial thirdHome\": \"string\",\n        \"initial thirdAway\": \"string\",\n        \"initial fourthHandicap\": \"string\",\n        \"initial fourthHome\": \"string\",\n        \"initial fourthAway\": \"string\"\n      },\n      \"total\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"firstHandicap\": \"string\",\n        \"firstOver\": \"string\",\n        \"firstUnder\": \"string\",\n        \"secondHandicap\": \"string\",\n        \"secondOver\": \"string\",\n        \"secondUnder\": \"string\",\n        \"thirdHandicap\": \"string\",\n        \"thirdOver\": \"string\",\n        \"thirdUnder\": \"string\",\n        \"fourthHandicap\": \"string\",\n        \"fourthOver\": \"string\",\n        \"fourthUnder\": \"string\",\n        \"initial firstHandicap\": \"string\",\n        \"initial firstOver\": \"string\",\n        \"initial firstUnder\": \"string\",\n        \"initial secondHandicap\": \"string\",\n        \"initial secondOver\": \"string\",\n        \"initial secondUnder\": \"string\",\n        \"initial thirdHandicap\": \"string\",\n        \"initial thirdOver\": \"string\",\n        \"initial thirdUnder\": \"string\",\n        \"initial fourthHandicap\": \"string\",\n        \"initial fourthOver\": \"string\",\n        \"initial fourthUnder\": \"string\"\n      }\n    },\n    {\n      \"spread\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"firstHandicap\": \"string\",\n        \"firstHome\": \"string\",\n        \"firstAway\": \"string\",\n        \"secondHandicap\": \"string\",\n        \"secondHome\": \"string\",\n        \"secondAway\": \"string\",\n        \"thirdHandicap\": \"string\",\n        \"thirdHome\": \"string\",\n        \"thirdAway\": \"string\",\n        \"fourthHandicap\": \"string\",\n        \"fourthHome\": \"string\",\n        \"fourthAway\": \"string\",\n        \"initial firstHandicap\": \"string\",\n        \"initial firstHome\": \"string\",\n        \"initial firstAway\": \"string\",\n        \"initial secondHandicap\": \"string\",\n        \"initial secondHome\": \"string\",\n        \"initial secondAway\": \"string\",\n        \"initial thirdHandicap\": \"string\",\n        \"initial thirdHome\": \"string\",\n        \"initial thirdAway\": \"string\",\n        \"initial fourthHandicap\": \"string\",\n        \"initial fourthHome\": \"string\",\n        \"initial fourthAway\": \"string\"\n      },\n      \"total\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"firstHandicap\": \"string\",\n        \"firstOver\": \"string\",\n        \"firstUnder\": \"string\",\n        \"secondHandicap\": \"string\",\n        \"secondOver\": \"string\",\n        \"secondUnder\": \"string\",\n        \"thirdHandicap\": \"string\",\n        \"thirdOver\": \"string\",\n        \"thirdUnder\": \"string\",\n        \"fourthHandicap\": \"string\",\n        \"fourthOver\": \"string\",\n        \"fourthUnder\": \"string\",\n        \"initial firstHandicap\": \"string\",\n        \"initial firstOver\": \"string\",\n        \"initial firstUnder\": \"string\",\n        \"initial secondHandicap\": \"string\",\n        \"initial secondOver\": \"string\",\n        \"initial secondUnder\": \"string\",\n        \"initial thirdHandicap\": \"string\",\n        \"initial thirdOver\": \"string\",\n        \"initial thirdUnder\": \"string\",\n        \"initial fourthHandicap\": \"string\",\n        \"initial fourthOver\": \"string\",\n        \"initial fourthUnder\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8d79b7ba-950f-4494-b696-33f0a299851f",
+          "name": "Historical Odds",
+          "request": {
+            "name": "Historical Odds",
+            "description": {
+              "content": "• This interface returns history odds of basketball match of specified date(GMT +0 0:00-23:59), including Spread, Money Line, Total.\n\n\n\n• Odds type corresponds to company ID and company name:\n\n- Spread/Money Line（1x2 Odds）\n\n 1:Marcauslot；2:Easybet；3:Crown；8:Bet365；9:Vcbet；10：William Hill；19：Interwetten；20：Ladbrokes；31:Sbobet;24: 12bet; 30：China Sports Lottery; 49:BWin.\n\n- Total\n\n 4：Marcauslot；5: Easybet；6：Crown；11:Bet365；12：Vcbet；13： William Hill；22：Interwetten；23：Ladbrokes；34:Sbobet；27:12bet; 33: China Sports Lottery; 52: BWin",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "basketball",
+                "odds",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<string>",
+                  "description": "(Required) Returns historical odds for the specified date (up to three months ago). Format yyyy-MM-dd."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f8d326b9-de34-4f6c-baa8-0e8519de561d",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "basketball",
+                    "odds",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4096,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"spread\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"lastHandicap\": \"string\",\n        \"lastHome\": \"string\",\n        \"lastAway\": \"string\"\n      },\n      \"moneyLine\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"lastHome\": \"string\",\n        \"lastAway\": \"string\"\n      },\n      \"total\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"lastHandicap\": \"string\",\n        \"lastOver\": \"string\",\n        \"lastUnder\": \"string\"\n      }\n    },\n    {\n      \"spread\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"lastHandicap\": \"string\",\n        \"lastHome\": \"string\",\n        \"lastAway\": \"string\"\n      },\n      \"moneyLine\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"lastHome\": \"string\",\n        \"lastAway\": \"string\"\n      },\n      \"total\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"lastHandicap\": \"string\",\n        \"lastOver\": \"string\",\n        \"lastUnder\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ef0e52ae-6aa8-44cd-bd35-2b50a266dc43",
+          "name": "Money Line (80+ bookmakers)",
+          "request": {
+            "name": "Money Line (80+ bookmakers)",
+            "description": {
+              "content": "• This API endpoint returns Money Line odds from nearly 100 international bookmakers, along with basic match information (matchId, matchTime, league, and team names) — no need to call Schedule & Results separately for this endpoint.\n\n\n\n• Parameter\n\n-No parameters: returns all odds for today (GMT+0 00:00–23:59).\n\n-day=n: returns all odds for the next n days from now (maximum 3).\n\n-date=yyyy-MM-dd: returns all odds for the specified date. Supports querying up to the next 10 days.\n\n-min=5: returns odds that changed within the last 5 minutes (recommended for tracking updates).\n\n\n\n• Win rate and return rate calculation method:\n\n- Return rate = (float)Math.Round(1 / (1/home odds + 1/away odds) * 100, 2);\n\n- Home team win rate = (float)Math.Round((1/home odds) / (1/home odds + 1/away odds) * 100, 2);\n\n- Away team win rate = (float)Math.Round((1/away odds) / (1/home odds + 1/away odds) * 100, 2);\n\n(Note: The win rate can also be simply calculated as Return rate / odds)\n\n\n\n• For a visual reference of this data, see: https://www.goaloo.com/basketball/women%E2%80%99s-national-basketball-association-dallas-wings-vs-new-york-liberty/1x2-705113",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "basketball",
+                "odds",
+                "european",
+                "all"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "day",
+                  "value": "<string>",
+                  "description": "Returns odds for all matches from today through the specified number of days into the future. Maximum 3."
+                },
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<string>",
+                  "description": "Returns odds for all matches on the specified date. Format yyyy-MM-dd. \n\n\n\nSupports querying up to the next 10 days."
+                },
+                {
+                  "disabled": false,
+                  "key": "min",
+                  "value": "<string>",
+                  "description": "Returns odds that were updated within the specified number of minutes."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ff39018f-1812-41b9-848d-a5b65ae8c8bb",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "basketball",
+                    "odds",
+                    "european",
+                    "all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "day",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "min",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9977,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"matchTime\": 4575,\n      \"leagueName\": \"string\",\n      \"homeName\": \"string\",\n      \"awayName\": \"string\",\n      \"odds\": [\n        {\n          \"oddsId\": \"string\",\n          \"changeTime\": 1447,\n          \"oddsDetail\": {\n            \"companyId\": \"string\",\n            \"companyName\": \"string\",\n            \"initialHome\": \"string\",\n            \"initialAway\": \"string\",\n            \"instantHome\": \"string\",\n            \"instantAway\": \"string\"\n          }\n        },\n        {\n          \"oddsId\": \"string\",\n          \"changeTime\": 2791,\n          \"oddsDetail\": {\n            \"companyId\": \"string\",\n            \"companyName\": \"string\",\n            \"initialHome\": \"string\",\n            \"initialAway\": \"string\",\n            \"instantHome\": \"string\",\n            \"instantAway\": \"string\"\n          }\n        }\n      ]\n    },\n    {\n      \"matchId\": \"string\",\n      \"matchTime\": 2989,\n      \"leagueName\": \"string\",\n      \"homeName\": \"string\",\n      \"awayName\": \"string\",\n      \"odds\": [\n        {\n          \"oddsId\": \"string\",\n          \"changeTime\": 3456,\n          \"oddsDetail\": {\n            \"companyId\": \"string\",\n            \"companyName\": \"string\",\n            \"initialHome\": \"string\",\n            \"initialAway\": \"string\",\n            \"instantHome\": \"string\",\n            \"instantAway\": \"string\"\n          }\n        },\n        {\n          \"oddsId\": \"string\",\n          \"changeTime\": 6976,\n          \"oddsDetail\": {\n            \"companyId\": \"string\",\n            \"companyName\": \"string\",\n            \"initialHome\": \"string\",\n            \"initialAway\": \"string\",\n            \"instantHome\": \"string\",\n            \"instantAway\": \"string\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0e2878c-0d12-4cea-9a42-79eb47f1f44d",
+          "name": "In-play Odds",
+          "request": {
+            "name": "In-play Odds",
+            "description": {
+              "content": "• This endpoint returns in-play (live) odds for basketball matches, covering the Handicap and Over/Under markets across Full time, Half time, and each individual quarter.\n\n\n\n• By default, returns all odds changes recorded within the past 3 minutes. Use matchId to retrieve the full in-play odds history for a specific match, and/or companyId to filter to one or more bookmakers (e.g. companyId=3,8).\n\n\n\n• Company ID mapping (shared across both Handicap and Over/Under markets — unlike the separate ID sets used in our pregame odds endpoints):\n\n1: Marcauslot；2: Easybet；3: Crown；8: Bet365；9：Vcbet；10： William Hill；19：Interwetten；20：Ladbrokes；31: Sbobet ；24: 12bet; 30：China Sports Lottery; 49:BWin \n\n\n\n• Not every record carries an odds value. Records with type=4 or type=5 indicate that a bookmaker has closed/suspended the Handicap or Over/Under market for that stage of the match — odds1/odds2/odds3 will always be 0 in this case. See the type field description below for how to interpret each record.\n\n\n\n• This endpoint returns in-play data only. For pregame odds, see Pre-match Odds (Halftime) and Pre-match Odds (Quarter).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "basketball",
+                "odds",
+                "inplay"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Returns in-play odds for the specified match only. If omitted, returns odds changes for all matches within the past 3 minutes."
+                },
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Filters results to the specified bookmaker(s). Use a comma to separate multiple IDs, e.g. companyId=3,8. If omitted, returns odds from all bookmakers."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ee538494-16f2-4752-939b-e1d53bb754d6",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "basketball",
+                    "odds",
+                    "inplay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1845,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"recordId\": \"string\",\n      \"matchId\": \"string\",\n      \"matchTime\": \"string\",\n      \"homeScore\": 5726,\n      \"awayScore\": 1051,\n      \"type\": 5944,\n      \"companyId\": \"string\",\n      \"odds1\": \"string\",\n      \"odds2\": \"string\",\n      \"odds3\": \"string\",\n      \"oddsType\": 9762,\n      \"changeTime\": 1957\n    },\n    {\n      \"recordId\": \"string\",\n      \"matchId\": \"string\",\n      \"matchTime\": \"string\",\n      \"homeScore\": 6649,\n      \"awayScore\": 6430,\n      \"type\": 1399,\n      \"companyId\": \"string\",\n      \"odds1\": \"string\",\n      \"odds2\": \"string\",\n      \"odds3\": \"string\",\n      \"oddsType\": 183,\n      \"changeTime\": 8759\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.isportsapi.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "05ef1c54-13f7-4ec4-bb4a-d74d5f3d99a8",
+    "name": "iSports Basketball Odds API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.\n\nAll operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).\n\nThis document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.\n\nContact Support:\n Name: iSports API",
+      "type": "text/plain"
+    }
+  }
+}

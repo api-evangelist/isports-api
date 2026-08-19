@@ -1,0 +1,576 @@
+openapi: 3.2.0
+info:
+  title: iSports Football Common API API
+  version: '2026-08-09'
+  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.
+
+
+    All operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).
+
+
+    This document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.'
+  termsOfService: https://www.isportsapi.com/en/home/terms.html
+  contact:
+    name: iSports API
+    url: https://www.isportsapi.com/en/
+  x-derived-by: API Evangelist enrichment pipeline
+  x-derived-from: https://www.isportsapi.com/en/docs.html
+  x-derived-on: '2026-08-09'
+servers:
+- url: https://api.isportsapi.com
+  description: Primary API host
+- url: https://api2.isportsapi.com
+  description: Alternate host, documented for when the primary host is slow or unreachable
+security:
+- apiKeyQuery: []
+tags:
+- name: Football Common API
+paths:
+  /sport/football/schedule/modify:
+    get:
+      operationId: getFootballScheduleModify
+      summary: Match Modify Record
+      description: 'This API endpoint returns match deletion and kick-off time modification records from the past 12 hours. You can use it with the <a href="/docs?isportsDocIndex=1-16-41" style="color:blue">Schedule & Results (Basic)</a> endpoint.
+
+
+
+
+        Tips: You have access to all the football Common API endpoints with any valid paid football plans.'
+      tags:
+      - Football Common API
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                        type:
+                          type: string
+                          description: "Modification type \n modify: match kick-off time has been updated \n delete: match has been cancelled/removed"
+                        matchTime:
+                          type: integer
+                          description: "Updated match kick-off time (Unix timestamp, GMT+0). \n Omitted when type is delete"
+                        modifyTime:
+                          type: integer
+                          description: Timestamp of this modification record (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=33
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=33
+      x-rate-limit: This interface is limited to 60 seconds/call;
+      x-recommended-call-frequency: 90 seconds/call
+      x-plan-products:
+      - Live Data
+      - Odds
+      - Odds Pro
+      - Stats
+      x-doc-modified: '2026-06-29'
+  /sport/football/schedule/basic:
+    get:
+      operationId: getFootballScheduleBasic
+      summary: Schedule & Results (Basic)
+      description: 'This API endpoint returns the basic information of the match. If you need more details, please refer to <a target="_blank" href="/docs.html?id=21" style="color:blue">Schedule & Results</a>. You can use it with the <a href="/docs.html?id=33" style="color:blue">Match Modify Record</a> endpoint.
+
+
+
+
+        Tips: You have access to all the football Common API endpoints with any valid paid football plans.
+
+
+        The request path needs at least one parameter (date, leagueId, and matchId ) to retrieve correct response. These three parameters can not be used at the same time.'
+      tags:
+      - Football Common API
+      parameters:
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Match date in yyyy-MM-dd format (GMT+0), e.g. 2026-05-01. Returns all matches on that date. Historical data is limited to the past month.
+      - name: leagueId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter matches by league or cup ID. Returns the current season by default.
+      - name: season
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter by season; must be used with leagueId. e.g. 2025-2026. Defaults to current season if omitted.
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Fetch one or more specific matches by ID. Separate multiple IDs with commas. Maximum 100 IDs per request.
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                        leagueId:
+                          type: string
+                        leagueType:
+                          type: integer
+                          description: '1: League
+
+                            2: Cup'
+                        leagueName:
+                          type: string
+                          description: League or cup full name (English) e.g. English Premier League
+                        leagueShortName:
+                          type: string
+                          description: League or cup short name (English) e.g. ENG PR
+                        leagueColor:
+                          type: string
+                          description: 'League brand color (RGB hex) e.g. #FF3333'
+                        matchTime:
+                          type: integer
+                          description: Match kick-off time (Unix timestamp, GMT+0)
+                        status:
+                          type: integer
+                          description: "0: Not started\n 1: First half\n 2: Half-time break\n 3: Second half\n 4: Extra time\n 5: Penalty\n -1: Finished\n -10: Cancelled\n -11: TBD\n -12: Terminated\n -13: Interrupted\n -14: Postponed"
+                        homeId:
+                          type: string
+                          description: Home team ID
+                        homeName:
+                          type: string
+                          description: Home team name (English)
+                        awayId:
+                          type: string
+                          description: Away team ID
+                        awayName:
+                          type: string
+                          description: Away team name (English)
+                        homeScore:
+                          type: integer
+                          description: Home team full-time goals (default 0)
+                        awayScore:
+                          type: integer
+                          description: Away team full-time goals (default 0)
+                        homeHalfScore:
+                          type: integer
+                          description: Home team first-half goals (default 0)
+                        awayHalfScore:
+                          type: integer
+                          description: Away team first-half goals (default 0)
+                        explain:
+                          type: string
+                          description: Match special remarks (English). e.g. Match ended 0-3; Torpedo-MAZ Minsk withdrew
+                        extraExplain:
+                          type: object
+                          description: Nested object containing extra-time and penalty shootout data. Returns 0 for all fields when not applicable.
+                          properties:
+                            kickOff:
+                              type: integer
+                              description: "Team that took kick-off \n 1: Home \n 2: Away"
+                            minute:
+                              type: integer
+                              description: Minutes played in regular time
+                            homeScore:
+                              type: integer
+                              description: Home team regular time score
+                            awayScore:
+                              type: integer
+                              description: Away team regular time score
+                            extraTimeStatus:
+                              type: integer
+                              description: "0: No extra time \n 1: Extra time ended (regular match; includes regular time score) \n2: Extra time ended (special match e.g. beach/indoor football; excludes regular time score) \n 3: Match currently in extra time"
+                            extraHomeScore:
+                              type: integer
+                              description: Home team extra-time score
+                            extraAwayScore:
+                              type: integer
+                              description: Away team extra-time score
+                            penHomeScore:
+                              type: integer
+                              description: Home team penalty shootout score
+                            penAwayScore:
+                              type: integer
+                              description: Away team penalty shootout score
+                            twoRoundsHomeScore:
+                              type: integer
+                              description: Home team two-legged aggregate score
+                            twoRoundsAwayScore:
+                              type: integer
+                              description: Away team two-legged aggregate score
+                            winner:
+                              type: integer
+                              description: "Match winner (used for knockout/two-legged ties) \n 0: None / not applicable \n1: Home \n 2: Away"
+                        neutral:
+                          type: boolean
+                          description: "Neutral venue flag \n true: Neutral \n false: Home/away fixture"
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=41
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=41
+      x-rate-limit: This interface is limited to 60 seconds/call;
+      x-recommended-call-frequency: 12 hours/call
+      x-plan-products:
+      - Live Data
+      - Odds
+      - Odds Pro
+      - Stats
+      x-doc-modified: '2026-07-15'
+  /sport/football/league/basic:
+    get:
+      operationId: getFootballLeagueBasic
+      summary: League & Cup Profile (Basic)
+      description: 'This API endpoint returns the basic information of leagues and cups. If you need more details, please refer to <a target="_blank" href="/docs.html?id=67" style="color:blue">League & Cup Profile</a>. Click here to view <a target="_blank" href="http://api.isportsapi.com/league.aspx" style="color:blue">2000+ football leagues & cups</a>.
+
+
+
+
+        Tips: You have access to all the football Common API endpoints with any valid paid football plans.'
+      tags:
+      - Football Common API
+      parameters:
+      - name: leagueId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results by a specific league or cup ID. If omitted, all leagues and cups are returned.
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        leagueId:
+                          type: string
+                          description: Unique league or cup ID
+                        name:
+                          type: string
+                          description: Full name (English) e.g. Brazil Serie A
+                        shortName:
+                          type: string
+                          description: Short name (English) e.g. BRA D1
+                        type:
+                          type: integer
+                          description: "Competition type \n 1: League\n 2: Cup"
+                        subLeagueName:
+                          type: string
+                          description: Currently active sub-league name e.g. Western Play-off
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=42
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=42
+      x-rate-limit: This interface is limited to 1,800 seconds/call;
+      x-recommended-call-frequency: 1 day/call
+      x-plan-products:
+      - Live Data
+      - Odds
+      - Odds Pro
+      - Stats
+      x-doc-modified: '2026-06-29'
+  /sport/football/country:
+    get:
+      operationId: getFootballCountry
+      summary: List of Countries
+      description: This API endpoint returns a list of all supported countries and their corresponding country IDs. Use the countryId to filter data in other endpoints such as League & Cup Profile.
+      tags:
+      - Football Common API
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        countryId:
+                          type: integer
+                          description: Unique country ID
+                        country:
+                          type: string
+                          description: Country name (English) e.g. Spain, Germany
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=222
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=222
+      x-rate-limit: This interface is limited to 1,800 seconds/call;
+      x-plan-products:
+      - Live Data
+      - Odds
+      - Odds Pro
+      - Stats
+      x-doc-modified: '2026-06-29'
+  /sport/football/bookmaker:
+    get:
+      operationId: getFootballBookmaker
+      summary: 'Providers for European Markets '
+      description: This API endpoint returns a list of all bookmakers available for European market (1X2) odds data, including their IDs used across different odds APIs. Use companyIdEu with the European Odds (200+ Bookmakers) API, and companyIdMain with the Odds (18 Bookmakers) API.
+      tags:
+      - Football Common API
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        companyIdEu:
+                          type: integer
+                          description: Bookmaker ID used in the European Odds (200+ Bookmakers) API
+                        companyName:
+                          type: string
+                          description: Bookmaker name e.g. Betfair, Vikingbet
+                        companyIdMain:
+                          type: integer
+                          description: Corresponding bookmaker ID in the Odds (18 Bookmakers) and Other Odds APIs. Returns 0 if this bookmaker is not available in those APIs
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=223
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=223
+      x-rate-limit: This interface is limited to 1,800 seconds/call;
+      x-plan-products:
+      - Live Data
+      - Odds
+      - Odds Pro
+      x-doc-modified: '2026-06-29'
+  /sport/football/odds/books:
+    get:
+      operationId: getFootballOddsBooks
+      summary: Providers for Asian Markets
+      description: This API endpoint returns a list of all bookmakers available for Asian handicap, 1X2, and Over/Under odds data. Use companyId with the Odds (18 Bookmakers) API, and europenCompanyId to cross-reference with the European Odds (200+ Bookmakers) API.
+      tags:
+      - Football Common API
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        companyId:
+                          type: integer
+                          description: Bookmaker ID used in the Odds (18 Bookmakers) API
+                        name:
+                          type: string
+                          description: Bookmaker name e.g. Macauslot, Crown
+                        europenCompanyId:
+                          type: integer
+                          description: Corresponding bookmaker ID in the European Odds (200+ Bookmakers) API; cross-references with companyIdEu in the Providers for European Markets endpoint
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=267
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=267
+      x-rate-limit: This interface is limited to 1,800 seconds/call;
+      x-plan-products:
+      - Odds
+      - Odds Pro
+      x-doc-modified: '2026-06-29'
+  /sport/football/team/modify:
+    get:
+      operationId: getFootballTeamModify
+      summary: Team Modify Record
+      description: This API endpoint returns team ID merge and deletion records from the past 7 days. Use this to keep your local team data in sync — when a team is merged, update references to the new ID; when deleted, remove it from your database.
+      tags:
+      - Football Common API
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        data:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                description: Unique record ID
+                              teamId:
+                                type: integer
+                                description: The team ID that was modified (merged or deleted)
+                              type:
+                                type: string
+                                description: "Modification type \n merge: this team has been merged into another team \n delete: this team has been removed"
+                              toTeamId:
+                                type: integer
+                                description: "Target team ID after merge. \n Only present when type is merge; omitted when type is delete"
+                              modifyTime:
+                                type: integer
+                                description: Timestamp of the modification (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=268
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=268
+      x-rate-limit: This interface is limited to 60 minutes/call
+      x-plan-products:
+      - Live Data
+      - Odds
+      - Odds Pro
+      - Stats
+      x-doc-modified: '2026-05-28'
+  /sport/football/player/modify:
+    get:
+      operationId: getFootballPlayerModify
+      summary: Player Modify Record
+      description: This API endpoint returns player ID merge and deletion records from the past 7 days. Use this to keep your local player data in sync — when a player is merged, update references to the new ID; when deleted, remove it from your database.
+      tags:
+      - Football Common API
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        data:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                description: Unique record ID
+                              playerId:
+                                type: integer
+                                description: The player ID that was modified (merged or deleted)
+                              type:
+                                type: string
+                                description: "Modification type \n merge: this player has been merged into another player \n delete: this player has been removed"
+                              toPlayerId:
+                                type: integer
+                                description: "Target player ID after merge. \n Only present when type is merge; omitted when type is delete"
+                              modifyTime:
+                                type: integer
+                                description: Timestamp of the modification (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=269
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=269
+      x-rate-limit: This interface is limited to 60 minutes/call
+      x-plan-products:
+      - Live Data
+      - Odds
+      - Odds Pro
+      - Stats
+      x-doc-modified: '2026-05-28'
+components:
+  securitySchemes:
+    apiKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key
+      description: Personal API key issued from the iSports account settings page and passed on every request as the `api_key` query parameter.
+externalDocs:
+  description: iSports API documentation
+  url: https://www.isportsapi.com/en/docs.html

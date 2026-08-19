@@ -1,0 +1,433 @@
+{
+  "item": [
+    {
+      "id": "9670e02c-9c4f-4ce7-a4fa-c5206ce820f6",
+      "name": "Basketball Stats",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "14d596ab-dea1-46ee-b297-f2a35abb39c4",
+          "name": "League Standing",
+          "request": {
+            "name": "League Standing",
+            "description": {
+              "content": "• This API endpoint returns league standing data for the specified leagueId. \n\n\n\n• By using endpoint <a href=\"/docs.html?id=50\" style=\"color:blue\">League Profile (Basic)\n</a>, you can get basic information of leagues and cups.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "basketball",
+                "standing",
+                "league"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "leagueId",
+                  "value": "<string>",
+                  "description": "(Required) Returns league standing data for the specified league."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "11593777-35f9-4d82-9a54-b9703abdfef0",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "basketball",
+                    "standing",
+                    "league"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "leagueId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8316,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"leagueName\": \"string\",\n      \"teamId\": 4989,\n      \"teamName\": \"string\",\n      \"matchSeason\": \"string\",\n      \"homeWin\": 9018,\n      \"homeLoss\": 6687,\n      \"awayWin\": 817,\n      \"awayLoss\": 2094,\n      \"winScale\": 8726,\n      \"state\": 9489,\n      \"homeRank\": 974,\n      \"awayRank\": 9368,\n      \"totalRank\": 8652,\n      \"homeScore\": 2231,\n      \"homeLossScore\": 3285,\n      \"awayScore\": 3816,\n      \"awayLossScore\": 1310,\n      \"nearlyTenWin\": 8220,\n      \"nearlyTenLoss\": 3167\n    },\n    {\n      \"leagueName\": \"string\",\n      \"teamId\": 6497,\n      \"teamName\": \"string\",\n      \"matchSeason\": \"string\",\n      \"homeWin\": 3574,\n      \"homeLoss\": 6933,\n      \"awayWin\": 7922,\n      \"awayLoss\": 2536,\n      \"winScale\": 4942,\n      \"state\": 6762,\n      \"homeRank\": 7715,\n      \"awayRank\": 2581,\n      \"totalRank\": 8035,\n      \"homeScore\": 4604,\n      \"homeLossScore\": 5529,\n      \"awayScore\": 9749,\n      \"awayLossScore\": 8481,\n      \"nearlyTenWin\": 6692,\n      \"nearlyTenLoss\": 3133\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "761a396c-0179-45bb-b8fc-b362633da270",
+          "name": "Cup Standing",
+          "request": {
+            "name": "Cup Standing",
+            "description": {
+              "content": "• This API endpoint returns standing data for the specified cup, which may cover the group stage or other stages of the cup (e.g. Groups, Quarter Final). \n\n\n\n• By using endpoint <a href=\"/docs.html?id=50\" style=\"color:blue\">League Profile (Basic)\n</a>, you can get basic information of leagues and cups.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "basketball",
+                "standing",
+                "cup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "leagueId",
+                  "value": "<string>",
+                  "description": "(Required) Unique ID of the cup. Despite the parameter name, this refers to a cup's ID rather than a league's ID — use the League&Cups Profile (Basic) endpoint to look up available IDs."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4e11ca21-620f-466e-92ab-050bdc4eac3a",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "basketball",
+                    "standing",
+                    "cup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "leagueId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2315,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"round\": \"string\",\n      \"groupName\": \"string\",\n      \"rank\": 8466,\n      \"teamId\": 3707,\n      \"win\": 1808,\n      \"lose\": 9403,\n      \"totalScore\": 8314,\n      \"totalLoss\": 5889,\n      \"streak\": 8257,\n      \"outLine\": false,\n      \"matchSeason\": \"string\"\n    },\n    {\n      \"round\": \"string\",\n      \"groupName\": \"string\",\n      \"rank\": 6755,\n      \"teamId\": 290,\n      \"win\": 9468,\n      \"lose\": 2097,\n      \"totalScore\": 8698,\n      \"totalLoss\": 3099,\n      \"streak\": 2072,\n      \"outLine\": true,\n      \"matchSeason\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d48741fc-3233-4ac9-9eb9-c2ab7b9dfea3",
+          "name": "Match Stats / Quarters Stats",
+          "request": {
+            "name": "Match Stats / Quarters Stats",
+            "description": {
+              "content": "**Match Stats**\n\n• This API endpoint returns real-time technical statistics for basketball matches (GMT+0 00:00–23:59). \n\nBy default, returns technical statistics for matches within the last 24 hours.\n\n\n\n• Player statistics currently supports NBA, WNBA, CBA, Asociación de Clubes de Baloncesto, Basketball Bundesliga, Ligue Nationale de Basket, Lega Basket Serie A, Euro, Russian Basketball Super League, NBL(A), and Korea Basketball League.\n\n\n\n• By using endpoints <a href=\"/docs.html?id=48\" style=\"color:blue\">Schedule & Results (Basic)\n</a> and <a href=\"/docs.html?id=34\" style=\"color:blue\">Match Modify Record</a>, you can get basic information of matches.\n\n\n\n• The following offensive statistics can be calculated using formulas.\n\n- Free Throws Percentage (FT%) = Free Throws Made / Free Throws Attempts\n\n- 2-Pointers Percentage (2P%) = 2-Pointers Field Goals Made / 2-Pointers Attempts\n\n- 3-Pointers Percentage (3P%) = 3-Pointers Field Goals Made / 3-Pointers Attempts\n\n- Field Goals Percentage (FG%) = Field Goals Made / Field Goals Attempts\n\n- Total Rebounds (Reb) = Defensive Rebounds + Offensive Rebounds\n\n**Quarters Stats** (cmd=stats)\n\n• This API endpoint returns single-quarter statistics for basketball matches, limited to NBA and similar competitions.\n\n\n\n• The following offensive statistics can be calculated using formulas.\n\n- Free Throws Percentage (FT%) = Free Throws Made / Free Throws Attempts\n\n- 2-Pointers Percentage (2P%) = 2-Pointers Field Goals Made / 2-Pointers Attempts\n\n- 3-Pointers Percentage (3P%) = 3-Pointers Field Goals Made / 3-Pointers Attempts\n\n- Field Goals Percentage (FG%) = Field Goals Made / Field Goals Attempts\n\n- Total Rebounds (Reb) = Defensive Rebounds + Offensive Rebounds",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "basketball",
+                "stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<string>",
+                  "description": "Match date, format yyyy-MM-dd, e.g. 2026-07-01. \n\n\n\nOnly the past 7 days can be queried."
+                },
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Returns match stats for the specified match."
+                },
+                {
+                  "disabled": false,
+                  "key": "cmd",
+                  "value": "<string>",
+                  "description": "(Required) Fixed value stats. \n\n\n\nRequired to distinguish this endpoint from Match Stats, which shares the same path."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "88b1acc8-36bd-43c0-b5eb-937e94b47b25",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "basketball",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cmd",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 579,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"homeTeamName\": \"string\",\n      \"awayTeamName\": \"string\",\n      \"costTime\": \"string\",\n      \"homeScore\": 6334,\n      \"homeFastScore\": 3153,\n      \"homeInsideScore\": 3813,\n      \"homeLeadingScore\": 9703,\n      \"homeTotalMiss\": 2151,\n      \"awayScore\": 8967,\n      \"awayFastScore\": 3346,\n      \"awayInsideScore\": 2730,\n      \"awayLeadingScore\": 1970,\n      \"awayTotalMiss\": 3040,\n      \"homePlayers\": [\n        {\n          \"playerId\": \"string\",\n          \"playerName\": \"string\",\n          \"location\": \"string\",\n          \"playingTime\": 8213,\n          \"shootHit\": 5350,\n          \"shoot\": 5666,\n          \"threePointHit\": 2807,\n          \"threePointShot\": 2239,\n          \"penaltyShotHit\": 1340,\n          \"penaltyShot\": 5445,\n          \"attack\": 2397,\n          \"defend\": 9431,\n          \"assist\": 7951,\n          \"foul\": 9420,\n          \"rob\": 13,\n          \"miss\": 5510,\n          \"cover\": 348,\n          \"score\": 7237,\n          \"onFloor\": false\n        },\n        {\n          \"playerId\": \"string\",\n          \"playerName\": \"string\",\n          \"location\": \"string\",\n          \"playingTime\": 2313,\n          \"shootHit\": 4811,\n          \"shoot\": 5875,\n          \"threePointHit\": 3432,\n          \"threePointShot\": 1379,\n          \"penaltyShotHit\": 4623,\n          \"penaltyShot\": 963,\n          \"attack\": 2590,\n          \"defend\": 9820,\n          \"assist\": 1828,\n          \"foul\": 5676,\n          \"rob\": 9700,\n          \"miss\": 53,\n          \"cover\": 401,\n          \"score\": 798,\n          \"onFloor\": false\n        }\n      ],\n      \"awayPlayers\": [\n        {\n          \"playerId\": \"string\",\n          \"playerName\": \"string\",\n          \"location\": \"string\",\n          \"playingTime\": 3120,\n          \"shootHit\": 7944,\n          \"shoot\": 665,\n          \"threePointHit\": 4979,\n          \"threePointShot\": 4179,\n          \"penaltyShotHit\": 238,\n          \"penaltyShot\": 1150,\n          \"attack\": 5655,\n          \"defend\": 8323,\n          \"assist\": 8247,\n          \"foul\": 8549,\n          \"rob\": 6257,\n          \"miss\": 5436,\n          \"cover\": 754,\n          \"score\": 8114,\n          \"onFloor\": false\n        },\n        {\n          \"playerId\": \"string\",\n          \"playerName\": \"string\",\n          \"location\": \"string\",\n          \"playingTime\": 1391,\n          \"shootHit\": 1668,\n          \"shoot\": 9278,\n          \"threePointHit\": 4435,\n          \"threePointShot\": 8142,\n          \"penaltyShotHit\": 8693,\n          \"penaltyShot\": 275,\n          \"attack\": 1445,\n          \"defend\": 8172,\n          \"assist\": 4077,\n          \"foul\": 2286,\n          \"rob\": 4364,\n          \"miss\": 1040,\n          \"cover\": 4670,\n          \"score\": 5728,\n          \"onFloor\": true\n        }\n      ]\n    },\n    {\n      \"matchId\": \"string\",\n      \"homeTeamName\": \"string\",\n      \"awayTeamName\": \"string\",\n      \"costTime\": \"string\",\n      \"homeScore\": 1052,\n      \"homeFastScore\": 8798,\n      \"homeInsideScore\": 1275,\n      \"homeLeadingScore\": 7069,\n      \"homeTotalMiss\": 7688,\n      \"awayScore\": 6010,\n      \"awayFastScore\": 1825,\n      \"awayInsideScore\": 2211,\n      \"awayLeadingScore\": 3596,\n      \"awayTotalMiss\": 8613,\n      \"homePlayers\": [\n        {\n          \"playerId\": \"string\",\n          \"playerName\": \"string\",\n          \"location\": \"string\",\n          \"playingTime\": 4951,\n          \"shootHit\": 6273,\n          \"shoot\": 6077,\n          \"threePointHit\": 6853,\n          \"threePointShot\": 7443,\n          \"penaltyShotHit\": 7581,\n          \"penaltyShot\": 3004,\n          \"attack\": 613,\n          \"defend\": 902,\n          \"assist\": 2707,\n          \"foul\": 5527,\n          \"rob\": 4057,\n          \"miss\": 492,\n          \"cover\": 3320,\n          \"score\": 7693,\n          \"onFloor\": true\n        },\n        {\n          \"playerId\": \"string\",\n          \"playerName\": \"string\",\n          \"location\": \"string\",\n          \"playingTime\": 4719,\n          \"shootHit\": 1855,\n          \"shoot\": 7786,\n          \"threePointHit\": 2423,\n          \"threePointShot\": 9275,\n          \"penaltyShotHit\": 6639,\n          \"penaltyShot\": 3054,\n          \"attack\": 5457,\n          \"defend\": 7923,\n          \"assist\": 3422,\n          \"foul\": 7250,\n          \"rob\": 3042,\n          \"miss\": 1545,\n          \"cover\": 1684,\n          \"score\": 8629,\n          \"onFloor\": false\n        }\n      ],\n      \"awayPlayers\": [\n        {\n          \"playerId\": \"string\",\n          \"playerName\": \"string\",\n          \"location\": \"string\",\n          \"playingTime\": 1376,\n          \"shootHit\": 2925,\n          \"shoot\": 9113,\n          \"threePointHit\": 4639,\n          \"threePointShot\": 9709,\n          \"penaltyShotHit\": 6516,\n          \"penaltyShot\": 9759,\n          \"attack\": 507,\n          \"defend\": 6476,\n          \"assist\": 3136,\n          \"foul\": 632,\n          \"rob\": 5835,\n          \"miss\": 4559,\n          \"cover\": 348,\n          \"score\": 1713,\n          \"onFloor\": false\n        },\n        {\n          \"playerId\": \"string\",\n          \"playerName\": \"string\",\n          \"location\": \"string\",\n          \"playingTime\": 8898,\n          \"shootHit\": 3740,\n          \"shoot\": 8390,\n          \"threePointHit\": 2161,\n          \"threePointShot\": 9711,\n          \"penaltyShotHit\": 120,\n          \"penaltyShot\": 9809,\n          \"attack\": 9751,\n          \"defend\": 322,\n          \"assist\": 4464,\n          \"foul\": 6690,\n          \"rob\": 3418,\n          \"miss\": 8110,\n          \"cover\": 4493,\n          \"score\": 5516,\n          \"onFloor\": true\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "edb88d22-ee9f-47a1-918f-f2e6d5a522a2",
+          "name": "Matches Analysis",
+          "request": {
+            "name": "Matches Analysis",
+            "description": {
+              "content": "• This API endpoint returns match analysis data for the queried matchId — including historical head-to-head results, each team's recent form, and each team's upcoming/recent schedule — for matches within 7 days before or after the current time. \n\n\n\n• Data is cached for 24 hours and does not update frequently.\n\n\n\n• For a visual reference of this data, see: https://www.goaloo.com/basketball/nba-summer-league-minnesota-timberwolves-vs-indiana-pacers/analysis-719976",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "basketball",
+                "analysis"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "(Required) Returns match analysis data for the specified match."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7c676133-5c95-46d2-bcf9-6eb052ec2386",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "basketball",
+                    "analysis"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 229,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"headToHead\": [\n        {\n          \"matchId\": \"string\",\n          \"leagueId\": \"string\",\n          \"league\": \"string\",\n          \"color\": \"string\",\n          \"matchTime\": \"string\",\n          \"matchType\": \"string\",\n          \"homeTeamId\": \"string\",\n          \"home\": \"string\",\n          \"awayTeamId\": \"string\",\n          \"away\": \"string\",\n          \"homeScore\": 6551,\n          \"homeHalfScore\": 5787,\n          \"awayScore\": 7527,\n          \"awayHalfScore\": 4457,\n          \"result\": 1857,\n          \"scoreGap\": \"string\",\n          \"spread\": \"string\",\n          \"spreadResult\": 3122,\n          \"total\": 8160,\n          \"totalOdds\": \"string\",\n          \"totalResult\": 5551\n        },\n        {\n          \"matchId\": \"string\",\n          \"leagueId\": \"string\",\n          \"league\": \"string\",\n          \"color\": \"string\",\n          \"matchTime\": \"string\",\n          \"matchType\": \"string\",\n          \"homeTeamId\": \"string\",\n          \"home\": \"string\",\n          \"awayTeamId\": \"string\",\n          \"away\": \"string\",\n          \"homeScore\": 65,\n          \"homeHalfScore\": 634,\n          \"awayScore\": 5695,\n          \"awayHalfScore\": 1087,\n          \"result\": 6597,\n          \"scoreGap\": \"string\",\n          \"spread\": \"string\",\n          \"spreadResult\": 5968,\n          \"total\": 3374,\n          \"totalOdds\": \"string\",\n          \"totalResult\": 8512\n        }\n      ],\n      \"homeSchedule\": [\n        {\n          \"matchId\": \"string\",\n          \"leagueId\": \"string\",\n          \"league\": \"string\",\n          \"color\": \"string\",\n          \"matchTime\": \"string\",\n          \"homeTeamId\": \"string\",\n          \"home\": \"string\",\n          \"score\": \"string\",\n          \"awayTeamId\": \"string\",\n          \"away\": \"string\",\n          \"day\": \"string\"\n        },\n        {\n          \"matchId\": \"string\",\n          \"leagueId\": \"string\",\n          \"league\": \"string\",\n          \"color\": \"string\",\n          \"matchTime\": \"string\",\n          \"homeTeamId\": \"string\",\n          \"home\": \"string\",\n          \"score\": \"string\",\n          \"awayTeamId\": \"string\",\n          \"away\": \"string\",\n          \"day\": \"string\"\n        }\n      ]\n    },\n    {\n      \"headToHead\": [\n        {\n          \"matchId\": \"string\",\n          \"leagueId\": \"string\",\n          \"league\": \"string\",\n          \"color\": \"string\",\n          \"matchTime\": \"string\",\n          \"matchType\": \"string\",\n          \"homeTeamId\": \"string\",\n          \"home\": \"string\",\n          \"awayTeamId\": \"string\",\n          \"away\": \"string\",\n          \"homeScore\": 7842,\n          \"homeHalfScore\": 3996,\n          \"awayScore\": 8929,\n          \"awayHalfScore\": 863,\n          \"result\": 6206,\n          \"scoreGap\": \"string\",\n          \"spread\": \"string\",\n          \"spreadResult\": 9616,\n          \"total\": 2983,\n          \"totalOdds\": \"string\",\n          \"totalResult\": 9489\n        },\n        {\n          \"matchId\": \"string\",\n          \"leagueId\": \"string\",\n          \"league\": \"string\",\n          \"color\": \"string\",\n          \"matchTime\": \"string\",\n          \"matchType\": \"string\",\n          \"homeTeamId\": \"string\",\n          \"home\": \"string\",\n          \"awayTeamId\": \"string\",\n          \"away\": \"string\",\n          \"homeScore\": 415,\n          \"homeHalfScore\": 6389,\n          \"awayScore\": 4643,\n          \"awayHalfScore\": 6937,\n          \"result\": 8445,\n          \"scoreGap\": \"string\",\n          \"spread\": \"string\",\n          \"spreadResult\": 5634,\n          \"total\": 573,\n          \"totalOdds\": \"string\",\n          \"totalResult\": 8405\n        }\n      ],\n      \"homeSchedule\": [\n        {\n          \"matchId\": \"string\",\n          \"leagueId\": \"string\",\n          \"league\": \"string\",\n          \"color\": \"string\",\n          \"matchTime\": \"string\",\n          \"homeTeamId\": \"string\",\n          \"home\": \"string\",\n          \"score\": \"string\",\n          \"awayTeamId\": \"string\",\n          \"away\": \"string\",\n          \"day\": \"string\"\n        },\n        {\n          \"matchId\": \"string\",\n          \"leagueId\": \"string\",\n          \"league\": \"string\",\n          \"color\": \"string\",\n          \"matchTime\": \"string\",\n          \"homeTeamId\": \"string\",\n          \"home\": \"string\",\n          \"score\": \"string\",\n          \"awayTeamId\": \"string\",\n          \"away\": \"string\",\n          \"day\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.isportsapi.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "17054214-a0fd-468c-b4b2-d21ebd152467",
+    "name": "iSports Basketball Stats API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.\n\nAll operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).\n\nThis document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.\n\nContact Support:\n Name: iSports API",
+      "type": "text/plain"
+    }
+  }
+}

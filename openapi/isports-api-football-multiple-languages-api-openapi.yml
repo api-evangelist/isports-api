@@ -1,0 +1,1094 @@
+openapi: 3.2.0
+info:
+  title: iSports Football Multiple languages API
+  version: '2026-08-09'
+  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.
+
+
+    All operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).
+
+
+    This document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.'
+  termsOfService: https://www.isportsapi.com/en/home/terms.html
+  contact:
+    name: iSports API
+    url: https://www.isportsapi.com/en/
+  x-derived-by: API Evangelist enrichment pipeline
+  x-derived-from: https://www.isportsapi.com/en/docs.html
+  x-derived-on: '2026-08-09'
+servers:
+- url: https://api.isportsapi.com
+  description: Primary API host
+- url: https://api2.isportsapi.com
+  description: Alternate host, documented for when the primary host is slow or unreachable
+security:
+- apiKeyQuery: []
+tags:
+- name: Football Multiple languages
+paths:
+  /sport/languageth:
+    get:
+      operationId: getLanguageth
+      summary: Thai
+      description: '**Thai** (sport=football)
+
+
+        This API endpoint returns Thai language translations for league and cup names, country names, team names, and player names.
+
+
+        **Thai** (sport=basketball)
+
+
+        This API endpoint returns Thai language translations for league and cup names, country names, team names, and player names.'
+      tags:
+      - Football Multiple languages
+      parameters:
+      - name: sport
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Sport type. Currently only football is supported.
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      oneOf:
+                      - type: object
+                        properties:
+                          leagues:
+                            type: array
+                            description: List of league and cup name translations
+                            items:
+                              type: object
+                              properties:
+                                leagueId:
+                                  type: string
+                                  description: Unique league or cup ID
+                                name:
+                                  type: string
+                                  description: League or cup name in English
+                                name_th:
+                                  type: string
+                                  description: League or cup name in Thai
+                          countries:
+                            type: array
+                            description: List of country name translations
+                            items:
+                              type: object
+                              properties:
+                                countryId:
+                                  type: string
+                                  description: Unique country ID
+                                name:
+                                  type: string
+                                  description: Country name in English
+                                name_th:
+                                  type: string
+                                  description: Country name in Thai
+                          teams:
+                            type: array
+                            description: List of team name translations
+                            items:
+                              type: object
+                              properties:
+                                teamId:
+                                  type: string
+                                  description: Unique team ID
+                                name:
+                                  type: string
+                                  description: Team name in English
+                                name_th:
+                                  type: string
+                                  description: Team name in Thai
+                          players:
+                            type: array
+                            description: List of player name translations
+                            items:
+                              type: object
+                              properties:
+                                playerId:
+                                  type: string
+                                  description: Unique player ID
+                                name:
+                                  type: string
+                                  description: Player name in English
+                                name_th:
+                                  type: string
+                                  description: Player name in Thai
+                        title: Thai
+                      - type: object
+                        properties:
+                          leagues:
+                            type: array
+                            description: List of leagues and cups with Thai name translations.
+                            items:
+                              type: object
+                              properties:
+                                leagueId:
+                                  type: string
+                                  description: Unique ID of the league or cup.
+                                name:
+                                  type: string
+                                  description: League or cup name in English.
+                                name_th:
+                                  type: string
+                                  description: League or cup name in Thai.
+                          countries:
+                            type: array
+                            description: List of countries with Thai name translations.
+                            items:
+                              type: object
+                              properties:
+                                countryId:
+                                  type: string
+                                  description: Unique ID of the country.
+                                name:
+                                  type: string
+                                  description: Country name in English, e.g. USA.
+                                name_th:
+                                  type: string
+                                  description: Country name in Thai, e.g. อเมริกา.
+                          teams:
+                            type: array
+                            description: List of teams with Thai name translations.
+                            items:
+                              type: object
+                              properties:
+                                teamId:
+                                  type: string
+                                  description: Unique ID of the team.
+                                name:
+                                  type: string
+                                  description: Team name in English.
+                                name_th:
+                                  type: string
+                                  description: Team name in Thai.
+                          players:
+                            type: array
+                            description: List of players with Thai name translations.
+                            items:
+                              type: object
+                              properties:
+                                playerId:
+                                  type: string
+                                  description: Unique ID of the player.
+                                name:
+                                  type: string
+                                  description: Player name in English.
+                                name_th:
+                                  type: string
+                                  description: Player name in Thai.
+                        title: Thai
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=251
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=251
+      - https://www.isportsapi.com/en/docs.html?id=257
+      x-rate-limit: This interface is limited to 30 minutes/call;
+      x-recommended-call-frequency: 1 day/call
+      x-plan-products:
+      - Language Packs
+      x-doc-modified: '2026-07-02'
+  /sport/languagevn:
+    get:
+      operationId: getLanguagevn
+      summary: Vietnamese
+      description: '**Vietnamese** (sport=football)
+
+
+        This API endpoint returns Vietnamese language translations for league and cup names, country names, team names, and player names.
+
+
+        **Vietnamese** (sport=basketball)
+
+
+        This API endpoint returns Vietnamese language translations for league and cup names, country names, team names, and player names.'
+      tags:
+      - Football Multiple languages
+      parameters:
+      - name: sport
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Sport type. Currently only football is supported.
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      oneOf:
+                      - type: object
+                        properties:
+                          leagues:
+                            type: array
+                            description: List of league and cup name translations
+                            items:
+                              type: object
+                              properties:
+                                leagueId:
+                                  type: string
+                                  description: Unique league or cup ID
+                                name:
+                                  type: string
+                                  description: League or cup name in English
+                                name_vn:
+                                  type: string
+                                  description: League or cup name in Vietnamese
+                          countries:
+                            type: array
+                            description: List of country name translations
+                            items:
+                              type: object
+                              properties:
+                                countryId:
+                                  type: string
+                                  description: Unique country ID
+                                name:
+                                  type: string
+                                  description: Country name in English
+                                name_vn:
+                                  type: string
+                                  description: Country name in Vietnamese
+                          teams:
+                            type: array
+                            description: List of team name translations
+                            items:
+                              type: object
+                              properties:
+                                teamId:
+                                  type: string
+                                  description: Unique team ID
+                                name:
+                                  type: string
+                                  description: Team name in English
+                                name_vn:
+                                  type: string
+                                  description: Team name in Vietnamese
+                          players:
+                            type: array
+                            description: List of player name translations
+                            items:
+                              type: object
+                              properties:
+                                playerId:
+                                  type: string
+                                  description: Unique player ID
+                                name:
+                                  type: string
+                                  description: Player name in English
+                                name_vn:
+                                  type: string
+                                  description: Player name in Vietnamese
+                        title: Vietnamese
+                      - type: object
+                        properties:
+                          leagues:
+                            type: array
+                            description: List of leagues and cups.
+                            items:
+                              type: object
+                              properties:
+                                leagueId:
+                                  type: string
+                                  description: Unique ID of the league or cup.
+                                name:
+                                  type: string
+                                  description: League or cup name in English.
+                                name_vn:
+                                  type: string
+                                  description: League or cup name in Vietnamese
+                          countries:
+                            type: array
+                            description: List of countries.
+                            items:
+                              type: object
+                              properties:
+                                countryId:
+                                  type: string
+                                  description: Unique ID of the country.
+                                name:
+                                  type: string
+                                  description: Country name in English, e.g. USA.
+                                name_vn:
+                                  type: string
+                                  description: Country name in Vietnamese, e.g. Mỹ.
+                          teams:
+                            type: array
+                            description: List of teams.
+                            items:
+                              type: object
+                              properties:
+                                teamId:
+                                  type: string
+                                  description: Unique ID of the team.
+                                name:
+                                  type: string
+                                  description: Team name in English
+                                name_vn:
+                                  type: string
+                                  description: Team name in Vietnamese
+                          players:
+                            type: array
+                            description: List of players.
+                            items:
+                              type: object
+                              properties:
+                                playerId:
+                                  type: string
+                                  description: Unique ID of the player.
+                                name:
+                                  type: string
+                                  description: Player name in English
+                                name_vn:
+                                  type: string
+                                  description: Player name in Vietnamese
+                        title: Vietnamese
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=252
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=252
+      - https://www.isportsapi.com/en/docs.html?id=258
+      x-rate-limit: This interface is limited to 30 minutes/call;
+      x-recommended-call-frequency: 1 day/call
+      x-plan-products:
+      - Language Packs
+      x-doc-modified: '2026-07-02'
+  /sport/languageidn:
+    get:
+      operationId: getLanguageidn
+      summary: Indonesian
+      description: '**Indonesian** (sport=football)
+
+
+        This API endpoint returns Indonesian language translations for league and cup names, country names, team names, and player names.
+
+
+        **Indonesian** (sport=basketball)
+
+
+        This API endpoint returns Indonesian language translations for league and cup names, country names, team names, and player names.'
+      tags:
+      - Football Multiple languages
+      parameters:
+      - name: sport
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Sport type. Currently only football is supported.
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      oneOf:
+                      - type: object
+                        properties:
+                          leagues:
+                            type: array
+                            description: List of league and cup name translations
+                            items:
+                              type: object
+                              properties:
+                                leagueId:
+                                  type: string
+                                  description: Unique league or cup ID
+                                name:
+                                  type: string
+                                  description: League or cup name in English
+                                name_idn:
+                                  type: string
+                                  description: League or cup name in Indonesian
+                          countries:
+                            type: array
+                            description: List of country name translations
+                            items:
+                              type: object
+                              properties:
+                                countryId:
+                                  type: string
+                                  description: Unique country ID
+                                name:
+                                  type: string
+                                  description: Country name in English
+                                name_idn:
+                                  type: string
+                                  description: Country name in Indonesian
+                          teams:
+                            type: array
+                            description: List of team name translations
+                            items:
+                              type: object
+                              properties:
+                                teamId:
+                                  type: string
+                                  description: Unique team ID
+                                name:
+                                  type: string
+                                  description: Team name in English
+                                name_idn:
+                                  type: string
+                                  description: Team name in Indonesian
+                          players:
+                            type: array
+                            description: List of player name translations
+                            items:
+                              type: object
+                              properties:
+                                playerId:
+                                  type: string
+                                  description: Unique player ID
+                                name:
+                                  type: string
+                                  description: Player name in English
+                                name_idn:
+                                  type: string
+                                  description: Player name in Indonesian
+                        title: Indonesian
+                      - type: object
+                        properties:
+                          leagues:
+                            type: array
+                            description: List of leagues and cups.
+                            items:
+                              type: object
+                              properties:
+                                leagueId:
+                                  type: string
+                                  description: Unique league or cup ID
+                                name:
+                                  type: string
+                                  description: League or cup name in English
+                                name_idn:
+                                  type: string
+                                  description: League or cup name in Indonesian
+                          countries:
+                            type: array
+                            description: List of countries.
+                            items:
+                              type: object
+                              properties:
+                                countryId:
+                                  type: string
+                                  description: Unique country ID
+                                name:
+                                  type: string
+                                  description: Country name in English
+                                name_idn:
+                                  type: string
+                                  description: Country name in Indonesian
+                          teams:
+                            type: array
+                            description: List of teams.
+                            items:
+                              type: object
+                              properties:
+                                teamId:
+                                  type: string
+                                  description: Unique team ID
+                                name:
+                                  type: string
+                                  description: Team name in English
+                                name_idn:
+                                  type: string
+                                  description: Team name in Indonesian
+                          players:
+                            type: array
+                            description: List of players.
+                            items:
+                              type: object
+                              properties:
+                                playerId:
+                                  type: string
+                                  description: Unique player ID
+                                name:
+                                  type: string
+                                  description: Player name in English
+                                name_idn:
+                                  type: string
+                                  description: Player name in Indonesian
+                        title: Indonesian
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=253
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=253
+      - https://www.isportsapi.com/en/docs.html?id=259
+      x-rate-limit: This interface is limited to 30 minutes/call;
+      x-recommended-call-frequency: 1 day/call
+      x-plan-products:
+      - Language Packs
+      x-doc-modified: '2026-07-02'
+  /sport/languagekr:
+    get:
+      operationId: getLanguagekr
+      summary: Korean
+      description: '**Korean** (sport=football)
+
+
+        This API endpoint returns Korean language translations for league and cup names, country names, team names, and player names.
+
+
+        **Korean** (sport=basketball)
+
+
+        This API endpoint returns Korean language translations for league and cup names, country names, team names, and player names.'
+      tags:
+      - Football Multiple languages
+      parameters:
+      - name: sport
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Sport type. Currently only football is supported.
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      oneOf:
+                      - type: object
+                        properties:
+                          leagues:
+                            type: array
+                            description: List of league and cup name translations
+                            items:
+                              type: object
+                              properties:
+                                leagueId:
+                                  type: string
+                                  description: Unique league or cup ID
+                                name:
+                                  type: string
+                                  description: League or cup name in English
+                                name_kr:
+                                  type: string
+                                  description: League or cup name in Korean
+                          countries:
+                            type: array
+                            description: List of country name translations
+                            items:
+                              type: object
+                              properties:
+                                countryId:
+                                  type: string
+                                  description: Unique country ID
+                                name:
+                                  type: string
+                                  description: Country name in English
+                                name_kr:
+                                  type: string
+                                  description: Country name in Korean
+                          teams:
+                            type: array
+                            description: List of team name translations
+                            items:
+                              type: object
+                              properties:
+                                teamId:
+                                  type: string
+                                  description: Unique team ID
+                                name:
+                                  type: string
+                                  description: Team name in English
+                                name_kr:
+                                  type: string
+                                  description: Team name in Korean
+                          players:
+                            type: array
+                            description: List of player name translations
+                            items:
+                              type: object
+                              properties:
+                                playerId:
+                                  type: string
+                                  description: Unique player ID
+                                name:
+                                  type: string
+                                  description: Player name in English
+                                name_kr:
+                                  type: string
+                                  description: Player name in Korean
+                        title: Korean
+                      - type: object
+                        properties:
+                          leagues:
+                            type: array
+                            description: List of leagues and cups.
+                            items:
+                              type: object
+                              properties:
+                                leagueId:
+                                  type: string
+                                  description: Unique ID of the league or cup.
+                                name:
+                                  type: string
+                                  description: League or cup name in English
+                                name_kr:
+                                  type: string
+                                  description: League or cup name in Korean
+                          countries:
+                            type: array
+                            description: List of countries.
+                            items:
+                              type: object
+                              properties:
+                                countryId:
+                                  type: string
+                                  description: Unique ID of the country.
+                                name:
+                                  type: string
+                                  description: Country name in English
+                                name_kr:
+                                  type: string
+                                  description: Country name in Korean
+                          teams:
+                            type: array
+                            description: List of teams.
+                            items:
+                              type: object
+                              properties:
+                                teamId:
+                                  type: string
+                                  description: Unique team ID
+                                name:
+                                  type: string
+                                  description: Team name in English
+                                name_kr:
+                                  type: string
+                                  description: Team name in Korean
+                          players:
+                            type: array
+                            description: List of players.
+                            items:
+                              type: object
+                              properties:
+                                playerId:
+                                  type: string
+                                  description: Unique player ID
+                                name:
+                                  type: string
+                                  description: Player name in English
+                                name_kr:
+                                  type: string
+                                  description: Player name in Korean
+                        title: Korean
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=254
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=254
+      - https://www.isportsapi.com/en/docs.html?id=260
+      x-rate-limit: This interface is limited to 30 minutes/call;
+      x-recommended-call-frequency: 1 day/call
+      x-plan-products:
+      - Language Packs
+      x-doc-modified: '2026-07-02'
+  /sport/languagebra:
+    get:
+      operationId: getLanguagebra
+      summary: Portuguese
+      description: '**Portuguese** (sport=football)
+
+
+        This API endpoint returns Brazilian Portuguese language translations for league and cup names, country names, team names, and player names.
+
+
+        **Portuguese** (sport=basketball)
+
+
+        This API endpoint returns Brazilian Portuguese language translations for league and cup names, country names, team names, and player names.'
+      tags:
+      - Football Multiple languages
+      parameters:
+      - name: sport
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Sport type. Currently only football is supported.
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      oneOf:
+                      - type: object
+                        properties:
+                          leagues:
+                            type: array
+                            description: List of league and cup name translations
+                            items:
+                              type: object
+                              properties:
+                                leagueId:
+                                  type: string
+                                  description: Unique league or cup ID
+                                name:
+                                  type: string
+                                  description: League or cup name in English
+                                name_bra:
+                                  type: string
+                                  description: League or cup name in Brazilian Portuguese
+                          countries:
+                            type: array
+                            description: List of country name translations
+                            items:
+                              type: object
+                              properties:
+                                countryId:
+                                  type: string
+                                  description: Unique country ID
+                                name:
+                                  type: string
+                                  description: Country name in English
+                                name_bra:
+                                  type: string
+                                  description: Country name in Brazilian Portuguese
+                          teams:
+                            type: array
+                            description: List of team name translations
+                            items:
+                              type: object
+                              properties:
+                                teamId:
+                                  type: string
+                                  description: Unique team ID
+                                name:
+                                  type: string
+                                  description: Team name in English
+                                name_bra:
+                                  type: string
+                                  description: Team name in Brazilian Portuguese
+                          players:
+                            type: array
+                            description: List of player name translations
+                            items:
+                              type: object
+                              properties:
+                                playerId:
+                                  type: string
+                                  description: Unique player ID
+                                name:
+                                  type: string
+                                  description: Player name in English
+                                name_bra:
+                                  type: string
+                                  description: Player name in Brazilian Portuguese
+                        title: Portuguese
+                      - type: object
+                        properties:
+                          leagues:
+                            type: array
+                            description: List of leagues and cups.
+                            items:
+                              type: object
+                              properties:
+                                leagueId:
+                                  type: string
+                                  description: Unique league or cup ID
+                                name:
+                                  type: string
+                                  description: League or cup name in English
+                                name_bra:
+                                  type: string
+                                  description: League or cup name in Brazilian Portuguese
+                          countries:
+                            type: array
+                            description: List of countries.
+                            items:
+                              type: object
+                              properties:
+                                countryId:
+                                  type: string
+                                  description: Unique country ID
+                                name:
+                                  type: string
+                                  description: Country name in English
+                                name_bra:
+                                  type: string
+                                  description: Country name in Brazilian Portuguese
+                          teams:
+                            type: array
+                            description: List of teams.
+                            items:
+                              type: object
+                              properties:
+                                teamId:
+                                  type: string
+                                  description: Unique team ID
+                                name:
+                                  type: string
+                                  description: Team name in English
+                                name_bra:
+                                  type: string
+                                  description: Team name in Brazilian Portuguese
+                          players:
+                            type: array
+                            description: List of players.
+                            items:
+                              type: object
+                              properties:
+                                playerId:
+                                  type: string
+                                  description: Unique player ID
+                                name:
+                                  type: string
+                                  description: Player name in English
+                                name_bra:
+                                  type: string
+                                  description: Player name in Brazilian Portuguese
+                        title: Portuguese
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=255
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=255
+      - https://www.isportsapi.com/en/docs.html?id=261
+      x-rate-limit: This interface is limited to 30 minutes/call;
+      x-recommended-call-frequency: 1 day/call
+      x-plan-products:
+      - Language Packs
+      x-doc-modified: '2026-07-02'
+  /sport/languagetc:
+    get:
+      operationId: getLanguagetc
+      summary: Traditional Chinese
+      description: '**Traditional Chinese** (sport=football)
+
+
+        This API endpoint returns Traditional Chinese translations for league and cup names, country names, team names, and player names.
+
+
+        **Traditional Chinese** (sport=basketball)
+
+
+        This API endpoint returns Traditional Chinese translations for league and cup names, country names, team names, and player names.'
+      tags:
+      - Football Multiple languages
+      parameters:
+      - name: sport
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Sport type. Currently only football is supported.
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      oneOf:
+                      - type: object
+                        properties:
+                          leagues:
+                            type: array
+                            description: List of league and cup name translations
+                            items:
+                              type: object
+                              properties:
+                                leagueId:
+                                  type: string
+                                  description: Unique league or cup ID
+                                name_tc:
+                                  type: string
+                                  description: League or cup name in Traditional Chinese
+                          countries:
+                            type: array
+                            description: List of country name translations
+                            items:
+                              type: object
+                              properties:
+                                countryId:
+                                  type: string
+                                  description: Unique country ID
+                                name_tc:
+                                  type: string
+                                  description: Country name in Traditional Chinese
+                          teams:
+                            type: array
+                            description: List of team name translations
+                            items:
+                              type: object
+                              properties:
+                                teamId:
+                                  type: string
+                                  description: Unique team ID
+                                name_tc:
+                                  type: string
+                                  description: Team name in Traditional Chinese
+                          players:
+                            type: array
+                            description: List of player name translations
+                            items:
+                              type: object
+                              properties:
+                                playerId:
+                                  type: string
+                                  description: Unique player ID
+                                name_tc:
+                                  type: string
+                                  description: Player name in Traditional Chinese
+                        title: Traditional Chinese
+                      - type: object
+                        properties:
+                          leagues:
+                            type: array
+                            description: List of leagues and cups.
+                            items:
+                              type: object
+                              properties:
+                                leagueId:
+                                  type: string
+                                  description: Unique league or cup ID
+                                name:
+                                  type: string
+                                  description: League or cup name in English
+                                name_tc:
+                                  type: string
+                                  description: League or cup name in Traditional Chinese
+                          countries:
+                            type: array
+                            description: List of countries.
+                            items:
+                              type: object
+                              properties:
+                                countryId:
+                                  type: string
+                                  description: Unique country ID
+                                name:
+                                  type: string
+                                  description: Country name in English
+                                name_tc:
+                                  type: string
+                                  description: Country name in Traditional Chinese
+                          teams:
+                            type: array
+                            description: List of teams.
+                            items:
+                              type: object
+                              properties:
+                                teamId:
+                                  type: string
+                                  description: Unique team ID
+                                name:
+                                  type: string
+                                  description: Team name in English
+                                name_tc:
+                                  type: string
+                                  description: Team name in Traditional Chinese
+                          players:
+                            type: array
+                            description: List of players.
+                            items:
+                              type: object
+                              properties:
+                                playerId:
+                                  type: string
+                                  description: Unique player ID
+                                name:
+                                  type: string
+                                  description: Player name in English
+                                name_tc:
+                                  type: string
+                                  description: Player name in Traditional Chinese
+                        title: Traditional Chinese
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=256
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=256
+      - https://www.isportsapi.com/en/docs.html?id=262
+      x-rate-limit: This interface is limited to 30 minutes/call;
+      x-recommended-call-frequency: 1 day/call
+      x-plan-products:
+      - Language Packs
+      x-doc-modified: '2026-07-02'
+components:
+  securitySchemes:
+    apiKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key
+      description: Personal API key issued from the iSports account settings page and passed on every request as the `api_key` query parameter.
+externalDocs:
+  description: iSports API documentation
+  url: https://www.isportsapi.com/en/docs.html

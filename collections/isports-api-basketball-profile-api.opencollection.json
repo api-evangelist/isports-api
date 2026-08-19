@@ -1,0 +1,167 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "iSports Basketball Profile API",
+    "version": "2026-08-09"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Basketball Profile",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Team Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/team",
+            "params": [
+              {
+                "name": "leagueId",
+                "value": "",
+                "type": "query",
+                "description": "Returns team information for all teams under the specified leagueId."
+              },
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "query",
+                "description": "Returns team information for the specified teamId."
+              },
+              {
+                "name": "day",
+                "value": "",
+                "type": "query",
+                "description": "Returns team data that has been added or modified within the specified number of days, e.g. day=1 or day=2."
+              }
+            ]
+          },
+          "docs": "• This API endpoint returns basketball team profile information. Filter by leagueId or teamId; if both are omitted, returns information for all teams. \n\n\n\n• Note that detailed fields such as website, conference, division, city, venue, capacity, joinYear, and coach may return empty or 0 for teams in lower-tier leagues where such information is not tracked."
+        },
+        {
+          "info": {
+            "name": "Player Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/player",
+            "params": [
+              {
+                "name": "cmd",
+                "value": "",
+                "type": "query",
+                "description": "Fixed value new. Required for this endpoint to return data correctly."
+              },
+              {
+                "name": "day",
+                "value": "",
+                "type": "query",
+                "description": "Returns player data that has been added or modified within the specified number of days, e.g. day=1 or day=2."
+              }
+            ]
+          },
+          "docs": "• This API endpoint returns basketball player profile information. All players are returned by default.\n\n\n\n• Note: The request must include the parameter cmd=new, e.g. http://api.isportsapi.com/sport/basketball/player?api_key=<YOUR_API_KEY>&cmd=new."
+        },
+        {
+          "info": {
+            "name": "Cup Stage Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/cupqualify"
+          },
+          "docs": "• This API endpoint returns stage type information for basketball cups, such as qualifying rounds, group stages, and regular season. \n\n\n\n• The recordId returned by this endpoint corresponds to the stageId field in the Schedule & Results endpoint, allowing you to match a specific match to its cup stage."
+        },
+        {
+          "info": {
+            "name": "Playoffs Stage Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/playoffs"
+          },
+          "docs": "• This API endpoint returns playoff stage type information for basketball leagues, such as Quarter Final, Semi Final, and Final. \n\n\n\n• The recordId returned by this endpoint corresponds to the playoffsId field in the Schedule & Results endpoint, allowing you to match a specific match to its playoff stage."
+        },
+        {
+          "info": {
+            "name": "League & Cup Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/league",
+            "params": [
+              {
+                "name": "leagueId",
+                "value": "",
+                "type": "query",
+                "description": "Returns profile information for the specified leagueId. If omitted, returns profile information for all leagues and cups."
+              }
+            ]
+          },
+          "docs": "This API endpoint returns complete profile information for basketball leagues and cups, including league rules, ranking format, and season details. <a target=\"_blank\" href=\"http://api.isportsapi.com/league.aspx?sport=basketball\" style=\"color:blue\">Click here</a> to view all leagues & cups."
+        },
+        {
+          "info": {
+            "name": "Team Profile for Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/team/search",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Team name to search for. Supports fuzzy search."
+              }
+            ]
+          },
+          "docs": "• This API endpoint supports searching for basketball team information by team name, with fuzzy matching supported. \n\n\n\n• Note that detailed fields such as website, conference, division, city, venue, capacity, joinYear, and coach may return empty or 0 for teams in lower-tier leagues where such information is not tracked."
+        },
+        {
+          "info": {
+            "name": "Player Profile for Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/player/search",
+            "params": [
+              {
+                "name": "cmd",
+                "value": "",
+                "type": "query",
+                "description": "Fixed value new. Required for this endpoint to return data correctly."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Player name to search for. Supports fuzzy search."
+              }
+            ]
+          },
+          "docs": "• This API endpoint supports searching for basketball player information by player name, with fuzzy matching supported.\n\n\n\n• Note: The request must include the parameter cmd=new, e.g. http://api.isportsapi.com/sport/basketball/player/search?api_key=<YOUR_API_KEY>&cmd=new&name=James."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

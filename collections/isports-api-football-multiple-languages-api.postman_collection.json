@@ -1,0 +1,577 @@
+{
+  "item": [
+    {
+      "id": "15dedfac-2177-476e-9054-5b8a7d88900d",
+      "name": "Football Multiple languages",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "619a7194-b349-48a9-9d5e-9aca267495cd",
+          "name": "Thai",
+          "request": {
+            "name": "Thai",
+            "description": {
+              "content": "**Thai** (sport=football)\n\nThis API endpoint returns Thai language translations for league and cup names, country names, team names, and player names.\n\n**Thai** (sport=basketball)\n\nThis API endpoint returns Thai language translations for league and cup names, country names, team names, and player names.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "languageth"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sport",
+                  "value": "<string>",
+                  "description": "(Required) Sport type. Currently only football is supported."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b809b999-ec62-4adb-afa3-c3496966a9ab",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "languageth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sport",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5947,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"leagues\": [\n        {\n          \"leagueId\": \"string\",\n          \"name\": \"string\",\n          \"name_th\": \"string\"\n        },\n        {\n          \"leagueId\": \"string\",\n          \"name\": \"string\",\n          \"name_th\": \"string\"\n        }\n      ],\n      \"countries\": [\n        {\n          \"countryId\": \"string\",\n          \"name\": \"string\",\n          \"name_th\": \"string\"\n        },\n        {\n          \"countryId\": \"string\",\n          \"name\": \"string\",\n          \"name_th\": \"string\"\n        }\n      ],\n      \"teams\": [\n        {\n          \"teamId\": \"string\",\n          \"name\": \"string\",\n          \"name_th\": \"string\"\n        },\n        {\n          \"teamId\": \"string\",\n          \"name\": \"string\",\n          \"name_th\": \"string\"\n        }\n      ],\n      \"players\": [\n        {\n          \"playerId\": \"string\",\n          \"name\": \"string\",\n          \"name_th\": \"string\"\n        },\n        {\n          \"playerId\": \"string\",\n          \"name\": \"string\",\n          \"name_th\": \"string\"\n        }\n      ]\n    },\n    {\n      \"leagues\": [\n        {\n          \"leagueId\": \"string\",\n          \"name\": \"string\",\n          \"name_th\": \"string\"\n        },\n        {\n          \"leagueId\": \"string\",\n          \"name\": \"string\",\n          \"name_th\": \"string\"\n        }\n      ],\n      \"countries\": [\n        {\n          \"countryId\": \"string\",\n          \"name\": \"string\",\n          \"name_th\": \"string\"\n        },\n        {\n          \"countryId\": \"string\",\n          \"name\": \"string\",\n          \"name_th\": \"string\"\n        }\n      ],\n      \"teams\": [\n        {\n          \"teamId\": \"string\",\n          \"name\": \"string\",\n          \"name_th\": \"string\"\n        },\n        {\n          \"teamId\": \"string\",\n          \"name\": \"string\",\n          \"name_th\": \"string\"\n        }\n      ],\n      \"players\": [\n        {\n          \"playerId\": \"string\",\n          \"name\": \"string\",\n          \"name_th\": \"string\"\n        },\n        {\n          \"playerId\": \"string\",\n          \"name\": \"string\",\n          \"name_th\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "90324bd4-2b3d-432b-bc71-52cda8cd361d",
+          "name": "Vietnamese",
+          "request": {
+            "name": "Vietnamese",
+            "description": {
+              "content": "**Vietnamese** (sport=football)\n\nThis API endpoint returns Vietnamese language translations for league and cup names, country names, team names, and player names.\n\n**Vietnamese** (sport=basketball)\n\nThis API endpoint returns Vietnamese language translations for league and cup names, country names, team names, and player names.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "languagevn"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sport",
+                  "value": "<string>",
+                  "description": "(Required) Sport type. Currently only football is supported."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "90fe891b-5152-468a-9c54-b34d49e4d004",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "languagevn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sport",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2917,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"leagues\": [\n        {\n          \"leagueId\": \"string\",\n          \"name\": \"string\",\n          \"name_vn\": \"string\"\n        },\n        {\n          \"leagueId\": \"string\",\n          \"name\": \"string\",\n          \"name_vn\": \"string\"\n        }\n      ],\n      \"countries\": [\n        {\n          \"countryId\": \"string\",\n          \"name\": \"string\",\n          \"name_vn\": \"string\"\n        },\n        {\n          \"countryId\": \"string\",\n          \"name\": \"string\",\n          \"name_vn\": \"string\"\n        }\n      ],\n      \"teams\": [\n        {\n          \"teamId\": \"string\",\n          \"name\": \"string\",\n          \"name_vn\": \"string\"\n        },\n        {\n          \"teamId\": \"string\",\n          \"name\": \"string\",\n          \"name_vn\": \"string\"\n        }\n      ],\n      \"players\": [\n        {\n          \"playerId\": \"string\",\n          \"name\": \"string\",\n          \"name_vn\": \"string\"\n        },\n        {\n          \"playerId\": \"string\",\n          \"name\": \"string\",\n          \"name_vn\": \"string\"\n        }\n      ]\n    },\n    {\n      \"leagues\": [\n        {\n          \"leagueId\": \"string\",\n          \"name\": \"string\",\n          \"name_vn\": \"string\"\n        },\n        {\n          \"leagueId\": \"string\",\n          \"name\": \"string\",\n          \"name_vn\": \"string\"\n        }\n      ],\n      \"countries\": [\n        {\n          \"countryId\": \"string\",\n          \"name\": \"string\",\n          \"name_vn\": \"string\"\n        },\n        {\n          \"countryId\": \"string\",\n          \"name\": \"string\",\n          \"name_vn\": \"string\"\n        }\n      ],\n      \"teams\": [\n        {\n          \"teamId\": \"string\",\n          \"name\": \"string\",\n          \"name_vn\": \"string\"\n        },\n        {\n          \"teamId\": \"string\",\n          \"name\": \"string\",\n          \"name_vn\": \"string\"\n        }\n      ],\n      \"players\": [\n        {\n          \"playerId\": \"string\",\n          \"name\": \"string\",\n          \"name_vn\": \"string\"\n        },\n        {\n          \"playerId\": \"string\",\n          \"name\": \"string\",\n          \"name_vn\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c75381a-2709-479a-aa50-fda4ce39995b",
+          "name": "Indonesian",
+          "request": {
+            "name": "Indonesian",
+            "description": {
+              "content": "**Indonesian** (sport=football)\n\nThis API endpoint returns Indonesian language translations for league and cup names, country names, team names, and player names.\n\n**Indonesian** (sport=basketball)\n\nThis API endpoint returns Indonesian language translations for league and cup names, country names, team names, and player names.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "languageidn"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sport",
+                  "value": "<string>",
+                  "description": "(Required) Sport type. Currently only football is supported."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7d1c47a2-3dfb-40af-87ad-db42fc147fad",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "languageidn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sport",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9972,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"leagues\": [\n        {\n          \"leagueId\": \"string\",\n          \"name\": \"string\",\n          \"name_idn\": \"string\"\n        },\n        {\n          \"leagueId\": \"string\",\n          \"name\": \"string\",\n          \"name_idn\": \"string\"\n        }\n      ],\n      \"countries\": [\n        {\n          \"countryId\": \"string\",\n          \"name\": \"string\",\n          \"name_idn\": \"string\"\n        },\n        {\n          \"countryId\": \"string\",\n          \"name\": \"string\",\n          \"name_idn\": \"string\"\n        }\n      ],\n      \"teams\": [\n        {\n          \"teamId\": \"string\",\n          \"name\": \"string\",\n          \"name_idn\": \"string\"\n        },\n        {\n          \"teamId\": \"string\",\n          \"name\": \"string\",\n          \"name_idn\": \"string\"\n        }\n      ],\n      \"players\": [\n        {\n          \"playerId\": \"string\",\n          \"name\": \"string\",\n          \"name_idn\": \"string\"\n        },\n        {\n          \"playerId\": \"string\",\n          \"name\": \"string\",\n          \"name_idn\": \"string\"\n        }\n      ]\n    },\n    {\n      \"leagues\": [\n        {\n          \"leagueId\": \"string\",\n          \"name\": \"string\",\n          \"name_idn\": \"string\"\n        },\n        {\n          \"leagueId\": \"string\",\n          \"name\": \"string\",\n          \"name_idn\": \"string\"\n        }\n      ],\n      \"countries\": [\n        {\n          \"countryId\": \"string\",\n          \"name\": \"string\",\n          \"name_idn\": \"string\"\n        },\n        {\n          \"countryId\": \"string\",\n          \"name\": \"string\",\n          \"name_idn\": \"string\"\n        }\n      ],\n      \"teams\": [\n        {\n          \"teamId\": \"string\",\n          \"name\": \"string\",\n          \"name_idn\": \"string\"\n        },\n        {\n          \"teamId\": \"string\",\n          \"name\": \"string\",\n          \"name_idn\": \"string\"\n        }\n      ],\n      \"players\": [\n        {\n          \"playerId\": \"string\",\n          \"name\": \"string\",\n          \"name_idn\": \"string\"\n        },\n        {\n          \"playerId\": \"string\",\n          \"name\": \"string\",\n          \"name_idn\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3623318b-fa69-4615-8b8d-ed276dd7ab9a",
+          "name": "Korean",
+          "request": {
+            "name": "Korean",
+            "description": {
+              "content": "**Korean** (sport=football)\n\nThis API endpoint returns Korean language translations for league and cup names, country names, team names, and player names.\n\n**Korean** (sport=basketball)\n\nThis API endpoint returns Korean language translations for league and cup names, country names, team names, and player names.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "languagekr"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sport",
+                  "value": "<string>",
+                  "description": "(Required) Sport type. Currently only football is supported."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2e7ee4a3-3c91-4746-8e92-4e47991eab6f",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "languagekr"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sport",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4401,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"leagues\": [\n        {\n          \"leagueId\": \"string\",\n          \"name\": \"string\",\n          \"name_kr\": \"string\"\n        },\n        {\n          \"leagueId\": \"string\",\n          \"name\": \"string\",\n          \"name_kr\": \"string\"\n        }\n      ],\n      \"countries\": [\n        {\n          \"countryId\": \"string\",\n          \"name\": \"string\",\n          \"name_kr\": \"string\"\n        },\n        {\n          \"countryId\": \"string\",\n          \"name\": \"string\",\n          \"name_kr\": \"string\"\n        }\n      ],\n      \"teams\": [\n        {\n          \"teamId\": \"string\",\n          \"name\": \"string\",\n          \"name_kr\": \"string\"\n        },\n        {\n          \"teamId\": \"string\",\n          \"name\": \"string\",\n          \"name_kr\": \"string\"\n        }\n      ],\n      \"players\": [\n        {\n          \"playerId\": \"string\",\n          \"name\": \"string\",\n          \"name_kr\": \"string\"\n        },\n        {\n          \"playerId\": \"string\",\n          \"name\": \"string\",\n          \"name_kr\": \"string\"\n        }\n      ]\n    },\n    {\n      \"leagues\": [\n        {\n          \"leagueId\": \"string\",\n          \"name\": \"string\",\n          \"name_kr\": \"string\"\n        },\n        {\n          \"leagueId\": \"string\",\n          \"name\": \"string\",\n          \"name_kr\": \"string\"\n        }\n      ],\n      \"countries\": [\n        {\n          \"countryId\": \"string\",\n          \"name\": \"string\",\n          \"name_kr\": \"string\"\n        },\n        {\n          \"countryId\": \"string\",\n          \"name\": \"string\",\n          \"name_kr\": \"string\"\n        }\n      ],\n      \"teams\": [\n        {\n          \"teamId\": \"string\",\n          \"name\": \"string\",\n          \"name_kr\": \"string\"\n        },\n        {\n          \"teamId\": \"string\",\n          \"name\": \"string\",\n          \"name_kr\": \"string\"\n        }\n      ],\n      \"players\": [\n        {\n          \"playerId\": \"string\",\n          \"name\": \"string\",\n          \"name_kr\": \"string\"\n        },\n        {\n          \"playerId\": \"string\",\n          \"name\": \"string\",\n          \"name_kr\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a56965d7-3abb-466b-b9e1-e8096d460422",
+          "name": "Portuguese",
+          "request": {
+            "name": "Portuguese",
+            "description": {
+              "content": "**Portuguese** (sport=football)\n\nThis API endpoint returns Brazilian Portuguese language translations for league and cup names, country names, team names, and player names.\n\n**Portuguese** (sport=basketball)\n\nThis API endpoint returns Brazilian Portuguese language translations for league and cup names, country names, team names, and player names.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "languagebra"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sport",
+                  "value": "<string>",
+                  "description": "(Required) Sport type. Currently only football is supported."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2e47e548-9265-4e12-8546-011b2d2f98ec",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "languagebra"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sport",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 3734,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"leagues\": [\n        {\n          \"leagueId\": \"string\",\n          \"name\": \"string\",\n          \"name_bra\": \"string\"\n        },\n        {\n          \"leagueId\": \"string\",\n          \"name\": \"string\",\n          \"name_bra\": \"string\"\n        }\n      ],\n      \"countries\": [\n        {\n          \"countryId\": \"string\",\n          \"name\": \"string\",\n          \"name_bra\": \"string\"\n        },\n        {\n          \"countryId\": \"string\",\n          \"name\": \"string\",\n          \"name_bra\": \"string\"\n        }\n      ],\n      \"teams\": [\n        {\n          \"teamId\": \"string\",\n          \"name\": \"string\",\n          \"name_bra\": \"string\"\n        },\n        {\n          \"teamId\": \"string\",\n          \"name\": \"string\",\n          \"name_bra\": \"string\"\n        }\n      ],\n      \"players\": [\n        {\n          \"playerId\": \"string\",\n          \"name\": \"string\",\n          \"name_bra\": \"string\"\n        },\n        {\n          \"playerId\": \"string\",\n          \"name\": \"string\",\n          \"name_bra\": \"string\"\n        }\n      ]\n    },\n    {\n      \"leagues\": [\n        {\n          \"leagueId\": \"string\",\n          \"name\": \"string\",\n          \"name_bra\": \"string\"\n        },\n        {\n          \"leagueId\": \"string\",\n          \"name\": \"string\",\n          \"name_bra\": \"string\"\n        }\n      ],\n      \"countries\": [\n        {\n          \"countryId\": \"string\",\n          \"name\": \"string\",\n          \"name_bra\": \"string\"\n        },\n        {\n          \"countryId\": \"string\",\n          \"name\": \"string\",\n          \"name_bra\": \"string\"\n        }\n      ],\n      \"teams\": [\n        {\n          \"teamId\": \"string\",\n          \"name\": \"string\",\n          \"name_bra\": \"string\"\n        },\n        {\n          \"teamId\": \"string\",\n          \"name\": \"string\",\n          \"name_bra\": \"string\"\n        }\n      ],\n      \"players\": [\n        {\n          \"playerId\": \"string\",\n          \"name\": \"string\",\n          \"name_bra\": \"string\"\n        },\n        {\n          \"playerId\": \"string\",\n          \"name\": \"string\",\n          \"name_bra\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e4414c28-56ab-4408-9064-788d46beae9f",
+          "name": "Traditional Chinese",
+          "request": {
+            "name": "Traditional Chinese",
+            "description": {
+              "content": "**Traditional Chinese** (sport=football)\n\nThis API endpoint returns Traditional Chinese translations for league and cup names, country names, team names, and player names.\n\n**Traditional Chinese** (sport=basketball)\n\nThis API endpoint returns Traditional Chinese translations for league and cup names, country names, team names, and player names.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "languagetc"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sport",
+                  "value": "<string>",
+                  "description": "(Required) Sport type. Currently only football is supported."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "12d00f27-ee50-4c10-9e94-a587d3272d9a",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "languagetc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sport",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5640,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"leagues\": [\n        {\n          \"leagueId\": \"string\",\n          \"name_tc\": \"string\"\n        },\n        {\n          \"leagueId\": \"string\",\n          \"name_tc\": \"string\"\n        }\n      ],\n      \"countries\": [\n        {\n          \"countryId\": \"string\",\n          \"name_tc\": \"string\"\n        },\n        {\n          \"countryId\": \"string\",\n          \"name_tc\": \"string\"\n        }\n      ],\n      \"teams\": [\n        {\n          \"teamId\": \"string\",\n          \"name_tc\": \"string\"\n        },\n        {\n          \"teamId\": \"string\",\n          \"name_tc\": \"string\"\n        }\n      ],\n      \"players\": [\n        {\n          \"playerId\": \"string\",\n          \"name_tc\": \"string\"\n        },\n        {\n          \"playerId\": \"string\",\n          \"name_tc\": \"string\"\n        }\n      ]\n    },\n    {\n      \"leagues\": [\n        {\n          \"leagueId\": \"string\",\n          \"name_tc\": \"string\"\n        },\n        {\n          \"leagueId\": \"string\",\n          \"name_tc\": \"string\"\n        }\n      ],\n      \"countries\": [\n        {\n          \"countryId\": \"string\",\n          \"name_tc\": \"string\"\n        },\n        {\n          \"countryId\": \"string\",\n          \"name_tc\": \"string\"\n        }\n      ],\n      \"teams\": [\n        {\n          \"teamId\": \"string\",\n          \"name_tc\": \"string\"\n        },\n        {\n          \"teamId\": \"string\",\n          \"name_tc\": \"string\"\n        }\n      ],\n      \"players\": [\n        {\n          \"playerId\": \"string\",\n          \"name_tc\": \"string\"\n        },\n        {\n          \"playerId\": \"string\",\n          \"name_tc\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.isportsapi.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "eb97b640-32a4-4d08-a364-3e4d904dbed0",
+    "name": "iSports Football Multiple languages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.\n\nAll operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).\n\nThis document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.\n\nContact Support:\n Name: iSports API",
+      "type": "text/plain"
+    }
+  }
+}

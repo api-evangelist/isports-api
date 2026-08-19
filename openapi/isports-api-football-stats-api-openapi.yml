@@ -1,0 +1,1579 @@
+openapi: 3.2.0
+info:
+  title: iSports Football Stats API
+  version: '2026-08-09'
+  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.
+
+
+    All operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).
+
+
+    This document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.'
+  termsOfService: https://www.isportsapi.com/en/home/terms.html
+  contact:
+    name: iSports API
+    url: https://www.isportsapi.com/en/
+  x-derived-by: API Evangelist enrichment pipeline
+  x-derived-from: https://www.isportsapi.com/en/docs.html
+  x-derived-on: '2026-08-09'
+servers:
+- url: https://api.isportsapi.com
+  description: Primary API host
+- url: https://api2.isportsapi.com
+  description: Alternate host, documented for when the primary host is slow or unreachable
+security:
+- apiKeyQuery: []
+tags:
+- name: Football Stats
+paths:
+  /sport/football/playerstats/match/list:
+    get:
+      operationId: getFootballPlayerstatsMatchList
+      summary: List of Player Stats (Match)
+      description: "• This API endpoint returns match list which contains players' technical statistics within one day (24H). You can use it with the <a href=\"/docs.html?id=40\" style=\"color:blue\">Player Stats (Match)</a> endpoint.\n\n\n\n• Coverage is limited to selected top leagues. \n\n\n\n• By using endpoints <a href=\"/docs.html?id=41\" style=\"color:blue\">Schedule & Results (Basic)\n</a> and <a href=\"/docs.html?id=33\" style=\"color:blue\">Match Modify Record</a>, you can get basic information of matches."
+      tags:
+      - Football Stats
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                        matchTime:
+                          type: integer
+                          description: Match kick-off time (Unix timestamp, GMT+0)
+                        leagueName:
+                          type: string
+                          description: League or cup name
+                        homeName:
+                          type: string
+                          description: Home team name
+                        awayName:
+                          type: string
+                          description: Away team name
+                        modifyTime:
+                          type: integer
+                          description: Timestamp of when this record was last modified (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=37
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=37
+      x-rate-limit: This interface is limited to 60 seconds/call;
+      x-recommended-call-frequency: 12 hours/call
+      x-plan-products:
+      - Stats
+      x-doc-modified: '2026-06-29'
+  /sport/football/standing/league/getsub:
+    get:
+      operationId: getFootballStandingLeagueGetsub
+      summary: League Standing (Get Subleague)
+      description: '• This API endpoint returns a list of sub-leagues and stages for a specified league. Use the returned subLeagueId with the League Standing endpoint to retrieve standings for each stage.
+
+
+
+
+        • Sub-leagues are used to differentiate divisions or multiple stages within a league (e.g., group stage, play-off). Use the League & Cup Profile endpoint to get full profile information for each league.'
+      tags:
+      - Football Stats
+      parameters:
+      - name: leagueId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: League ID to retrieve sub-leagues and stages for.
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        subLeagueId:
+                          type: string
+                        currentSubLeague:
+                          type: boolean
+                          description: "true: This sub-league or stage is currently in progress\n false: Not in progress"
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=38
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=38
+      x-rate-limit: This interface is limited to 3 seconds/call;
+      x-recommended-call-frequency: 1 day/call
+      x-plan-products:
+      - Stats
+      x-doc-modified: '2026-06-29'
+  /sport/football/topscorer:
+    get:
+      operationId: getFootballTopscorer
+      summary: Top Scorer
+      description: "• This API endpoint returns top scorer statistics for a specified league or cup, including goals broken down by home, away, and penalty. \n\n\n\n• Coverage is limited to selected major leagues and cups.\n\n\n\n• By using endpoint <a href=\"/docs.html?id=42\" style=\"color:blue\">League & Cup Profile (Basic)\n</a>, you can get basic information of leagues and cups."
+      tags:
+      - Football Stats
+      parameters:
+      - name: leagueId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: League or cup ID to retrieve top scorer data for.
+      - name: season
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Season to retrieve data for (e.g., 2025, 2025-2026).
+
+
+
+
+          Must be used together with leagueId. If omitted, returns current season data.'
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        playerId:
+                          type: string
+                        playerName:
+                          type: string
+                          description: Player's full name
+                        teamId:
+                          type: string
+                        teamName:
+                          type: string
+                          description: Team name
+                        country:
+                          type: string
+                          description: Player's nationality (e.g., Paraguay, Argentina)
+                        goalsCount:
+                          type: integer
+                          description: Total goals scored, including penalties
+                        homeGoals:
+                          type: integer
+                          description: Goals scored in home matches, including penalties
+                        awayGoals:
+                          type: integer
+                          description: Goals scored in away matches, including penalties
+                        homePenalty:
+                          type: integer
+                          description: Penalty goals scored in home matches
+                        awayPenalty:
+                          type: integer
+                          description: Penalty goals scored in away matches
+                        matchNum:
+                          type: integer
+                          description: Total appearances. Null if not available for cup competitions.
+                        subNum:
+                          type: integer
+                          description: Substitute appearances. Null if not available for cup competitions.
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=39
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=39
+      x-rate-limit: This interface is limited to 10 seconds/call;
+      x-recommended-call-frequency: 1 day/call
+      x-plan-products:
+      - Stats
+      x-doc-modified: '2026-06-29'
+  /sport/football/playerstats/match:
+    get:
+      operationId: getFootballPlayerstatsMatch
+      summary: Player Stats (Match)
+      description: '• This API endpoint returns players'' technical statistics of specified matchId. You can use it with the <a href="/docs.html?id=37" style="color:blue">List of Player Stats (Match)</a> endpoint.
+
+
+
+
+        • Currently only some top leagues are supported.
+
+
+
+
+        • support to check back the matches within a week.'
+      tags:
+      - Football Stats
+      parameters:
+      - name: matchId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 'for detailed statistical data specified match;
+
+
+          support to check back the matches within a week.'
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        playerId:
+                          type: string
+                        teamId:
+                          type: string
+                        number:
+                          type: integer
+                          description: Player's shirt number
+                        name:
+                          type: string
+                          description: Player's full name
+                        positionName:
+                          type: string
+                          description: Player's position (e.g., Goalkeeper, Defender)
+                        shots:
+                          type: integer
+                          description: Total shots attempted
+                        shotsTarget:
+                          type: integer
+                          description: Shots on target
+                        keyPass:
+                          type: integer
+                          description: Key passes (directly creating a goal-scoring opportunity)
+                        passRate:
+                          type: string
+                          description: Pass accuracy rate (e.g., 0.741935 = 74.2%)
+                        aerialWon:
+                          type: integer
+                          description: Aerial duels won
+                        touches:
+                          type: integer
+                          description: Total ball touches
+                        dribblesWon:
+                          type: integer
+                          description: Successful dribbles
+                        wasFouled:
+                          type: integer
+                          description: Times fouled by an opponent
+                        dispossessed:
+                          type: integer
+                          description: Times dispossessed
+                        turnOver:
+                          type: integer
+                          description: Times possession was lost without a foul
+                        offsides:
+                          type: integer
+                          description: Times caught offside
+                        tackles:
+                          type: integer
+                          description: Tackles attempted
+                        interception:
+                          type: integer
+                          description: Interceptions made
+                        clearances:
+                          type: integer
+                          description: Clearances made
+                        clearanceWon:
+                          type: integer
+                          description: Clearances won under pressure
+                        shotsBlocked:
+                          type: integer
+                          description: Opponent shots blocked
+                        offsideProvoked:
+                          type: integer
+                          description: Times an opponent was caught offside due to this player
+                        fouls:
+                          type: integer
+                          description: Fouls committed
+                        totalPass:
+                          type: integer
+                          description: Total passes attempted
+                        accuratePass:
+                          type: integer
+                          description: Accurate passes completed
+                        crossNum:
+                          type: integer
+                          description: Crosses attempted
+                        crossWon:
+                          type: integer
+                          description: Successful crosses
+                        longBall:
+                          type: integer
+                          description: Long balls attempted
+                        longBallWon:
+                          type: integer
+                          description: Successful long balls
+                        throughBall:
+                          type: integer
+                          description: Through balls attempted
+                        throughBallWon:
+                          type: integer
+                          description: Successful through balls
+                        rating:
+                          type: string
+                          description: Player match rating (e.g., 7.5)
+                        red:
+                          type: integer
+                          description: Red cards received
+                        yellow:
+                          type: integer
+                          description: Yellow cards received
+                        assist:
+                          type: integer
+                          description: Assists
+                        playingTime:
+                          type: integer
+                          description: Minutes played
+                        goals:
+                          type: integer
+                          description: Goals scored
+                        firstTeam:
+                          type: boolean
+                          description: "true: Player started in the lineup \n false: Substitute"
+                        penaltyGoals:
+                          type: integer
+                          description: Goals scored from penalty kicks
+                        shotOnPost:
+                          type: integer
+                          description: Shots hitting the post
+                        errorLeadToGoal:
+                          type: integer
+                          description: Errors directly leading to an opponent's goal
+                        secondYellow:
+                          type: integer
+                          description: Second yellow cards received (resulting in red)
+                        penaltySave:
+                          type: integer
+                          description: Penalty kicks saved (goalkeepers only). 0 if not applicable
+                        isBest:
+                          type: boolean
+                          description: "true: Player of the match \n false: Not selected"
+                        duelTotal:
+                          type: integer
+                          description: Total 1v1 duels participated in
+                        aerialTotal:
+                          type: integer
+                          description: "1v1 duels won. \n Note: despite the field name, this represents successful duels, not total count."
+                        highClaims:
+                          type: integer
+                          description: High balls successfully claimed (goalkeepers only). 0 if not applicable
+                        saves:
+                          type: integer
+                          description: Saves made (goalkeepers only). 0 if not applicable
+                        punches:
+                          type: integer
+                          description: Times the goalkeeper punched the ball clear. 0 if not applicable
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=40
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=40
+      x-rate-limit: This interface is limited to 10 seconds/call;
+      x-recommended-call-frequency: 1 minute/call
+      x-plan-products:
+      - Stats
+      x-doc-modified: '2026-08-03'
+  /sport/football/standing/league:
+    get:
+      operationId: getFootballStandingLeague
+      summary: League Standing
+      description: '• This API endpoint returns league standings for a specified league, including total, home, away, and first-half breakdowns.
+
+
+
+
+        • Use it with the League Standing (Get Subleague) endpoint to get available subLeagueId values when a league has multiple stages or divisions.
+
+
+
+
+        • Without parameters, returns all leagues and cups with standings updated in the past 24 hours. Use the League & Cup Profile endpoint to get basic league information.'
+      tags:
+      - Football Stats
+      parameters:
+      - name: leagueId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: "League ID to retrieve standings for. \n\n\n\nIf the league has multiple stages or sub-leagues, standings are differentiated by sub-league. \n\n\n\nUse subLeagueId to filter to a specific stage."
+      - name: subLeagueId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: "Sub-league or stage ID. \n\n\n\nIf omitted, returns the standings of the first sub-league in the subLeagueInfos list by default (e.g., leagueId=1122&subLeagueId=1122)."
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        leagueInfo:
+                          type: object
+                          description: Basic profile of the league
+                          properties:
+                            leagueId:
+                              type: string
+                            name:
+                              type: string
+                              description: Full league name (e.g., Brazil Serie A)
+                            shortName:
+                              type: string
+                              description: Abbreviated league name (e.g., BRA D1)
+                            logo:
+                              type: string
+                              description: "League logo image URL. \n\n Do not hotlink directly; download and serve locally."
+                            color:
+                              type: string
+                              description: 'Theme color as an RGB hex code (e.g., #B5A150)'
+                            totalRound:
+                              type: integer
+                              description: Total number of rounds in the season
+                            currentRound:
+                              type: integer
+                              description: Current round in progress
+                            currentSeason:
+                              type: string
+                              description: Current season identifier (e.g., 2026, 2025-2026)
+                        subLeagueInfos:
+                          type: array
+                          description: List of sub-leagues or stages within the league
+                          items:
+                            type: object
+                            properties:
+                              subLeagueId:
+                                type: string
+                              name:
+                                type: string
+                                description: Sub-league or stage name (e.g., League, Western Play-off)
+                              totalRound:
+                                type: integer
+                                description: Total rounds in this sub-league
+                              currentRound:
+                                type: integer
+                                description: Current round in this sub-league
+                              hasScore:
+                                type: boolean
+                                description: "true: Standing data is available \n false: Not available"
+                              hasTwoLegs:
+                                type: boolean
+                                description: "true: Ties are decided over two legs \n false: Single match"
+                              currentSubLeague:
+                                type: boolean
+                                description: "true: This sub-league is currently in progress \n false: Not in progress"
+                        teamInfos:
+                          type: array
+                          description: List of teams participating in this league
+                          items:
+                            type: object
+                            properties:
+                              teamId:
+                                type: string
+                              name:
+                                type: string
+                                description: Team name
+                              logo:
+                                type: string
+                                description: "Team logo image URL. \n\nDo not hotlink directly; download and serve locally."
+                              area:
+                                type: integer
+                                description: "Conference zone \n 0: No division 1: East 2: West"
+                        totalStandings:
+                          type: array
+                          description: Full-match standings (all venues)
+                          items:
+                            type: object
+                            properties:
+                              rank:
+                                type: integer
+                                description: Current league position
+                              teamId:
+                                type: string
+                              winRate:
+                                type: string
+                                description: Win rate as a percentage (e.g., 57.1)
+                              drawRate:
+                                type: string
+                                description: Draw rate as a percentage
+                              loseRate:
+                                type: string
+                                description: Loss rate as a percentage
+                              winAverage:
+                                type: string
+                                description: Average goals scored per match
+                              loseAverage:
+                                type: string
+                                description: Average goals conceded per match
+                              deduction:
+                                type: string
+                                description: Points deducted
+                              deductionExplain:
+                                type: string
+                                description: Explanation of points deduction. Empty string if no deduction.
+                              recentFirstResult:
+                                type: integer
+                                description: "Result of most recent match \n 0: Win 1: Draw 2: Loss 3: Empty"
+                              recentSecondResult:
+                                type: integer
+                                description: "Result of 2nd most recent match. \n 0: Win 1: Draw 2: Loss 3: Empty"
+                              recentThirdResult:
+                                type: integer
+                                description: "Result of 3rd most recent match. \n 0: Win 1: Draw 2: Loss 3: Empty"
+                              recentFourthResult:
+                                type: integer
+                                description: "Result of 4th most recent match. \n 0: Win 1: Draw 2: Loss 3: Empty"
+                              recentFifthResult:
+                                type: integer
+                                description: "Result of 5th most recent match. \n 0: Win 1: Draw 2: Loss 3: Empty"
+                              recentSixthResult:
+                                type: integer
+                                description: "Result of 6th most recent match. \n 0: Win 1: Draw 2: Loss 3: Empty"
+                              color:
+                                type: string
+                                description: "Promotion or relegation zone indicator. \n\n Corresponds to the index of the matching entry in leagueColorInfos (starting from 0). -1 indicates no promotion or relegation status."
+                              red:
+                                type: integer
+                                description: Red cards received
+                              totalCount:
+                                type: integer
+                                description: Total matches played
+                              winCount:
+                                type: integer
+                                description: Matches won
+                              drawCount:
+                                type: integer
+                                description: Matches drawn
+                              loseCount:
+                                type: integer
+                                description: Matches lost
+                              getScore:
+                                type: integer
+                                description: Goals scored
+                              loseScore:
+                                type: integer
+                                description: Goals conceded
+                              goalDifference:
+                                type: integer
+                                description: Goal difference (goals scored minus goals conceded)
+                              totalAddScore:
+                                type: integer
+                                description: Additional points awarded (e.g., bonus points)
+                              integral:
+                                type: integer
+                                description: Total points (excluding deductions)
+                        halfStandings:
+                          type: array
+                          description: First-half standings (all venues)
+                          items:
+                            type: object
+                            properties:
+                              rank:
+                                type: integer
+                                description: Current league position
+                              teamId:
+                                type: string
+                              winRate:
+                                type: string
+                                description: Win rate as a percentage (e.g., 57.1)
+                              drawRate:
+                                type: string
+                                description: Draw rate as a percentage
+                              loseRate:
+                                type: string
+                                description: Loss rate as a percentage
+                              winAverage:
+                                type: string
+                                description: Average goals scored per match
+                              loseAverage:
+                                type: string
+                                description: Average goals conceded per match
+                              totalCount:
+                                type: integer
+                                description: Total matches played
+                              winCount:
+                                type: integer
+                                description: Matches won
+                              drawCount:
+                                type: integer
+                                description: Matches drawn
+                              loseCount:
+                                type: integer
+                                description: Matches lost
+                              getScore:
+                                type: integer
+                                description: Goals scored
+                              loseScore:
+                                type: integer
+                                description: Goals conceded
+                              goalDifference:
+                                type: integer
+                                description: Goal difference (goals scored minus goals conceded)
+                              integral:
+                                type: integer
+                                description: Total points (excluding deductions)
+                        homeStandings:
+                          type: array
+                          description: Full-match standings, home matches only
+                          items: {}
+                        awayStandings:
+                          type: array
+                          description: Full-match standings, away matches only
+                          items: {}
+                        homeHalfStandings:
+                          type: array
+                          description: First-half standings, home matches only
+                          items: {}
+                        awayHalfStandings:
+                          type: array
+                          description: First-half standings, away matches only
+                          items: {}
+                        leagueColorInfos:
+                          type: array
+                          description: Color legend for promotion and relegation zones
+                          items:
+                            type: object
+                            properties:
+                              color:
+                                type: string
+                                description: 'RGB hex color code (e.g., #ffff00)'
+                              leagueName:
+                                type: string
+                                description: Zone label (e.g., Title Play-offs, Relegation Play-offs)
+                              beginRank:
+                                type: integer
+                                description: Starting rank of this zone
+                              endRank:
+                                type: integer
+                                description: Ending rank of this zone
+                        lastUpdateTime:
+                          type: integer
+                          description: Timestamp of the last standings update (Unix timestamp, GMT+0)
+                        scoreCountType:
+                          type: integer
+                          description: "Indicates whether additional points (totalAddScore) are applied in this league. \n\n 0: No additional points — column can be hidden. \n Any other value: additional points are in use — display the totalAddScore column."
+                        conference:
+                          type: boolean
+                          description: "true: This league uses a conference format \n false: Standard league format"
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=43
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=43
+      x-rate-limit: This interface is limited to 3 seconds/call;
+      x-recommended-call-frequency: 1 day/call
+      x-plan-products:
+      - Stats
+      x-doc-modified: '2026-06-29'
+  /sport/football/standing/cup:
+    get:
+      operationId: getFootballStandingCup
+      summary: Cup Standing
+      description: "• This API endpoint returns group stage standings for a specified cup competition, organized by round and group. \n\n\n\n• Without parameter, returns all leagues and cups with standings updated in the past 24 hours. \n\n\n\n• Use the League & Cup Profile endpoint to get basic information for each cup."
+      tags:
+      - Football Stats
+      parameters:
+      - name: leagueId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Cup ID to retrieve group stage standings for.
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        leagueId:
+                          type: string
+                        season:
+                          type: string
+                          description: Season identifier (e.g., 2025-2026)
+                        roundScoreItems:
+                          type: array
+                          description: List of rounds in the cup competition
+                          items:
+                            type: object
+                            properties:
+                              roundName:
+                                type: string
+                                description: Round name (e.g., Qual., Qualifying Round)
+                              groupScoreItems:
+                                type: array
+                                description: List of groups within this round
+                                items:
+                                  type: object
+                                  properties:
+                                    groupName:
+                                      type: string
+                                      description: Group name (e.g., Group A)
+                                    scoreItems:
+                                      type: array
+                                      description: Standings entries for each team in this group
+                                      items:
+                                        type: object
+                                        properties:
+                                          rank:
+                                            type: integer
+                                            description: Team's current position in the group
+                                          teamId:
+                                            type: string
+                                          teamName:
+                                            type: string
+                                            description: Team name
+                                          color:
+                                            type: string
+                                            description: "Qualification status indicator. \n\n RGB hex color code (e.g., #ff0000) if the team has qualified or is in a notable zone. Empty string if no status applies."
+                                          totalCount:
+                                            type: integer
+                                            description: Total matches played
+                                          winCount:
+                                            type: integer
+                                            description: Matches won
+                                          drawCount:
+                                            type: integer
+                                            description: Matches drawn
+                                          loseCount:
+                                            type: integer
+                                            description: Matches lost
+                                          getScore:
+                                            type: integer
+                                            description: Goals scored
+                                          loseScore:
+                                            type: integer
+                                            description: Goals conceded
+                                          goalDifference:
+                                            type: integer
+                                            description: Goal difference (goals scored minus goals conceded)
+                                          integral:
+                                            type: integer
+                                            description: Total points
+                                          deduction:
+                                            type: string
+                                            description: Points deducted. 0 if no deduction.
+                                          deductionExplain:
+                                            type: string
+                                            description: Explanation of points deduction. Empty string if no deduction.
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=45
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=45
+      x-rate-limit: This interface is limited to 3 seconds/call;
+      x-recommended-call-frequency: 1 day/call
+      x-plan-products:
+      - Stats
+      x-doc-modified: '2026-06-29'
+  /sport/football/fifaranking:
+    get:
+      operationId: getFootballFifaranking
+      summary: FIFA Ranking
+      description: "• This API endpoint returns FIFA rankings for men's national teams, women's national teams, and club teams. \n\n\n\n• Rankings are updated monthly."
+      tags:
+      - Football Stats
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          description: "Ranking category: \n MEN'S RANKING / WOMEN'S RANKING / Club"
+                        teamId:
+                          type: string
+                        teamName:
+                          type: string
+                          description: Team name (e.g., Argentina, Spain)
+                        continent:
+                          type: string
+                          description: "Continent or confederation the team belongs to (e.g., South America, Europe). \n\n Null for club rankings."
+                        rank:
+                          type: integer
+                          description: Current FIFA ranking position
+                        rankChange:
+                          type: integer
+                          description: "Change in ranking since last update. \n\n Positive = moved up, negative = moved down, 0 = no change."
+                        score:
+                          type: integer
+                          description: Current FIFA ranking points
+                        scoreChange:
+                          type: integer
+                          description: "Change in points since last update. \n\n Positive = increased, negative = decreased, 0 = no change."
+                        updateDate:
+                          type: string
+                          description: Month of the ranking update (e.g., 2026-6)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=47
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=47
+      x-rate-limit: This interface is limited to 1,800 seconds/call;
+      x-recommended-call-frequency: 1 day/call
+      x-plan-products:
+      - Stats
+      x-doc-modified: '2026-06-29'
+  /sport/football/playerstats/league/list:
+    get:
+      operationId: getFootballPlayerstatsLeagueList
+      summary: List of Player Stats (League & Cup)
+      description: '• This API endpoint returns league list which contains players'' seasonal technical statistics. You can use it with <a href="/docs.html?id=51" style="color:blue">Player Stats (League&Cup)</a> endpoint.
+
+
+
+
+        • By using endpoint <a href="/docs.html?id=42" style="color:blue">League & Cup Profile (Basic)
+
+        </a>, you can get basic information of leagues and cups.'
+      tags:
+      - Football Stats
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        leagueId:
+                          type: string
+                        season:
+                          type: string
+                          description: Season with available player statistics (e.g., 2026, 2025-2026)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=49
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=49
+      x-rate-limit: This interface is limited to 60 seconds/call;
+      x-recommended-call-frequency: 1 day/call
+      x-plan-products:
+      - Stats
+      x-doc-modified: '2026-06-29'
+  /sport/football/playerstats/league:
+    get:
+      operationId: getFootballPlayerstatsLeague
+      summary: Player Stats (League & Cup)
+      description: '• This API endpoint returns players'' seasonal technical statistics of specified league or cup id. You can use it with <a href="/docs.html?id=49" style="color:blue">List of Player Stats (League&Cup)</a> endpoint.
+
+
+
+
+        • Data is split by home and away matches — aggregate both to get full-season totals.'
+      tags:
+      - Football Stats
+      parameters:
+      - name: leagueId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: League or cup ID to retrieve player statistics for.
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        playerId:
+                          type: string
+                        teamId:
+                          type: string
+                        leagueId:
+                          type: string
+                        season:
+                          type: string
+                          description: Season identifier (e.g., 2025-2026)
+                        appearanceCount:
+                          type: integer
+                          description: Total appearances in the season (including substitute appearances)
+                        substituteCount:
+                          type: integer
+                          description: Appearances as a substitute
+                        playingTime:
+                          type: integer
+                          description: Total minutes played in the season
+                        goals:
+                          type: integer
+                          description: Goals scored (excluding penalty goals)
+                        penaltyGoals:
+                          type: integer
+                          description: Goals scored from penalty kicks
+                        shotCount:
+                          type: integer
+                          description: Total shots attempted
+                        shotTargetCount:
+                          type: integer
+                          description: Shots on target
+                        wasFouledCount:
+                          type: integer
+                          description: Times fouled by an opponent
+                        offsideCount:
+                          type: integer
+                          description: Times caught offside
+                        bestCount:
+                          type: integer
+                          description: Times selected as player of the match
+                        rating:
+                          type: string
+                          description: Average match rating across all appearances
+                        passCount:
+                          type: integer
+                          description: Total passes attempted
+                        passSuccessCount:
+                          type: integer
+                          description: Accurate passes completed
+                        keyPassCount:
+                          type: integer
+                          description: Key passes (directly creating a goal-scoring opportunity)
+                        assistCount:
+                          type: integer
+                          description: Assists
+                        longPassCount:
+                          type: integer
+                          description: Long balls attempted
+                        longPassSuccessCount:
+                          type: integer
+                          description: Successful long balls
+                        throughPassCount:
+                          type: integer
+                          description: Through balls attempted
+                        throughPassSuccessCount:
+                          type: integer
+                          description: Successful through balls
+                        dribblesSuccessCount:
+                          type: integer
+                          description: Successful dribbles
+                        crossPassCount:
+                          type: integer
+                          description: Crosses attempted
+                        crossPassSuccessCount:
+                          type: integer
+                          description: Successful crosses
+                        tackleCount:
+                          type: integer
+                          description: Tackles made
+                        interceptionCount:
+                          type: integer
+                          description: Interceptions made
+                        clearanceCount:
+                          type: integer
+                          description: Clearances made
+                        dispossessedCount:
+                          type: integer
+                          description: Times dispossessed
+                        shotBlockedCount:
+                          type: integer
+                          description: Opponent shots blocked
+                        aerialSuccessCount:
+                          type: integer
+                          description: Aerial duels won
+                        foulsCount:
+                          type: integer
+                          description: Fouls committed
+                        redCount:
+                          type: integer
+                          description: Red cards received
+                        yellowCount:
+                          type: integer
+                          description: Yellow cards received
+                        turnOverCount:
+                          type: integer
+                          description: Times possession was lost without a foul
+                        modifyTime:
+                          type: integer
+                          description: Timestamp of when this record was last modified (Unix timestamp, GMT+0)
+                        homeTeam:
+                          type: boolean
+                          description: "true: Home match statistics \n false: Away match statistics"
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=51
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=51
+      x-rate-limit: This interface is limited to 10 seconds/call;
+      x-recommended-call-frequency: 1 day/call
+      x-plan-products:
+      - Stats
+      x-doc-modified: '2026-08-03'
+  /sport/football/analysis:
+    get:
+      operationId: getFootballAnalysis
+      summary: Matches Analysis
+      description: "• This API endpoint returns match analysis data for the past 24 hours and the next 7 days, including head-to-head history, recent form, future schedule, odds statistics, goals distribution, and half-time/full-time results.\n\n\n\n• Data is cached for 24 hours — no need for frequent polling. Use matchId to retrieve analysis for a specific match. \n\n\n\n• Data presentation：https://live9.nowgoal26.com/match/h2h-2591211"
+      tags:
+      - Football Stats
+      parameters:
+      - name: matchId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Match ID to retrieve analysis for.
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        headToHead:
+                          type: array
+                          description: Head-to-head match history between the two teams. Returns up to the last 20 matches. Each entry is a comma-separated string containing the fields below
+                          items:
+                            type: object
+                            properties:
+                              matchId:
+                                type: string
+                              league:
+                                type: string
+                                description: League or cup name
+                              leagueId:
+                                type: string
+                              matchTime:
+                                type: integer
+                                description: Match kick-off time (Unix timestamp, GMT+0)
+                              home:
+                                type: string
+                                description: Home team name
+                              homeTeamId:
+                                type: string
+                                description: Home team ID
+                              away:
+                                type: string
+                                description: Away team name
+                              awayTeamId:
+                                type: string
+                                description: Away team ID
+                              scoreHome:
+                                type: integer
+                                description: Full-time score, home team
+                              scoreAway:
+                                type: integer
+                                description: Full-time score, away team
+                              homeHalfScore:
+                                type: integer
+                                description: First half score, home team
+                              awayHalfScore:
+                                type: integer
+                                description: First half score, away team
+                              homeRed:
+                                type: integer
+                                description: Red cards received by home team
+                              awayRed:
+                                type: integer
+                                description: Red cards received by away team
+                              homeCorner:
+                                type: integer
+                                description: Corners won by home team
+                              awayCorner:
+                                type: integer
+                                description: Corners won by away team
+                              initialHandicapHome:
+                                type: string
+                                description: Opening Asian Handicap odds — home side (Crown)
+                              initialHandicap:
+                                type: string
+                                description: Opening handicap line (Crown)
+                              initialHandicapAway:
+                                type: string
+                                description: Opening Asian Handicap odds — away side (Crown)
+                              instantHandicapHome:
+                                type: string
+                                description: Current Asian Handicap odds — home side (Crown)
+                              instantHandicap:
+                                type: string
+                                description: Current handicap line (Crown)
+                              instantHandicapAway:
+                                type: string
+                                description: Current Asian Handicap odds — away side (Crown)
+                              initialHome:
+                                type: string
+                                description: Opening 1X2 odds — home win (Crown)
+                              initialDraw:
+                                type: string
+                                description: Opening 1X2 odds — draw (Crown)
+                              initialAway:
+                                type: string
+                                description: Opening 1X2 odds — away win (Crown)
+                              instantHome:
+                                type: string
+                                description: Current 1X2 odds — home win (Crown)
+                              instantDraw:
+                                type: string
+                                description: Current 1X2 odds — draw (Crown)
+                              instantAway:
+                                type: string
+                                description: Current 1X2 odds — away win (Crown)
+                              initialOver:
+                                type: string
+                                description: Opening over/under odds — over (Crown)
+                              initialTotal:
+                                type: string
+                                description: Opening over/under line (Crown)
+                              initialUnder:
+                                type: string
+                                description: Opening over/under odds — under (Crown)
+                              instantOver:
+                                type: string
+                                description: Current over/under odds — over (Crown)
+                              instantTotal:
+                                type: string
+                                description: Current over/under line (Crown)
+                              instantUnder:
+                                type: string
+                                description: Current over/under odds — under (Crown)
+                        homeLastMatches:
+                          type: array
+                          description: Recent match history for the home team. Returns up to the last 20 matches. Same structure as headToHead
+                          items: {}
+                        awayLastMatches:
+                          type: array
+                          description: Recent match history for the away team. Returns up to the last 20 matches. Same structure as headToHead
+                          items: {}
+                        homeSchedule:
+                          type: array
+                          description: Upcoming fixtures for the home team. Returns up to the next 5 matches. Each entry is a comma-separated string containing the fields below.
+                          items:
+                            type: object
+                            properties:
+                              matchId:
+                                type: string
+                              league:
+                                type: string
+                                description: League or cup name
+                              leagueId:
+                                type: string
+                              matchTime:
+                                type: integer
+                                description: Scheduled kick-off time (e.g., 2019-03-30 21:00, GMT+0)
+                              home:
+                                type: string
+                                description: Home team name
+                              homeTeamId:
+                                type: string
+                                description: Home team ID
+                              away:
+                                type: string
+                                description: Away team name
+                              awayTeamId:
+                                type: string
+                                description: Away team ID
+                              day:
+                                type: integer
+                                description: Days between this fixture and the current match
+                        awaySchedule:
+                          type: array
+                          description: Upcoming fixtures for the away team. Same structure as homeSchedule.
+                          items: {}
+                        homeOdds:
+                          type: object
+                          description: Odds-based performance statistics for the home team.
+                          properties:
+                            total:
+                              type: object
+                              description: Full season statistics (all venues)
+                              properties:
+                                count:
+                                  type: integer
+                                  description: Total number of matches
+                                oddsWin:
+                                  type: integer
+                                  description: Matches won against the Asian Handicap (Crown)
+                                oddsVoid:
+                                  type: integer
+                                  description: Matches voided against the Asian Handicap (Crown)
+                                oddsLose:
+                                  type: integer
+                                  description: Matches lost against the Asian Handicap (Crown)
+                                oddsWinRate:
+                                  type: string
+                                  description: Asian Handicap win rate (e.g., 57.6%)
+                                oddsOver:
+                                  type: integer
+                                  description: Matches where over won (Crown over/under)
+                                oddsOverRate:
+                                  type: string
+                                  description: Over win rate (e.g., 57.6%)
+                                oddsUnder:
+                                  type: integer
+                                  description: Matches where under won (Crown over/under)
+                                oddsUnderRate:
+                                  type: string
+                                  description: Under win rate (e.g., 57.6%)
+                            home:
+                              type: object
+                              description: Home venue statistics only
+                            away:
+                              type: object
+                              description: Away venue statistics only
+                            recentSix:
+                              type: object
+                              description: Odds results for the last 6 matches
+                              properties:
+                                count:
+                                  type: integer
+                                  description: Number of matches (up to 6)
+                                handicapResult:
+                                  type: string
+                                  description: 'Asian Handicap result sequence: w = win, l = loss, v = void (e.g., lvlwlw)'
+                                oddsWinRate:
+                                  type: string
+                                  description: Asian Handicap win rate across the last 6 matches
+                                overUnderResult:
+                                  type: string
+                                  description: 'Over/under result sequence: o = over, u = under, v = void (e.g., ovouoo)'
+                            totalHalf:
+                              type: object
+                              description: First half statistics (all venues). Same structure as total.
+                            homeHalf:
+                              type: object
+                              description: First half statistics, home venue. Same structure as total.
+                            awayHalf:
+                              type: object
+                              description: First half statistics, away venue. Same structure as total.
+                            recentSixHalf:
+                              type: object
+                              description: First half odds results for the last 6 matches. Same structure as recentSix.
+                        awayOdds:
+                          type: object
+                          description: Same structure as homeOdds, for the away team.
+                        homeGoals:
+                          type: object
+                          description: Goals distribution statistics for the home team.
+                          properties:
+                            total:
+                              type: object
+                              description: All venues breakdown
+                              properties:
+                                '0':
+                                  type: integer
+                                  description: Matches with no goals
+                                '1':
+                                  type: integer
+                                  description: Matches with exactly 1 goal
+                                '2':
+                                  type: integer
+                                  description: Matches with exactly 2 goals
+                                '3':
+                                  type: integer
+                                  description: Matches with exactly 3 goals
+                                4+:
+                                  type: integer
+                                  description: Matches with 4 or more goals
+                                firstHalf:
+                                  type: integer
+                                  description: Total goals scored in the first half
+                                secondHalf:
+                                  type: integer
+                                  description: Total goals scored in the second half
+                            home:
+                              type: object
+                              description: Home venue breakdown
+                            away:
+                              type: object
+                              description: Away venue breakdown
+                        awayGoals:
+                          type: object
+                          description: Same structure as homeGoals, for the away team.
+                        homeHT:
+                          type: object
+                          description: Half-time to full-time result distribution for the home team.
+                          properties:
+                            total:
+                              type: object
+                              description: All venues breakdown
+                              properties:
+                                halfWinFullWin:
+                                  type: integer
+                                  description: Won first half and won the match
+                                halfWinFullDraw:
+                                  type: integer
+                                  description: Won first half and drew the match
+                                halfWinFullLose:
+                                  type: integer
+                                  description: Won first half and lost the match
+                                halfDrawFullWin:
+                                  type: integer
+                                  description: Drew first half and won the match
+                                halfDrawFullDraw:
+                                  type: integer
+                                  description: Drew first half and drew the match
+                                halfDrawFullLose:
+                                  type: integer
+                                  description: Drew first half and lost the match
+                                halfLoseFullWin:
+                                  type: integer
+                                  description: Lost first half and won the match
+                                halfLoseFullDraw:
+                                  type: integer
+                                  description: Lost first half and drew the match
+                                halfLoseFullLose:
+                                  type: integer
+                                  description: Lost first half and lost the match
+                            home:
+                              type: object
+                              description: Home venue breakdown
+                            away:
+                              type: object
+                              description: Away venue breakdown
+                        awayHT:
+                          type: object
+                          description: Same structure as homeHT, for the away team.
+                        homeShootTime:
+                          type: object
+                          description: Goals scored by time interval for the home team.
+                          properties:
+                            Total:
+                              type: object
+                              description: All venues breakdown
+                              properties:
+                                1-10:
+                                  type: integer
+                                  description: Goals scored in minutes 1–10
+                                11-20:
+                                  type: integer
+                                  description: Goals scored in minutes 11–20
+                                21-30:
+                                  type: integer
+                                  description: Goals scored in minutes 21–30
+                                31-40:
+                                  type: integer
+                                  description: Goals scored in minutes 31–40
+                                41-45+:
+                                  type: integer
+                                  description: Goals scored in minutes 41–45+ (including injury time)
+                                46-50:
+                                  type: integer
+                                  description: Goals scored in minutes 46–50
+                                51-60:
+                                  type: integer
+                                  description: Goals scored in minutes 51–60
+                                61-70:
+                                  type: integer
+                                  description: Goals scored in minutes 61–70
+                                71-80:
+                                  type: integer
+                                  description: Goals scored in minutes 71–80
+                                81-90+:
+                                  type: integer
+                                  description: Goals scored in minutes 81–90+ (including injury time)
+                            Home:
+                              type: object
+                              description: Home venue breakdown
+                            Away:
+                              type: object
+                              description: Away venue breakdown
+                            Time of ScoredTotal:
+                              type: object
+                              description: First goal time distribution — all venues. Same structure as Total.
+                            Time of ScoredHome:
+                              type: object
+                              description: First goal time distribution — home venue. Same structure as Total.
+                            Time of ScoredAway:
+                              type: object
+                              description: First goal time distribution — away venue. Same structure as Total.
+                        awayShootTime:
+                          type: object
+                          description: Same structure as homeShootTime, for the away team.
+                        homeSingleDouble:
+                          type: object
+                          description: Odd/even total goals distribution for the home team.
+                          properties:
+                            total:
+                              type: object
+                              description: All venues breakdown
+                              properties:
+                                over:
+                                  type: integer
+                                  description: Matches where total goals exceeded the over/under line
+                                under:
+                                  type: integer
+                                  description: Matches where total goals fell below the over/under line
+                                draw:
+                                  type: integer
+                                  description: Matches resulting in a void/push on the over/under line
+                                odd:
+                                  type: integer
+                                  description: Matches with an odd total number of goals
+                                even:
+                                  type: integer
+                                  description: Matches with an even total number of goals
+                            home:
+                              type: object
+                              description: Home venue breakdown
+                            away:
+                              type: object
+                              description: Away venue breakdown
+                        awaySingleDouble:
+                          type: object
+                          description: Same structure as homeSingleDouble, for the away team.
+                        homeDataVs:
+                          type: object
+                          description: Season performance summary for the home team.
+                          properties:
+                            count:
+                              type: integer
+                              description: Total head-to-head matches between these two teams
+                            scored:
+                              type: integer
+                              description: Goals scored in head-to-head matches
+                            conceded:
+                              type: integer
+                              description: Goals conceded in head-to-head matches
+                            win:
+                              type: integer
+                              description: Wins in head-to-head matches
+                            draw:
+                              type: integer
+                              description: Draws in head-to-head matches
+                            lose:
+                              type: integer
+                              description: Losses in head-to-head matches
+                        awayDataVs:
+                          type: object
+                          description: Same structure as homeDataVs, for the away team.
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=109
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=109
+      x-rate-limit: This interface is limited to 1 second/call;
+      x-recommended-call-frequency: 1 day/call
+      x-plan-products:
+      - Stats
+      x-doc-modified: '2026-08-03'
+components:
+  securitySchemes:
+    apiKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key
+      description: Personal API key issued from the iSports account settings page and passed on every request as the `api_key` query parameter.
+externalDocs:
+  description: iSports API documentation
+  url: https://www.isportsapi.com/en/docs.html

@@ -1,0 +1,265 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "iSports Football Live Data API",
+    "version": "2026-08-09"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Football Live Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Livescores Changes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/livescores/changes"
+          },
+          "docs": "• This API endpoint returns only the matches that have had livescore updates in the last 20 seconds. \n\n\n\n• Use it alongside the Livescores for Today endpoint — call Livescores for Today once to get the full match list, then poll this endpoint every 2–10 seconds to receive incremental updates."
+        },
+        {
+          "info": {
+            "name": "Events / Shooting events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/events",
+            "params": [
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Match date in yyyy-MM-dd format e.g. 2026-06-01. \n\n\nIf omitted, returns events for the current day. Limited to the past month"
+              },
+              {
+                "name": "cmd",
+                "value": "",
+                "type": "query",
+                "description": "When set to new, returns only events updated in the last 3 minutes. \n\n Useful for incremental polling"
+              }
+            ]
+          },
+          "docs": "**Events**\n\n• This API endpoint returns match events for football matches, including goals, cards, substitutions, and VAR reviews.\n\n\n\n• By default, returns events for all matches on the current day (GMT+0 00:00–23:59).\n\n\n\n• Events are identified by eventId and may be added or deleted (not modified). Always synchronize using eventId — if an event is corrected, the old eventId will be deleted and a new one added.\n\n**Shooting events** (cmd=shot)\n\n• This API endpoint provides detailed shooting event"
+        },
+        {
+          "info": {
+            "name": "Stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/stats",
+            "params": [
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Match date in yyyy-MM-dd format e.g. 2026-06-01. \n\n\n\nIf omitted, returns stats for the current day. Limited to the past month"
+              },
+              {
+                "name": "matchId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by match ID. Only matches from the current day are supported"
+              }
+            ]
+          },
+          "docs": "• This API endpoint returns real-time team technical statistics for football matches on the current day (GMT+0 00:00–23:59). \n\n\n\n• Each stat is identified by a type code and provides separate values for home and away teams."
+        },
+        {
+          "info": {
+            "name": "Lineups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/lineups",
+            "params": [
+              {
+                "name": "matchId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by match ID. Returns lineup for the specified match, or null if no lineup data is available"
+              },
+              {
+                "name": "isPreview",
+                "value": "",
+                "type": "query",
+                "description": "Optional. When set to true, returns the latest available lineup — either Predicted or Official.\n\n\n\nWithout matchId: Returns lineups for matches within the past 24 hours and the next 12 hours.\n\n\nWith matchId: Returns lineup for a specific match within a ±3-day window.\n\n\nAuto-update: Returns a Predicted lineup initially, then automatically switches to the Official lineup once released (typically 60 minutes before kick-off)."
+              }
+            ]
+          },
+          "docs": "• This API endpoint returns starting lineups and substitute lists for football matches.\n\n\n\n• By default, returns lineups for matches within the past 24 hours to the present. Use the isPreview parameter to access predicted or official lineups for upcoming matches.\n\n\n\n• If a match has no formation data, all player position values return 0. Substitute players also return position 0 regardless of formation."
+        },
+        {
+          "info": {
+            "name": "Livescores for Today",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/livescores"
+          },
+          "docs": "• This API endpoint returns livescores for all football matches on the current day (GMT+0 00:00–23:59). \n\n\n\n• Use it alongside the Livescores Changes endpoint to receive incremental updates and avoid repeated full pulls."
+        },
+        {
+          "info": {
+            "name": "Schedule & Results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/schedule",
+            "params": [
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Match date in yyyy-MM-dd format (GMT+0), e.g. 2026-06-01. \n Returns all matches on that date. \n Historical data limited to the past month"
+              },
+              {
+                "name": "leagueId",
+                "value": "",
+                "type": "query",
+                "description": "Filter matches by league or cup ID. Returns the current season by default"
+              },
+              {
+                "name": "season",
+                "value": "",
+                "type": "query",
+                "description": "Filter by season; must be used with leagueId. e.g. 2025-2026. \n Defaults to current season if omitted"
+              },
+              {
+                "name": "subLeagueId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by sub-league; must be used with leagueId"
+              },
+              {
+                "name": "stageId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by cup stage; must be used with leagueId"
+              },
+              {
+                "name": "matchId",
+                "value": "",
+                "type": "query",
+                "description": "Fetch one or more matches by ID. Separate multiple IDs with commas. Maximum 100 IDs per request"
+              }
+            ]
+          },
+          "docs": "• This API endpoint returns match schedule and result data filtered by date, league, or specific match ID.\n\n\n\n• At least one of the parameters date, leagueId, or matchId is required. These three parameters cannot be used together at the same time.\n\n\n\n• Use it alongside the Match Modify Record endpoint to detect and sync kick-off time changes.\n\nThe request path needs at least one parameter (date, leagueId, and matchId ) to retrieve correct response. These three parameters can not be used at the s"
+        },
+        {
+          "info": {
+            "name": "Corner",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/events/corner"
+          },
+          "docs": "• This API endpoint returns real-time corner kick events and statistics for football matches on the current day (GMT+0 00:00–23:59).\n\n\n\n• Corner events are identified by eventId and may only be added or deleted (not modified). Always synchronize using eventId — if a corner event is corrected, the old eventId will be deleted and a new one added."
+        },
+        {
+          "info": {
+            "name": "Injury",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/injury"
+          },
+          "docs": "This API endpoint returns player injury and suspension records for upcoming matches, covering the past 8 hours and the next 3 days. Use this data to identify unavailable players before placing odds or building lineups."
+        },
+        {
+          "info": {
+            "name": "Match List of Live Text",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/livetext/list"
+          },
+          "docs": "• This endpoint returns a list of football matches that have live text commentary available — covering today's matches and those from the past 8 hours. Use the returned matchId with the Live Text endpoint to fetch real-time match commentary and events.\n\n\n\n• Coverage is limited to major leagues and cup competitions (e.g., UEFA Champions League, International Friendlies)."
+        },
+        {
+          "info": {
+            "name": "Live Text",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/livetext",
+            "params": [
+              {
+                "name": "matchId",
+                "value": "",
+                "type": "query",
+                "description": "Filter results to a specific match. If omitted, returns all live text events updated in the last 2 minutes — recommended for real-time polling."
+              }
+            ]
+          },
+          "docs": "• This API endpoint returns live text commentary events for a specified match. Use it alongside the Match List of Live Text endpoint to get available match IDs.\n\n\n\n• Without a matchId parameter, returns all live text events updated in the last 2 minutes. \n\n\n\n• Coverage is limited to major leagues and cup competitions."
+        },
+        {
+          "info": {
+            "name": "Transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/transfer",
+            "params": [
+              {
+                "name": "day",
+                "value": "",
+                "type": "query",
+                "description": "Number of days to look back. If omitted, defaults to 30 days (e.g., day=1 returns records from the past 24 hours)."
+              }
+            ]
+          },
+          "docs": "• This API endpoint returns player transfer records across major leagues worldwide. \n\n\n\n• By default, returns records updated within the past month. Use the day parameter to extend the lookback window up to 2 years.\n\n\n\n• Supported leagues include Premier League, Serie A, La Liga, Bundesliga, Ligue 1, Champions League, and 30+ other competitions globally."
+        },
+        {
+          "info": {
+            "name": "Schedule Changes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/scheduleChange"
+          },
+          "docs": "• This API endpoint returns newly added and recently modified matches from the past hour. Call it every 20–50 minutes to keep your schedule data up to date.\n\n\n\n• The response format is identical to the Livescores for Today endpoint. Use this alongside Schedule & Results to detect newly added fixtures and kick-off time changes."
+        },
+        {
+          "info": {
+            "name": "Match Insights",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/summary"
+          },
+          "docs": "• This API endpoint provides AI-generated pre-match analysis and post-match summaries for football matches.\n\n\n• Pre-match briefings cover matches scheduled within the next 48 hours; post-match summaries cover completed matches from the past 24 hours.\n\n\n• Use this endpoint alongside Livescores, Events, and Stats for a complete match data experience."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

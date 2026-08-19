@@ -1,0 +1,115 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "iSports Basketball Common API API",
+    "version": "2026-08-09"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Basketball Common API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Match Modify Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/schedule/modify"
+          },
+          "docs": "• This API endpoint returns records of schedule deletions and match time modifications from the past 24 hours. \n\n\n\n• You can use it with the <a href=\"/docs.html?id=48\" style=\"color:blue\">Schedule & Results (Basic)</a> endpoint to keep locally stored match data in sync.\n\n\n\n• Tips: You have access to all the basketball Common API endpoints with any valid paid basketball plans."
+        },
+        {
+          "info": {
+            "name": "Schedule & Results (Basic)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/schedule/basic",
+            "params": [
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Match date, format yyyy-MM-dd, e.g. 2026-07-01."
+              },
+              {
+                "name": "leagueId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a specific league or cup ID."
+              },
+              {
+                "name": "season",
+                "value": "",
+                "type": "query",
+                "description": "Used together with leagueId to retrieve matches for a specific season, e.g. 25-26. \n \n \n\nReturns the current season by default."
+              },
+              {
+                "name": "matchId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a specific match ID. Only matches from the current season are supported."
+              }
+            ]
+          },
+          "docs": "• This API endpoint returns basic schedule and result information for basketball matches. You can use it with the <a href=\"/docs.html?id=34\" style=\"color:blue\">Match Modify Record</a> endpoint to track any post-publication corrections to match data.\n\n\n\n• One of the following parameters is required: date, leagueId, or matchId — these three cannot be used together in the same request. The season parameter can only be used in combination with leagueId, to retrieve matches for a specific season; if "
+        },
+        {
+          "info": {
+            "name": "League & Cup Profile (Basic)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/league/basic",
+            "params": [
+              {
+                "name": "leagueId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a specific league or cup ID. If omitted, returns information for all leagues and cups."
+              }
+            ]
+          },
+          "docs": "• This API endpoint returns basic information for leagues and cups. Optionally filter by a specific leagueId; if omitted, the endpoint returns basic information for all leagues and cups. <a target=\"_blank\" href=\"http://api.isportsapi.com/league.aspx?sport=basketball\" style=\"color:blue\">Click here</a> to view all leagues & cups.\n\n\n\n• Tips: You have access to all the basketball Common API endpoints with any valid paid basketball plans."
+        },
+        {
+          "info": {
+            "name": "List of Countries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/country"
+          },
+          "docs": "• This API endpoint returns a list of all countries covered by iSports API, along with each country's unique ID. \n\n\n\n• The countryId can be used to filter or reference country-specific data across other Basketball endpoints."
+        },
+        {
+          "info": {
+            "name": "List of Agencies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/bookmaker"
+          },
+          "docs": "• This API endpoint returns a list of all bookmakers supported by iSports Basketball API, along with their corresponding bookmaker IDs. \n\n\n\n• Note that companyIdEu, companyIdMainSpread, and companyIdMainTotal belong to three independent ID systems used by different odds endpoints — the same bookmaker may have different IDs across these three fields, and they should not be used interchangeably."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

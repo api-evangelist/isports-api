@@ -1,0 +1,824 @@
+{
+  "item": [
+    {
+      "id": "cba2361f-1990-43df-8349-49a766aaeec2",
+      "name": "Football Profile",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4c911b7e-738b-4dcc-b6c4-e89f973f33b0",
+          "name": "Team Profile",
+          "request": {
+            "name": "Team Profile",
+            "description": {
+              "content": "• This API endpoint returns detailed identity and background information for football teams.\n\n\n\n• It provides metadata such as founding dates, home venues, coaching staff, and official website links.\n\n\n\n• Use it to build comprehensive team profile pages or to display team logos and details in match-related interfaces.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "team"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "leagueId",
+                  "value": "<string>",
+                  "description": "League ID; references League table (note: not applicable for Cup IDs)."
+                },
+                {
+                  "disabled": false,
+                  "key": "teamId",
+                  "value": "<string>",
+                  "description": "Team ID; references Team table."
+                },
+                {
+                  "disabled": false,
+                  "key": "day",
+                  "value": "<string>",
+                  "description": "Data modification window; \n\nreturns teams added or updated within the last N days, e.g. 1 or 2."
+                },
+                {
+                  "disabled": false,
+                  "key": "cmd",
+                  "value": "<string>",
+                  "description": "Extended data flag; set to more to include team introductions and honors."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "92a4dbfe-edd1-4ee4-a0cf-5c936f711e75",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "team"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "leagueId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "teamId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "day",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cmd",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4047,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"teamId\": \"string\",\n      \"leagueId\": \"string\",\n      \"name\": \"string\",\n      \"logo\": \"string\",\n      \"foundingDate\": \"string\",\n      \"address\": \"string\",\n      \"area\": \"string\",\n      \"venue\": \"string\",\n      \"capacity\": 2524,\n      \"coach\": \"string\",\n      \"website\": \"string\",\n      \"isNational\": true,\n      \"country_logo\": \"string\"\n    },\n    {\n      \"teamId\": \"string\",\n      \"leagueId\": \"string\",\n      \"name\": \"string\",\n      \"logo\": \"string\",\n      \"foundingDate\": \"string\",\n      \"address\": \"string\",\n      \"area\": \"string\",\n      \"venue\": \"string\",\n      \"capacity\": 7795,\n      \"coach\": \"string\",\n      \"website\": \"string\",\n      \"isNational\": true,\n      \"country_logo\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5f3a22ff-c45d-4745-816e-d21ff771a2cb",
+          "name": "Player Profile / Teamlist with Player Profile",
+          "request": {
+            "name": "Player Profile / Teamlist with Player Profile",
+            "description": {
+              "content": "**Player Profile** (teamId=82)\n\n• This API endpoint returns comprehensive profile and identity data for football players, supporting records for both club and national team associations.\n\n\n\n• Requests require at least one parameter from teamId, day, or playerId (these three parameters are mutually exclusive and cannot be used simultaneously).\n\n\n\n• Use it after calling the <a href=\"https://www.isportsapi.com/en/docs.html?id=246\" style=\"color:blue\">Teamlist with Player Profile</a> endpoint to obtain valid teamIds, then use those IDs here to retrieve the complete player profiles for each squad.\n\n\n\n• It is recommended to perform an initial full data synchronization followed by regular incremental updates, using the unique recordId to distinguish between multiple team associations for the same player.\n\n**Teamlist with Player Profile** (cmd=teamlist)\n\n• This API endpoint returns a comprehensive list of all team IDs that have associated player profile data in the database.\n\n\n\n• It provides a flat array of unique identifiers representing every team with an active roster.\n\n\n\n• Use it as the primary entry point to obtain valid teamId values, which are required for retrieving detailed squad information via the Player Profile endpoint.\n\nMust add one of the two parameters teamId and playerId.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "player"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "teamId",
+                  "value": "<string>",
+                  "description": "Get player data for a specified team.　Supports up to 50 IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "playerId",
+                  "value": "<string>",
+                  "description": "Get specified player data."
+                },
+                {
+                  "disabled": false,
+                  "key": "day",
+                  "value": "<string>",
+                  "description": "Data modification window;\n\nreturns players updated within the last N days."
+                },
+                {
+                  "disabled": false,
+                  "key": "cmd",
+                  "value": "<string>",
+                  "description": "Extended data flag; \n\nset to more to include player honors."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fae74bd9-1ff3-4d47-85ce-37d0ee2aa086",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "player"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "teamId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "playerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "day",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cmd",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2479,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"recordId\": \"string\",\n      \"playerId\": \"string\",\n      \"name\": \"string\",\n      \"birthday\": \"string\",\n      \"height\": 1281,\n      \"country\": \"string\",\n      \"feet\": \"string\",\n      \"weight\": 7313,\n      \"photo\": \"string\",\n      \"value\": 7719,\n      \"teamId\": \"string\",\n      \"position\": \"string\",\n      \"number\": 8805,\n      \"introduce\": \"string\",\n      \"contractEndDate\": \"string\",\n      \"PAC\": \"string\",\n      \"SHO\": \"string\",\n      \"PAS\": \"string\",\n      \"DRI\": \"string\",\n      \"DEF\": \"string\",\n      \"PHY\": \"string\",\n      \"country2\": \"string\",\n      \"country2Id\": 3464\n    },\n    {\n      \"recordId\": \"string\",\n      \"playerId\": \"string\",\n      \"name\": \"string\",\n      \"birthday\": \"string\",\n      \"height\": 1139,\n      \"country\": \"string\",\n      \"feet\": \"string\",\n      \"weight\": 7427,\n      \"photo\": \"string\",\n      \"value\": 180,\n      \"teamId\": \"string\",\n      \"position\": \"string\",\n      \"number\": 553,\n      \"introduce\": \"string\",\n      \"contractEndDate\": \"string\",\n      \"PAC\": \"string\",\n      \"SHO\": \"string\",\n      \"PAS\": \"string\",\n      \"DRI\": \"string\",\n      \"DEF\": \"string\",\n      \"PHY\": \"string\",\n      \"country2\": \"string\",\n      \"country2Id\": 6956\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c047fd9e-09b3-433b-bfa8-ddd43aa30f11",
+          "name": "League & Cup Profile",
+          "request": {
+            "name": "League & Cup Profile",
+            "description": {
+              "content": "• This API endpoint returns profile data for leagues and cups, including name, logo, current season, and competition structure. By default, returns all available leagues and cups.\n\n\n\n• Use the leagueId parameter to retrieve a specific competition, or day to fetch recently modified records.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "league"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "leagueId",
+                  "value": "<string>",
+                  "description": "Filter results to a specific league or cup by ID. If omitted, returns all."
+                },
+                {
+                  "disabled": false,
+                  "key": "cmd",
+                  "value": "<string>",
+                  "description": "cmd=rule;\n\n Pass rule to retrieve the competition format description. Omitted if no data is available."
+                },
+                {
+                  "disabled": false,
+                  "key": "day",
+                  "value": "<integer>",
+                  "description": "Returns leagues and cups modified within the specified number of days (e.g., day=50)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7ba14a7b-81fb-4cb3-a5ea-e61adb0c6c84",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "league"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "leagueId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cmd",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "day",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7407,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"leagueId\": \"string\",\n      \"type\": 8569,\n      \"color\": \"string\",\n      \"logo\": \"string\",\n      \"name\": \"string\",\n      \"shortName\": \"string\",\n      \"subLeagueName\": \"string\",\n      \"totalRound\": 8657,\n      \"currentRound\": 4417,\n      \"currentSeason\": \"string\",\n      \"countryId\": \"string\",\n      \"country\": \"string\",\n      \"countryLogo\": \"string\",\n      \"areaId\": 6155\n    },\n    {\n      \"leagueId\": \"string\",\n      \"type\": 1593,\n      \"color\": \"string\",\n      \"logo\": \"string\",\n      \"name\": \"string\",\n      \"shortName\": \"string\",\n      \"subLeagueName\": \"string\",\n      \"totalRound\": 1669,\n      \"currentRound\": 7279,\n      \"currentSeason\": \"string\",\n      \"countryId\": \"string\",\n      \"country\": \"string\",\n      \"countryLogo\": \"string\",\n      \"areaId\": 6953\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "205e4736-22ee-46e3-bee6-9b92ccf563c6",
+          "name": "Subleague Profile",
+          "request": {
+            "name": "Subleague Profile",
+            "description": {
+              "content": "• This API endpoint returns the configuration and structural data for different stages or divisions (sub-leagues) within a football league.\n\n\n\n• It provides detailed information such as round counts, historical season ranges, and whether the stage includes standing data.\n\n\n\n• Use it alongside the League & Cup Profile endpoint to construct a complete hierarchical view of league competitions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "league",
+                "sub"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "10594cca-1101-4224-bab8-e619df574517",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "league",
+                    "sub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8654,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"leagueId\": \"string\",\n      \"subLeagueId\": \"string\",\n      \"name\": \"string\",\n      \"number\": 7424,\n      \"totalRound\": 3314,\n      \"currentRound\": 238,\n      \"currentSeason\": \"string\",\n      \"includeSeason\": \"string\",\n      \"hasScore\": false,\n      \"hasTwoLegs\": true,\n      \"currentSubLeague\": false\n    },\n    {\n      \"leagueId\": \"string\",\n      \"subLeagueId\": \"string\",\n      \"name\": \"string\",\n      \"number\": 1418,\n      \"totalRound\": 6082,\n      \"currentRound\": 438,\n      \"currentSeason\": \"string\",\n      \"includeSeason\": \"string\",\n      \"hasScore\": false,\n      \"hasTwoLegs\": true,\n      \"currentSubLeague\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "25b48db4-8d46-4224-89fe-03bddefa1d9d",
+          "name": "Referee Profile",
+          "request": {
+            "name": "Referee Profile",
+            "description": {
+              "content": "• This API endpoint returns referee identity information and their historical performance statistics for specific matches.\n\n\n\n• It covers matches scheduled from the past 24 hours into the future, providing details on referee roles and historical home/away team outcomes under their officiating.\n\n\n\n• Use it to analyze the potential impact of match officials on game results based on their card-issuing averages and win percentages.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "referee"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "785313e0-8bd1-4d3a-8083-2fef92078cbb",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "referee"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5036,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"typeId\": 6499,\n      \"refereeId\": 9742,\n      \"name\": \"string\",\n      \"birthday\": \"string\",\n      \"country\": \"string\",\n      \"photo\": \"string\",\n      \"statistics\": {\n        \"hasHome\": true,\n        \"hasAway\": true,\n        \"win_home\": 2336,\n        \"draw_home\": 5407,\n        \"loss_home\": 1094,\n        \"win_away\": 8699,\n        \"draw_away\": 1293,\n        \"loss_away\": 2990,\n        \"winPercent\": 7301.4502006029425,\n        \"yellowAvg\": 700.8094828682388\n      }\n    },\n    {\n      \"matchId\": \"string\",\n      \"typeId\": 8211,\n      \"refereeId\": 8549,\n      \"name\": \"string\",\n      \"birthday\": \"string\",\n      \"country\": \"string\",\n      \"photo\": \"string\",\n      \"statistics\": {\n        \"hasHome\": false,\n        \"hasAway\": true,\n        \"win_home\": 5317,\n        \"draw_home\": 977,\n        \"loss_home\": 3041,\n        \"win_away\": 344,\n        \"draw_away\": 3932,\n        \"loss_away\": 3488,\n        \"winPercent\": 8050.9186155728075,\n        \"yellowAvg\": 5341.1393870061775\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "37a2009a-e3ac-4939-9986-6157029ca9f5",
+          "name": "Cup Stage Profile",
+          "request": {
+            "name": "Cup Stage Profile",
+            "description": {
+              "content": "• This API endpoint returns the structural data for various competition stages of a cup, including qualifying rounds, group stages, and knockout phases.\n\n\n\n• It provides configuration details such as group counts, qualification rules (lineup counts), and stage progression order for a specific season.\n\n\n\n• Use it alongside the League & Cup Profile endpoint to manage and display complex multi-stage tournament brackets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "league",
+                "stage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "971cf55f-f4d2-40c5-b212-20cf4eca7f72",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "league",
+                    "stage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4309,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"leagueId\": \"string\",\n      \"season\": \"string\",\n      \"stageId\": \"string\",\n      \"stageName\": \"string\",\n      \"group\": false,\n      \"groupNum\": \"string\",\n      \"currStage\": true,\n      \"stageOrder\": \"string\",\n      \"lineCount\": \"string\",\n      \"hasTwoLegs\": false,\n      \"groupLineupCount\": 2205\n    },\n    {\n      \"leagueId\": \"string\",\n      \"season\": \"string\",\n      \"stageId\": \"string\",\n      \"stageName\": \"string\",\n      \"group\": true,\n      \"groupNum\": \"string\",\n      \"currStage\": true,\n      \"stageOrder\": \"string\",\n      \"lineCount\": \"string\",\n      \"hasTwoLegs\": true,\n      \"groupLineupCount\": 8814\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f7ef0a5-f21a-49a9-afed-abcc30bc7f9e",
+          "name": "Team Profile for Search",
+          "request": {
+            "name": "Team Profile for Search",
+            "description": {
+              "content": "• This API endpoint returns team profile information based on a team name search.\n\n\n\n• It supports fuzzy matching, allowing users to find specific clubs or national teams even with partial names.\n\n\n\n• Use it as a search entry point to retrieve unique team IDs, which can then be used with the Team Profile endpoint for exhaustive data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "team",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) Team name; supports fuzzy search (e.g. Barcelona)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "67e56ba7-0211-46dc-8d03-1f362cc9a033",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "team",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 218,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"teamId\": \"string\",\n      \"leagueId\": \"string\",\n      \"name\": \"string\",\n      \"logo\": \"string\",\n      \"foundingDate\": \"string\",\n      \"address\": \"string\",\n      \"area\": \"string\",\n      \"venue\": \"string\",\n      \"capacity\": 5435,\n      \"coach\": \"string\",\n      \"website\": \"string\",\n      \"isNational\": true,\n      \"country_logo\": \"string\"\n    },\n    {\n      \"teamId\": \"string\",\n      \"leagueId\": \"string\",\n      \"name\": \"string\",\n      \"logo\": \"string\",\n      \"foundingDate\": \"string\",\n      \"address\": \"string\",\n      \"area\": \"string\",\n      \"venue\": \"string\",\n      \"capacity\": 1912,\n      \"coach\": \"string\",\n      \"website\": \"string\",\n      \"isNational\": true,\n      \"country_logo\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "88f356b9-6d70-4883-a36c-18083299dda5",
+          "name": "Player Profile for Search",
+          "request": {
+            "name": "Player Profile for Search",
+            "description": {
+              "content": "• This API endpoint returns detailed player profile information based on a name-based search.\n\n\n\n• It supports fuzzy matching and returns multiple records if a player is associated with different teams (e.g., both a club and a national team).\n\n\n\n• Use it to retrieve unique recordId or playerId values when the team context is unknown, or to build search suggestions in player-related interfaces.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "player",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) Get the data of the specified player name, supporting fuzzy search."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3bb542af-a45d-489a-997a-5b75eb4c9358",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "player",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 3859,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"recordId\": \"string\",\n      \"playerId\": \"string\",\n      \"name\": \"string\",\n      \"birthday\": \"string\",\n      \"height\": 9619,\n      \"country\": \"string\",\n      \"feet\": \"string\",\n      \"weight\": 7892,\n      \"photo\": \"string\",\n      \"value\": 1796,\n      \"teamId\": \"string\",\n      \"position\": \"string\",\n      \"number\": 6583,\n      \"introduce\": \"string\",\n      \"contractEndDate\": \"string\",\n      \"PAC\": \"string\",\n      \"SHO\": \"string\",\n      \"PAS\": \"string\",\n      \"DRI\": \"string\",\n      \"DEF\": \"string\",\n      \"PHY\": \"string\",\n      \"country2\": \"string\",\n      \"country2Id\": 4928\n    },\n    {\n      \"recordId\": \"string\",\n      \"playerId\": \"string\",\n      \"name\": \"string\",\n      \"birthday\": \"string\",\n      \"height\": 9873,\n      \"country\": \"string\",\n      \"feet\": \"string\",\n      \"weight\": 2274,\n      \"photo\": \"string\",\n      \"value\": 9149,\n      \"teamId\": \"string\",\n      \"position\": \"string\",\n      \"number\": 2695,\n      \"introduce\": \"string\",\n      \"contractEndDate\": \"string\",\n      \"PAC\": \"string\",\n      \"SHO\": \"string\",\n      \"PAS\": \"string\",\n      \"DRI\": \"string\",\n      \"DEF\": \"string\",\n      \"PHY\": \"string\",\n      \"country2\": \"string\",\n      \"country2Id\": 1239\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.isportsapi.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ae46964d-a06c-48c3-a3d8-a0d0532f8398",
+    "name": "iSports Football Profile API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.\n\nAll operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).\n\nThis document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.\n\nContact Support:\n Name: iSports API",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,222 @@
+openapi: 3.2.0
+info:
+  title: iSports Football Live animation API
+  version: '2026-08-09'
+  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.
+
+
+    All operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).
+
+
+    This document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.'
+  termsOfService: https://www.isportsapi.com/en/home/terms.html
+  contact:
+    name: iSports API
+    url: https://www.isportsapi.com/en/
+  x-derived-by: API Evangelist enrichment pipeline
+  x-derived-from: https://www.isportsapi.com/en/docs.html
+  x-derived-on: '2026-08-09'
+servers:
+- url: https://api.isportsapi.com
+  description: Primary API host
+- url: https://api2.isportsapi.com
+  description: Alternate host, documented for when the primary host is slow or unreachable
+security:
+- apiKeyQuery: []
+tags:
+- name: Football Live animation
+paths:
+  /sport/football/liveanimation/schedule:
+    get:
+      operationId: getFootballLiveanimationSchedule
+      summary: Schedule & Results
+      description: "• This API endpoint returns match schedule and result data for live animation. The response covers matches within the past 4 hours and the next 24 hours. \n\n\n\n• Use it alongside the Configuration Instructions and Time line endpoints for full live animation integration."
+      tags:
+      - Football Live animation
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                        leagueType:
+                          type: integer
+                          description: '1: League
+
+                            2: Cup'
+                        leagueId:
+                          type: string
+                        leagueName:
+                          type: string
+                          description: League or cup full name (English) e.g. English Premier League
+                        leagueShortName:
+                          type: string
+                          description: League or cup short name (English) e.g. ENG PR
+                        leagueColor:
+                          type: string
+                          description: 'League brand color (RGB hex) e.g. #800080'
+                        subLeagueId:
+                          type: string
+                          description: Sub-league ID. Empty string if not applicable
+                        subLeagueName:
+                          type: string
+                          description: Currently active sub-league name. Empty string if not applicable. e.g. Western Play-off
+                        matchTime:
+                          type: integer
+                          description: Match kick-off time (Unix timestamp, GMT+0)
+                        halfStartTime:
+                          type: integer
+                          description: "First or second half actual kick-off time (Unix timestamp, GMT+0).\n Returns 0 when not yet started"
+                        status:
+                          type: integer
+                          description: "0: Not started\n 1: First half\n 2: Half-time break\n 3: Second half\n 4: Extra time\n 5: Penalty\n -1: Finished\n -10: Cancelled\n -11: TBD\n -12: Terminated\n -13: Interrupted\n -14: Postponed"
+                        homeId:
+                          type: string
+                          description: Home team ID
+                        homeName:
+                          type: string
+                          description: Home team name (English)
+                        awayId:
+                          type: string
+                          description: Away team ID
+                        awayName:
+                          type: string
+                          description: Away team name (English)
+                        homeScore:
+                          type: integer
+                          description: Home team full-time goals (default 0)
+                        awayScore:
+                          type: integer
+                          description: Away team full-time goals (default 0)
+                        homeHalfScore:
+                          type: integer
+                          description: Home team first-half goals (default 0)
+                        awayHalfScore:
+                          type: integer
+                          description: Away team first-half goals (default 0)
+                        homeRed:
+                          type: integer
+                          description: Home team red cards (default 0)
+                        awayRed:
+                          type: integer
+                          description: Away team red cards (default 0)
+                        homeYellow:
+                          type: integer
+                          description: Home team yellow cards (default 0)
+                        awayYellow:
+                          type: integer
+                          description: Away team yellow cards (default 0)
+                        homeCorner:
+                          type: integer
+                          description: Home team corners (default 0)
+                        awayCorner:
+                          type: integer
+                          description: Away team corners (default 0)
+                        homeRank:
+                          type: string
+                          description: "Home team's current league standing. \n Empty string if not available"
+                        awayRank:
+                          type: string
+                          description: "Away team's current league standing. \n Empty string if not available"
+                        season:
+                          type: string
+                          description: Season identifier e.g. 2026 or 2019-2020
+                        round:
+                          type: string
+                          description: Round number or cup stage. Empty string if not applicable
+                        group:
+                          type: string
+                          description: "Group stage label e.g. A. \n Empty string if not applicable"
+                        location:
+                          type: string
+                          description: Match venue name. Empty string if not available
+                        weather:
+                          type: string
+                          description: Weather condition at the venue e.g. Cloudy, Clear
+                        temperature:
+                          type: string
+                          description: Temperature at the venue e.g. 11°C or 14°C ~ 15°C
+                        explain:
+                          type: string
+                          description: Match special remarks (English). Empty string if none e.g. Match ended 0-3; Torpedo-MAZ Minsk withdrew
+                        extraExplain:
+                          type: object
+                          description: Nested object containing extra-time and penalty shootout data. All fields return 0 when not applicable
+                          properties:
+                            kickOff:
+                              type: integer
+                              description: "Team that took kick-off \n0: Not started\n 1: Home\n 2: Away"
+                            minute:
+                              type: integer
+                              description: Minutes played in regular time
+                            homeScore:
+                              type: integer
+                              description: Home team regular time score
+                            awayScore:
+                              type: integer
+                              description: Away team regular time score
+                            extraTimeStatus:
+                              type: integer
+                              description: "Extra time status \n 0: No extra time \n 1: Extra time ended (regular match; includes regular time score) \n 2: Extra time ended (special match e.g. beach/indoor football; excludes regular time score) \n 3: Match currently in extra time"
+                            extraHomeScore:
+                              type: integer
+                              description: Home team extra-time score
+                            extraAwayScore:
+                              type: integer
+                              description: Away team extra-time score
+                            penHomeScore:
+                              type: integer
+                              description: Home team penalty shootout score
+                            penAwayScore:
+                              type: integer
+                              description: Away team penalty shootout score
+                            twoRoundsHomeScore:
+                              type: integer
+                              description: Home team two-legged aggregate score
+                            twoRoundsAwayScore:
+                              type: integer
+                              description: Away team two-legged aggregate score
+                            winner:
+                              type: integer
+                              description: "Match winner (knockout/two-legged ties) \n 0: None / not applicable \n1: Home\n 2: Away"
+                        hasLineup:
+                          type: boolean
+                          description: "Indicates whether lineup data is available for this match\n true: Available \n false: Not available"
+                        neutral:
+                          type: boolean
+                          description: "Neutral venue flag \n true: Neutral venue\n false: Home/away fixture"
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=238
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=238
+      x-rate-limit: This interface is limited to 60 seconds/call;
+      x-recommended-call-frequency: 5 minutes/call
+      x-plan-products:
+      - Live Animation
+      x-doc-modified: '2026-06-29'
+components:
+  securitySchemes:
+    apiKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key
+      description: Personal API key issued from the iSports account settings page and passed on every request as the `api_key` query parameter.
+externalDocs:
+  description: iSports API documentation
+  url: https://www.isportsapi.com/en/docs.html

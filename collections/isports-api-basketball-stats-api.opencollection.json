@@ -1,0 +1,114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "iSports Basketball Stats API",
+    "version": "2026-08-09"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Basketball Stats",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "League Standing",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/standing/league",
+            "params": [
+              {
+                "name": "leagueId",
+                "value": "",
+                "type": "query",
+                "description": "Returns league standing data for the specified league."
+              }
+            ]
+          },
+          "docs": "• This API endpoint returns league standing data for the specified leagueId. \n\n\n\n• By using endpoint <a href=\"/docs.html?id=50\" style=\"color:blue\">League Profile (Basic)\n</a>, you can get basic information of leagues and cups."
+        },
+        {
+          "info": {
+            "name": "Cup Standing",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/standing/cup",
+            "params": [
+              {
+                "name": "leagueId",
+                "value": "",
+                "type": "query",
+                "description": "Unique ID of the cup. Despite the parameter name, this refers to a cup's ID rather than a league's ID — use the League&Cups Profile (Basic) endpoint to look up available IDs."
+              }
+            ]
+          },
+          "docs": "• This API endpoint returns standing data for the specified cup, which may cover the group stage or other stages of the cup (e.g. Groups, Quarter Final). \n\n\n\n• By using endpoint <a href=\"/docs.html?id=50\" style=\"color:blue\">League Profile (Basic)\n</a>, you can get basic information of leagues and cups."
+        },
+        {
+          "info": {
+            "name": "Match Stats / Quarters Stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/stats",
+            "params": [
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Match date, format yyyy-MM-dd, e.g. 2026-07-01. \n\n\n\nOnly the past 7 days can be queried."
+              },
+              {
+                "name": "matchId",
+                "value": "",
+                "type": "query",
+                "description": "Returns match stats for the specified match."
+              },
+              {
+                "name": "cmd",
+                "value": "",
+                "type": "query",
+                "description": "Fixed value stats. \n\n\n\nRequired to distinguish this endpoint from Match Stats, which shares the same path."
+              }
+            ]
+          },
+          "docs": "**Match Stats**\n\n• This API endpoint returns real-time technical statistics for basketball matches (GMT+0 00:00–23:59). \n\nBy default, returns technical statistics for matches within the last 24 hours.\n\n\n\n• Player statistics currently supports NBA, WNBA, CBA, Asociación de Clubes de Baloncesto, Basketball Bundesliga, Ligue Nationale de Basket, Lega Basket Serie A, Euro, Russian Basketball Super League, NBL(A), and Korea Basketball League.\n\n\n\n• By using endpoints <a href=\"/docs.html?id=48\" style=\""
+        },
+        {
+          "info": {
+            "name": "Matches Analysis",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/analysis",
+            "params": [
+              {
+                "name": "matchId",
+                "value": "",
+                "type": "query",
+                "description": "Returns match analysis data for the specified match."
+              }
+            ]
+          },
+          "docs": "• This API endpoint returns match analysis data for the queried matchId — including historical head-to-head results, each team's recent form, and each team's upcoming/recent schedule — for matches within 7 days before or after the current time. \n\n\n\n• Data is cached for 24 hours and does not update frequently.\n\n\n\n• For a visual reference of this data, see: https://www.goaloo.com/basketball/nba-summer-league-minnesota-timberwolves-vs-indiana-pacers/analysis-719976"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

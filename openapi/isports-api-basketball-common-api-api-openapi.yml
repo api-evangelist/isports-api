@@ -1,0 +1,345 @@
+openapi: 3.2.0
+info:
+  title: iSports Basketball Common API API
+  version: '2026-08-09'
+  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.
+
+
+    All operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).
+
+
+    This document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.'
+  termsOfService: https://www.isportsapi.com/en/home/terms.html
+  contact:
+    name: iSports API
+    url: https://www.isportsapi.com/en/
+  x-derived-by: API Evangelist enrichment pipeline
+  x-derived-from: https://www.isportsapi.com/en/docs.html
+  x-derived-on: '2026-08-09'
+servers:
+- url: https://api.isportsapi.com
+  description: Primary API host
+- url: https://api2.isportsapi.com
+  description: Alternate host, documented for when the primary host is slow or unreachable
+security:
+- apiKeyQuery: []
+tags:
+- name: Basketball Common API
+paths:
+  /sport/basketball/schedule/modify:
+    get:
+      operationId: getBasketballScheduleModify
+      summary: Match Modify Record
+      description: "• This API endpoint returns records of schedule deletions and match time modifications from the past 24 hours. \n\n\n\n• You can use it with the <a href=\"/docs.html?id=48\" style=\"color:blue\">Schedule & Results (Basic)</a> endpoint to keep locally stored match data in sync.\n\n\n\n• Tips: You have access to all the basketball Common API endpoints with any valid paid basketball plans."
+      tags:
+      - Basketball Common API
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                          description: Unique ID of the match.
+                        type:
+                          type: string
+                          description: "modify: match time was modified \n delete: match was deleted"
+                        matchTime:
+                          type: integer
+                          description: "Match scheduled time (Unix timestamp, GMT+0). \n \n Returns 0 if type is delete."
+                        modifyTime:
+                          type: integer
+                          description: Time the modification or deletion was recorded (Unix timestamp, GMT+0).
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=34
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=34
+      x-rate-limit: This interface is limited to 60 seconds/call;
+      x-recommended-call-frequency: 90 seconds/call
+      x-plan-products:
+      - Live Data
+      - Odds
+      - Stats
+      x-doc-modified: '2026-07-09'
+  /sport/basketball/schedule/basic:
+    get:
+      operationId: getBasketballScheduleBasic
+      summary: Schedule & Results (Basic)
+      description: "• This API endpoint returns basic schedule and result information for basketball matches. You can use it with the <a href=\"/docs.html?id=34\" style=\"color:blue\">Match Modify Record</a> endpoint to track any post-publication corrections to match data.\n\n\n\n• One of the following parameters is required: date, leagueId, or matchId — these three cannot be used together in the same request. The season parameter can only be used in combination with leagueId, to retrieve matches for a specific season; if omitted, the current season is returned by default. \n\n\n\n• Tips: You have access to all the basketball Common API endpoints with any valid paid basketball plans."
+      tags:
+      - Basketball Common API
+      parameters:
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Match date, format yyyy-MM-dd, e.g. 2026-07-01.
+      - name: leagueId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter by a specific league or cup ID.
+      - name: season
+        in: query
+        required: false
+        schema:
+          type: string
+        description: "Used together with leagueId to retrieve matches for a specific season, e.g. 25-26. \n \n \n\nReturns the current season by default."
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter by a specific match ID. Only matches from the current season are supported.
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                          description: Unique ID of the match.
+                        leagueId:
+                          type: string
+                          description: Unique ID of the league or cup.
+                        leagueName:
+                          type: string
+                          description: Short name of the league or cup, e.g. NBA.
+                        quarterCount:
+                          type: integer
+                          description: "Number of quarters in the match. \n\n 2: 2-quarter format 4: 4-quarter format"
+                        matchTime:
+                          type: integer
+                          description: Scheduled match time (Unix timestamp, GMT+0).
+                        status:
+                          type: integer
+                          description: "0: Not started \n 1: First quarter \n 2: Second quarter \n 3: Third quarter \n 4: Fourth quarter \n 5: First OT \n 6: Second OT \n 7: Third OT \n 50: Half-time \n -1: Finished \n -2: TBD \n -3: Interrupted \n -4: Cancelled \n -5: Postponed"
+                        homeId:
+                          type: string
+                          description: Unique ID of the home team.
+                        homeName:
+                          type: string
+                          description: Name of the home team.
+                        awayId:
+                          type: string
+                          description: Unique ID of the away team.
+                        awayName:
+                          type: string
+                          description: Name of the away team.
+                        homeScore:
+                          type: integer
+                          description: Final or current score of the home team.
+                        awayScore:
+                          type: integer
+                          description: Final or current score of the away team.
+                        explain:
+                          type: string
+                          description: 'The latest live-text event description for the match, e.g. [Spurs] [SAS] Team Timeout: Regular.'
+                        neutral:
+                          type: boolean
+                          description: "true: match is played at a neutral venue \n false: match is not played at a neutral venue"
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=48
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=48
+      x-rate-limit: This interface is limited to 60 seconds/call;
+      x-recommended-call-frequency: 12 hours/call
+      x-plan-products:
+      - Live Data
+      - Odds
+      - Stats
+      x-doc-modified: '2026-07-09'
+  /sport/basketball/league/basic:
+    get:
+      operationId: getBasketballLeagueBasic
+      summary: League & Cup Profile (Basic)
+      description: '• This API endpoint returns basic information for leagues and cups. Optionally filter by a specific leagueId; if omitted, the endpoint returns basic information for all leagues and cups. <a target="_blank" href="http://api.isportsapi.com/league.aspx?sport=basketball" style="color:blue">Click here</a> to view all leagues & cups.
+
+
+
+
+        • Tips: You have access to all the basketball Common API endpoints with any valid paid basketball plans.'
+      tags:
+      - Basketball Common API
+      parameters:
+      - name: leagueId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter by a specific league or cup ID. If omitted, returns information for all leagues and cups.
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        leagueId:
+                          type: string
+                          description: Unique ID of the league or cup.
+                        leagueName:
+                          type: string
+                          description: Full name, e.g. National Basketball Association.
+                        leagueShortName:
+                          type: string
+                          description: Short name, e.g. NBA.
+                        leagueKind:
+                          type: string
+                          description: '1: League
+
+                            2: Cup'
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=50
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=50
+      x-rate-limit: This interface is limited to 1,800 seconds/call;
+      x-recommended-call-frequency: 1 day/call
+      x-plan-products:
+      - Live Data
+      - Odds
+      - Stats
+      x-doc-modified: '2026-07-09'
+  /sport/basketball/country:
+    get:
+      operationId: getBasketballCountry
+      summary: List of Countries
+      description: "• This API endpoint returns a list of all countries covered by iSports API, along with each country's unique ID. \n\n\n\n• The countryId can be used to filter or reference country-specific data across other Basketball endpoints."
+      tags:
+      - Basketball Common API
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        countryId:
+                          type: integer
+                          description: Unique ID of the country, used to reference this country in other endpoints
+                        country:
+                          type: string
+                          description: Country name
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=224
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=224
+      x-rate-limit: This interface is limited to 1,800 seconds/call;
+      x-plan-products:
+      - Live Data
+      x-doc-modified: '2026-07-09'
+  /sport/basketball/bookmaker:
+    get:
+      operationId: getBasketballBookmaker
+      summary: List of Agencies
+      description: "• This API endpoint returns a list of all bookmakers supported by iSports Basketball API, along with their corresponding bookmaker IDs. \n\n\n\n• Note that companyIdEu, companyIdMainSpread, and companyIdMainTotal belong to three independent ID systems used by different odds endpoints — the same bookmaker may have different IDs across these three fields, and they should not be used interchangeably."
+      tags:
+      - Basketball Common API
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        companyIdEu:
+                          type: integer
+                          description: Bookmaker ID used in the Money Line (80+ Bookmakers) API.
+                        companyName:
+                          type: string
+                          description: Name of the bookmaker.
+                        companyIdMainSpread:
+                          type: integer
+                          description: "Bookmaker ID used for Spread and Money Line in the Odds API (excluding the Money Line (80+ Bookmakers) API). \n\n Returns 0 if this bookmaker's data is not provided in that API."
+                        companyIdMainTotal:
+                          type: integer
+                          description: "Bookmaker ID used for Total in the Odds API (excluding the Money Line (80+ Bookmakers) API). \n\n Returns 0 if this bookmaker's data is not provided in that API."
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=225
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=225
+      x-rate-limit: This interface is limited to 1,800 seconds/call;
+      x-plan-products:
+      - Live Data
+      x-doc-modified: '2026-07-09'
+components:
+  securitySchemes:
+    apiKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key
+      description: Personal API key issued from the iSports account settings page and passed on every request as the `api_key` query parameter.
+externalDocs:
+  description: iSports API documentation
+  url: https://www.isportsapi.com/en/docs.html

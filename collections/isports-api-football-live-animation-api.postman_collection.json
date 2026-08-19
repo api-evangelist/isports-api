@@ -1,0 +1,130 @@
+{
+  "item": [
+    {
+      "id": "4939a9c9-f9e5-407f-9ed8-0dcc1ea7771d",
+      "name": "Football Live animation",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "83f66996-2c0e-4d01-bedc-09e809360dc0",
+          "name": "Schedule & Results",
+          "request": {
+            "name": "Schedule & Results",
+            "description": {
+              "content": "• This API endpoint returns match schedule and result data for live animation. The response covers matches within the past 4 hours and the next 24 hours. \n\n\n\n• Use it alongside the Configuration Instructions and Time line endpoints for full live animation integration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "liveanimation",
+                "schedule"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "74615625-ef89-4796-b6dd-7e07b18534fb",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "liveanimation",
+                    "schedule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2343,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"leagueType\": 9369,\n      \"leagueId\": \"string\",\n      \"leagueName\": \"string\",\n      \"leagueShortName\": \"string\",\n      \"leagueColor\": \"string\",\n      \"subLeagueId\": \"string\",\n      \"subLeagueName\": \"string\",\n      \"matchTime\": 382,\n      \"halfStartTime\": 580,\n      \"status\": 7450,\n      \"homeId\": \"string\",\n      \"homeName\": \"string\",\n      \"awayId\": \"string\",\n      \"awayName\": \"string\",\n      \"homeScore\": 1580,\n      \"awayScore\": 589,\n      \"homeHalfScore\": 3769,\n      \"awayHalfScore\": 789,\n      \"homeRed\": 7952,\n      \"awayRed\": 8027,\n      \"homeYellow\": 8465,\n      \"awayYellow\": 1804,\n      \"homeCorner\": 819,\n      \"awayCorner\": 9727,\n      \"homeRank\": \"string\",\n      \"awayRank\": \"string\",\n      \"season\": \"string\",\n      \"round\": \"string\",\n      \"group\": \"string\",\n      \"location\": \"string\",\n      \"weather\": \"string\",\n      \"temperature\": \"string\",\n      \"explain\": \"string\",\n      \"extraExplain\": {\n        \"kickOff\": 1068,\n        \"minute\": 9606,\n        \"homeScore\": 6940,\n        \"awayScore\": 3699,\n        \"extraTimeStatus\": 9467,\n        \"extraHomeScore\": 2174,\n        \"extraAwayScore\": 6701,\n        \"penHomeScore\": 4946,\n        \"penAwayScore\": 9361,\n        \"twoRoundsHomeScore\": 5856,\n        \"twoRoundsAwayScore\": 3360,\n        \"winner\": 5675\n      },\n      \"hasLineup\": false,\n      \"neutral\": true\n    },\n    {\n      \"matchId\": \"string\",\n      \"leagueType\": 6218,\n      \"leagueId\": \"string\",\n      \"leagueName\": \"string\",\n      \"leagueShortName\": \"string\",\n      \"leagueColor\": \"string\",\n      \"subLeagueId\": \"string\",\n      \"subLeagueName\": \"string\",\n      \"matchTime\": 2326,\n      \"halfStartTime\": 5484,\n      \"status\": 7982,\n      \"homeId\": \"string\",\n      \"homeName\": \"string\",\n      \"awayId\": \"string\",\n      \"awayName\": \"string\",\n      \"homeScore\": 7978,\n      \"awayScore\": 3053,\n      \"homeHalfScore\": 842,\n      \"awayHalfScore\": 1012,\n      \"homeRed\": 8178,\n      \"awayRed\": 5697,\n      \"homeYellow\": 5872,\n      \"awayYellow\": 3038,\n      \"homeCorner\": 6761,\n      \"awayCorner\": 510,\n      \"homeRank\": \"string\",\n      \"awayRank\": \"string\",\n      \"season\": \"string\",\n      \"round\": \"string\",\n      \"group\": \"string\",\n      \"location\": \"string\",\n      \"weather\": \"string\",\n      \"temperature\": \"string\",\n      \"explain\": \"string\",\n      \"extraExplain\": {\n        \"kickOff\": 8223,\n        \"minute\": 9536,\n        \"homeScore\": 1120,\n        \"awayScore\": 7084,\n        \"extraTimeStatus\": 4240,\n        \"extraHomeScore\": 9150,\n        \"extraAwayScore\": 5126,\n        \"penHomeScore\": 5387,\n        \"penAwayScore\": 6866,\n        \"twoRoundsHomeScore\": 198,\n        \"twoRoundsAwayScore\": 8135,\n        \"winner\": 2493\n      },\n      \"hasLineup\": false,\n      \"neutral\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.isportsapi.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f04a4ee3-05d7-4fe0-a807-8dd2a937d491",
+    "name": "iSports Football Live animation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.\n\nAll operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).\n\nThis document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.\n\nContact Support:\n Name: iSports API",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,1988 @@
+openapi: 3.2.0
+info:
+  title: iSports Football Other Odds API
+  version: '2026-08-09'
+  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.
+
+
+    All operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).
+
+
+    This document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.'
+  termsOfService: https://www.isportsapi.com/en/home/terms.html
+  contact:
+    name: iSports API
+    url: https://www.isportsapi.com/en/
+  x-derived-by: API Evangelist enrichment pipeline
+  x-derived-from: https://www.isportsapi.com/en/docs.html
+  x-derived-on: '2026-08-09'
+servers:
+- url: https://api.isportsapi.com
+  description: Primary API host
+- url: https://api2.isportsapi.com
+  description: Alternate host, documented for when the primary host is slow or unreachable
+security:
+- apiKeyQuery: []
+tags:
+- name: Football Other Odds
+paths:
+  /sport/football/odds/teamtoscore/prematch:
+    get:
+      operationId: getFootballOddsTeamtoscorePrematch
+      summary: First/Last Team To Score (pre-match)
+      description: '• This API endpoint returns pre-match odds for which team scores first and which team scores last in the match.
+
+
+
+
+        • By default, returns data for the next 10 days.
+
+
+
+
+        • Currently supports Macauslot (1) and Crown (3).
+
+
+
+
+        • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
+      tags:
+      - Football Other Odds
+      parameters:
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific matches. Separate multiple IDs with "," (e.g., matchId=322964610,322964611).
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific bookmakers. Separate multiple IDs with "," (e.g., companyId=1,3).
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                        companyId:
+                          type: string
+                          description: "1: Macauslot \n 3: Crown"
+                        odds:
+                          type: object
+                          description: First/Last Team to Score odds
+                          properties:
+                            firstIsHome:
+                              type: string
+                              description: Odds for the home team to score first (Hong Kong Odds)
+                            firstIsAway:
+                              type: string
+                              description: Odds for the away team to score first (Hong Kong Odds)
+                            lastIsHome:
+                              type: string
+                              description: Odds for the home team to score last (Hong Kong Odds).
+                            lastIsAway:
+                              type: string
+                              description: Odds for the away team to score last (Hong Kong Odds).
+                            noGoal:
+                              type: string
+                              description: Odds for the match to end with no goals scored (Hong Kong Odds)
+                        changeTime:
+                          type: integer
+                          description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=113
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=113
+      x-rate-limit: This interface is limited to 10 seconds/call;
+      x-recommended-call-frequency: 15 seconds/call
+      x-plan-products:
+      - Odds Pro
+      x-doc-modified: '2026-07-06'
+  /sport/football/odds/oddeven/prematch:
+    get:
+      operationId: getFootballOddsOddevenPrematch
+      summary: Goals Odd/Even (pre-match)
+      description: '• This API endpoint returns pre-match odds for whether the total number of goals in the match is odd or even.
+
+
+
+
+        • By default, returns data for matches in the next 10 days.
+
+
+
+
+        • Currently supports Macauslot (1) and Crown (3).
+
+
+
+
+        • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
+      tags:
+      - Football Other Odds
+      parameters:
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific matches. Separate multiple IDs with "," (e.g., matchId=322964610,322964611).
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific bookmakers. Separate multiple IDs with "," (e.g., companyId=1,3).
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                        companyId:
+                          type: string
+                          description: "1: Macauslot \n 3: Crown"
+                        odds:
+                          type: object
+                          description: Goals Odd/Even odds
+                          properties:
+                            single:
+                              type: string
+                              description: Odds for the total number of goals to be odd (Hong Kong Odds)
+                            double:
+                              type: string
+                              description: Odds for the total number of goals to be even (Hong Kong Odds)
+                        changeTime:
+                          type: integer
+                          description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=114
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=114
+      x-rate-limit: This interface is limited to 10 seconds/call;
+      x-recommended-call-frequency: 15 seconds/call
+      x-plan-products:
+      - Odds Pro
+      x-doc-modified: '2026-07-06'
+  /sport/football/odds/totalgoals/prematch:
+    get:
+      operationId: getFootballOddsTotalgoalsPrematch
+      summary: Number of Goals in Match (pre-match)
+      description: '• This API endpoint returns the pre-match odds for the number of goals in the match.
+
+
+
+
+        • By default, returns data for the next 10 days.
+
+
+
+
+        • Odds format: All odds values are returned in Hong Kong Odds format. To convert to Decimal Odds: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85).
+
+
+
+
+        • Currently supported by: Macauslot (1), Crown (3). Additional bookmakers may be added in the future.
+
+
+
+
+        • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
+      tags:
+      - Football Other Odds
+      parameters:
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific matches. Separate multiple IDs with "," (e.g., matchId=322964610,322964611).
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific bookmakers. Separate multiple IDs with "," (e.g., companyId=3,8).
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                        companyId:
+                          type: string
+                          description: "1: Macauslot \n 3: Crown"
+                        odds:
+                          type: object
+                          description: Number of Goals in Match odds
+                          properties:
+                            zeroToOne:
+                              type: string
+                              description: Hong Kong odds for total goals in the match being 0–1
+                            twoToThree:
+                              type: string
+                              description: Hong Kong odds for total goals in the match being 2–3
+                            fourToSix:
+                              type: string
+                              description: Hong Kong odds for total goals in the match being 4–6
+                            moreThanSix:
+                              type: string
+                              description: Hong Kong odds for total goals in the match being more than 6
+                        changeTime:
+                          type: integer
+                          description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=115
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=115
+      x-rate-limit: This interface is limited to 10 seconds/call;
+      x-recommended-call-frequency: 15 seconds/call
+      x-plan-products:
+      - Odds Pro
+      x-doc-modified: '2026-07-06'
+  /sport/football/odds/halffull/prematch:
+    get:
+      operationId: getFootballOddsHalffullPrematch
+      summary: Half Time/Full Time (pre-match)
+      description: '• This API endpoint returns pre-match odds for Half Time/Full Time, where the result is based on the combination of the half-time result and the full-time result.
+
+
+
+
+        • By default, returns data for matches in the next 10 days.
+
+
+
+
+        • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
+      tags:
+      - Football Other Odds
+      parameters:
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific matches. Separate multiple IDs with "," (e.g., matchId=322964610,322964611).
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific bookmakers. Separate multiple IDs with "," (e.g., companyId=3,8).
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                        companyId:
+                          type: string
+                          description: "1: Macauslot \n 3: Crown \n 8: Bet365\n 19：Interwetten\n 24: 12bet\n 31: Sbobet"
+                        odds:
+                          type: object
+                          description: Half Time/Full Time odds
+                          properties:
+                            halfWinFullWin:
+                              type: string
+                              description: Odds for home team winning at half-time and winning the match (Hong Kong Odds)
+                            halfWinFullDraw:
+                              type: string
+                              description: Odds for home team winning at half-time and the match ending in a draw (Hong Kong Odds)
+                            halfWinFullLose:
+                              type: string
+                              description: Odds for home team winning at half-time and losing the match (Hong Kong Odds)
+                            halfDrawFullWin:
+                              type: string
+                              description: Odds for the match being drawn at half-time and home team winning the match (Hong Kong Odds)
+                            halfDrawFullDraw:
+                              type: string
+                              description: Odds for the match being drawn at half-time and ending in a draw (Hong Kong Odds)
+                            halfDrawFullLose:
+                              type: string
+                              description: Odds for the match being drawn at half-time and home team losing the match (Hong Kong Odds)
+                            halfLoseFullWin:
+                              type: string
+                              description: Odds for home team losing at half-time and winning the match (Hong Kong Odds)
+                            halfLoseFullDraw:
+                              type: string
+                              description: Odds for home team losing at half-time and the match ending in a draw (Hong Kong Odds)
+                            halfLoseFullLose:
+                              type: string
+                              description: Odds for home team losing at half-time and losing the match (Hong Kong Odds)
+                        changeTime:
+                          type: integer
+                          description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=116
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=116
+      x-rate-limit: This interface is limited to 10 seconds/call;
+      x-recommended-call-frequency: 15 seconds/call
+      x-plan-products:
+      - Odds Pro
+      x-doc-modified: '2026-07-06'
+  /sport/football/odds/score/prematch:
+    get:
+      operationId: getFootballOddsScorePrematch
+      summary: Correct Score (pre-match)
+      description: "• This API endpoint returns pre-match correct score odds for each possible scoreline.\n\n\n\n• By default, returns data for matches in the next 10 days. \n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5)."
+      tags:
+      - Football Other Odds
+      parameters:
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific matches. Separate multiple IDs with "," (e.g., matchId=322964610,322964611).
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific bookmakers. Separate multiple IDs with "," (e.g., companyId=1,3).
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                        companyId:
+                          type: string
+                          description: "1: Macauslot \n 3: Crown"
+                        odds:
+                          type: object
+                          description: Correct score odds
+                          properties:
+                            bettingOddsItems:
+                              type: array
+                              description: List of specific scoreline odds entries
+                              items:
+                                type: object
+                                properties:
+                                  homeScore:
+                                    type: integer
+                                    description: Home team's score for this scoreline (e.g., 1)
+                                  awayScore:
+                                    type: integer
+                                    description: Away team's score for this scoreline (e.g., 0)
+                                  odds:
+                                    type: string
+                                    description: Odds for this exact scoreline occurring (Hong Kong Odds)
+                            otherScoresOdds:
+                              type: string
+                              description: Odds for any scoreline not listed in bettingOddsItems.
+                        changeTime:
+                          type: integer
+                          description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=117
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=117
+      x-rate-limit: This interface is limited to 10 seconds/call;
+      x-recommended-call-frequency: 15 seconds/call
+      x-plan-products:
+      - Odds Pro
+      x-doc-modified: '2026-07-06'
+  /sport/football/odds/score/half/prematch:
+    get:
+      operationId: getFootballOddsScoreHalfPrematch
+      summary: Half Time Correct Score (pre-match)
+      description: '• This API endpoint returns pre-match correct score odds for the first half.
+
+
+
+
+        • By default, returns data for matches in the next 10 days.
+
+
+
+
+        • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
+      tags:
+      - Football Other Odds
+      parameters:
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific matches. Separate multiple IDs with "," (e.g., matchId=322964610,322964611).
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific bookmakers. Separate multiple IDs with "," (e.g., companyId=1,3).
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                        companyId:
+                          type: string
+                          description: "1: Macauslot \n 3: Crown"
+                        odds:
+                          type: object
+                          description: Half Time Correct Score odds
+                          properties:
+                            bettingOddsItems:
+                              type: array
+                              description: List of specific first-half scoreline odds entries
+                              items:
+                                type: object
+                                properties:
+                                  homeScore:
+                                    type: integer
+                                    description: Home team's first-half score for this scoreline
+                                  awayScore:
+                                    type: integer
+                                    description: Away team's first-half score for this scoreline
+                                  odds:
+                                    type: string
+                                    description: Odds for this exact first-half scoreline occurring (Hong Kong Odds)
+                            otherScoresOdds:
+                              type: string
+                              description: Odds for any first-half scoreline not listed in bettingOddsItems
+                        changeTime:
+                          type: integer
+                          description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=118
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=118
+      x-rate-limit: This interface is limited to 10 seconds/call;
+      x-recommended-call-frequency: 15 seconds/call
+      x-plan-products:
+      - Odds Pro
+      x-doc-modified: '2026-07-06'
+  /sport/football/odds/cornershandicap/prematch:
+    get:
+      operationId: getFootballOddsCornershandicapPrematch
+      summary: Handicap Corners (pre-match)
+      description: "• This API endpoint returns pre-match Asian Handicap odds for corners, where a corner handicap is applied to one team.\n\n\n\n• By default, returns data for matches in the next 10 days. \n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5)."
+      tags:
+      - Football Other Odds
+      parameters:
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific matches. Separate multiple IDs with "," (e.g., matchId=322964610,322964611).
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific bookmakers. Separate multiple IDs with "," (e.g., companyId=3,8).
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                        companyId:
+                          type: string
+                          description: "1: Macauslot \n3: Crown \n 8: Bet365"
+                        odds:
+                          type: object
+                          description: Handicap Corners odds
+                          properties:
+                            handicapCorners:
+                              type: string
+                              description: "Corner handicap line. \n\n Positive = home team gives corners (home team favored). \n Negative = home team receives corners (away team favored). \n Quarter lines expressed as decimals (e.g., -0.5, 2.5)."
+                            home:
+                              type: string
+                              description: Odds for the home team after the corner handicap is applied (Hong Kong Odds)
+                            away:
+                              type: string
+                              description: Odds for the away team after the corner handicap is applied (Hong Kong Odds)
+                        changeTime:
+                          type: integer
+                          description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=119
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=119
+      x-rate-limit: This interface is limited to 10 seconds/call;
+      x-recommended-call-frequency: 15 seconds/call
+      x-plan-products:
+      - Odds Pro
+      x-doc-modified: '2026-07-06'
+  /sport/football/odds/cornerstotal/prematch:
+    get:
+      operationId: getFootballOddsCornerstotalPrematch
+      summary: Total Corners (pre-match)
+      description: "• This API endpoint returns pre-match over/under odds for the total number of corners in the match. Use cmd=half to retrieve first-half corner totals instead.\n\n\n\n• By default, returns data for matches in the next 10 days. \n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5)."
+      tags:
+      - Football Other Odds
+      parameters:
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific matches. Separate multiple IDs with "," (e.g., matchId=322964610,322964611).
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific bookmakers. Separate multiple IDs with "," (e.g., companyId=3,8).
+      - name: cmd
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pass half to return first-half corner total odds instead of full-match.
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                        companyId:
+                          type: string
+                          description: "3: Crown \n 8: Bet365"
+                        odds:
+                          type: object
+                          description: Total Corners odds
+                          properties:
+                            totalCorners:
+                              type: string
+                              description: Corner total line (e.g., 8.5, 9)
+                            over:
+                              type: string
+                              description: Odds for the total corners to exceed the line (Hong Kong Odds)
+                            under:
+                              type: string
+                              description: Odds for the total corners to fall below the line (Hong Kong Odds)
+                        changeTime:
+                          type: integer
+                          description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=121
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=121
+      x-rate-limit: This interface is limited to 10 seconds/call;
+      x-recommended-call-frequency: 15 seconds/call
+      x-plan-products:
+      - Odds Pro
+      x-doc-modified: '2026-07-06'
+  /sport/football/odds/oddeven/inplay:
+    get:
+      operationId: getFootballOddsOddevenInplay
+      summary: Goals Odd/Even (In-play)
+      description: '• This API endpoint returns in-play odds for whether the total number of goals in the match is odd or even.
+
+
+
+
+        • Currently supports Crown (3).
+
+
+
+
+        • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
+      tags:
+      - Football Other Odds
+      parameters:
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific matches. Separate multiple IDs with "," (e.g., matchId=322964610,322964611).
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific bookmakers. Separate multiple IDs with "," (e.g., companyId=3,8).
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                        companyId:
+                          type: string
+                          description: '3: Crown'
+                        odds:
+                          type: object
+                          description: Goals Odd/Even odds
+                          properties:
+                            single:
+                              type: string
+                              description: Odds for the total number of goals to be odd (Hong Kong Odds)
+                            double:
+                              type: string
+                              description: Odds for the total number of goals to be even (Hong Kong Odds)
+                            close:
+                              type: boolean
+                              description: "true: Betting is closed \n false: Betting is open"
+                        changeTime:
+                          type: integer
+                          description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=123
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=123
+      x-rate-limit: This interface is limited to 10 seconds/call;
+      x-recommended-call-frequency: 15 seconds/call
+      x-plan-products:
+      - Odds Pro
+      x-doc-modified: '2026-07-06'
+  /sport/football/odds/totalgoals/inplay:
+    get:
+      operationId: getFootballOddsTotalgoalsInplay
+      summary: Number of Goals in Match (In-play)
+      description: '• This API endpoint returns the in-play odds for the number of goals in the match.
+
+
+
+
+        • Odds format: All odds values are returned in Hong Kong Odds format. To convert to Decimal Odds: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85).
+
+
+
+
+        • Currently supported by: Macauslot (1), Crown (3). Additional bookmakers may be added in the future.
+
+
+
+
+        • Suspended market notice: When a specific goal-range market is individually suspended (separate from a full match suspension), this field returns a value of 0, allowing you to distinguish a suspended market from a real data update.
+
+
+
+
+        • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
+      tags:
+      - Football Other Odds
+      parameters:
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific matches. Separate multiple IDs with "," (e.g., matchId=322964610,322964611).
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific bookmakers. Separate multiple IDs with "," (e.g., companyId=3,8).
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                        companyId:
+                          type: string
+                          description: "1: Macauslot \n 3: Crown"
+                        odds:
+                          type: object
+                          description: Number of Goals in Match odds
+                          properties:
+                            zeroToOne:
+                              type: string
+                              description: Hong Kong odds for total goals in the match being 0–1.
+                            twoToThree:
+                              type: string
+                              description: Hong Kong odds for total goals in the match being 2–3.
+                            fourToSix:
+                              type: string
+                              description: Hong Kong odds for total goals in the match being 4–6.
+                            moreThanSix:
+                              type: string
+                              description: Hong Kong odds for total goals in the match being more than 6.
+                            close:
+                              type: boolean
+                              description: "true: Betting is closed \n false: Betting is open"
+                        changeTime:
+                          type: integer
+                          description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=124
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=124
+      x-rate-limit: This interface is limited to 10 seconds/call;
+      x-recommended-call-frequency: 15 seconds/call
+      x-plan-products:
+      - Odds Pro
+      x-doc-modified: '2026-07-06'
+  /sport/football/odds/halffull/inplay:
+    get:
+      operationId: getFootballOddsHalffullInplay
+      summary: Half Time/Full Time (In-play)
+      description: '• This API endpoint returns in-play odds for Half Time/Full Time, where the result is based on the combination of the half-time result and the full-time result.
+
+
+
+
+        • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
+      tags:
+      - Football Other Odds
+      parameters:
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific matches. Separate multiple IDs with "," (e.g., matchId=322964610,322964611).
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific bookmakers. Separate multiple IDs with "," (e.g., companyId=3,8).
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                        companyId:
+                          type: string
+                          description: "1: Macauslot \n 3: Crown \n 8: Bet365\n 19：Interwetten\n 24: 12bet\n 31: Sbobet"
+                        odds:
+                          type: object
+                          description: Half Time/Full Time odds
+                          properties:
+                            halfWinFullWin:
+                              type: string
+                              description: Odds for home team winning at half-time and winning the match (Hong Kong Odds)
+                            halfWinFullDraw:
+                              type: string
+                              description: Odds for home team winning at half-time and the match ending in a draw (Hong Kong Odds)
+                            halfWinFullLose:
+                              type: string
+                              description: Odds for home team winning at half-time and losing the match (Hong Kong Odds)
+                            halfDrawFullWin:
+                              type: string
+                              description: Odds for the match being drawn at half-time and home team winning the match (Hong Kong Odds)
+                            halfDrawFullDraw:
+                              type: string
+                              description: Odds for the match being drawn at half-time and ending in a draw (Hong Kong Odds)
+                            halfDrawFullLose:
+                              type: string
+                              description: Odds for the match being drawn at half-time and home team losing the match (Hong Kong Odds)
+                            halfLoseFullWin:
+                              type: string
+                              description: Odds for home team losing at half-time and winning the match (Hong Kong Odds)
+                            halfLoseFullDraw:
+                              type: string
+                              description: Odds for home team losing at half-time and the match ending in a draw (Hong Kong Odds)
+                            halfLoseFullLose:
+                              type: string
+                              description: Odds for home team losing at half-time and losing the match (Hong Kong Odds)
+                            close:
+                              type: boolean
+                              description: "true: Betting is closed \n false: Betting is open"
+                        changeTime:
+                          type: integer
+                          description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=125
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=125
+      x-rate-limit: This interface is limited to 10 seconds/call;
+      x-recommended-call-frequency: 15 seconds/call
+      x-plan-products:
+      - Odds Pro
+      x-doc-modified: '2026-07-06'
+  /sport/football/odds/score/inplay:
+    get:
+      operationId: getFootballOddsScoreInplay
+      summary: Correct Score (In-play)
+      description: '• This API endpoint returns in-play correct score odds for each possible scoreline.
+
+
+
+
+        • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
+      tags:
+      - Football Other Odds
+      parameters:
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific matches. Separate multiple IDs with "," (e.g., matchId=322964610,322964611).
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific bookmakers. Separate multiple IDs with "," (e.g., companyId=3,8).
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                        companyId:
+                          type: string
+                          description: '3: Crown'
+                        odds:
+                          type: object
+                          description: Correct score odds
+                          properties:
+                            bettingOddsItems:
+                              type: array
+                              description: List of specific scoreline odds entries
+                              items:
+                                type: object
+                                properties:
+                                  homeScore:
+                                    type: string
+                                    description: Home team's score for this scoreline
+                                  awayScore:
+                                    type: string
+                                    description: Away team's score for this scoreline
+                                  odds:
+                                    type: string
+                                    description: Odds for this exact scoreline occurring (Hong Kong Odds)
+                            otherScoresOdds:
+                              type: string
+                              description: Odds for any scoreline not listed in bettingOddsItems.
+                            close:
+                              type: boolean
+                              description: "true: Betting is closed \n false: Betting is open"
+                        changeTime:
+                          type: integer
+                          description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=126
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=126
+      x-rate-limit: This interface is limited to 10 seconds/call;
+      x-recommended-call-frequency: 15 seconds/call
+      x-plan-products:
+      - Odds Pro
+      x-doc-modified: '2026-07-06'
+  /sport/football/odds/score/half/inplay:
+    get:
+      operationId: getFootballOddsScoreHalfInplay
+      summary: Half Time Correct Score (In-play)
+      description: '• This API endpoint returns in-play correct score odds for the first half.
+
+
+
+
+        • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
+      tags:
+      - Football Other Odds
+      parameters:
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific matches. Separate multiple IDs with "," (e.g., matchId=322964610,322964611).
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific bookmakers. Separate multiple IDs with "," (e.g., companyId=3,8).
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                        companyId:
+                          type: string
+                          description: '3: Crown'
+                        odds:
+                          type: object
+                          description: Half Time Correct Score odds
+                          properties:
+                            bettingOddsItems:
+                              type: array
+                              description: List of specific first-half scoreline odds entries
+                              items:
+                                type: object
+                                properties:
+                                  homeScore:
+                                    type: integer
+                                    description: Home team's first-half score for this scoreline
+                                  awayScore:
+                                    type: integer
+                                    description: Away team's first-half score for this scoreline
+                                  odds:
+                                    type: string
+                                    description: Odds for this exact first-half scoreline occurring (Hong Kong Odds)
+                            otherScoresOdds:
+                              type: string
+                              description: Odds for any first-half scoreline not listed in bettingOddsItems
+                            close:
+                              type: boolean
+                              description: "true: Betting is closed \n false: Betting is open"
+                        changeTime:
+                          type: integer
+                          description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=127
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=127
+      x-rate-limit: This interface is limited to 10 seconds/call;
+      x-recommended-call-frequency: 15 seconds/call
+      x-plan-products:
+      - Odds Pro
+      x-doc-modified: '2026-07-06'
+  /sport/football/odds/cornershandicap/inplay:
+    get:
+      operationId: getFootballOddsCornershandicapInplay
+      summary: Handicap Corners (In-play)
+      description: "• This API endpoint returns in-play Asian Handicap odds for corners, updated in real time. \n\n\n\n• Returns all data updates captured within the last 3 minutes. \n\n\n\n• A single match and bookmaker may return multiple records tracking odds movement, or zero records if no movement occurred.\n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5)."
+      tags:
+      - Football Other Odds
+      parameters:
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific bookmakers. Returns the last 3 minutes of data for the specified bookmaker. Separate multiple IDs with "," (e.g., companyId=3,8).
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                        companyId:
+                          type: string
+                          description: "3: Crown \n 8: Bet365"
+                        matchTime:
+                          type: string
+                          description: Elapsed match time in minutes at the time of this update (e.g., 92)
+                        homeCorner:
+                          type: string
+                          description: Home team's corner count at the time of this update
+                        awayCorner:
+                          type: string
+                          description: Away team's corner count at the time of this update
+                        odds:
+                          type: object
+                          description: Handicap Corners odds at the time of this update
+                          properties:
+                            handicapCorners:
+                              type: string
+                              description: "Corner handicap line at the time of this update. \n\n Positive = home team gives corners (home team favored). \n Negative = home team receives corners (away team favored). \n Quarter lines expressed as decimals (e.g., -0.5, -0.25)."
+                            home:
+                              type: string
+                              description: Odds for the home team after the corner handicap is applied (Hong Kong Odds)
+                            away:
+                              type: string
+                              description: Odds for the away team after the corner handicap is applied (Hong Kong Odds)
+                            close:
+                              type: boolean
+                              description: "true: Betting is closed \n false: Betting is open"
+                        changeTime:
+                          type: integer
+                          description: Timestamp of this odds update (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=128
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=128
+      x-rate-limit: This interface is limited to 5 seconds/call;
+      x-recommended-call-frequency: 10 secondscall
+      x-plan-products:
+      - Odds Pro
+      x-doc-modified: '2026-07-06'
+  /sport/football/odds/cornerstotal/inplay:
+    get:
+      operationId: getFootballOddsCornerstotalInplay
+      summary: Total Corners (In-play)
+      description: "• This API endpoint returns in-play over/under odds for the total number of corners, updated in real time. \n\n\n\n• Returns all data updates captured within the last 3 minutes. \n\n\n\n• A single match and bookmaker may return multiple records tracking odds movement, or zero records if no movement occurred. \n\n\n\n• Use cmd=half to retrieve first-half corner totals instead.\n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5)."
+      tags:
+      - Football Other Odds
+      parameters:
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific bookmakers. Returns the last 3 minutes of data for the specified bookmaker. Separate multiple IDs with "," (e.g., companyId=3,8).
+      - name: cmd
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pass half to return first-half corner total odds instead of full-match.
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                        companyId:
+                          type: string
+                          description: "3: Crown \n 8: Bet365"
+                        matchTime:
+                          type: string
+                          description: Elapsed match time in minutes at the time of this update (e.g., 80)
+                        homeCorner:
+                          type: string
+                          description: Home team's corner count at the time of this update
+                        awayCorner:
+                          type: string
+                          description: Away team's corner count at the time of this update
+                        odds:
+                          type: object
+                          description: Total Corners odds at the time of this update
+                          properties:
+                            totalCorners:
+                              type: string
+                              description: Corner total line at the time of this update (e.g., 7.5, 11.5)
+                            over:
+                              type: string
+                              description: Odds for the total corners to exceed the line (Hong Kong Odds)
+                            under:
+                              type: string
+                              description: Odds for the total corners to fall below the line (Hong Kong Odds)
+                            close:
+                              type: boolean
+                              description: "true: Betting is closed (first half not yet ended) \n false: Betting is open"
+                        changeTime:
+                          type: integer
+                          description: Timestamp of this odds update (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=130
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=130
+      x-rate-limit: This interface is limited to 5 seconds/call;
+      x-recommended-call-frequency: 10 seconds/call
+      x-plan-products:
+      - Odds Pro
+      x-doc-modified: '2026-07-06'
+  /sport/football/odds/outrights:
+    get:
+      operationId: getFootballOddsOutrights
+      summary: Outrights
+      description: '• This API endpoint returns outright odds, including league champion, top goalscorer, and group-stage qualification markets.
+
+
+
+
+        • By default, returns data for leagues and cups with outright odds available in the next 10 days.
+
+
+
+
+        • Note: The odds returned already include the stake (principal). No conversion is needed to calculate the full payout.'
+      tags:
+      - Football Other Odds
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        leagueId:
+                          type: string
+                        leagueShortName:
+                          type: string
+                          description: Abbreviated league name (e.g., BRA D1)
+                        season:
+                          type: string
+                          description: Season identifier (e.g., 2026-2027)
+                        typeId:
+                          type: integer
+                          description: "Bet types: \n 1: Outright \n 2: The final \n 3: Semi-finals \n 4: Quarter-finals \n 5: Top Goalscorer \n 6: Winner of the group A \n 7: Winner of the group B \n 8: Winner of the group C \n 9: Winner of the group D \n 10: Winner of the group E \n 11: Winner of the group F \n 12: Winner of the group G \n 13: Winner of the group H \n 14: Qualified from group A \n 15: Qualified from group B \n 16: Qualified from group C \n 17: Qualified from group D \n 18: Qualified from group E \n 19: Qualified from group F \n 20: Qualified from group G \n 21: Qualified from group H \n 23: Winner of the group I \n 24: Winner of the group J \n 25: Winner of the group K \n 26: Winner of the group L \n 29: Qualified from group I \n 30: Qualified from group J \n 31: Qualified from group K \n 32: Qualified from group L \n 35: Round of 16"
+                        type:
+                          type: string
+                          description: Outright bet type name (e.g., Outright)
+                        itemList:
+                          type: array
+                          description: List of betting items (teams or players) for this bet type
+                          items:
+                            type: object
+                            properties:
+                              itemId:
+                                type: string
+                                description: "Team ID or player ID. \n\n Returns player ID when typeId = 5 (Top Goalscorer); returns team ID for all other types."
+                              item:
+                                type: string
+                                description: Team name or player name (e.g., Bayern Munchen)
+                              oddsList:
+                                type: array
+                                description: Outright odds from each bookmaker for this item
+                                items:
+                                  type: object
+                                  properties:
+                                    companyId:
+                                      type: string
+                                      description: "37: Macauslot \n 38: Crown \n 39: Bet365 \n 40: William Hill"
+                                    company:
+                                      type: string
+                                      description: Bookmaker name
+                                    odds:
+                                      type: string
+                                      description: Odds for this item to win (Hong Kong Odds)
+                              valid:
+                                type: boolean
+                                description: "true: This item is currently available for betting \n false: Not available"
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=138
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=138
+      x-rate-limit: This interface is limited to 60 seconds/call;
+      x-recommended-call-frequency: 5 minutes/call
+      x-plan-products:
+      - Odds Pro
+      x-doc-modified: '2026-07-06'
+  /sport/football/odds/eurohandicap/prematch:
+    get:
+      operationId: getFootballOddsEurohandicapPrematch
+      summary: EuroHandicap (pre-match)
+      description: "• This API endpoint returns pre-match odds for European Handicap (EuroHandicap), which applies a goal handicap (typically starting from 1 goal) to one team and offers a 1X2-style market (home win / draw / away win) on the adjusted score. This follows the same concept as \"Asian Handicap,\" and is the basis for the \"Handicap 1X2\" odds offered by some domestic platforms.\n\n\n\n• Handicap direction: \n\nPositive value = home team gives goals (home team favored). \n\nNegative value = home team receives goals, i.e., the away team gives goals (away team favored). \n\nThis follows the same convention as Asian Handicap.\n\n\n\n\n• Currently supports Bet365 (8) and Interwetten (19).\n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5)."
+      tags:
+      - Football Other Odds
+      parameters:
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: "Get the data for the specified match. \n\nWhen multiple matches are acquired at the same time, use \",\" to separate the matchId. e.g. matchId=322964610,322964611."
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: "Get the data for the specified company. \n\nWhen multiple companies are acquired at the same time, use \",\" to separate the companyId. e.g. companyId=8,19."
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                        companyId:
+                          type: string
+                          description: "8: Bet365 \n 19: Interwetten"
+                        odds:
+                          type: object
+                          description: European Handicap odds
+                          properties:
+                            handicap:
+                              type: string
+                              description: "Handicap line, typically in whole goals starting from 1. \n\n Positive = home team gives goals (home favored). \n Negative = home team receives goals, i.e., away team gives goals (away favored, e.g., -1 = away team is favored by 1 goal)."
+                            home:
+                              type: string
+                              description: Odds for the home team to win after the handicap is applied (Hong Kong Odds)
+                            draw:
+                              type: string
+                              description: Odds for a draw after the handicap is applied (Hong Kong Odds)
+                            away:
+                              type: string
+                              description: Odds for the away team to win after the handicap is applied (Hong Kong Odds)
+                        changeTime:
+                          type: integer
+                          description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=248
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=248
+      x-rate-limit: This interface is limited to 10 seconds/call;
+      x-recommended-call-frequency: 15 seconds/call
+      x-plan-products:
+      - Odds Pro
+      x-doc-modified: '2026-07-06'
+  /sport/football/odds/doublechance/prematch:
+    get:
+      operationId: getFootballOddsDoublechancePrematch
+      summary: Double Chance (pre-match)
+      description: '• This API endpoint returns pre-match odds for Double Chance, where a bet wins if either of two outcomes occurs: home win or draw, home win or away win, or draw or away win.
+
+
+
+
+        • Currently supports Bet365 (8), William Hill (9), Interwetten (19), Sbobet (31), and Bwin (49).
+
+
+
+
+        • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
+      tags:
+      - Football Other Odds
+      parameters:
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific matches. Separate multiple IDs with "," (e.g., matchId=322964610,322964611).
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific bookmakers. Separate multiple IDs with "," (e.g., companyId=9,19,31).
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                        companyId:
+                          type: string
+                          description: "8: Bet365\n9: William Hill\n19: Interwetten \n31: Sbobet\n49:Bwin"
+                        odds:
+                          type: object
+                          description: Double Chance odds
+                          properties:
+                            home_draw:
+                              type: string
+                              description: Odds for home win or draw (Hong Kong Odds)
+                            home_away:
+                              type: string
+                              description: Odds for home win or away win (Hong Kong Odds)
+                            draw_away:
+                              type: string
+                              description: Odds for draw or away win (Hong Kong Odds)
+                        changeTime:
+                          type: integer
+                          description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=249
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=249
+      x-rate-limit: This interface is limited to 10 seconds/call;
+      x-recommended-call-frequency: 15 seconds/call
+      x-plan-products:
+      - Odds Pro
+      x-doc-modified: '2026-07-06'
+  /sport/football/odds/corners1x2/prematch:
+    get:
+      operationId: getFootballOddsCorners1x2Prematch
+      summary: Corners 1x2 (pre-match)
+      description: '• This API endpoint returns pre-match Corners 1X2 odds, where the result (home / draw / away) is determined by which team takes more corners during the match.
+
+
+
+
+        • Currently only supports Crown (companyId 3).
+
+
+
+
+        • Note: The odds returned already include the stake (principal). No conversion is needed to calculate the full payout.'
+      tags:
+      - Football Other Odds
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                        companyId:
+                          type: string
+                          description: "Bookmaker ID. \n\n Currently only 3: Crown is supported."
+                        odds:
+                          type: object
+                          description: Corners 1X2 odds
+                          properties:
+                            home:
+                              type: string
+                              description: Odds for home team to take more corners (Hong Kong Odds)
+                            draw:
+                              type: string
+                              description: Odds for both teams to take an equal number of corners (Hong Kong Odds)
+                            away:
+                              type: string
+                              description: Odds for away team to take more corners (Hong Kong Odds)
+                        changeTime:
+                          type: integer
+                          description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=263
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=263
+      x-rate-limit: This interface is limited to 10 seconds/call
+      x-recommended-call-frequency: 15 seconds/call
+      x-plan-products:
+      - Odds Pro
+      x-doc-modified: '2026-07-06'
+  /sport/football/odds/teamGoals:
+    get:
+      operationId: getFootballOddsTeamGoals
+      summary: Team Goals
+      description: '• This API endpoint returns over/under odds for each team''s individual goal total (Team Goals).
+
+
+
+
+        • Currently only supports Crown (companyId 3).
+
+
+
+
+        • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
+      tags:
+      - Football Other Odds
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                        companyId:
+                          type: string
+                          description: "Bookmaker ID.\n\n Currently only 3: Crown is supported."
+                        home:
+                          type: object
+                          description: Over/under odds for the home team's total goals
+                          properties:
+                            total:
+                              type: string
+                              description: Goal line for the home team (e.g., 2 = 2 goals)
+                            over:
+                              type: string
+                              description: Odds for the home team to score over the line (Hong Kong Odds)
+                            under:
+                              type: string
+                              description: Odds for the home team to score under the line (Hong Kong Odds)
+                        away:
+                          type: object
+                          description: Over/under odds for the away team's total goals
+                          properties:
+                            total:
+                              type: string
+                              description: Goal line for the away team (e.g., 1.25 = 1/1.5 goals)
+                            over:
+                              type: string
+                              description: Odds for the away team to score over the line (Hong Kong Odds)
+                            under:
+                              type: string
+                              description: Odds for the away team to score under the line (Hong Kong Odds)
+                        changeTime:
+                          type: integer
+                          description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=264
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=264
+      x-rate-limit: This interface is limited to 10 seconds/call
+      x-recommended-call-frequency: 15 seconds/call
+      x-plan-products:
+      - Odds Pro
+      x-doc-modified: '2026-07-06'
+  /sport/football/odds/bothScore:
+    get:
+      operationId: getFootballOddsBothScore
+      summary: Both Teams to Score
+      description: '• This API endpoint returns odds for Both Teams to Score, based on whether both the home and away teams score at least one goal during the match.
+
+
+
+
+        • Currently supports Ladbrokes (4), Bet365 (8), William Hill (9), Interwetten (19), Sbobet (31), and Bwin (49).
+
+
+
+
+        • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
+      tags:
+      - Football Other Odds
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                        companyId:
+                          type: string
+                          description: "4: Ladbrokes \n 8: Bet365 \n 9: William Hill \n 19: Interwetten \n 31: Sbobet \n 49:Bwin"
+                        'yes':
+                          type: string
+                          description: Odds for both teams to score (Hong Kong Odds)
+                        'no':
+                          type: string
+                          description: Odds for at least one team to fail to score (Hong Kong Odds)
+                        changeTime:
+                          type: integer
+                          description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=265
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=265
+      x-rate-limit: This interface is limited to 10 seconds/call
+      x-recommended-call-frequency: 15 seconds/call
+      x-plan-products:
+      - Odds Pro
+      x-doc-modified: '2026-07-06'
+  /sport/football/odds/card:
+    get:
+      operationId: getFootballOddsCard
+      summary: Card
+      description: '• This API endpoint returns odds for Cards markets, including standard (1X2), handicap, and total (Over/Under), based on the number of cards (yellow and red) shown by the referee during the match.
+
+
+
+
+        • Currently only supports Crown (companyId 3).
+
+
+
+
+        • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
+      tags:
+      - Football Other Odds
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        standard:
+                          type: object
+                          description: Standard card market data (1X2), based on the comparison of cards (yellow and red) shown to each team.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "Bookmaker ID.\n\n Currently only 3: Crown is supported."
+                            odds:
+                              type: object
+                              description: 1X2 cards odds
+                              properties:
+                                home:
+                                  type: string
+                                  description: Odds for the home team receiving more cards than the away team (Hong Kong Odds)
+                                draw:
+                                  type: string
+                                  description: Odds for both teams receiving the same number of cards (Hong Kong Odds)
+                                away:
+                                  type: string
+                                  description: Odds for the away team receiving more cards than the home team (Hong Kong Odds)
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                        handciap:
+                          type: object
+                          description: Handicap card market data, where a handicap value is applied to the number of cards (yellow and red) shown to each team.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "Bookmaker ID.\n\n Currently only 3: Crown is supported."
+                            odds:
+                              type: object
+                              description: Handicap cards odds
+                              properties:
+                                handicap:
+                                  type: string
+                                  description: "Card handicap line. \n\n Positive = home team gives cards (e.g., 1 = home -1). \n Negative = away team gives cards (e.g., -1 = home +1)."
+                                home:
+                                  type: string
+                                  description: Odds for the home team after the handicap is applied (Hong Kong Odds)
+                                away:
+                                  type: string
+                                  description: Odds for the away team after the handicap is applied (Hong Kong Odds)
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                        total:
+                          type: object
+                          description: Total cards market data, based on the total number of cards (yellow and red) shown during the match — Over/Under outcomes.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "Bookmaker ID.\n\n Currently only 3: Crown is supported."
+                            odds:
+                              type: object
+                              description: Total cards (Over/Under) odds
+                              properties:
+                                total:
+                                  type: string
+                                  description: Card line value (e.g., 3.5, 4.5)
+                                over:
+                                  type: string
+                                  description: Odds for the total number of cards being over the line (Hong Kong Odds)
+                                under:
+                                  type: string
+                                  description: Odds for the total number of cards being under the line (Hong Kong Odds)
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=266
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=266
+      x-rate-limit: This interface is limited to 10 seconds/call;
+      x-recommended-call-frequency: 15 seconds/call
+      x-plan-products:
+      - Odds Pro
+      x-doc-modified: '2026-07-16'
+  /sport/football/odds/overtime:
+    get:
+      operationId: getFootballOddsOvertime
+      summary: 'Overtime & Penalty Shootout '
+      description: '• This API endpoint returns pre-match and in-play odds for Overtime (Extra Time) and Penalty Shootout markets.
+
+
+
+
+        • Currently only supports SB (companyId 3). Company IDs in this endpoint are independent from the IDs used in Odds (18 Agencies).
+
+
+
+
+        • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
+      tags:
+      - Football Other Odds
+      parameters:
+      - name: cmd
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Must be set to example.
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: Unique odds record ID
+                        matchId:
+                          type: integer
+                        companyId:
+                          type: integer
+                          description: 'Bookmaker ID. Currently only 3: SB is supported.'
+                        oddsType:
+                          type: integer
+                          description: "Odds market type \n 1: Asian Handicap \n 2: Over/Under \n 3: 1X2"
+                        type:
+                          type: integer
+                          description: "Match phase \n 1: Overtime (Extra Time) \n 2: Penalty Shootout"
+                        datatype:
+                          type: integer
+                          description: "Data stage \n 2: Pre-match \n 3: In-play (Live)"
+                        odds1_first:
+                          type: string
+                          description: "Opening first value.\n oddsType=1: Home odds \n oddsType=2: Over odds \n oddsType=3: Home win odds (Hong Kong Odds)"
+                        odds2_first:
+                          type: string
+                          description: "Opening second value. \n oddsType=1: Handicap line \n oddsType=2: Over/Under line \n oddsType=3: Draw odds (Hong Kong Odds)"
+                        odds3_first:
+                          type: string
+                          description: "Opening third value. \n oddsType=1: Away odds \n oddsType=2: Under odds \n oddsType=3: Away win odds (Hong Kong Odds)"
+                        odds1:
+                          type: string
+                          description: Current first value. Same mapping as odds1_first.
+                        odds2:
+                          type: string
+                          description: Current second value. Same mapping as odds2_first.
+                        odds3:
+                          type: string
+                          description: Current third value. Same mapping as odds3_first.
+                        running:
+                          type: boolean
+                          description: "true: In-play odds are currently active \n false: Not in play"
+                        close:
+                          type: boolean
+                          description: "true: Betting is closed \n false: Betting is open"
+                        changeTime:
+                          type: integer
+                          description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=273
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=273
+      x-rate-limit: This interface is limited to 15 seconds/call
+      x-recommended-call-frequency: 30 seconds/call
+      x-plan-products:
+      - Odds Pro
+      x-doc-modified: '2026-07-07'
+components:
+  securitySchemes:
+    apiKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key
+      description: Personal API key issued from the iSports account settings page and passed on every request as the `api_key` query parameter.
+externalDocs:
+  description: iSports API documentation
+  url: https://www.isportsapi.com/en/docs.html

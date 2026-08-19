@@ -1,0 +1,159 @@
+openapi: 3.2.0
+info:
+  title: iSports Football European Odds (200+ Agencies) Football European Odds (200+ Agencies) API
+  version: '2026-08-09'
+  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.
+
+
+    All operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).
+
+
+    This document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.'
+  termsOfService: https://www.isportsapi.com/en/home/terms.html
+  contact:
+    name: iSports API
+    url: https://www.isportsapi.com/en/
+  x-derived-by: API Evangelist enrichment pipeline
+  x-derived-from: https://www.isportsapi.com/en/docs.html
+  x-derived-on: '2026-08-09'
+servers:
+- url: https://api.isportsapi.com
+  description: Primary API host
+- url: https://api2.isportsapi.com
+  description: Alternate host, documented for when the primary host is slow or unreachable
+security:
+- apiKeyQuery: []
+tags:
+- name: Football European Odds (200+ Agencies)
+paths:
+  /sport/football/odds/european/all:
+    get:
+      operationId: getFootballOddsEuropeanAll
+      summary: European Odds (200+ Bookmakers)
+      description: "• This API endpoint returns 1X2 odds from 200+ bookmakers.\n\n\n\n• Important: Use only one of the following primary filters per request — matchId (single match), date (specific calendar day), day (next N days), or min (recent updates). These parameters are mutually exclusive and should not be combined, though companyId may be used alongside any of them to filter to a specific bookmaker. If omitted, returns matches within the next 1 day.\n\n\n\n• Note: Company IDs in this endpoint are independent from the IDs used in Odds (18 Agencies) — the same bookmaker may have a different ID in each system.\n\n\n\n• Win rate calculation: \n\n- Home win rate = 1 ÷ (1 + home odds ÷ draw odds + home odds ÷ away odds) × 100%; \n\n- Draw rate = 1 ÷ (1 + draw odds ÷ home odds + draw odds ÷ away odds) × 100%; \n\n- Away win rate = 1 ÷ (1 + away odds ÷ home odds + away odds ÷ draw odds) × 100%; \n\n- Payout rate = home win rate × home odds.\n\n\n\n• Kelly Index calculation: First calculate the average odds and average win rate across all bookmakers for the match, then: \n\n- Home Kelly Index = home odds × average home win rate; \n\n- Draw Kelly Index = draw odds × average draw win rate; \n\n- Away Kelly Index = away odds × average away win rate."
+      tags:
+      - Football European Odds (200+ Agencies)
+      parameters:
+      - name: day
+        in: query
+        required: false
+        schema:
+          type: string
+        description: "Returns odds for matches in the next N days (e.g., day=3 returns matches in the next 3 days). \n\n\n\nMutually exclusive with date and min."
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: "Returns odds for matches on a specific date. Format: yyyy-MM-dd (e.g., date=2026-06-01). \n\n\n\nSupports back-checking within the past month. \n\n\n\nMutually exclusive with day and min."
+      - name: min
+        in: query
+        required: false
+        schema:
+          type: string
+        description: "Returns odds changed within the past N minutes (e.g., min=5 returns changes in the last 5 minutes — recommended). \n\n\n\nMutually exclusive with day and date."
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: "Filter results to specific matches. Separate multiple IDs with \",\" (e.g., matchId=322964610,322964611). Maximum 100 match IDs per request.\n\n\n\n Mutually exclusive with day, date, and min."
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: "Filter results to specific bookmakers. Separate multiple IDs with \",\" (e.g., companyId=3,8). \n\n\n\nCan be combined with any of the parameters above."
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                        matchTime:
+                          type: integer
+                          description: Match kick-off time (Unix timestamp, GMT+0)
+                        leagueName:
+                          type: string
+                          description: League or cup name
+                        homeName:
+                          type: string
+                          description: Home team name
+                        awayName:
+                          type: string
+                          description: Away team name
+                        odds:
+                          type: array
+                          description: List of 1X2 odds entries from all bookmakers for this match
+                          items:
+                            type: object
+                            properties:
+                              oddsId:
+                                type: string
+                                description: Unique odds entry ID
+                              changeTime:
+                                type: integer
+                                description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                              oddsDetail:
+                                type: object
+                                description: 1X2 odds detail. Each entry is a comma-separated string containing the fields below (e.g., 81,Vcbet,2.3,2.9,3.2,2.1,3,3.5).
+                                properties:
+                                  companyId:
+                                    type: integer
+                                    description: Bookmaker ID. Independent from the ID system used in Odds (18 Agencies).
+                                  companyName:
+                                    type: string
+                                    description: Bookmaker name
+                                  initialHome:
+                                    type: string
+                                    description: Opening 1X2 odds — home win
+                                  initialDraw:
+                                    type: string
+                                    description: Opening 1X2 odds — draw
+                                  initialAway:
+                                    type: string
+                                    description: Opening 1X2 odds — away win
+                                  instantHome:
+                                    type: string
+                                    description: Current 1X2 odds — home win
+                                  instantDraw:
+                                    type: string
+                                    description: Current 1X2 odds — draw
+                                  instantAway:
+                                    type: string
+                                    description: Current 1X2 odds — away win
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=44
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=44
+      x-rate-limit: This interface is limited to 60 seconds/call;
+      x-recommended-call-frequency: 90 seconds/call
+      x-plan-products:
+      - Odds Pro
+      x-doc-modified: '2026-06-27'
+components:
+  securitySchemes:
+    apiKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key
+      description: Personal API key issued from the iSports account settings page and passed on every request as the `api_key` query parameter.
+externalDocs:
+  description: iSports API documentation
+  url: https://www.isportsapi.com/en/docs.html

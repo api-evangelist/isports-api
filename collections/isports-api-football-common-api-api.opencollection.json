@@ -1,0 +1,148 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "iSports Football Common API API",
+    "version": "2026-08-09"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Football Common API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Match Modify Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/schedule/modify"
+          },
+          "docs": "This API endpoint returns match deletion and kick-off time modification records from the past 12 hours. You can use it with the <a href=\"/docs?isportsDocIndex=1-16-41\" style=\"color:blue\">Schedule & Results (Basic)</a> endpoint.\n\n\n\nTips: You have access to all the football Common API endpoints with any valid paid football plans."
+        },
+        {
+          "info": {
+            "name": "Schedule & Results (Basic)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/schedule/basic",
+            "params": [
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Match date in yyyy-MM-dd format (GMT+0), e.g. 2026-05-01. Returns all matches on that date. Historical data is limited to the past month."
+              },
+              {
+                "name": "leagueId",
+                "value": "",
+                "type": "query",
+                "description": "Filter matches by league or cup ID. Returns the current season by default."
+              },
+              {
+                "name": "season",
+                "value": "",
+                "type": "query",
+                "description": "Filter by season; must be used with leagueId. e.g. 2025-2026. Defaults to current season if omitted."
+              },
+              {
+                "name": "matchId",
+                "value": "",
+                "type": "query",
+                "description": "Fetch one or more specific matches by ID. Separate multiple IDs with commas. Maximum 100 IDs per request."
+              }
+            ]
+          },
+          "docs": "This API endpoint returns the basic information of the match. If you need more details, please refer to <a target=\"_blank\" href=\"/docs.html?id=21\" style=\"color:blue\">Schedule & Results</a>. You can use it with the <a href=\"/docs.html?id=33\" style=\"color:blue\">Match Modify Record</a> endpoint.\n\n\n\nTips: You have access to all the football Common API endpoints with any valid paid football plans.\n\nThe request path needs at least one parameter (date, leagueId, and matchId ) to retrieve correct respon"
+        },
+        {
+          "info": {
+            "name": "League & Cup Profile (Basic)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/league/basic",
+            "params": [
+              {
+                "name": "leagueId",
+                "value": "",
+                "type": "query",
+                "description": "Filter results by a specific league or cup ID. If omitted, all leagues and cups are returned."
+              }
+            ]
+          },
+          "docs": "This API endpoint returns the basic information of leagues and cups. If you need more details, please refer to <a target=\"_blank\" href=\"/docs.html?id=67\" style=\"color:blue\">League & Cup Profile</a>. Click here to view <a target=\"_blank\" href=\"http://api.isportsapi.com/league.aspx\" style=\"color:blue\">2000+ football leagues & cups</a>.\n\n\n\nTips: You have access to all the football Common API endpoints with any valid paid football plans."
+        },
+        {
+          "info": {
+            "name": "List of Countries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/country"
+          },
+          "docs": "This API endpoint returns a list of all supported countries and their corresponding country IDs. Use the countryId to filter data in other endpoints such as League & Cup Profile."
+        },
+        {
+          "info": {
+            "name": "Providers for European Markets ",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/bookmaker"
+          },
+          "docs": "This API endpoint returns a list of all bookmakers available for European market (1X2) odds data, including their IDs used across different odds APIs. Use companyIdEu with the European Odds (200+ Bookmakers) API, and companyIdMain with the Odds (18 Bookmakers) API."
+        },
+        {
+          "info": {
+            "name": "Providers for Asian Markets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/odds/books"
+          },
+          "docs": "This API endpoint returns a list of all bookmakers available for Asian handicap, 1X2, and Over/Under odds data. Use companyId with the Odds (18 Bookmakers) API, and europenCompanyId to cross-reference with the European Odds (200+ Bookmakers) API."
+        },
+        {
+          "info": {
+            "name": "Team Modify Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/team/modify"
+          },
+          "docs": "This API endpoint returns team ID merge and deletion records from the past 7 days. Use this to keep your local team data in sync — when a team is merged, update references to the new ID; when deleted, remove it from your database."
+        },
+        {
+          "info": {
+            "name": "Player Modify Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/player/modify"
+          },
+          "docs": "This API endpoint returns player ID merge and deletion records from the past 7 days. Use this to keep your local player data in sync — when a player is merged, update references to the new ID; when deleted, remove it from your database."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

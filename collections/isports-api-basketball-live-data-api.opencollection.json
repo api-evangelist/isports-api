@@ -1,0 +1,159 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "iSports Basketball Live Data API",
+    "version": "2026-08-09"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Basketball Live Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Livescores Changes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/livescores/changes"
+          },
+          "docs": "• This API endpoint returns livescore changes for basketball matches updated in the last 15 seconds — only the fields that changed since the last update are meaningful. \n\n\n\n• You can use it with the <a href=\"/docs.html?id=19\" style=\"color:blue\">Livescore for today</a> endpoint to obtain full match information such as team names and league details."
+        },
+        {
+          "info": {
+            "name": "Livescores for Today",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/livescores"
+          },
+          "docs": "• This API endpoint returns livescores for basketball matches on the current day (GMT+0 00:00–23:59). \n\n\n\n• You can use it with the <a href=\"/docs.html?id=13\" style=\"color:blue\">Livescores Changes</a> endpoint to track subsequent score and status updates."
+        },
+        {
+          "info": {
+            "name": "Schedule & Results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/schedule",
+            "params": [
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Match date, format yyyy-MM-dd, e.g. 2026-07-01. \n\n\n\nReturns matches scheduled for the specified date (GMT+0 00:00–23:59)."
+              },
+              {
+                "name": "leagueId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a specific league or cup ID. \n\n\n\nReturns schedule data for the current season of the specified league or cup."
+              },
+              {
+                "name": "season",
+                "value": "",
+                "type": "query",
+                "description": "Used together with leagueId to retrieve matches for a specific season, e.g. 25-26. \n\n\n\nReturns the current season by default."
+              },
+              {
+                "name": "matchId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a specific match ID."
+              }
+            ]
+          },
+          "docs": "• This API endpoint returns schedule and result information for basketball matches from the past two months up to future fixtures, filtered by date or leagueId. \n\n\n\n• One of the following parameters is required: date, leagueId, or matchId — these three cannot be used together in the same request. The season parameter can only be used in combination with leagueId, to retrieve matches for a specific season; if omitted, the current season is returned by default.\n\n\n\n• You can use it with the <a href"
+        },
+        {
+          "info": {
+            "name": "Lineups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/lineups",
+            "params": [
+              {
+                "name": "matchId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a specific match ID. If omitted, returns lineups and injuries for all applicable matches."
+              },
+              {
+                "name": "isPreview",
+                "value": "",
+                "type": "query",
+                "description": "true: returns predicted lineups (last 24 hours and next 48 hours)"
+              }
+            ]
+          },
+          "docs": "• This API endpoint returns basketball match lineups and injury reports. By default, it returns the official confirmed starting lineup once it becomes available from the data source — availability depends on the data source and is not guaranteed for every match. \n\n\n\n• To retrieve predicted lineups instead, set isPreview=true, which returns predicted lineups, bench players, and injury reports for matches in the last 24 hours and the next 48 hours. \n\n\n\n• Supported League Coverage: <a href=\"https:/"
+        },
+        {
+          "info": {
+            "name": "NBA Transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/transfer",
+            "params": [
+              {
+                "name": "day",
+                "value": "",
+                "type": "query",
+                "description": "Number of days to look back from today, e.g. day=10 returns transfer data from the past 10 days. Maximum value is 400.\n\n\n\nIf omitted, returns transfer data within the past month."
+              }
+            ]
+          },
+          "docs": "• This API endpoint returns NBA player transfer records. \n\n\n\n• If the day parameter is omitted, returns transfer data within the past month. Use day=n to specify a custom range in days (maximum 400 days)."
+        },
+        {
+          "info": {
+            "name": "Match List of Live Text",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/livetext/list"
+          },
+          "docs": "• This API endpoint returns the list of matches with live text coverage for today and the past 8 hours. Only NBA and WNBA matches are supported. \n\n\n\n• You can use it with the <a href=\"/docs.html?id=81\" style=\"color:blue\">Live Text</a> endpoint to retrieve match-by-match live text updates for each matchId returned here."
+        },
+        {
+          "info": {
+            "name": "Live Text",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/livetext",
+            "params": [
+              {
+                "name": "matchId",
+                "value": "",
+                "type": "query",
+                "description": "Returns live text content for the specified match. \n\n\n\nIf omitted, returns all live text content updated in the last 2 minutes across matches."
+              }
+            ]
+          },
+          "docs": "• This API endpoint returns live text content for a specified matchId. Only NBA and WNBA matches are supported.\n\n\n\n• If matchId is omitted, all live text content updated in the last 2 minutes across matches is returned. \n\n\n\n• You can use it with the <a href=\"/docs.html?id=80\" style=\"color:blue\">Match List of Live Text</a> endpoint to first obtain a list of available matchIds."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

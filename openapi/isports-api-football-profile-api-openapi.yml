@@ -1,0 +1,894 @@
+openapi: 3.2.0
+info:
+  title: iSports Football Profile API
+  version: '2026-08-09'
+  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.
+
+
+    All operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).
+
+
+    This document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.'
+  termsOfService: https://www.isportsapi.com/en/home/terms.html
+  contact:
+    name: iSports API
+    url: https://www.isportsapi.com/en/
+  x-derived-by: API Evangelist enrichment pipeline
+  x-derived-from: https://www.isportsapi.com/en/docs.html
+  x-derived-on: '2026-08-09'
+servers:
+- url: https://api.isportsapi.com
+  description: Primary API host
+- url: https://api2.isportsapi.com
+  description: Alternate host, documented for when the primary host is slow or unreachable
+security:
+- apiKeyQuery: []
+tags:
+- name: Football Profile
+paths:
+  /sport/football/team:
+    get:
+      operationId: getFootballTeam
+      summary: Team Profile
+      description: '• This API endpoint returns detailed identity and background information for football teams.
+
+
+
+
+        • It provides metadata such as founding dates, home venues, coaching staff, and official website links.
+
+
+
+
+        • Use it to build comprehensive team profile pages or to display team logos and details in match-related interfaces.'
+      tags:
+      - Football Profile
+      parameters:
+      - name: leagueId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'League ID; references League table (note: not applicable for Cup IDs).'
+      - name: teamId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Team ID; references Team table.
+      - name: day
+        in: query
+        required: false
+        schema:
+          type: string
+        description: "Data modification window; \n\nreturns teams added or updated within the last N days, e.g. 1 or 2."
+      - name: cmd
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - more
+        description: Extended data flag; set to more to include team introductions and honors.
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        teamId:
+                          type: string
+                        leagueId:
+                          type: string
+                        name:
+                          type: string
+                          description: Team name
+                        logo:
+                          type: string
+                          description: 'Team logo URL. (Note: Recommended to cache and host assets locally)'
+                        foundingDate:
+                          type: string
+                          description: Team foundation date, e.g. 1898-1-1.
+                        address:
+                          type: string
+                          description: Team office address
+                        area:
+                          type: string
+                          description: Geographical area or city where the team is located
+                        venue:
+                          type: string
+                          description: Home stadium name, e.g. Giuseppe Meazza
+                        capacity:
+                          type: integer
+                          description: Venue seating capacity
+                        coach:
+                          type: string
+                          description: Name of the current head coach
+                        website:
+                          type: string
+                          description: Official website URL
+                        isNational:
+                          type: boolean
+                          description: "National team flag; \n\n true: national team\n false: club team."
+                        country_logo:
+                          type: string
+                          description: "Country logo URL; \n Only present when isNational is true."
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=22
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=22
+      x-rate-limit: This interface is limited to 1,800 seconds/call;
+      x-recommended-call-frequency: 1 day/call
+      x-plan-products:
+      - Live Data
+      x-doc-modified: '2026-06-29'
+  /sport/football/player:
+    get:
+      operationId: getFootballPlayer
+      summary: Player Profile / Teamlist with Player Profile
+      description: '**Player Profile** (teamId=82)
+
+
+        • This API endpoint returns comprehensive profile and identity data for football players, supporting records for both club and national team associations.
+
+
+
+
+        • Requests require at least one parameter from teamId, day, or playerId (these three parameters are mutually exclusive and cannot be used simultaneously).
+
+
+
+
+        • Use it after calling the <a href="https://www.isportsapi.com/en/docs.html?id=246" style="color:blue">Teamlist with Player Profile</a> endpoint to obtain valid teamIds, then use those IDs here to retrieve the complete player profiles for each squad.
+
+
+
+
+        • It is recommended to perform an initial full data synchronization followed by regular incremental updates, using the unique recordId to distinguish between multiple team associations for the same player.
+
+
+        **Teamlist with Player Profile** (cmd=teamlist)
+
+
+        • This API endpoint returns a comprehensive list of all team IDs that have associated player profile data in the database.
+
+
+
+
+        • It provides a flat array of unique identifiers representing every team with an active roster.
+
+
+
+
+        • Use it as the primary entry point to obtain valid teamId values, which are required for retrieving detailed squad information via the Player Profile endpoint.
+
+
+        Must add one of the two parameters teamId and playerId.'
+      tags:
+      - Football Profile
+      parameters:
+      - name: teamId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Get player data for a specified team.　Supports up to 50 IDs.
+      - name: playerId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Get specified player data.
+      - name: day
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Data modification window;
+
+
+          returns players updated within the last N days.'
+      - name: cmd
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - more
+          - teamlist
+        description: "Extended data flag; \n\nset to more to include player honors."
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      oneOf:
+                      - type: object
+                        properties:
+                          recordId:
+                            type: string
+                            description: Unique identifier for the player-team association
+                          playerId:
+                            type: string
+                          name:
+                            type: string
+                            description: Player name, e.g. Franco Mastantuono
+                          birthday:
+                            type: string
+                            description: Birth date, e.g. 2007-08-14
+                          height:
+                            type: integer
+                            description: Player height in cm, e.g. 178
+                          country:
+                            type: string
+                            description: Primary nationality
+                          feet:
+                            type: string
+                            description: Preferred foot; e.g. Left, Right, or Both
+                          weight:
+                            type: integer
+                            description: Player weight in kg, e.g. 71
+                          photo:
+                            type: string
+                            description: 'Player photo URL. (Note: Recommended to cache and host assets locally)'
+                          value:
+                            type: integer
+                            description: Market value in units of 10,000 Euros, e.g. 4500 (represents 45,000,000 Euros).
+                          teamId:
+                            type: string
+                            description: Current team ID; references Team table
+                          position:
+                            type: string
+                            description: Playing position, e.g. Right Winger
+                          number:
+                            type: integer
+                            description: Player jersey number
+                          introduce:
+                            type: string
+                            description: Player biography or introduction
+                          contractEndDate:
+                            type: string
+                            description: Contract expiration date, e.g. 2031-06-30
+                          PAC:
+                            type: string
+                            description: Pace for players or Diving for goalkeepers.
+                          SHO:
+                            type: string
+                            description: Shooting for players or Handling for goalkeepers.
+                          PAS:
+                            type: string
+                            description: Passing for players or Kicking for goalkeepers.
+                          DRI:
+                            type: string
+                            description: Dribbling for players or Reflexes for goalkeepers.
+                          DEF:
+                            type: string
+                            description: Defending for players or Speed for goalkeepers.
+                          PHY:
+                            type: string
+                            description: Physical for players or Positioning for goalkeepers.
+                          country2:
+                            type: string
+                            description: Second nationality of the player, if available.
+                          country2Id:
+                            type: integer
+                            description: Unique identifier of the player’s second nationality.
+                        title: Player Profile
+                      - type: object
+                        properties:
+                          teamId:
+                            type: integer
+                            description: List of Team IDs; references Team table.
+                        title: Teamlist with Player Profile
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=23
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=23
+      - https://www.isportsapi.com/en/docs.html?id=246
+      x-rate-limit: This interface is limited to 60 seconds/call;
+      x-recommended-call-frequency: 1 day/call
+      x-plan-products:
+      - Live Data
+      x-doc-modified: '2026-07-18'
+  /sport/football/league:
+    get:
+      operationId: getFootballLeague
+      summary: League & Cup Profile
+      description: '• This API endpoint returns profile data for leagues and cups, including name, logo, current season, and competition structure. By default, returns all available leagues and cups.
+
+
+
+
+        • Use the leagueId parameter to retrieve a specific competition, or day to fetch recently modified records.'
+      tags:
+      - Football Profile
+      parameters:
+      - name: leagueId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to a specific league or cup by ID. If omitted, returns all.
+      - name: cmd
+        in: query
+        required: false
+        schema:
+          type: string
+        description: "cmd=rule;\n\n Pass rule to retrieve the competition format description. Omitted if no data is available."
+      - name: day
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Returns leagues and cups modified within the specified number of days (e.g., day=50).
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        leagueId:
+                          type: string
+                          description: Unique league or cup ID
+                        type:
+                          type: integer
+                          description: "1: League \n2: Cup"
+                        color:
+                          type: string
+                          description: 'Theme color as an RGB hex code (e.g., #00CCCC)'
+                        logo:
+                          type: string
+                          description: League logo image URL. Hosted for reference only — do not hotlink directly; download and serve locally.
+                        name:
+                          type: string
+                          description: Full competition name (e.g., Argentine Division 1)
+                        shortName:
+                          type: string
+                          description: Abbreviated competition name (e.g., ARG D1)
+                        subLeagueName:
+                          type: string
+                          description: Active sub-competition or stage name (e.g., Final, Western Play-off). Empty string if not applicable.
+                        totalRound:
+                          type: integer
+                          description: "Total number of rounds in the season. \n 0 if not applicable (e.g., cup competitions)"
+                        currentRound:
+                          type: integer
+                          description: "Current round in progress.\n 0 if season has not started or not applicable"
+                        currentSeason:
+                          type: string
+                          description: Current season identifier (e.g., 2026, 2025-2026)
+                        countryId:
+                          type: string
+                          description: Unique ID of the country or region
+                        country:
+                          type: string
+                          description: Country or region name (e.g., Argentina)
+                        countryLogo:
+                          type: string
+                          description: Country flag image URL. Hosted for reference only — do not hotlink directly; download and serve locally.
+                        areaId:
+                          type: integer
+                          description: "0:International\n1:Europe \n2: America\n3: Asia \n4: Oceania \n5: Africa"
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=67
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=67
+      x-rate-limit: This interface is limited to 1,800 seconds/call;
+      x-recommended-call-frequency: 1 day/call
+      x-plan-products:
+      - Live Data
+      x-doc-modified: '2026-06-29'
+  /sport/football/league/sub:
+    get:
+      operationId: getFootballLeagueSub
+      summary: Subleague Profile
+      description: '• This API endpoint returns the configuration and structural data for different stages or divisions (sub-leagues) within a football league.
+
+
+
+
+        • It provides detailed information such as round counts, historical season ranges, and whether the stage includes standing data.
+
+
+
+
+        • Use it alongside the League & Cup Profile endpoint to construct a complete hierarchical view of league competitions.'
+      tags:
+      - Football Profile
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        leagueId:
+                          type: string
+                          description: League ID; references League table
+                        subLeagueId:
+                          type: string
+                          description: Sub-league ID
+                        name:
+                          type: string
+                          description: Sub-league name, e.g. Playoffs, League
+                        number:
+                          type: integer
+                          description: Display sequence of the sub-league within its parent league
+                        totalRound:
+                          type: integer
+                          description: Total number of rounds in the current season
+                        currentRound:
+                          type: integer
+                          description: Current round number of the sub-league
+                        currentSeason:
+                          type: string
+                          description: Current season year, e.g. 2026, 2025-2026
+                        includeSeason:
+                          type: string
+                          description: List of all historical seasons included in this sub-league, separated by commas
+                        hasScore:
+                          type: boolean
+                          description: "Standing data flag; \n\n true: contains standings\n false: no standings"
+                        hasTwoLegs:
+                          type: boolean
+                          description: "Two-legged match flag; \n\n true: consists of home and away legs\n false: single match"
+                        currentSubLeague:
+                          type: boolean
+                          description: "Active sub-league flag; \n\n true: currently in progress\n false: finished or inactive"
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=68
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=68
+      x-rate-limit: This interface is limited to 1,800 seconds/call;
+      x-recommended-call-frequency: 1 day/call
+      x-plan-products:
+      - Live Data
+      x-doc-modified: '2026-06-29'
+  /sport/football/referee:
+    get:
+      operationId: getFootballReferee
+      summary: Referee Profile
+      description: '• This API endpoint returns referee identity information and their historical performance statistics for specific matches.
+
+
+
+
+        • It covers matches scheduled from the past 24 hours into the future, providing details on referee roles and historical home/away team outcomes under their officiating.
+
+
+
+
+        • Use it to analyze the potential impact of match officials on game results based on their card-issuing averages and win percentages.'
+      tags:
+      - Football Profile
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                        typeId:
+                          type: integer
+                          description: "1: Referee \n 2: Assistant referee \n 3: Fourth official"
+                        refereeId:
+                          type: integer
+                        name:
+                          type: string
+                          description: Referee name, e.g. Stephanie Frappart
+                        birthday:
+                          type: string
+                          description: Birth date, e.g. 1983/12/14
+                        country:
+                          type: string
+                          description: Nationality of the referee
+                        photo:
+                          type: string
+                          description: 'Referee photo URL. (Note: Recommended to cache and host assets locally).'
+                        statistics:
+                          type: object
+                          description: Statistical summary based on the referee’s most recent matches, including performance related to home and away teams.
+                          properties:
+                            hasHome:
+                              type: boolean
+                              description: "Indicates whether statistics related to the home team are available. \n true = data available \n false = no data available"
+                            hasAway:
+                              type: boolean
+                              description: "Indicates whether statistics related to the away team are available. \n true = data available \n false = no data available"
+                            win_home:
+                              type: integer
+                              description: Number of matches where the home team won under this referee.
+                            draw_home:
+                              type: integer
+                              description: Number of matches where the home team drew under this referee.
+                            loss_home:
+                              type: integer
+                              description: Number of matches where the home team lost under this referee.
+                            win_away:
+                              type: integer
+                              description: Number of matches where the away team won under this referee.
+                            draw_away:
+                              type: integer
+                              description: Number of matches where the away team drew under this referee.
+                            loss_away:
+                              type: integer
+                              description: Number of matches where the away team lost under this referee.
+                            winPercent:
+                              type: number
+                              description: Percentage value derived from recent match outcomes.
+                            yellowAvg:
+                              type: number
+                              description: Average number of yellow cards per match issued by the referee.
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=108
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=108
+      x-rate-limit: This interface is limited to 60 seconds/call;
+      x-recommended-call-frequency: 12 hours/call
+      x-plan-products:
+      - Live Data
+      x-doc-modified: '2026-06-29'
+  /sport/football/league/stage:
+    get:
+      operationId: getFootballLeagueStage
+      summary: Cup Stage Profile
+      description: '• This API endpoint returns the structural data for various competition stages of a cup, including qualifying rounds, group stages, and knockout phases.
+
+
+
+
+        • It provides configuration details such as group counts, qualification rules (lineup counts), and stage progression order for a specific season.
+
+
+
+
+        • Use it alongside the League & Cup Profile endpoint to manage and display complex multi-stage tournament brackets.'
+      tags:
+      - Football Profile
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        leagueId:
+                          type: string
+                        season:
+                          type: string
+                          description: e.g. 2018
+                        stageId:
+                          type: string
+                        stageName:
+                          type: string
+                          description: Stage name, e.g. Round 1, Group stage.
+                        group:
+                          type: boolean
+                          description: "Group stage flag; \n\n true: stage is divided into groups\n false: knockout or single division"
+                        groupNum:
+                          type: string
+                          description: Total number of groups in this stage
+                        currStage:
+                          type: boolean
+                          description: "Current stage flag; \n\n true: stage is currently in progress\n false: finished or inactive"
+                        stageOrder:
+                          type: string
+                          description: Display sequence of the stage within the cup
+                        lineCount:
+                          type: string
+                          description: "Number of teams qualifying for the next stage from this stage; \n Empty string if not available."
+                        hasTwoLegs:
+                          type: boolean
+                          description: "Two-legged match flag; \n\n true: consists of home and away legs\n false: single match."
+                        groupLineupCount:
+                          type: integer
+                          description: "Qualifying team count per group; formatted as Group,Count separated by semicolons (e.g., A,1;B,1). \n\n Takes precedence over lineCount if both exist."
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=112
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=112
+      x-rate-limit: This interface is limited to 1,800 seconds/call;
+      x-recommended-call-frequency: 1 day/call
+      x-plan-products:
+      - Live Data
+      x-doc-modified: '2026-06-29'
+  /sport/football/team/search:
+    get:
+      operationId: getFootballTeamSearch
+      summary: Team Profile for Search
+      description: '• This API endpoint returns team profile information based on a team name search.
+
+
+
+
+        • It supports fuzzy matching, allowing users to find specific clubs or national teams even with partial names.
+
+
+
+
+        • Use it as a search entry point to retrieve unique team IDs, which can then be used with the Team Profile endpoint for exhaustive data.'
+      tags:
+      - Football Profile
+      parameters:
+      - name: name
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Team name; supports fuzzy search (e.g. Barcelona).
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        teamId:
+                          type: string
+                        leagueId:
+                          type: string
+                        name:
+                          type: string
+                          description: Team name, e.g. FC Barcelona.
+                        logo:
+                          type: string
+                          description: 'Team logo URL. (Note: Recommended to cache and host assets locally).'
+                        foundingDate:
+                          type: string
+                          description: Team foundation date, e.g. 1899-11-29
+                        address:
+                          type: string
+                          description: Team office address
+                        area:
+                          type: string
+                          description: Geographical area or city where the team is located
+                        venue:
+                          type: string
+                          description: Home stadium name, e.g. Giuseppe Meazza
+                        capacity:
+                          type: integer
+                          description: Venue seating capacity
+                        coach:
+                          type: string
+                          description: Name of the current head coach
+                        website:
+                          type: string
+                          description: Official website URL
+                        isNational:
+                          type: boolean
+                          description: "National team flag; \n\n true: national team\n false: club team."
+                        country_logo:
+                          type: string
+                          description: "Country logo URL; \n Only present when isNational is true."
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=134
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=134
+      x-rate-limit: This interface is limited to 60 seconds/call;
+      x-plan-products:
+      - Live Data
+      x-doc-modified: '2026-06-29'
+  /sport/football/player/search:
+    get:
+      operationId: getFootballPlayerSearch
+      summary: Player Profile for Search
+      description: '• This API endpoint returns detailed player profile information based on a name-based search.
+
+
+
+
+        • It supports fuzzy matching and returns multiple records if a player is associated with different teams (e.g., both a club and a national team).
+
+
+
+
+        • Use it to retrieve unique recordId or playerId values when the team context is unknown, or to build search suggestions in player-related interfaces.'
+      tags:
+      - Football Profile
+      parameters:
+      - name: name
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Get the data of the specified player name, supporting fuzzy search.
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        recordId:
+                          type: string
+                          description: Unique identifier for the player-team relationship
+                        playerId:
+                          type: string
+                        name:
+                          type: string
+                          description: Player name, e.g. Lionel Andres Messi
+                        birthday:
+                          type: string
+                          description: Birth date, e.g. 1987-06-24
+                        height:
+                          type: integer
+                          description: Player height in cm, e.g. 170
+                        country:
+                          type: string
+                          description: Primary nationality
+                        feet:
+                          type: string
+                          description: Preferred foot, e.g. Left, Right, or Both
+                        weight:
+                          type: integer
+                          description: Player weight in kg, e.g. 67
+                        photo:
+                          type: string
+                          description: 'Player photo URL. (Note: Recommended to cache and host assets locally).'
+                        value:
+                          type: integer
+                          description: Market value in units of 10,000 Euros, e.g. 1500 (represents 15,000,000 Euros).
+                        teamId:
+                          type: string
+                        position:
+                          type: string
+                          description: Playing position, e.g. Right Winger, Centre Back
+                        number:
+                          type: integer
+                          description: Player jersey number
+                        introduce:
+                          type: string
+                          description: Player biography or introduction
+                        contractEndDate:
+                          type: string
+                          description: Contract expiration date, e.g. 2031-06-30
+                        PAC:
+                          type: string
+                          description: Pace for players or Diving for goalkeepers.
+                        SHO:
+                          type: string
+                          description: Shooting for players or Handling for goalkeepers.ability
+                        PAS:
+                          type: string
+                          description: Passing for players or Kicking for goalkeepers.
+                        DRI:
+                          type: string
+                          description: Dribbling for players or Reflexes for goalkeepers.
+                        DEF:
+                          type: string
+                          description: Defending for players or Speed for goalkeepers.
+                        PHY:
+                          type: string
+                          description: Physical for players or Positioning for goalkeepers.
+                        country2:
+                          type: string
+                          description: Second nationality of the player, if available.
+                        country2Id:
+                          type: integer
+                          description: Unique identifier of the player’s second nationality.
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=135
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=135
+      x-rate-limit: This interface is limited to 60 seconds/call;
+      x-plan-products:
+      - Live Data
+      x-doc-modified: '2026-06-29'
+components:
+  securitySchemes:
+    apiKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key
+      description: Personal API key issued from the iSports account settings page and passed on every request as the `api_key` query parameter.
+externalDocs:
+  description: iSports API documentation
+  url: https://www.isportsapi.com/en/docs.html

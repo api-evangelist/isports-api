@@ -1,0 +1,745 @@
+{
+  "item": [
+    {
+      "id": "78a17df4-d048-47e7-9339-f98fa2831a73",
+      "name": "Football Common API",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d7afd158-3aee-4951-a731-c889dfdf2bce",
+          "name": "Match Modify Record",
+          "request": {
+            "name": "Match Modify Record",
+            "description": {
+              "content": "This API endpoint returns match deletion and kick-off time modification records from the past 12 hours. You can use it with the <a href=\"/docs?isportsDocIndex=1-16-41\" style=\"color:blue\">Schedule & Results (Basic)</a> endpoint.\n\n\n\nTips: You have access to all the football Common API endpoints with any valid paid football plans.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "schedule",
+                "modify"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fe965ad3-d1f4-47ac-b57f-46653019f7c3",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "schedule",
+                    "modify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2958,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"type\": \"string\",\n      \"matchTime\": 2501,\n      \"modifyTime\": 5132\n    },\n    {\n      \"matchId\": \"string\",\n      \"type\": \"string\",\n      \"matchTime\": 8441,\n      \"modifyTime\": 7774\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9428b2a0-5d32-4886-9b9e-09d492cfd710",
+          "name": "Schedule & Results (Basic)",
+          "request": {
+            "name": "Schedule & Results (Basic)",
+            "description": {
+              "content": "This API endpoint returns the basic information of the match. If you need more details, please refer to <a target=\"_blank\" href=\"/docs.html?id=21\" style=\"color:blue\">Schedule & Results</a>. You can use it with the <a href=\"/docs.html?id=33\" style=\"color:blue\">Match Modify Record</a> endpoint.\n\n\n\nTips: You have access to all the football Common API endpoints with any valid paid football plans.\n\nThe request path needs at least one parameter (date, leagueId, and matchId ) to retrieve correct response. These three parameters can not be used at the same time.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "schedule",
+                "basic"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<string>",
+                  "description": "Match date in yyyy-MM-dd format (GMT+0), e.g. 2026-05-01. Returns all matches on that date. Historical data is limited to the past month."
+                },
+                {
+                  "disabled": false,
+                  "key": "leagueId",
+                  "value": "<string>",
+                  "description": "Filter matches by league or cup ID. Returns the current season by default."
+                },
+                {
+                  "disabled": false,
+                  "key": "season",
+                  "value": "<string>",
+                  "description": "Filter by season; must be used with leagueId. e.g. 2025-2026. Defaults to current season if omitted."
+                },
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Fetch one or more specific matches by ID. Separate multiple IDs with commas. Maximum 100 IDs per request."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "898d25c2-5611-42f5-92dc-1474af4fb887",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "schedule",
+                    "basic"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "leagueId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "season",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 3841,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"leagueId\": \"string\",\n      \"leagueType\": 7164,\n      \"leagueName\": \"string\",\n      \"leagueShortName\": \"string\",\n      \"leagueColor\": \"string\",\n      \"matchTime\": 7906,\n      \"status\": 3403,\n      \"homeId\": \"string\",\n      \"homeName\": \"string\",\n      \"awayId\": \"string\",\n      \"awayName\": \"string\",\n      \"homeScore\": 4187,\n      \"awayScore\": 3387,\n      \"homeHalfScore\": 9216,\n      \"awayHalfScore\": 4203,\n      \"explain\": \"string\",\n      \"extraExplain\": {\n        \"kickOff\": 5162,\n        \"minute\": 3529,\n        \"homeScore\": 1544,\n        \"awayScore\": 1743,\n        \"extraTimeStatus\": 974,\n        \"extraHomeScore\": 6347,\n        \"extraAwayScore\": 8521,\n        \"penHomeScore\": 6168,\n        \"penAwayScore\": 2752,\n        \"twoRoundsHomeScore\": 1824,\n        \"twoRoundsAwayScore\": 7211,\n        \"winner\": 7890\n      },\n      \"neutral\": true\n    },\n    {\n      \"matchId\": \"string\",\n      \"leagueId\": \"string\",\n      \"leagueType\": 8967,\n      \"leagueName\": \"string\",\n      \"leagueShortName\": \"string\",\n      \"leagueColor\": \"string\",\n      \"matchTime\": 3335,\n      \"status\": 4856,\n      \"homeId\": \"string\",\n      \"homeName\": \"string\",\n      \"awayId\": \"string\",\n      \"awayName\": \"string\",\n      \"homeScore\": 7894,\n      \"awayScore\": 8350,\n      \"homeHalfScore\": 3121,\n      \"awayHalfScore\": 1259,\n      \"explain\": \"string\",\n      \"extraExplain\": {\n        \"kickOff\": 2265,\n        \"minute\": 5507,\n        \"homeScore\": 3650,\n        \"awayScore\": 1167,\n        \"extraTimeStatus\": 31,\n        \"extraHomeScore\": 6956,\n        \"extraAwayScore\": 2221,\n        \"penHomeScore\": 46,\n        \"penAwayScore\": 7396,\n        \"twoRoundsHomeScore\": 7968,\n        \"twoRoundsAwayScore\": 1135,\n        \"winner\": 3252\n      },\n      \"neutral\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9e79d9bf-1675-40e5-afe0-05c6aec28748",
+          "name": "League & Cup Profile (Basic)",
+          "request": {
+            "name": "League & Cup Profile (Basic)",
+            "description": {
+              "content": "This API endpoint returns the basic information of leagues and cups. If you need more details, please refer to <a target=\"_blank\" href=\"/docs.html?id=67\" style=\"color:blue\">League & Cup Profile</a>. Click here to view <a target=\"_blank\" href=\"http://api.isportsapi.com/league.aspx\" style=\"color:blue\">2000+ football leagues & cups</a>.\n\n\n\nTips: You have access to all the football Common API endpoints with any valid paid football plans.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "league",
+                "basic"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "leagueId",
+                  "value": "<string>",
+                  "description": "Filter results by a specific league or cup ID. If omitted, all leagues and cups are returned."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6f2f902a-a217-453c-b0d6-35d56ff499cd",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "league",
+                    "basic"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "leagueId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6583,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"leagueId\": \"string\",\n      \"name\": \"string\",\n      \"shortName\": \"string\",\n      \"type\": 9053,\n      \"subLeagueName\": \"string\"\n    },\n    {\n      \"leagueId\": \"string\",\n      \"name\": \"string\",\n      \"shortName\": \"string\",\n      \"type\": 7505,\n      \"subLeagueName\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "28eca585-e864-4101-8198-aacd9ac40b98",
+          "name": "List of Countries",
+          "request": {
+            "name": "List of Countries",
+            "description": {
+              "content": "This API endpoint returns a list of all supported countries and their corresponding country IDs. Use the countryId to filter data in other endpoints such as League & Cup Profile.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "country"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7e599ee5-0705-4eed-84b7-5e6b22ea1d1d",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "country"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4828,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"countryId\": 7098,\n      \"country\": \"string\"\n    },\n    {\n      \"countryId\": 6867,\n      \"country\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "defac27a-c558-4f46-afb0-d979c34cc1db",
+          "name": "Providers for European Markets ",
+          "request": {
+            "name": "Providers for European Markets ",
+            "description": {
+              "content": "This API endpoint returns a list of all bookmakers available for European market (1X2) odds data, including their IDs used across different odds APIs. Use companyIdEu with the European Odds (200+ Bookmakers) API, and companyIdMain with the Odds (18 Bookmakers) API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "bookmaker"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "88f912ee-bfa7-4517-88bf-718ffaa194a9",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "bookmaker"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2472,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"companyIdEu\": 6135,\n      \"companyName\": \"string\",\n      \"companyIdMain\": 8930\n    },\n    {\n      \"companyIdEu\": 5607,\n      \"companyName\": \"string\",\n      \"companyIdMain\": 6897\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f361ba21-62fd-4dc8-a3ef-32f6b32ad3a6",
+          "name": "Providers for Asian Markets",
+          "request": {
+            "name": "Providers for Asian Markets",
+            "description": {
+              "content": "This API endpoint returns a list of all bookmakers available for Asian handicap, 1X2, and Over/Under odds data. Use companyId with the Odds (18 Bookmakers) API, and europenCompanyId to cross-reference with the European Odds (200+ Bookmakers) API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "books"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4debd8ad-66cd-4371-9db1-b7e80e3ad522",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "books"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9345,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"companyId\": 8019,\n      \"name\": \"string\",\n      \"europenCompanyId\": 7042\n    },\n    {\n      \"companyId\": 3814,\n      \"name\": \"string\",\n      \"europenCompanyId\": 8882\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6e53f350-2bc2-4c6b-9490-e6594aae5ad5",
+          "name": "Team Modify Record",
+          "request": {
+            "name": "Team Modify Record",
+            "description": {
+              "content": "This API endpoint returns team ID merge and deletion records from the past 7 days. Use this to keep your local team data in sync — when a team is merged, update references to the new ID; when deleted, remove it from your database.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "team",
+                "modify"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "547a0e84-7977-4e65-b3eb-3e32156cb57c",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "team",
+                    "modify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5599,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"data\": [\n        {\n          \"id\": 2205,\n          \"teamId\": 7374,\n          \"type\": \"string\",\n          \"toTeamId\": 2625,\n          \"modifyTime\": 5984\n        },\n        {\n          \"id\": 3544,\n          \"teamId\": 9699,\n          \"type\": \"string\",\n          \"toTeamId\": 795,\n          \"modifyTime\": 3467\n        }\n      ]\n    },\n    {\n      \"data\": [\n        {\n          \"id\": 9974,\n          \"teamId\": 4509,\n          \"type\": \"string\",\n          \"toTeamId\": 5646,\n          \"modifyTime\": 8503\n        },\n        {\n          \"id\": 6474,\n          \"teamId\": 8652,\n          \"type\": \"string\",\n          \"toTeamId\": 7433,\n          \"modifyTime\": 4008\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "014563e9-d3e7-4b57-b993-26f90fd66e7a",
+          "name": "Player Modify Record",
+          "request": {
+            "name": "Player Modify Record",
+            "description": {
+              "content": "This API endpoint returns player ID merge and deletion records from the past 7 days. Use this to keep your local player data in sync — when a player is merged, update references to the new ID; when deleted, remove it from your database.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "player",
+                "modify"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "889cf9ea-a96e-4d2f-a235-ada5475ab093",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "player",
+                    "modify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8051,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"data\": [\n        {\n          \"id\": 3085,\n          \"playerId\": 994,\n          \"type\": \"string\",\n          \"toPlayerId\": 512,\n          \"modifyTime\": 6825\n        },\n        {\n          \"id\": 5829,\n          \"playerId\": 8077,\n          \"type\": \"string\",\n          \"toPlayerId\": 1227,\n          \"modifyTime\": 5088\n        }\n      ]\n    },\n    {\n      \"data\": [\n        {\n          \"id\": 1643,\n          \"playerId\": 7582,\n          \"type\": \"string\",\n          \"toPlayerId\": 1801,\n          \"modifyTime\": 4538\n        },\n        {\n          \"id\": 214,\n          \"playerId\": 4160,\n          \"type\": \"string\",\n          \"toPlayerId\": 1330,\n          \"modifyTime\": 1295\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.isportsapi.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "164b4be4-61ef-42d5-8529-673bfde549ba",
+    "name": "iSports Football Common API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.\n\nAll operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).\n\nThis document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.\n\nContact Support:\n Name: iSports API",
+      "type": "text/plain"
+    }
+  }
+}

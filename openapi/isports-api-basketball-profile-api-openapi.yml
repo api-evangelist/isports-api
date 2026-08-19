@@ -1,0 +1,611 @@
+openapi: 3.2.0
+info:
+  title: iSports Basketball Profile API
+  version: '2026-08-09'
+  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.
+
+
+    All operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).
+
+
+    This document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.'
+  termsOfService: https://www.isportsapi.com/en/home/terms.html
+  contact:
+    name: iSports API
+    url: https://www.isportsapi.com/en/
+  x-derived-by: API Evangelist enrichment pipeline
+  x-derived-from: https://www.isportsapi.com/en/docs.html
+  x-derived-on: '2026-08-09'
+servers:
+- url: https://api.isportsapi.com
+  description: Primary API host
+- url: https://api2.isportsapi.com
+  description: Alternate host, documented for when the primary host is slow or unreachable
+security:
+- apiKeyQuery: []
+tags:
+- name: Basketball Profile
+paths:
+  /sport/basketball/team:
+    get:
+      operationId: getBasketballTeam
+      summary: Team Profile
+      description: "• This API endpoint returns basketball team profile information. Filter by leagueId or teamId; if both are omitted, returns information for all teams. \n\n\n\n• Note that detailed fields such as website, conference, division, city, venue, capacity, joinYear, and coach may return empty or 0 for teams in lower-tier leagues where such information is not tracked."
+      tags:
+      - Basketball Profile
+      parameters:
+      - name: leagueId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Returns team information for all teams under the specified leagueId.
+      - name: teamId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Returns team information for the specified teamId.
+      - name: day
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Returns team data that has been added or modified within the specified number of days, e.g. day=1 or day=2.
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        teamId:
+                          type: string
+                          description: Unique ID of the team.
+                        leagueId:
+                          type: string
+                          description: Unique ID of the league or cup the team belongs to.
+                        name:
+                          type: string
+                          description: Full name, e.g. Los Angeles Lakers.
+                        shortName:
+                          type: string
+                          description: Short name, e.g. Lakers.
+                        logo:
+                          type: string
+                          description: "Team logo URL. \n\n The image is hosted for reference only — please save it locally rather than calling this URL directly in production."
+                        website:
+                          type: string
+                          description: Official team website. Returns empty if not available.
+                        conference:
+                          type: string
+                          description: Conference the team belongs to, e.g. NBA Western. Returns "NO" if not applicable.
+                        division:
+                          type: string
+                          description: Division the team belongs to, e.g. Pacific. Returns empty if not applicable.
+                        city:
+                          type: string
+                          description: City where the team is based. Returns empty if not available.
+                        venue:
+                          type: string
+                          description: Home venue of the team. Returns empty if not available.
+                        capacity:
+                          type: integer
+                          description: Seating capacity of the home venue. Returns 0 if not available.
+                        joinYear:
+                          type: integer
+                          description: Year the team joined the league, e.g. 1948. Returns 0 if not available.
+                        championCount:
+                          type: integer
+                          description: Number of championships won.
+                        coach:
+                          type: string
+                          description: Name of the head coach. Returns empty if not available.
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=27
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=27
+      x-rate-limit: This interface is limited to 300 seconds/call;
+      x-recommended-call-frequency: 1 day/call
+      x-plan-products:
+      - Live Data
+      x-doc-modified: '2026-07-09'
+  /sport/basketball/player:
+    get:
+      operationId: getBasketballPlayer
+      summary: Player Profile
+      description: '• This API endpoint returns basketball player profile information. All players are returned by default.
+
+
+
+
+        • Note: The request must include the parameter cmd=new, e.g. http://api.isportsapi.com/sport/basketball/player?api_key=<YOUR_API_KEY>&cmd=new.'
+      tags:
+      - Basketball Profile
+      parameters:
+      - name: cmd
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Fixed value new. Required for this endpoint to return data correctly.
+      - name: day
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Returns player data that has been added or modified within the specified number of days, e.g. day=1 or day=2.
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        playerId:
+                          type: string
+                          description: Unique ID of the player.
+                        number:
+                          type: integer
+                          description: Jersey number. Returns 0 if not available.
+                        name:
+                          type: string
+                          description: Player name.
+                        teamId:
+                          type: string
+                          description: Unique ID of the team the player belongs to.
+                        place:
+                          type: string
+                          description: Position of the player, e.g. Forward. Returns empty if not available.
+                        birthday:
+                          type: integer
+                          description: Player's date of birth (Unix timestamp, GMT+0). Returns 0 if not available.
+                        height:
+                          type: integer
+                          description: 'Height, unit: cm, e.g. 192. Returns 0 if not available.'
+                        weight:
+                          type: integer
+                          description: 'Weight, unit: kg, e.g. 77. Returns 0 if not available.'
+                        photo:
+                          type: string
+                          description: "Player photo URL. \n\n The image is hosted for reference only — please save it locally rather than calling this URL directly in production. Returns empty if not available."
+                        nbaAge:
+                          type: integer
+                          description: Years since the player joined the NBA. Returns 0 for non-NBA players.
+                        salary:
+                          type: string
+                          description: 'Salary, unit: ten thousand USD, e.g. 3565. Returns empty if not available.'
+                        country:
+                          type: string
+                          description: Player's nationality/country.
+                        isNational:
+                          type: boolean
+                          description: "true: player is on a national team roster \n false: player is not on a national team roster"
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=28
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=28
+      x-rate-limit: This interface is limited to 300 seconds/call;
+      x-recommended-call-frequency: 1 day/call
+      x-plan-products:
+      - Live Data
+      x-doc-modified: '2026-07-09'
+  /sport/basketball/cupqualify:
+    get:
+      operationId: getBasketballCupqualify
+      summary: Cup Stage Profile
+      description: "• This API endpoint returns stage type information for basketball cups, such as qualifying rounds, group stages, and regular season. \n\n\n\n• The recordId returned by this endpoint corresponds to the stageId field in the Schedule & Results endpoint, allowing you to match a specific match to its cup stage."
+      tags:
+      - Basketball Profile
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        recordId:
+                          type: string
+                          description: Unique ID of this stage record. Corresponds to the stageId field in the Schedule & Results endpoint.
+                        leagueId:
+                          type: string
+                          description: Unique ID of the league or cup.
+                        name:
+                          type: string
+                          description: Name of the stage, e.g. Qualifying Round, Regular Season.
+                        season:
+                          type: string
+                          description: Season, e.g. 2025-2026 or 2026.
+                        groupCount:
+                          type: integer
+                          description: "Number of groups this stage is divided into. \n\n Returns 0 if not applicable, e.g. 7 means the schedule is divided into 7 groups."
+                        roundCount:
+                          type: integer
+                          description: "Number of games played between the two sides in a series to determine the winner. \n\n Returns 0 if not applicable, e.g. 7 means the series is decided over 7 games, as seen in Finals stages."
+                        sortNumber:
+                          type: integer
+                          description: The order of this stage among the different stages within the same cup.
+                        currentGroup:
+                          type: boolean
+                          description: "true: this is the current group stage \n false: this is not the current group stage"
+                        group:
+                          type: boolean
+                          description: "true: this stage is a group-based match format \n false: this stage is not a group-based match format"
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=77
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=77
+      x-rate-limit: This interface is limited to 1,800 seconds/call;
+      x-recommended-call-frequency: 1 day/call
+      x-plan-products:
+      - Live Data
+      x-doc-modified: '2026-07-09'
+  /sport/basketball/playoffs:
+    get:
+      operationId: getBasketballPlayoffs
+      summary: Playoffs Stage Profile
+      description: "• This API endpoint returns playoff stage type information for basketball leagues, such as Quarter Final, Semi Final, and Final. \n\n\n\n• The recordId returned by this endpoint corresponds to the playoffsId field in the Schedule & Results endpoint, allowing you to match a specific match to its playoff stage."
+      tags:
+      - Basketball Profile
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        recordId:
+                          type: string
+                          description: Unique ID of this stage record. Corresponds to the playoffsId field in the Schedule & Results endpoint.
+                        leagueId:
+                          type: string
+                          description: Unique ID of the league.
+                        name:
+                          type: string
+                          description: Name of the playoff stage, e.g. Quarter Final, Semi Final, Final.
+                        season:
+                          type: string
+                          description: Season, e.g. 26 or 25-26.
+                        groupCount:
+                          type: integer
+                          description: Number of groups this stage is divided into. Returns 0 if not applicable.
+                        roundCount:
+                          type: integer
+                          description: "Number of games played between the two sides in a series to determine the winner. \n\n Returns 0 if not applicable, e.g. 7 means the series is decided over 7 games, as seen in Final stages."
+                        sortNumber:
+                          type: integer
+                          description: The order of this stage among the different playoff stages within the same league.
+                        currentGroup:
+                          type: boolean
+                          description: "true: this is the current stage \n false: this is not the current stage"
+                        group:
+                          type: boolean
+                          description: "true: this stage is a group-based match format \n false: this stage is not a group-based match format"
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=78
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=78
+      x-rate-limit: This interface is limited to 1,800 seconds/call;
+      x-recommended-call-frequency: 1 day/call
+      x-plan-products:
+      - Live Data
+      x-doc-modified: '2026-07-09'
+  /sport/basketball/league:
+    get:
+      operationId: getBasketballLeague
+      summary: League & Cup Profile
+      description: This API endpoint returns complete profile information for basketball leagues and cups, including league rules, ranking format, and season details. <a target="_blank" href="http://api.isportsapi.com/league.aspx?sport=basketball" style="color:blue">Click here</a> to view all leagues & cups.
+      tags:
+      - Basketball Profile
+      parameters:
+      - name: leagueId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Returns profile information for the specified leagueId. If omitted, returns profile information for all leagues and cups.
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        leagueId:
+                          type: string
+                          description: Unique ID of the league or cup.
+                        color:
+                          type: string
+                          description: 'RGB color code associated with the league, e.g. #9933FF.'
+                        leagueName:
+                          type: string
+                          description: Full name of the league or cup, e.g. National Basketball Association.
+                        leagueShortName:
+                          type: string
+                          description: Short name of the league or cup, e.g. NBA.
+                        leagueType:
+                          type: string
+                          description: "Number of quarters played in this league's matches. \n\n 2: 2-quarter format \n 4: 4-quarter format"
+                        currentMatchSeason:
+                          type: string
+                          description: Current season, e.g. 25-26.
+                        countryId:
+                          type: string
+                          description: Unique ID of the country or region the league belongs to.
+                        country:
+                          type: string
+                          description: "Country or region name, e.g. USA. \n\n Returns \"International\" for multi-national competitions."
+                        leagueKind:
+                          type: string
+                          description: '1: league
+
+                            2: cup'
+                        logo:
+                          type: string
+                          description: "League logo URL. \n\n The image is hosted for reference only — please save it locally rather than calling this URL directly in production."
+                        partTime:
+                          type: string
+                          description: Duration of each quarter, format mm:ss, e.g. 12:00.
+                        rule:
+                          type: string
+                          description: "Full text description of the league's rules, including format, scheduling, ranking, tie-breaker, and playoff details where applicable.\n\n This field may contain a large block of text with line breaks (\\r\\ n) — please handle formatting accordingly when rendering."
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=79
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=79
+      x-rate-limit: This interface is limited to 1,800 seconds/call;
+      x-recommended-call-frequency: 1 day/call
+      x-plan-products:
+      - Live Data
+      x-doc-modified: '2026-07-09'
+  /sport/basketball/team/search:
+    get:
+      operationId: getBasketballTeamSearch
+      summary: Team Profile for Search
+      description: "• This API endpoint supports searching for basketball team information by team name, with fuzzy matching supported. \n\n\n\n• Note that detailed fields such as website, conference, division, city, venue, capacity, joinYear, and coach may return empty or 0 for teams in lower-tier leagues where such information is not tracked."
+      tags:
+      - Basketball Profile
+      parameters:
+      - name: name
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Team name to search for. Supports fuzzy search.
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        teamId:
+                          type: string
+                          description: Unique ID of the team.
+                        leagueId:
+                          type: string
+                          description: Unique ID of the league or cup the team belongs to.
+                        name:
+                          type: string
+                          description: Full name, e.g. Los Angeles Lakers.
+                        shortName:
+                          type: string
+                          description: Short name, e.g. Lakers.
+                        logo:
+                          type: string
+                          description: "Team logo URL. \n\n The image is hosted for reference only — please save it locally rather than calling this URL directly in production."
+                        website:
+                          type: string
+                          description: Official team website. Returns empty if not available.
+                        conference:
+                          type: string
+                          description: Conference the team belongs to, e.g. NBA Western. Returns "NO" if not applicable.
+                        division:
+                          type: string
+                          description: Division the team belongs to, e.g. Pacific. Returns empty if not applicable.
+                        city:
+                          type: string
+                          description: City where the team is based. Returns empty if not available.
+                        venue:
+                          type: string
+                          description: Home venue of the team. Returns empty if not available.
+                        capacity:
+                          type: integer
+                          description: Seating capacity of the home venue. Returns 0 if not available.
+                        joinYear:
+                          type: integer
+                          description: Year the team joined the league, e.g. 1948. Returns 0 if not available.
+                        championCount:
+                          type: integer
+                          description: Number of championships won.
+                        coach:
+                          type: string
+                          description: Name of the head coach. Returns empty if not available.
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=136
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=136
+      x-rate-limit: This interface is limited to 60 seconds/call;
+      x-plan-products:
+      - Live Data
+      x-doc-modified: '2026-07-09'
+  /sport/basketball/player/search:
+    get:
+      operationId: getBasketballPlayerSearch
+      summary: Player Profile for Search
+      description: '• This API endpoint supports searching for basketball player information by player name, with fuzzy matching supported.
+
+
+
+
+        • Note: The request must include the parameter cmd=new, e.g. http://api.isportsapi.com/sport/basketball/player/search?api_key=<YOUR_API_KEY>&cmd=new&name=James.'
+      tags:
+      - Basketball Profile
+      parameters:
+      - name: cmd
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Fixed value new. Required for this endpoint to return data correctly.
+      - name: name
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Player name to search for. Supports fuzzy search.
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        playerId:
+                          type: string
+                          description: Unique ID of the player.
+                        number:
+                          type: integer
+                          description: Jersey number. Returns 0 if not available.
+                        name:
+                          type: string
+                          description: Player name.
+                        teamId:
+                          type: string
+                          description: Unique ID of the team the player belongs to.
+                        place:
+                          type: string
+                          description: Position of the player, e.g. Forward. Returns empty if not available.
+                        birthday:
+                          type: integer
+                          description: Player's date of birth (Unix timestamp, GMT+0). Returns 0 if not available.
+                        height:
+                          type: integer
+                          description: 'Height, unit: cm, e.g. 192. Returns 0 if not available.'
+                        weight:
+                          type: integer
+                          description: 'Weight, unit: kg, e.g. 77. Returns 0 if not available.'
+                        photo:
+                          type: string
+                          description: "Player photo URL. \n\n The image is hosted for reference only — please save it locally rather than calling this URL directly in production. Returns empty if not available."
+                        nbaAge:
+                          type: integer
+                          description: Years since the player joined the NBA. Returns 0 for non-NBA players.
+                        salary:
+                          type: string
+                          description: 'Salary, unit: ten thousand USD, e.g. 3565. Returns empty if not available.'
+                        country:
+                          type: string
+                          description: Player's nationality/country. Returns empty if not available.
+                        isNational:
+                          type: boolean
+                          description: "true: player is on a national team roster \n false: player is not on a national team roster"
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=137
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=137
+      x-rate-limit: This interface is limited to 60 seconds/call;
+      x-plan-products:
+      - Live Data
+      x-doc-modified: '2026-07-09'
+components:
+  securitySchemes:
+    apiKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key
+      description: Personal API key issued from the iSports account settings page and passed on every request as the `api_key` query parameter.
+externalDocs:
+  description: iSports API documentation
+  url: https://www.isportsapi.com/en/docs.html

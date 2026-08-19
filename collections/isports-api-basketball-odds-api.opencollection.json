@@ -1,0 +1,145 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "iSports Basketball Odds API",
+    "version": "2026-08-09"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Basketball Odds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Pre-match and In-play Odds",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/odds/fulltime"
+          },
+          "docs": "• This API endpoint returns basketball odds for Spread, Money Line, and Total markets, covering all upcoming unplayed matches and matches currently in play.\n\n\n\n• Odds type corresponds to company ID and company name:\n\n- Spread/Money Line（1x2 Odds）\n\n 1: Marcauslot；2: Easybet；3: Crown；8: Bet365；9：Vcbet；10： William Hill；19：Interwetten；20：Ladbrokes；31: Sbobet ；24: 12bet; 30：China Sports Lottery; 49:BWin \n\n- Total\n\n 4：Marcauslot；5: Easybet；6：Crown；11:Bet365；12：Vcbet；13： William Hill；22：Interwetten；23："
+        },
+        {
+          "info": {
+            "name": "Live Odds Changes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/odds/fulltime/changes"
+          },
+          "docs": "• This API endpoint returns changes to basketball odds — Spread, Money Line, and Total — within the last 30 seconds. \n\n\n\n• This is a delta feed of the Pre-match and In-play Odds endpoint; use that endpoint to obtain the full current odds snapshot, and use this endpoint to track what has changed since the last update."
+        },
+        {
+          "info": {
+            "name": "Pre-match Odds (Halftime)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/odds/half"
+          },
+          "docs": "• This interface returns pre-match odds for the halftime (1st half) Spread and Total markets of basketball matches. Values reflect halftime-specific lines only, not full-match odds.\n\n\n\n• Returns data for all matches that have not yet started, as well as matches currently in play. For matches in play, the instant* fields retain the last pregame value recorded before kickoff and do not update with live/in-play odds movement (see field notes below).\n\n\n\n• Odds type corresponds to company ID and comp"
+        },
+        {
+          "info": {
+            "name": "Pre-match Odds (Quarter)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/odds/quarter"
+          },
+          "docs": "• This interface returns pre-match odds for the Spread and Total markets of each quarter (Q1–Q4) of a basketball match.\n\n\n\n• Returns data for all matches that have not yet started, as well as matches currently in play. All values in this response reflect pregame lines only. In-play/live odds are not included in this endpoint at any point, even after the match or a given quarter has started — this applies to both the initial and non-initial field groups. \n\n\n\n• If you need live/in-play odds (inclu"
+        },
+        {
+          "info": {
+            "name": "Historical Odds",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/odds/history",
+            "params": [
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Returns historical odds for the specified date (up to three months ago). Format yyyy-MM-dd."
+              }
+            ]
+          },
+          "docs": "• This interface returns history odds of basketball match of specified date(GMT +0 0:00-23:59), including Spread, Money Line, Total.\n\n\n\n• Odds type corresponds to company ID and company name:\n\n- Spread/Money Line（1x2 Odds）\n\n 1:Marcauslot；2:Easybet；3:Crown；8:Bet365；9:Vcbet；10：William Hill；19：Interwetten；20：Ladbrokes；31:Sbobet;24: 12bet; 30：China Sports Lottery; 49:BWin.\n\n- Total\n\n 4：Marcauslot；5: Easybet；6：Crown；11:Bet365；12：Vcbet；13： William Hill；22：Interwetten；23：Ladbrokes；34:Sbobet；27:12bet; 3"
+        },
+        {
+          "info": {
+            "name": "Money Line (80+ bookmakers)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/odds/european/all",
+            "params": [
+              {
+                "name": "day",
+                "value": "",
+                "type": "query",
+                "description": "Returns odds for all matches from today through the specified number of days into the future. Maximum 3."
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Returns odds for all matches on the specified date. Format yyyy-MM-dd. \n\n\n\nSupports querying up to the next 10 days."
+              },
+              {
+                "name": "min",
+                "value": "",
+                "type": "query",
+                "description": "Returns odds that were updated within the specified number of minutes."
+              }
+            ]
+          },
+          "docs": "• This API endpoint returns Money Line odds from nearly 100 international bookmakers, along with basic match information (matchId, matchTime, league, and team names) — no need to call Schedule & Results separately for this endpoint.\n\n\n\n• Parameter\n\n-No parameters: returns all odds for today (GMT+0 00:00–23:59).\n\n-day=n: returns all odds for the next n days from now (maximum 3).\n\n-date=yyyy-MM-dd: returns all odds for the specified date. Supports querying up to the next 10 days.\n\n-min=5: returns "
+        },
+        {
+          "info": {
+            "name": "In-play Odds",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/odds/inplay",
+            "params": [
+              {
+                "name": "matchId",
+                "value": "",
+                "type": "query",
+                "description": "Returns in-play odds for the specified match only. If omitted, returns odds changes for all matches within the past 3 minutes."
+              },
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "query",
+                "description": "Filters results to the specified bookmaker(s). Use a comma to separate multiple IDs, e.g. companyId=3,8. If omitted, returns odds from all bookmakers."
+              }
+            ]
+          },
+          "docs": "• This endpoint returns in-play (live) odds for basketball matches, covering the Handicap and Over/Under markets across Full time, Half time, and each individual quarter.\n\n\n\n• By default, returns all odds changes recorded within the past 3 minutes. Use matchId to retrieve the full in-play odds history for a specific match, and/or companyId to filter to one or more bookmakers (e.g. companyId=3,8).\n\n\n\n• Company ID mapping (shared across both Handicap and Over/Under markets — unlike the separate ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

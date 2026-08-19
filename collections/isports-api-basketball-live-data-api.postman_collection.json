@@ -1,0 +1,690 @@
+{
+  "item": [
+    {
+      "id": "94bc08b7-8e32-400c-8c98-b47cb420a723",
+      "name": "Basketball Live Data",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "214d3666-333c-4e94-9f77-f3dc3b7a589b",
+          "name": "Livescores Changes",
+          "request": {
+            "name": "Livescores Changes",
+            "description": {
+              "content": "• This API endpoint returns livescore changes for basketball matches updated in the last 15 seconds — only the fields that changed since the last update are meaningful. \n\n\n\n• You can use it with the <a href=\"/docs.html?id=19\" style=\"color:blue\">Livescore for today</a> endpoint to obtain full match information such as team names and league details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "basketball",
+                "livescores",
+                "changes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f51b8768-3f99-4a84-944f-d22891f6b80a",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "basketball",
+                    "livescores",
+                    "changes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2867,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"status\": 9702,\n      \"quarterRemainTime\": \"string\",\n      \"homeScore\": 135,\n      \"awayScore\": 2308,\n      \"homeFirstQuarterScore\": 8103,\n      \"awayFirstQuarterScore\": 8537,\n      \"homeSecondQuarterScore\": 827,\n      \"awaySecondQuarterScore\": 5505,\n      \"homeThirdQuarterScore\": 3989,\n      \"awayThirdQuarterScore\": 7772,\n      \"homeFourthQuarterScore\": 6342,\n      \"awayFourthQuarterScore\": 1263,\n      \"overTimeCount\": 9717,\n      \"homeFirstOverTimeScore\": 6151,\n      \"awayFirstOverTimeScore\": 5597,\n      \"homeSecondOverTimeScore\": 2200,\n      \"awaySecondOverTimeScore\": 2687,\n      \"homeThirdOverTimeScore\": 7430,\n      \"awayThirdOverTimeScore\": 8894,\n      \"hasStats\": false,\n      \"explain\": \"string\"\n    },\n    {\n      \"matchId\": \"string\",\n      \"status\": 7120,\n      \"quarterRemainTime\": \"string\",\n      \"homeScore\": 9107,\n      \"awayScore\": 2603,\n      \"homeFirstQuarterScore\": 5926,\n      \"awayFirstQuarterScore\": 6042,\n      \"homeSecondQuarterScore\": 9987,\n      \"awaySecondQuarterScore\": 7030,\n      \"homeThirdQuarterScore\": 7905,\n      \"awayThirdQuarterScore\": 1140,\n      \"homeFourthQuarterScore\": 9448,\n      \"awayFourthQuarterScore\": 9289,\n      \"overTimeCount\": 2488,\n      \"homeFirstOverTimeScore\": 2557,\n      \"awayFirstOverTimeScore\": 6895,\n      \"homeSecondOverTimeScore\": 5359,\n      \"awaySecondOverTimeScore\": 612,\n      \"homeThirdOverTimeScore\": 2560,\n      \"awayThirdOverTimeScore\": 3348,\n      \"hasStats\": false,\n      \"explain\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b3a81aad-6327-49ce-817e-364b2151cb12",
+          "name": "Livescores for Today",
+          "request": {
+            "name": "Livescores for Today",
+            "description": {
+              "content": "• This API endpoint returns livescores for basketball matches on the current day (GMT+0 00:00–23:59). \n\n\n\n• You can use it with the <a href=\"/docs.html?id=13\" style=\"color:blue\">Livescores Changes</a> endpoint to track subsequent score and status updates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "basketball",
+                "livescores"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "67e3a9b7-e175-4c8b-91b1-9d9119678333",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "basketball",
+                    "livescores"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 195,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"leagueId\": \"string\",\n      \"leagueName\": \"string\",\n      \"quarterCount\": 6693,\n      \"matchTime\": 9467,\n      \"status\": 7091,\n      \"quarterRemainTime\": \"string\",\n      \"homeId\": \"string\",\n      \"homeName\": \"string\",\n      \"homeRank\": 7887,\n      \"awayId\": \"string\",\n      \"awayName\": \"string\",\n      \"awayRank\": 750,\n      \"homeScore\": 8219,\n      \"awayScore\": 2277,\n      \"homeFirstQuarterScore\": 8003,\n      \"awayFirstQuarterScore\": 8799,\n      \"homeSecondQuarterScore\": 2870,\n      \"awaySecondQuarterScore\": 5661,\n      \"homeThirdQuarterScore\": 8424,\n      \"awayThirdQuarterScore\": 3110,\n      \"homeFourthQuarterScore\": 7640,\n      \"awayFourthQuarterScore\": 4980,\n      \"overTimeCount\": 9576,\n      \"homeFirstOverTimeScore\": 6069,\n      \"awayFirstOverTimeScore\": 6671,\n      \"homeSecondOverTimeScore\": 3348,\n      \"awaySecondOverTimeScore\": 4532,\n      \"homeThirdOverTimeScore\": 982,\n      \"awayThirdOverTimeScore\": 2852,\n      \"leagueSeason\": \"string\",\n      \"matchType\": 8371,\n      \"playoffsId\": \"string\",\n      \"stageId\": \"string\",\n      \"hasStats\": false,\n      \"explain\": \"string\",\n      \"roundType\": \"string\",\n      \"group\": \"string\",\n      \"neutral\": true\n    },\n    {\n      \"matchId\": \"string\",\n      \"leagueId\": \"string\",\n      \"leagueName\": \"string\",\n      \"quarterCount\": 6471,\n      \"matchTime\": 4577,\n      \"status\": 3067,\n      \"quarterRemainTime\": \"string\",\n      \"homeId\": \"string\",\n      \"homeName\": \"string\",\n      \"homeRank\": 6729,\n      \"awayId\": \"string\",\n      \"awayName\": \"string\",\n      \"awayRank\": 8526,\n      \"homeScore\": 5235,\n      \"awayScore\": 8199,\n      \"homeFirstQuarterScore\": 3180,\n      \"awayFirstQuarterScore\": 4893,\n      \"homeSecondQuarterScore\": 5658,\n      \"awaySecondQuarterScore\": 2167,\n      \"homeThirdQuarterScore\": 6443,\n      \"awayThirdQuarterScore\": 8386,\n      \"homeFourthQuarterScore\": 3700,\n      \"awayFourthQuarterScore\": 6588,\n      \"overTimeCount\": 4083,\n      \"homeFirstOverTimeScore\": 8526,\n      \"awayFirstOverTimeScore\": 5886,\n      \"homeSecondOverTimeScore\": 6846,\n      \"awaySecondOverTimeScore\": 7016,\n      \"homeThirdOverTimeScore\": 4354,\n      \"awayThirdOverTimeScore\": 7739,\n      \"leagueSeason\": \"string\",\n      \"matchType\": 1638,\n      \"playoffsId\": \"string\",\n      \"stageId\": \"string\",\n      \"hasStats\": false,\n      \"explain\": \"string\",\n      \"roundType\": \"string\",\n      \"group\": \"string\",\n      \"neutral\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "638e8504-6bed-44d4-acf4-0e974735d531",
+          "name": "Schedule & Results",
+          "request": {
+            "name": "Schedule & Results",
+            "description": {
+              "content": "• This API endpoint returns schedule and result information for basketball matches from the past two months up to future fixtures, filtered by date or leagueId. \n\n\n\n• One of the following parameters is required: date, leagueId, or matchId — these three cannot be used together in the same request. The season parameter can only be used in combination with leagueId, to retrieve matches for a specific season; if omitted, the current season is returned by default.\n\n\n\n• You can use it with the <a href=\"/docs.html?id=34\" style=\"color:blue\">Match Modify Record\n</a> \nendpoint to keep locally stored match data in sync.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "basketball",
+                "schedule"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<string>",
+                  "description": "Match date, format yyyy-MM-dd, e.g. 2026-07-01. \n\n\n\nReturns matches scheduled for the specified date (GMT+0 00:00–23:59)."
+                },
+                {
+                  "disabled": false,
+                  "key": "leagueId",
+                  "value": "<string>",
+                  "description": "Filter by a specific league or cup ID. \n\n\n\nReturns schedule data for the current season of the specified league or cup."
+                },
+                {
+                  "disabled": false,
+                  "key": "season",
+                  "value": "<string>",
+                  "description": "Used together with leagueId to retrieve matches for a specific season, e.g. 25-26. \n\n\n\nReturns the current season by default."
+                },
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Filter by a specific match ID."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a1498831-96b4-4910-8e2a-bf8d3c957fea",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "basketball",
+                    "schedule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "leagueId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "season",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2532,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"leagueId\": \"string\",\n      \"leagueName\": \"string\",\n      \"quarterCount\": 145,\n      \"matchTime\": 2369,\n      \"status\": 2749,\n      \"quarterRemainTime\": \"string\",\n      \"homeId\": \"string\",\n      \"homeName\": \"string\",\n      \"homeRank\": 1713,\n      \"awayId\": \"string\",\n      \"awayName\": \"string\",\n      \"awayRank\": 5083,\n      \"homeScore\": 342,\n      \"awayScore\": 4566,\n      \"homeFirstQuarterScore\": 7178,\n      \"awayFirstQuarterScore\": 1930,\n      \"homeSecondQuarterScore\": 8253,\n      \"awaySecondQuarterScore\": 658,\n      \"homeThirdQuarterScore\": 5605,\n      \"awayThirdQuarterScore\": 1979,\n      \"homeFourthQuarterScore\": 649,\n      \"awayFourthQuarterScore\": 6633,\n      \"overTimeCount\": 2489,\n      \"homeFirstOverTimeScore\": 2951,\n      \"awayFirstOverTimeScore\": 9653,\n      \"homeSecondOverTimeScore\": 1453,\n      \"awaySecondOverTimeScore\": 2777,\n      \"homeThirdOverTimeScore\": 7905,\n      \"awayThirdOverTimeScore\": 8344,\n      \"leagueSeason\": \"string\",\n      \"matchType\": 178,\n      \"playoffsId\": \"string\",\n      \"stageId\": \"string\",\n      \"hasStats\": true,\n      \"explain\": \"string\",\n      \"roundType\": \"string\",\n      \"group\": \"string\",\n      \"neutral\": false\n    },\n    {\n      \"matchId\": \"string\",\n      \"leagueId\": \"string\",\n      \"leagueName\": \"string\",\n      \"quarterCount\": 5095,\n      \"matchTime\": 6916,\n      \"status\": 6377,\n      \"quarterRemainTime\": \"string\",\n      \"homeId\": \"string\",\n      \"homeName\": \"string\",\n      \"homeRank\": 2161,\n      \"awayId\": \"string\",\n      \"awayName\": \"string\",\n      \"awayRank\": 4058,\n      \"homeScore\": 6295,\n      \"awayScore\": 9116,\n      \"homeFirstQuarterScore\": 5646,\n      \"awayFirstQuarterScore\": 2195,\n      \"homeSecondQuarterScore\": 7558,\n      \"awaySecondQuarterScore\": 4784,\n      \"homeThirdQuarterScore\": 4029,\n      \"awayThirdQuarterScore\": 5719,\n      \"homeFourthQuarterScore\": 7134,\n      \"awayFourthQuarterScore\": 6664,\n      \"overTimeCount\": 2316,\n      \"homeFirstOverTimeScore\": 1671,\n      \"awayFirstOverTimeScore\": 2922,\n      \"homeSecondOverTimeScore\": 3177,\n      \"awaySecondOverTimeScore\": 165,\n      \"homeThirdOverTimeScore\": 9074,\n      \"awayThirdOverTimeScore\": 7592,\n      \"leagueSeason\": \"string\",\n      \"matchType\": 3628,\n      \"playoffsId\": \"string\",\n      \"stageId\": \"string\",\n      \"hasStats\": false,\n      \"explain\": \"string\",\n      \"roundType\": \"string\",\n      \"group\": \"string\",\n      \"neutral\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "98e1a6a2-8393-4009-bcb3-067fff8ed899",
+          "name": "Lineups",
+          "request": {
+            "name": "Lineups",
+            "description": {
+              "content": "• This API endpoint returns basketball match lineups and injury reports. By default, it returns the official confirmed starting lineup once it becomes available from the data source — availability depends on the data source and is not guaranteed for every match. \n\n\n\n• To retrieve predicted lineups instead, set isPreview=true, which returns predicted lineups, bench players, and injury reports for matches in the last 24 hours and the next 48 hours. \n\n\n\n• Supported League Coverage: <a href=\"https://drive.google.com/file/d/1a_Ts-ez5uS2tP-ICMILBKjnY-JicMabz/view?usp=sharing\" style=\"color:blue\">Click Here</a>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "basketball",
+                "lineups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Filter by a specific match ID. If omitted, returns lineups and injuries for all applicable matches."
+                },
+                {
+                  "disabled": false,
+                  "key": "isPreview",
+                  "value": "<boolean>",
+                  "description": "true: returns predicted lineups (last 24 hours and next 48 hours)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "704a63db-cf78-47b1-90a5-5622f34dea35",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "basketball",
+                    "lineups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isPreview",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 932,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"homeLineup\": [\n        {\n          \"playerId\": \"string\",\n          \"number\": 1542,\n          \"name\": \"string\",\n          \"position\": \"string\"\n        },\n        {\n          \"playerId\": \"string\",\n          \"number\": 1463,\n          \"name\": \"string\",\n          \"position\": \"string\"\n        }\n      ],\n      \"homeInjury\": [\n        {\n          \"playerId\": \"string\",\n          \"name\": \"string\",\n          \"position\": \"string\",\n          \"date\": \"string\"\n        },\n        {\n          \"playerId\": \"string\",\n          \"name\": \"string\",\n          \"position\": \"string\",\n          \"date\": \"string\"\n        }\n      ]\n    },\n    {\n      \"matchId\": \"string\",\n      \"homeLineup\": [\n        {\n          \"playerId\": \"string\",\n          \"number\": 7302,\n          \"name\": \"string\",\n          \"position\": \"string\"\n        },\n        {\n          \"playerId\": \"string\",\n          \"number\": 9727,\n          \"name\": \"string\",\n          \"position\": \"string\"\n        }\n      ],\n      \"homeInjury\": [\n        {\n          \"playerId\": \"string\",\n          \"name\": \"string\",\n          \"position\": \"string\",\n          \"date\": \"string\"\n        },\n        {\n          \"playerId\": \"string\",\n          \"name\": \"string\",\n          \"position\": \"string\",\n          \"date\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8594568a-228f-4932-b8e1-87e3ef68ee68",
+          "name": "NBA Transfer",
+          "request": {
+            "name": "NBA Transfer",
+            "description": {
+              "content": "• This API endpoint returns NBA player transfer records. \n\n\n\n• If the day parameter is omitted, returns transfer data within the past month. Use day=n to specify a custom range in days (maximum 400 days).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "basketball",
+                "transfer"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "day",
+                  "value": "<string>",
+                  "description": "Number of days to look back from today, e.g. day=10 returns transfer data from the past 10 days. Maximum value is 400.\n\n\n\nIf omitted, returns transfer data within the past month."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c5a54483-150c-414b-b0c9-c738af911dbe",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "basketball",
+                    "transfer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "day",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9568,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"recordId\": \"string\",\n      \"playerId\": \"string\",\n      \"transferTime\": 8896,\n      \"fromTeam\": \"string\",\n      \"fromTeamId\": \"string\",\n      \"toTeam\": \"string\",\n      \"toTeamId\": \"string\",\n      \"season\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"recordId\": \"string\",\n      \"playerId\": \"string\",\n      \"transferTime\": 8902,\n      \"fromTeam\": \"string\",\n      \"fromTeamId\": \"string\",\n      \"toTeam\": \"string\",\n      \"toTeamId\": \"string\",\n      \"season\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3cd9e0f2-da4c-4700-bdd6-7f7514d8b9e6",
+          "name": "Match List of Live Text",
+          "request": {
+            "name": "Match List of Live Text",
+            "description": {
+              "content": "• This API endpoint returns the list of matches with live text coverage for today and the past 8 hours. Only NBA and WNBA matches are supported. \n\n\n\n• You can use it with the <a href=\"/docs.html?id=81\" style=\"color:blue\">Live Text</a> endpoint to retrieve match-by-match live text updates for each matchId returned here.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "basketball",
+                "livetext",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "31c9f753-cea0-4064-9071-98d4faff68e9",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "basketball",
+                    "livetext",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5286,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"matchTime\": 6476,\n      \"leagueName\": \"string\",\n      \"homeName\": \"string\",\n      \"awayName\": \"string\"\n    },\n    {\n      \"matchId\": \"string\",\n      \"matchTime\": 7736,\n      \"leagueName\": \"string\",\n      \"homeName\": \"string\",\n      \"awayName\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b10af6b-9c4f-4e7b-b8b3-c11ac03aa9ed",
+          "name": "Live Text",
+          "request": {
+            "name": "Live Text",
+            "description": {
+              "content": "• This API endpoint returns live text content for a specified matchId. Only NBA and WNBA matches are supported.\n\n\n\n• If matchId is omitted, all live text content updated in the last 2 minutes across matches is returned. \n\n\n\n• You can use it with the <a href=\"/docs.html?id=80\" style=\"color:blue\">Match List of Live Text</a> endpoint to first obtain a list of available matchIds.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "basketball",
+                "livetext"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Returns live text content for the specified match. \n\n\n\nIf omitted, returns all live text content updated in the last 2 minutes across matches."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0de6b37d-a2b9-4b40-b042-d5270e2fd4c9",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "basketball",
+                    "livetext"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"recordId\": \"string\",\n      \"matchId\": \"string\",\n      \"remainTime\": \"string\",\n      \"teamKind\": 9882,\n      \"matchState\": 7190,\n      \"score\": \"string\",\n      \"content\": \"string\",\n      \"playerId1\": \"string\",\n      \"playerId2\": \"string\",\n      \"playerId3\": \"string\",\n      \"refereeId\": \"string\"\n    },\n    {\n      \"recordId\": \"string\",\n      \"matchId\": \"string\",\n      \"remainTime\": \"string\",\n      \"teamKind\": 6296,\n      \"matchState\": 12,\n      \"score\": \"string\",\n      \"content\": \"string\",\n      \"playerId1\": \"string\",\n      \"playerId2\": \"string\",\n      \"playerId3\": \"string\",\n      \"refereeId\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.isportsapi.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "535c2c6b-05e0-4b86-8a13-34dca7b9d912",
+    "name": "iSports Basketball Live Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.\n\nAll operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).\n\nThis document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.\n\nContact Support:\n Name: iSports API",
+      "type": "text/plain"
+    }
+  }
+}

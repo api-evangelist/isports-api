@@ -1,0 +1,1309 @@
+{
+  "item": [
+    {
+      "id": "66e9eed7-24cc-4c0d-836a-bfc595771f8e",
+      "name": "Football Odds (18 Agencies)",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3109a6f5-365c-401a-b104-c54fd34604e2",
+          "name": "Pre-match and In-play Odds (Main)",
+          "request": {
+            "name": "Pre-match and In-play Odds (Main)",
+            "description": {
+              "content": "• This API endpoint returns pre-match and in-play odds for major markets, including Asian Handicap, 1X2, and over/under — with both full-match and first-half breakdowns.\n\n\n\n• Returns matches with odds available for the next 14 days, covering both pre-match and in-play. Use it alongside the Live Odds Changes (Main) endpoint for real-time updates, and Schedule & Results or Match Modify Record to get basic match information.\n\n\n\n• Handicap and over/under line format: Lines are multiples of 0.25. \n\n0 = 0 goals, 0.25 = 0/0.5, 0.5 = 0.5, 0.75 = 0.5/1, 1 = 1 goal, and so on. A positive value means the home team gives goals; a negative value means the away team gives goals.\n\n\n\n• The company ID corresponds to the company:\n\n1: Macauslot, 3: Crown, 4: Ladbrokes, 7: SNAI, 8: Bet365, 9: William Hill, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:Bwin, 50:1xbet \n\n\n\n• Odds format: All odds values are returned in Hong Kong Odds format. \n\nTo convert to other formats: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85); Malay Odds = HK if HK ≤ 1, or −(1 ÷ HK) if HK > 1 (e.g., 0.85 → 0.85, 1.5 → −0.67); Indonesian Odds = HK if HK ≥ 1, or −(1 ÷ HK) if HK < 1 (e.g., 0.85 → −1.18, 1.5 → 1.5); American Odds = HK × 100 if HK ≥ 1, or −(100 ÷ HK) if HK < 1 (e.g., 0.85 → −118, 1.5 → +150).\n\n\n\n• close field: Only supported by selected bookmakers: Macauslot (1), Crown (3), Bet365 (8), Easybets (12), Mansion88 (17), 10BET (22), 12bet (24), Sbobet (31), Wewbet (35), 18bet (42).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "main"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Filter results to specific matches. Separate multiple IDs with \",\" (e.g., matchId=322964610,322964611). Maximum 100 match IDs per request."
+                },
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Filter results to specific bookmakers. Separate multiple IDs with \",\" (e.g., companyId=3,8)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "39cf249a-7dee-4a62-b1ee-e865684509ef",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "main"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6353,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"handicap\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"maintenance\": false,\n        \"inPlay\": false,\n        \"changeTime\": 3636,\n        \"close\": true,\n        \"Odds Type\": \"string\"\n      },\n      \"europeOdds\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialDraw\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantDraw\": \"string\",\n        \"instantAway\": \"string\",\n        \"changeTime\": 3250,\n        \"close\": false,\n        \"Odds Type\": \"string\"\n      },\n      \"overUnder\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"changeTime\": 1558,\n        \"close\": true,\n        \"Odds Type\": \"string\"\n      },\n      \"handicapHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"changeTime\": 1226,\n        \"Odds Type\": \"string\"\n      },\n      \"overUnderHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"changeTime\": 4890,\n        \"Odds Type\": \"string\"\n      }\n    },\n    {\n      \"handicap\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"maintenance\": true,\n        \"inPlay\": false,\n        \"changeTime\": 8099,\n        \"close\": false,\n        \"Odds Type\": \"string\"\n      },\n      \"europeOdds\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialDraw\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantDraw\": \"string\",\n        \"instantAway\": \"string\",\n        \"changeTime\": 3078,\n        \"close\": true,\n        \"Odds Type\": \"string\"\n      },\n      \"overUnder\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"changeTime\": 5096,\n        \"close\": true,\n        \"Odds Type\": \"string\"\n      },\n      \"handicapHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"changeTime\": 2513,\n        \"Odds Type\": \"string\"\n      },\n      \"overUnderHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"changeTime\": 4601,\n        \"Odds Type\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "669f03b9-e15a-4539-837d-b1fde3d35603",
+          "name": "Live Odds Changes (Main)",
+          "request": {
+            "name": "Live Odds Changes (Main)",
+            "description": {
+              "content": "• This API endpoint returns real-time odds changes for major market types (Handicap, Europe Odds, and Over/Under) that occurred within the last 20 seconds.\n\n\n\n• Data is delivered incrementally in a high-efficiency format, using comma-separated strings within arrays to represent various odds parameters and flags.\n\n\n\n• Use it alongside the Pre-match and In-play Odds (Main) endpoint to synchronize and maintain a real-time local odds database.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "main",
+                "changes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Filter results to specific matches. Separate multiple IDs with \",\" (e.g., matchId=322964610,322964611). Maximum 100 match IDs per request."
+                },
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Filter results to specific bookmakers. Separate multiple IDs with \",\" (e.g., companyId=3,8)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c0c4577c-38dd-4e09-a0f1-e3dfb9bb126f",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "main",
+                    "changes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 3426,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"handicap\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"maintenance\": true,\n        \"inPlay\": false,\n        \"changeTime\": 3630,\n        \"close\": true,\n        \"Odds Type\": \"string\"\n      },\n      \"europeOdds\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantDraw\": \"string\",\n        \"instantAway\": \"string\",\n        \"changeTime\": 791,\n        \"close\": false,\n        \"Odds Type\": \"string\"\n      },\n      \"overUnder\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"changeTime\": 1747,\n        \"close\": true,\n        \"Odds Type\": \"string\"\n      },\n      \"handicapHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"changeTime\": 1903,\n        \"Odds Type\": \"string\"\n      },\n      \"overUnderHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"changeTime\": 5520,\n        \"Odds Type\": \"string\"\n      }\n    },\n    {\n      \"handicap\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"maintenance\": true,\n        \"inPlay\": false,\n        \"changeTime\": 5739,\n        \"close\": false,\n        \"Odds Type\": \"string\"\n      },\n      \"europeOdds\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantDraw\": \"string\",\n        \"instantAway\": \"string\",\n        \"changeTime\": 5652,\n        \"close\": false,\n        \"Odds Type\": \"string\"\n      },\n      \"overUnder\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"changeTime\": 5951,\n        \"close\": true,\n        \"Odds Type\": \"string\"\n      },\n      \"handicapHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"changeTime\": 8302,\n        \"Odds Type\": \"string\"\n      },\n      \"overUnderHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"changeTime\": 7126,\n        \"Odds Type\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b3320c5b-8fe3-49c6-b478-1f5b75694bf5",
+          "name": "Historical Odds (Main)",
+          "request": {
+            "name": "Historical Odds (Main)",
+            "description": {
+              "content": "• This API endpoint returns historical opening and closing odds for major football betting markets.It defaults to records from GMT+0 0:00 today, while supporting a date parameter for historical back-checking up to one month.\n\n\n\n• Handicap and over/under line format: Lines are multiples of 0.25. \n\n0 = 0 goals, 0.25 = 0/0.5, 0.5 = 0.5, 0.75 = 0.5/1, 1 = 1 goal, and so on. A positive value means the home team gives goals; a negative value means the away team gives goals.\n\n\n\n• Odds format: All odds values are returned in Hong Kong Odds format. \n\nTo convert to other formats: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85); Malay Odds = HK if HK ≤ 1, or −(1 ÷ HK) if HK > 1 (e.g., 0.85 → 0.85, 1.5 → −0.67); Indonesian Odds = HK if HK ≥ 1, or −(1 ÷ HK) if HK < 1 (e.g., 0.85 → −1.18, 1.5 → 1.5); American Odds = HK × 100 if HK ≥ 1, or −(100 ÷ HK) if HK < 1 (e.g., 0.85 → −118, 1.5 → +150).\n\n\n\n• The company ID corresponds to the company:\n\n1: Macauslot, 3: Crown, 4: Ladbrokes, 7: SNAI, 8: Bet365, 9: William Hill, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:Bwin, 50:1xbet\n\n\n\n• close field: Only supported by selected bookmakers: Macauslot (1), Crown (3), Bet365 (8), Easybets (12), Mansion88 (17), 10BET (22), 12bet (24), Sbobet (31), Wewbet (35), 18bet (42).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "main",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<string>",
+                  "description": "Filter results by date (GMT+0 00:00–23:59). Supports back-checking within the past month. Format: yyyy-MM-dd (e.g., date=2026-06-18). \n\n\n\nIf omitted, returns data for the current day."
+                },
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Filter results to specific matches. Separate multiple IDs with \",\" (e.g., matchId=322964610,322964611). Maximum 100 match IDs per request."
+                },
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Filter results to specific bookmakers. Separate multiple IDs with \",\" (e.g., companyId=3,8)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "07473357-57b4-4eb8-bb4c-2d9a5892be7b",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "main",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7763,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"handicap\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"maintenance\": true,\n        \"inPlay\": false,\n        \"changeTime\": 9635,\n        \"close\": true\n      },\n      \"europeOdds\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialDraw\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantDraw\": \"string\",\n        \"instantAway\": \"string\",\n        \"changeTime\": 682,\n        \"close\": true\n      },\n      \"overUnder\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"changeTime\": 5230,\n        \"close\": true\n      },\n      \"handicapHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"changeTime\": 9786\n      },\n      \"overUnderHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"changeTime\": 7880\n      }\n    },\n    {\n      \"handicap\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"maintenance\": false,\n        \"inPlay\": false,\n        \"changeTime\": 8351,\n        \"close\": false\n      },\n      \"europeOdds\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialDraw\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantDraw\": \"string\",\n        \"instantAway\": \"string\",\n        \"changeTime\": 3482,\n        \"close\": true\n      },\n      \"overUnder\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"changeTime\": 6679,\n        \"close\": true\n      },\n      \"handicapHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"changeTime\": 5707\n      },\n      \"overUnderHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"changeTime\": 4423\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "33e116fa-0eaa-41fe-a53a-eb854361e540",
+          "name": "Future Odds (Main)",
+          "request": {
+            "name": "Future Odds (Main)",
+            "description": {
+              "content": "• This API endpoint returns pre-match odds for all matches starting more than 10 days from now, covering Asian Handicap (handicap), 1X2 (europeOdds), over/under (overUnder), and their first-half equivalents (handicapHalf, overUnderHalf).\n\n\n\n• Handicap and over/under line format: Lines are multiples of 0.25. \n\n0 = 0 goals, 0.25 = 0/0.5, 0.5 = 0.5, 0.75 = 0.5/1, 1 = 1 goal, and so on. A positive value means the home team gives goals; a negative value means the away team gives goals.\n\n\n\n• The company ID corresponds to the company:\n\n1: Macauslot, 3: Crown, 4: Ladbrokes, 7: SNAI, 8: Bet365, 9: William Hill, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:Bwin, 50:1xbet\n\n\n\n• Odds format: All odds values are returned in Hong Kong Odds format. \n\nTo convert to other formats: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85); Malay Odds = HK if HK ≤ 1, or −(1 ÷ HK) if HK > 1 (e.g., 0.85 → 0.85, 1.5 → −0.67); Indonesian Odds = HK if HK ≥ 1, or −(1 ÷ HK) if HK < 1 (e.g., 0.85 → −1.18, 1.5 → 1.5); American Odds = HK × 100 if HK ≥ 1, or −(100 ÷ HK) if HK < 1 (e.g., 0.85 → −118, 1.5 → +150).\n\n\n\n• close field: Only supported by selected bookmakers: Macauslot (1), Crown (3), Bet365 (8), Easybets (12), Mansion88 (17), 10BET (22), 12bet (24), Sbobet (31), Wewbet (35), 18bet (42).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "main",
+                "future"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Filter results to specific matches. Separate multiple IDs with \",\" (e.g., matchId=322964610,322964611). Maximum 100 match IDs per request."
+                },
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Filter results to specific bookmakers. Separate multiple IDs with \",\" (e.g., companyId=3,8)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "25ae29be-3df9-4a9b-a259-a1586fd0fc7e",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "main",
+                    "future"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7763,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"handicap\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"maintenance\": true,\n        \"inPlay\": false,\n        \"changeTime\": 9635,\n        \"close\": true\n      },\n      \"europeOdds\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialDraw\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantDraw\": \"string\",\n        \"instantAway\": \"string\",\n        \"changeTime\": 682,\n        \"close\": true\n      },\n      \"overUnder\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"changeTime\": 5230,\n        \"close\": true\n      },\n      \"handicapHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"changeTime\": 9786\n      },\n      \"overUnderHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"changeTime\": 7880\n      }\n    },\n    {\n      \"handicap\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"maintenance\": false,\n        \"inPlay\": false,\n        \"changeTime\": 8351,\n        \"close\": false\n      },\n      \"europeOdds\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialDraw\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantDraw\": \"string\",\n        \"instantAway\": \"string\",\n        \"changeTime\": 3482,\n        \"close\": true\n      },\n      \"overUnder\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"changeTime\": 6679,\n        \"close\": true\n      },\n      \"handicapHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"changeTime\": 5707\n      },\n      \"overUnderHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"changeTime\": 4423\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "915b9bc2-f747-42f4-8752-ad77ea4c844a",
+          "name": "Historical Odds (All)",
+          "request": {
+            "name": "Historical Odds (All)",
+            "description": {
+              "content": "• This API endpoint returns the historical initial and final odds across all available handicap and goal lines for finished matches, covering Asian Handicap (handicap), 1X2 (europeOdds), over/under (overUnder), and their first-half equivalents (handicapHalf, overUnderHalf).\n\n\n\n• The content is consistent with the Historical Odds (Main) endpoint — the entry where handicapIndex = 1 represents the main market line.\n\n\n\n• By default, returns all finished matches from GMT+0 00:00 to the present.\n\n\n\n• Handicap and over/under line format: Lines are multiples of 0.25. \n\n0 = 0 goals, 0.25 = 0/0.5, 0.5 = 0.5, 0.75 = 0.5/1, 1 = 1 goal, and so on. A positive value means the home team gives goals; a negative value means the away team gives goals.\n\n\n\n• Odds format: All odds values are returned in Hong Kong Odds format. \n\nTo convert to other formats: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85); Malay Odds = HK if HK ≤ 1, or −(1 ÷ HK) if HK > 1 (e.g., 0.85 → 0.85, 1.5 → −0.67); Indonesian Odds = HK if HK ≥ 1, or −(1 ÷ HK) if HK < 1 (e.g., 0.85 → −1.18, 1.5 → 1.5); American Odds = HK × 100 if HK ≥ 1, or −(100 ÷ HK) if HK < 1 (e.g., 0.85 → −118, 1.5 → +150).\n\n\n\n• The company ID corresponds to the company:\n\n1: Macauslot, 3: Crown, 4: Ladbrokes, 7: SNAI, 8: Bet365, 9: William Hill, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:Bwin, 50:1xbet\n\n\n\n• close field: Only supported by selected bookmakers: Macauslot (1), Crown (3), Bet365 (8), Easybets (12), Mansion88 (17), 10BET (22), 12bet (24), Sbobet (31), Wewbet (35), 18bet (42).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "all",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<string>",
+                  "description": "Filter results by date (GMT+0 00:00–23:59). Supports back-checking within the past month. Format: yyyy-MM-dd (e.g., date=2026-06-18). \n\n\n\nIf omitted, returns data for the current day."
+                },
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Filter results to specific matches. Separate multiple IDs with \",\" (e.g., matchId=322964610,322964611). Maximum 100 match IDs per request."
+                },
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Filter results to specific bookmakers. Separate multiple IDs with \",\" (e.g., companyId=3,8)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0c5a8c2a-2069-4283-8d12-7f9f9f127202",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "all",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8911,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"handicap\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"maintenance\": true,\n        \"inPlay\": true,\n        \"handicapIndex\": 1362,\n        \"handicapCount\": 3558,\n        \"changeTime\": 295,\n        \"close\": false\n      },\n      \"europeOdds\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialDraw\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantDraw\": \"string\",\n        \"instantAway\": \"string\",\n        \"handicapIndex\": 6153,\n        \"changeTime\": 8170,\n        \"close\": false\n      },\n      \"overUnder\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"handicapIndex\": 1995,\n        \"changeTime\": 2855,\n        \"close\": true\n      },\n      \"handicapHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"inPlay\": true,\n        \"handicapIndex\": 8463,\n        \"changeTime\": 8071\n      },\n      \"overUnderHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"handicapIndex\": 7896,\n        \"changeTime\": 6341\n      }\n    },\n    {\n      \"handicap\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"maintenance\": true,\n        \"inPlay\": false,\n        \"handicapIndex\": 8889,\n        \"handicapCount\": 5085,\n        \"changeTime\": 7439,\n        \"close\": true\n      },\n      \"europeOdds\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialDraw\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantDraw\": \"string\",\n        \"instantAway\": \"string\",\n        \"handicapIndex\": 1073,\n        \"changeTime\": 5018,\n        \"close\": false\n      },\n      \"overUnder\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"handicapIndex\": 4288,\n        \"changeTime\": 1697,\n        \"close\": true\n      },\n      \"handicapHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"inPlay\": false,\n        \"handicapIndex\": 8336,\n        \"changeTime\": 7211\n      },\n      \"overUnderHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"handicapIndex\": 2584,\n        \"changeTime\": 2759\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d6731b8d-49d1-4ddc-885d-847c4841c99d",
+          "name": "European Odds (Halftime)",
+          "request": {
+            "name": "European Odds (Halftime)",
+            "description": {
+              "content": "• This API endpoint returns half-time 1X2 odds, including pre-match and in-play odds.\n\n\n\n• By using endpoints <a href=\"/docs.html?id=41\" style=\"color:blue\">Schedule & Results (Basic)\n</a> and <a href=\"/docs.html?id=33\" style=\"color:blue\">Match Modify Record</a>, you can get basic information of matches.\n\n\n\n• The company ID corresponds to the company:\n\n1: Macauslot, 3: Crown, 4: Ladbrokes, 8: Bet365, 9: William Hill, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:Bwin,50:1xbet",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "european",
+                "half"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Filter results to specific matches. Separate multiple IDs with \",\" (e.g., matchId=322964610,322964611). Maximum 100 match IDs per request."
+                },
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Filter results to specific bookmakers. Separate multiple IDs with \",\" (e.g., companyId=3,8)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "26325729-b634-46d7-9d17-96230fc45a2f",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "european",
+                    "half"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2103,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"matchTime\": 6607,\n      \"leagueName\": \"string\",\n      \"homeName\": \"string\",\n      \"awayName\": \"string\",\n      \"odds\": [\n        {\n          \"oddsId\": \"string\",\n          \"changeTime\": 1702,\n          \"oddsDetail\": {\n            \"companyId\": 4090,\n            \"companyName\": \"string\",\n            \"initialHome\": \"string\",\n            \"initialDraw\": \"string\",\n            \"initialAway\": \"string\",\n            \"instantHome\": \"string\",\n            \"instantDraw\": \"string\",\n            \"instantAway\": \"string\"\n          }\n        },\n        {\n          \"oddsId\": \"string\",\n          \"changeTime\": 6408,\n          \"oddsDetail\": {\n            \"companyId\": 3734,\n            \"companyName\": \"string\",\n            \"initialHome\": \"string\",\n            \"initialDraw\": \"string\",\n            \"initialAway\": \"string\",\n            \"instantHome\": \"string\",\n            \"instantDraw\": \"string\",\n            \"instantAway\": \"string\"\n          }\n        }\n      ]\n    },\n    {\n      \"matchId\": \"string\",\n      \"matchTime\": 6828,\n      \"leagueName\": \"string\",\n      \"homeName\": \"string\",\n      \"awayName\": \"string\",\n      \"odds\": [\n        {\n          \"oddsId\": \"string\",\n          \"changeTime\": 6339,\n          \"oddsDetail\": {\n            \"companyId\": 4769,\n            \"companyName\": \"string\",\n            \"initialHome\": \"string\",\n            \"initialDraw\": \"string\",\n            \"initialAway\": \"string\",\n            \"instantHome\": \"string\",\n            \"instantDraw\": \"string\",\n            \"instantAway\": \"string\"\n          }\n        },\n        {\n          \"oddsId\": \"string\",\n          \"changeTime\": 4256,\n          \"oddsDetail\": {\n            \"companyId\": 1095,\n            \"companyName\": \"string\",\n            \"initialHome\": \"string\",\n            \"initialDraw\": \"string\",\n            \"initialAway\": \"string\",\n            \"instantHome\": \"string\",\n            \"instantDraw\": \"string\",\n            \"instantAway\": \"string\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aec2fca1-253a-4ea8-988f-1ecbb445f4a2",
+          "name": "Pre-match and In-play Odds (All)",
+          "request": {
+            "name": "Pre-match and In-play Odds (All)",
+            "description": {
+              "content": "• This API endpoint returns pre-match and in-play odds for multiple market lines (alternative lines), including Asian Handicap, 1X2, and over/under — with both full-match and first-half breakdowns.\n\n\n\n• The content is consistent with the Pre-match and In-play Odds (Main) endpoint — the entry where handicapIndex = 1 represents the main market line.\n\n\n\n• It covers upcoming matches scheduled within the next 14 days (where odds are available) and ongoing matches, including both pre-match and in-play (live) odds.\n\n\n\n• Use it alongside the Live Odds Changes (All) endpoint for real-time updates, and Schedule & Results or Match Modify Record to get basic match information.\n\n\n\n• Handicap and over/under line format: Lines are multiples of 0.25. \n\n0 = 0 goals, 0.25 = 0/0.5, 0.5 = 0.5, 0.75 = 0.5/1, 1 = 1 goal, and so on. A positive value means the home team gives goals; a negative value means the away team gives goals.\\\n\n\n\n• The company ID corresponds to the company:\n\n1: Macauslot, 3: Crown, 4: Ladbrokes, 7: SNAI, 8: Bet365, 9: William Hill, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:Bwin, 50:1xbet\n\n\n\n• Odds format: All odds values are returned in Hong Kong Odds format. \n\nTo convert to other formats: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85); Malay Odds = HK if HK ≤ 1, or −(1 ÷ HK) if HK > 1 (e.g., 0.85 → 0.85, 1.5 → −0.67); Indonesian Odds = HK if HK ≥ 1, or −(1 ÷ HK) if HK < 1 (e.g., 0.85 → −1.18, 1.5 → 1.5); American Odds = HK × 100 if HK ≥ 1, or −(100 ÷ HK) if HK < 1 (e.g., 0.85 → −118, 1.5 → +150).\n\n\n\n• close field: Only supported by selected bookmakers: Macauslot (1), Crown (3), Bet365 (8), Easybets (12), Mansion88 (17), 10BET (22), 12bet (24), Sbobet (31), Wewbet (35), 18bet (42).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "all"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Filter results to specific matches. Separate multiple IDs with \",\" (e.g., matchId=322964610,322964611). Maximum 100 match IDs per request."
+                },
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Filter results to specific bookmakers. Separate multiple IDs with \",\" (e.g., companyId=3,8)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a6b0dea-f05c-4a60-b396-40eb304ba4ea",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5364,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"handicap\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"maintenance\": true,\n        \"inPlay\": false,\n        \"handicapIndex\": 7968,\n        \"handicapCount\": 4074,\n        \"changeTime\": 8173,\n        \"close\": false,\n        \"Odds Type\": \"string\"\n      },\n      \"europeOdds\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialDraw\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantDraw\": \"string\",\n        \"instantAway\": \"string\",\n        \"handicapIndex\": 5910,\n        \"changeTime\": 9896,\n        \"close\": true,\n        \"Odds Type\": \"string\"\n      },\n      \"overUnder\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"handicapIndex\": 7566,\n        \"changeTime\": 7559,\n        \"close\": true,\n        \"Odds Type\": \"string\"\n      },\n      \"handicapHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"inPlay\": false,\n        \"handicapIndex\": 520,\n        \"changeTime\": 1374,\n        \"Odds Type\": \"string\"\n      },\n      \"overUnderHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"handicapIndex\": 7601,\n        \"changeTime\": 4914,\n        \"Odds Type\": \"string\"\n      }\n    },\n    {\n      \"handicap\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"maintenance\": true,\n        \"inPlay\": true,\n        \"handicapIndex\": 3701,\n        \"handicapCount\": 5535,\n        \"changeTime\": 8008,\n        \"close\": true,\n        \"Odds Type\": \"string\"\n      },\n      \"europeOdds\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialDraw\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantDraw\": \"string\",\n        \"instantAway\": \"string\",\n        \"handicapIndex\": 4653,\n        \"changeTime\": 1608,\n        \"close\": true,\n        \"Odds Type\": \"string\"\n      },\n      \"overUnder\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"handicapIndex\": 1406,\n        \"changeTime\": 6648,\n        \"close\": false,\n        \"Odds Type\": \"string\"\n      },\n      \"handicapHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"inPlay\": false,\n        \"handicapIndex\": 1823,\n        \"changeTime\": 1002,\n        \"Odds Type\": \"string\"\n      },\n      \"overUnderHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"handicapIndex\": 9327,\n        \"changeTime\": 2178,\n        \"Odds Type\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9aae1fd2-9792-49ed-bf2a-d398d20570c0",
+          "name": "Live Odds Changes (All)",
+          "request": {
+            "name": "Live Odds Changes (All)",
+            "description": {
+              "content": "• This API endpoint returns all odds that changed in the past 20 seconds. \n\n\n\n• You can use it with the <a href=\"/docs.html?id=71\" style=\"color:blue\">Pre-match and In-play Odds (All)</a> endpoint— call that endpoint once to get the full odds list, then poll this endpoint every 2 seconds to receive incremental updates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "all",
+                "changes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Filter results to specific matches. Separate multiple IDs with \",\" (e.g., matchId=322964610,322964611). Maximum 100 match IDs per request."
+                },
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Filter results to specific bookmakers. Separate multiple IDs with \",\" (e.g., companyId=3,8)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9c4f3b2b-41b5-4c14-b6f0-b7312749a034",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "all",
+                    "changes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6481,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"handicap\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"maintenance\": true,\n        \"inPlay\": false,\n        \"handicapIndex\": 4962,\n        \"changeTime\": 6469,\n        \"close\": false,\n        \"Odds Type\": \"string\"\n      },\n      \"europeOdds\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantDraw\": \"string\",\n        \"instantAway\": \"string\",\n        \"handicapIndex\": 8317,\n        \"changeTime\": 3307,\n        \"close\": true,\n        \"Odds Type\": \"string\"\n      },\n      \"overUnder\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"handicapIndex\": 6101,\n        \"changeTime\": 7259,\n        \"close\": true,\n        \"Odds Type\": \"string\"\n      },\n      \"handicapHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"inPlay\": true,\n        \"handicapIndex\": 6648,\n        \"changeTime\": 5055,\n        \"Odds Type\": \"string\"\n      },\n      \"overUnderHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"handicapIndex\": 835,\n        \"changeTime\": 8375,\n        \"Odds Type\": \"string\"\n      }\n    },\n    {\n      \"handicap\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"maintenance\": true,\n        \"inPlay\": true,\n        \"handicapIndex\": 4170,\n        \"changeTime\": 4556,\n        \"close\": true,\n        \"Odds Type\": \"string\"\n      },\n      \"europeOdds\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantDraw\": \"string\",\n        \"instantAway\": \"string\",\n        \"handicapIndex\": 6330,\n        \"changeTime\": 3821,\n        \"close\": false,\n        \"Odds Type\": \"string\"\n      },\n      \"overUnder\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"handicapIndex\": 1819,\n        \"changeTime\": 2122,\n        \"close\": false,\n        \"Odds Type\": \"string\"\n      },\n      \"handicapHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"inPlay\": false,\n        \"handicapIndex\": 7444,\n        \"changeTime\": 7569,\n        \"Odds Type\": \"string\"\n      },\n      \"overUnderHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"handicapIndex\": 2095,\n        \"changeTime\": 3304,\n        \"Odds Type\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ae28d77b-b4e2-4742-9780-f112e7ae3d35",
+          "name": "In-play Odds",
+          "request": {
+            "name": "In-play Odds",
+            "description": {
+              "content": "• This API endpoint returns in-play odds for the main market, covering Asian Handicap (handicap), 1X2 (europeOdds), and over/under (overUnder).\n\n\n\n• By default, returns in-play odds updated in the past 3 minutes for all matches.\n\n\n\n• The company ID corresponds to the company:\n\n1: Macauslot, 3: Crown, 4: Ladbrokes ,8: Bet365, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:BWin, 50:1xbet\n\n\n\n\n• By using endpoints <a href=\"/docs.html?id=41\" style=\"color:blue\">Schedule & Results (Basic)\n</a> and <a href=\"/docs.html?id=33\" style=\"color:blue\">Match Modify Record</a>, you can get basic information of matches.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "inplay"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Filter results to specific matches. Separate multiple IDs with \",\" (e.g., matchId=322964610,322964611). Maximum 100 match IDs per request. \n\n\n\nOnly supports querying matches within the past 20 days."
+                },
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Filter results to specific bookmakers. Separate multiple IDs with \",\" (e.g., companyId=3,8)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6e50ce34-aeac-4bc5-87d5-9273ebb34bb7",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "inplay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5476,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"recordId\": \"string\",\n      \"matchId\": \"string\",\n      \"matchTime\": 103,\n      \"homeScore\": 1917,\n      \"awayScore\": 2187,\n      \"homeRedCount\": 6735,\n      \"awayRedCount\": 656,\n      \"type\": 1555,\n      \"companyId\": \"string\",\n      \"odds1\": \"string\",\n      \"odds2\": \"string\",\n      \"odds3\": \"string\",\n      \"changeTime\": 1567\n    },\n    {\n      \"recordId\": \"string\",\n      \"matchId\": \"string\",\n      \"matchTime\": 2662,\n      \"homeScore\": 2908,\n      \"awayScore\": 7322,\n      \"homeRedCount\": 3975,\n      \"awayRedCount\": 6591,\n      \"type\": 3909,\n      \"companyId\": \"string\",\n      \"odds1\": \"string\",\n      \"odds2\": \"string\",\n      \"odds3\": \"string\",\n      \"changeTime\": 9731\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "989be0f9-4ba6-4880-a412-0f0f88639286",
+          "name": "Future Odds (All)",
+          "request": {
+            "name": "Future Odds (All)",
+            "description": {
+              "content": "• This API endpoint returns pre-match odds across all available handicap and goal lines for matches starting more than 10 days from now, covering Asian Handicap (handicap), 1X2 (europeOdds), over/under (overUnder), and their first-half equivalents (handicapHalf, overUnderHalf).\n\n\n\n• Handicap and over/under line format: Lines are multiples of 0.25. \n\n0 = 0 goals, 0.25 = 0/0.5, 0.5 = 0.5, 0.75 = 0.5/1, 1 = 1 goal, and so on. A positive value means the home team gives goals; a negative value means the away team gives goals.\n\n\n\n• Odds format: All odds values are returned in Hong Kong Odds format. \n\nTo convert to other formats: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85); Malay Odds = HK if HK ≤ 1, or −(1 ÷ HK) if HK > 1 (e.g., 0.85 → 0.85, 1.5 → −0.67); Indonesian Odds = HK if HK ≥ 1, or −(1 ÷ HK) if HK < 1 (e.g., 0.85 → −1.18, 1.5 → 1.5); American Odds = HK × 100 if HK ≥ 1, or −(100 ÷ HK) if HK < 1 (e.g., 0.85 → −118, 1.5 → +150).\n\n\n\n• The company ID corresponds to the company:\n\n1: Macauslot, 3: Crown, 4: Ladbrokes, 7: SNAI, 8: Bet365, 9: William Hill, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:Bwin, 50:1xbet\n\n\n\n• close field: Only supported by selected bookmakers: Macauslot (1), Crown (3), Bet365 (8), Easybets (12), Mansion88 (17), 10BET (22), 12bet (24), Sbobet (31), Wewbet (35), 18bet (42).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "all",
+                "future"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Filter results to specific matches. Separate multiple IDs with \",\" (e.g., matchId=322964610,322964611). Maximum 100 match IDs per request."
+                },
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Filter results to specific bookmakers. Separate multiple IDs with \",\" (e.g., companyId=3,8)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d6f3bf10-c418-4672-bd78-e9d12b721986",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "all",
+                    "future"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6477,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"handicap\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"maintenance\": true,\n        \"inPlay\": true,\n        \"handicapIndex\": 2527,\n        \"handicapCount\": 5632,\n        \"changeTime\": 2118,\n        \"close\": false\n      },\n      \"europeOdds\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialDraw\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantDraw\": \"string\",\n        \"instantAway\": \"string\",\n        \"handicapIndex\": 8376,\n        \"changeTime\": 9774,\n        \"close\": false\n      },\n      \"overUnder\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"handicapIndex\": 1663,\n        \"changeTime\": 781,\n        \"close\": false\n      },\n      \"handicapHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"inPlay\": false,\n        \"handicapIndex\": 2390,\n        \"changeTime\": 1131\n      },\n      \"overUnderHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"handicapIndex\": 184,\n        \"changeTime\": 8700\n      }\n    },\n    {\n      \"handicap\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"maintenance\": true,\n        \"inPlay\": true,\n        \"handicapIndex\": 220,\n        \"handicapCount\": 6704,\n        \"changeTime\": 9914,\n        \"close\": false\n      },\n      \"europeOdds\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialDraw\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantDraw\": \"string\",\n        \"instantAway\": \"string\",\n        \"handicapIndex\": 5380,\n        \"changeTime\": 3701,\n        \"close\": false\n      },\n      \"overUnder\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"handicapIndex\": 4618,\n        \"changeTime\": 5980,\n        \"close\": false\n      },\n      \"handicapHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialHome\": \"string\",\n        \"initialAway\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantHome\": \"string\",\n        \"instantAway\": \"string\",\n        \"inPlay\": true,\n        \"handicapIndex\": 8664,\n        \"changeTime\": 5403\n      },\n      \"overUnderHalf\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"initialHandicap\": \"string\",\n        \"initialOver\": \"string\",\n        \"initialUnder\": \"string\",\n        \"instantHandicap\": \"string\",\n        \"instantOver\": \"string\",\n        \"instantUnder\": \"string\",\n        \"handicapIndex\": 6672,\n        \"changeTime\": 9244\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4d9b6b87-045b-4f21-8ee5-5db45c34f78e",
+          "name": "In-play Odds (Halftime)",
+          "request": {
+            "name": "In-play Odds (Halftime)",
+            "description": {
+              "content": "• This API endpoint returns half-time in-play odds for the main market, covering Asian Handicap (handicapHalf), 1X2 (europeOddHalf), and over/under (overUnderHalf).\n\n\n\n• By default, returns in-play odds updated in the past 3 minutes for all matches.\n\n\n\n• The company ID corresponds to the company:\n\n1: Macauslot, 3: Crown, 4: Ladbrokes ,8: Bet365, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:BWin, 50:1xbet",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "inplay",
+                "half"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Filter results to specific matches. Separate multiple IDs with \",\" (e.g., matchId=322964610,322964611). Maximum 100 match IDs per request. \n\n\n\nOnly supports querying matches within the past 20 days."
+                },
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Filter results to specific bookmakers. Separate multiple IDs with \",\" (e.g., companyId=3,8)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "79e7820e-da94-4886-babb-6c714dd09d1f",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "inplay",
+                    "half"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5476,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"recordId\": \"string\",\n      \"matchId\": \"string\",\n      \"matchTime\": 103,\n      \"homeScore\": 1917,\n      \"awayScore\": 2187,\n      \"homeRedCount\": 6735,\n      \"awayRedCount\": 656,\n      \"type\": 1555,\n      \"companyId\": \"string\",\n      \"odds1\": \"string\",\n      \"odds2\": \"string\",\n      \"odds3\": \"string\",\n      \"changeTime\": 1567\n    },\n    {\n      \"recordId\": \"string\",\n      \"matchId\": \"string\",\n      \"matchTime\": 2662,\n      \"homeScore\": 2908,\n      \"awayScore\": 7322,\n      \"homeRedCount\": 3975,\n      \"awayRedCount\": 6591,\n      \"type\": 3909,\n      \"companyId\": \"string\",\n      \"odds1\": \"string\",\n      \"odds2\": \"string\",\n      \"odds3\": \"string\",\n      \"changeTime\": 9731\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4473772-04fc-4ebb-843a-dcaec5501b75",
+          "name": "Odd Modify Record",
+          "request": {
+            "name": "Odd Modify Record",
+            "description": {
+              "content": "• This API endpoint returns historical odds for matches whose odds changed within a specific time window, supporting three query modes:\n\n\n 1.type=match — Returns a list of matches with historical odds that may have increased or decreased in the last hour, along with the bookmaker that changed and the operation time.\n\n\n\n 2.matchId + companyId — Returns historical odds for a specific match and bookmaker, main market only (e.g., /sport/football/odds/oddsbyid?api_key&matchId=256921227&companyId=3).\n\n\n\n 3.type=multi + matchId + companyId — Returns historical odds for a specific match and bookmaker, all markets (e.g., /sport/football/odds/oddsbyid?api_key&type=multi&matchId=256921227&companyId=3).\n\n\n\n• In-play odds history is available for the past month. Opening and latest pre-match odds are available for up to one year.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "oddsbyid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "(Required) Returns a list of matches with historical odds that may have changed in the last hour."
+                },
+                {
+                  "disabled": false,
+                  "key": "matchId + companyId",
+                  "value": "<string>",
+                  "description": "(Required) Returns historical odds for the specified match and bookmaker (main market only)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e3eb1ceb-53f4-4e96-b710-449300524307",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "oddsbyid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "matchId + companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 582,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"list\": [\n        {\n          \"matchId\": \"string\",\n          \"companyId\": \"string\",\n          \"operateTime\": 202\n        },\n        {\n          \"matchId\": \"string\",\n          \"companyId\": \"string\",\n          \"operateTime\": 1991\n        }\n      ],\n      \"handicap\": {\n        \"companyID\": \"string\",\n        \"num\": 5167,\n        \"odds1\": \"string\",\n        \"odds2\": \"string\",\n        \"odds3\": \"string\",\n        \"odds4\": \"string\",\n        \"odds5\": \"string\",\n        \"odds6\": \"string\",\n        \"modifyTime\": 3774,\n        \"detail\": {\n          \"id\": \"string\",\n          \"odds1\": \"string\",\n          \"odds2\": \"string\",\n          \"odds3\": \"string\",\n          \"modifyTime\": 4831,\n          \"type\": \"string\",\n          \"isEarly\": false\n        }\n      },\n      \"overUnder\": {\n        \"companyID\": \"string\",\n        \"num\": 2060,\n        \"odds1\": \"string\",\n        \"odds2\": \"string\",\n        \"odds3\": \"string\",\n        \"odds4\": \"string\",\n        \"odds5\": \"string\",\n        \"odds6\": \"string\",\n        \"modifyTime\": 540,\n        \"detail\": {\n          \"id\": \"string\",\n          \"odds1\": \"string\",\n          \"odds2\": \"string\",\n          \"odds3\": \"string\",\n          \"modifyTime\": 9007,\n          \"type\": \"string\",\n          \"isEarly\": false\n        }\n      },\n      \"europe\": {\n        \"companyID\": \"string\",\n        \"odds1\": \"string\",\n        \"odds2\": \"string\",\n        \"odds3\": \"string\",\n        \"odds4\": \"string\",\n        \"odds5\": \"string\",\n        \"odds6\": \"string\",\n        \"modifyTime\": 5905,\n        \"detail\": {\n          \"id\": \"string\",\n          \"odds1\": \"string\",\n          \"odds2\": \"string\",\n          \"odds3\": \"string\",\n          \"modifyTime\": 312,\n          \"isEarly\": false\n        }\n      },\n      \"halfHandicap\": {\n        \"companyID\": \"string\",\n        \"num\": 1577,\n        \"odds1\": \"string\",\n        \"odds2\": \"string\",\n        \"odds3\": \"string\",\n        \"odds4\": \"string\",\n        \"odds5\": \"string\",\n        \"odds6\": \"string\",\n        \"modifyTime\": 6486,\n        \"detail\": {\n          \"id\": \"string\",\n          \"odds1\": \"string\",\n          \"odds2\": \"string\",\n          \"odds3\": \"string\",\n          \"modifyTime\": 1481,\n          \"type\": \"string\",\n          \"isEarly\": true\n        }\n      },\n      \"halfOverUnder\": {\n        \"companyID\": \"string\",\n        \"num\": 4230,\n        \"odds1\": \"string\",\n        \"odds2\": \"string\",\n        \"odds3\": \"string\",\n        \"odds4\": \"string\",\n        \"odds5\": \"string\",\n        \"odds6\": \"string\",\n        \"modifyTime\": 4101,\n        \"detail\": {\n          \"id\": \"string\",\n          \"odds1\": \"string\",\n          \"odds2\": \"string\",\n          \"odds3\": \"string\",\n          \"modifyTime\": 5827,\n          \"type\": \"string\",\n          \"isEarly\": true\n        }\n      },\n      \"halfEurope\": {\n        \"companyID\": \"string\",\n        \"odds1\": \"string\",\n        \"odds2\": \"string\",\n        \"odds3\": \"string\",\n        \"odds4\": \"string\",\n        \"odds5\": \"string\",\n        \"odds6\": \"string\",\n        \"modifyTime\": 8369,\n        \"detail\": {\n          \"id\": \"string\",\n          \"odds1\": \"string\",\n          \"odds2\": \"string\",\n          \"odds3\": \"string\",\n          \"modifyTime\": 15,\n          \"isEarly\": false\n        }\n      }\n    },\n    {\n      \"list\": [\n        {\n          \"matchId\": \"string\",\n          \"companyId\": \"string\",\n          \"operateTime\": 9632\n        },\n        {\n          \"matchId\": \"string\",\n          \"companyId\": \"string\",\n          \"operateTime\": 5603\n        }\n      ],\n      \"handicap\": {\n        \"companyID\": \"string\",\n        \"num\": 1018,\n        \"odds1\": \"string\",\n        \"odds2\": \"string\",\n        \"odds3\": \"string\",\n        \"odds4\": \"string\",\n        \"odds5\": \"string\",\n        \"odds6\": \"string\",\n        \"modifyTime\": 978,\n        \"detail\": {\n          \"id\": \"string\",\n          \"odds1\": \"string\",\n          \"odds2\": \"string\",\n          \"odds3\": \"string\",\n          \"modifyTime\": 1577,\n          \"type\": \"string\",\n          \"isEarly\": true\n        }\n      },\n      \"overUnder\": {\n        \"companyID\": \"string\",\n        \"num\": 82,\n        \"odds1\": \"string\",\n        \"odds2\": \"string\",\n        \"odds3\": \"string\",\n        \"odds4\": \"string\",\n        \"odds5\": \"string\",\n        \"odds6\": \"string\",\n        \"modifyTime\": 6777,\n        \"detail\": {\n          \"id\": \"string\",\n          \"odds1\": \"string\",\n          \"odds2\": \"string\",\n          \"odds3\": \"string\",\n          \"modifyTime\": 1661,\n          \"type\": \"string\",\n          \"isEarly\": true\n        }\n      },\n      \"europe\": {\n        \"companyID\": \"string\",\n        \"odds1\": \"string\",\n        \"odds2\": \"string\",\n        \"odds3\": \"string\",\n        \"odds4\": \"string\",\n        \"odds5\": \"string\",\n        \"odds6\": \"string\",\n        \"modifyTime\": 7950,\n        \"detail\": {\n          \"id\": \"string\",\n          \"odds1\": \"string\",\n          \"odds2\": \"string\",\n          \"odds3\": \"string\",\n          \"modifyTime\": 5332,\n          \"isEarly\": false\n        }\n      },\n      \"halfHandicap\": {\n        \"companyID\": \"string\",\n        \"num\": 4953,\n        \"odds1\": \"string\",\n        \"odds2\": \"string\",\n        \"odds3\": \"string\",\n        \"odds4\": \"string\",\n        \"odds5\": \"string\",\n        \"odds6\": \"string\",\n        \"modifyTime\": 3117,\n        \"detail\": {\n          \"id\": \"string\",\n          \"odds1\": \"string\",\n          \"odds2\": \"string\",\n          \"odds3\": \"string\",\n          \"modifyTime\": 4655,\n          \"type\": \"string\",\n          \"isEarly\": true\n        }\n      },\n      \"halfOverUnder\": {\n        \"companyID\": \"string\",\n        \"num\": 2857,\n        \"odds1\": \"string\",\n        \"odds2\": \"string\",\n        \"odds3\": \"string\",\n        \"odds4\": \"string\",\n        \"odds5\": \"string\",\n        \"odds6\": \"string\",\n        \"modifyTime\": 1093,\n        \"detail\": {\n          \"id\": \"string\",\n          \"odds1\": \"string\",\n          \"odds2\": \"string\",\n          \"odds3\": \"string\",\n          \"modifyTime\": 2198,\n          \"type\": \"string\",\n          \"isEarly\": false\n        }\n      },\n      \"halfEurope\": {\n        \"companyID\": \"string\",\n        \"odds1\": \"string\",\n        \"odds2\": \"string\",\n        \"odds3\": \"string\",\n        \"odds4\": \"string\",\n        \"odds5\": \"string\",\n        \"odds6\": \"string\",\n        \"modifyTime\": 2267,\n        \"detail\": {\n          \"id\": \"string\",\n          \"odds1\": \"string\",\n          \"odds2\": \"string\",\n          \"odds3\": \"string\",\n          \"modifyTime\": 9736,\n          \"isEarly\": true\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.isportsapi.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3b4403e0-e375-4cba-a5cc-f9afc612a590",
+    "name": "iSports Football Odds (18 Agencies) Football Odds (18 Agencies) API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.\n\nAll operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).\n\nThis document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.\n\nContact Support:\n Name: iSports API",
+      "type": "text/plain"
+    }
+  }
+}

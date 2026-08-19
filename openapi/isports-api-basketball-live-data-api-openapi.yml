@@ -1,0 +1,777 @@
+openapi: 3.2.0
+info:
+  title: iSports Basketball Live Data API
+  version: '2026-08-09'
+  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.
+
+
+    All operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).
+
+
+    This document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.'
+  termsOfService: https://www.isportsapi.com/en/home/terms.html
+  contact:
+    name: iSports API
+    url: https://www.isportsapi.com/en/
+  x-derived-by: API Evangelist enrichment pipeline
+  x-derived-from: https://www.isportsapi.com/en/docs.html
+  x-derived-on: '2026-08-09'
+servers:
+- url: https://api.isportsapi.com
+  description: Primary API host
+- url: https://api2.isportsapi.com
+  description: Alternate host, documented for when the primary host is slow or unreachable
+security:
+- apiKeyQuery: []
+tags:
+- name: Basketball Live Data
+paths:
+  /sport/basketball/livescores/changes:
+    get:
+      operationId: getBasketballLivescoresChanges
+      summary: Livescores Changes
+      description: "• This API endpoint returns livescore changes for basketball matches updated in the last 15 seconds — only the fields that changed since the last update are meaningful. \n\n\n\n• You can use it with the <a href=\"/docs.html?id=19\" style=\"color:blue\">Livescore for today</a> endpoint to obtain full match information such as team names and league details."
+      tags:
+      - Basketball Live Data
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                          description: Unique ID of the match.
+                        status:
+                          type: integer
+                          description: "0: Not started \n 1: First quarter \n 2: Second quarter \n 3: Third quarter \n 4: Fourth quarter \n 5: First OT \n 6: Second OT \n 7: Third OT \n 50: Half-time \n -1: Finished \n -2: TBD \n -3: Interrupted \n -4: Cancelled \n -5: Postponed"
+                        quarterRemainTime:
+                          type: string
+                          description: Remaining time in the current quarter, e.g. 06:43.
+                        homeScore:
+                          type: integer
+                          description: Total score of the home team.
+                        awayScore:
+                          type: integer
+                          description: Total score of the away team.
+                        homeFirstQuarterScore:
+                          type: integer
+                          description: Score of the home team in the 1st quarter.
+                        awayFirstQuarterScore:
+                          type: integer
+                          description: Score of the away team in the 1st quarter.
+                        homeSecondQuarterScore:
+                          type: integer
+                          description: Score of the home team in the 2nd quarter.
+                        awaySecondQuarterScore:
+                          type: integer
+                          description: Score of the away team in the 2nd quarter.
+                        homeThirdQuarterScore:
+                          type: integer
+                          description: Score of the home team in the 3rd quarter.
+                        awayThirdQuarterScore:
+                          type: integer
+                          description: Score of the away team in the 3rd quarter.
+                        homeFourthQuarterScore:
+                          type: integer
+                          description: Score of the home team in the 4th quarter.
+                        awayFourthQuarterScore:
+                          type: integer
+                          description: Score of the away team in the 4th quarter.
+                        overTimeCount:
+                          type: integer
+                          description: Number of overtime periods played.
+                        homeFirstOverTimeScore:
+                          type: integer
+                          description: Score of the home team in the 1st overtime.
+                        awayFirstOverTimeScore:
+                          type: integer
+                          description: Score of the away team in the 1st overtime.
+                        homeSecondOverTimeScore:
+                          type: integer
+                          description: Score of the home team in the 2nd overtime.
+                        awaySecondOverTimeScore:
+                          type: integer
+                          description: Score of the away team in the 2nd overtime.
+                        homeThirdOverTimeScore:
+                          type: integer
+                          description: Score of the home team in the 3rd overtime.
+                        awayThirdOverTimeScore:
+                          type: integer
+                          description: Score of the away team in the 3rd overtime.
+                        hasStats:
+                          type: boolean
+                          description: "true: match stats data is available \n false: match stats data is not available"
+                        explain:
+                          type: string
+                          description: 'The latest live-text event description for the match, e.g. [Spurs] [SAS] Team Timeout: Regular.'
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=13
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=13
+      x-rate-limit: This interface is limited to 1 second/call;
+      x-recommended-call-frequency: 2~10 seconds/call
+      x-plan-products:
+      - Live Data
+      x-doc-modified: '2026-07-09'
+  /sport/basketball/livescores:
+    get:
+      operationId: getBasketballLivescores
+      summary: Livescores for Today
+      description: "• This API endpoint returns livescores for basketball matches on the current day (GMT+0 00:00–23:59). \n\n\n\n• You can use it with the <a href=\"/docs.html?id=13\" style=\"color:blue\">Livescores Changes</a> endpoint to track subsequent score and status updates."
+      tags:
+      - Basketball Live Data
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                          description: Unique ID of the match.
+                        leagueId:
+                          type: string
+                          description: Unique ID of the league or cup.
+                        leagueName:
+                          type: string
+                          description: Name of the league or cup, e.g. NBA.
+                        quarterCount:
+                          type: integer
+                          description: "2: match has 2 quarters \n 4: match has 4 quarters"
+                        matchTime:
+                          type: integer
+                          description: Match scheduled time (Unix timestamp, GMT+0).
+                        status:
+                          type: integer
+                          description: "0: Not started \n 1: First quarter \n 2: Second quarter \n 3: Third quarter \n 4: Fourth quarter \n 5: First OT \n 6: Second OT \n 7: Third OT \n 50: Half-time \n -1: Finished \n -2: TBD \n -3: Interrupted \n -4: Cancelled \n -5: Postponed"
+                        quarterRemainTime:
+                          type: string
+                          description: Remaining time in the current quarter, e.g. 06:43.
+                        homeId:
+                          type: string
+                          description: Unique ID of the home team.
+                        homeName:
+                          type: string
+                          description: Name of the home team.
+                        homeRank:
+                          type: integer
+                          description: "League ranking of the home team. \n\n Returns 0 if not ranked."
+                        awayId:
+                          type: string
+                          description: Unique ID of the away team.
+                        awayName:
+                          type: string
+                          description: Name of the away team.
+                        awayRank:
+                          type: integer
+                          description: "League ranking of the away team. \n\n Returns 0 if not ranked."
+                        homeScore:
+                          type: integer
+                          description: Total score of the home team.
+                        awayScore:
+                          type: integer
+                          description: Total score of the away team.
+                        homeFirstQuarterScore:
+                          type: integer
+                          description: Score of the home team in the 1st quarter.
+                        awayFirstQuarterScore:
+                          type: integer
+                          description: Score of the away team in the 1st quarter.
+                        homeSecondQuarterScore:
+                          type: integer
+                          description: Score of the home team in the 2nd quarter.
+                        awaySecondQuarterScore:
+                          type: integer
+                          description: Score of the away team in the 2nd quarter.
+                        homeThirdQuarterScore:
+                          type: integer
+                          description: Score of the home team in the 3rd quarter.
+                        awayThirdQuarterScore:
+                          type: integer
+                          description: Score of the away team in the 3rd quarter.
+                        homeFourthQuarterScore:
+                          type: integer
+                          description: Score of the home team in the 4th quarter.
+                        awayFourthQuarterScore:
+                          type: integer
+                          description: Score of the away team in the 4th quarter.
+                        overTimeCount:
+                          type: integer
+                          description: Number of overtime periods played.
+                        homeFirstOverTimeScore:
+                          type: integer
+                          description: Score of the home team in the 1st overtime.
+                        awayFirstOverTimeScore:
+                          type: integer
+                          description: Score of the away team in the 1st overtime.
+                        homeSecondOverTimeScore:
+                          type: integer
+                          description: Score of the home team in the 2nd overtime.
+                        awaySecondOverTimeScore:
+                          type: integer
+                          description: Score of the away team in the 2nd overtime.
+                        homeThirdOverTimeScore:
+                          type: integer
+                          description: Score of the home team in the 3rd overtime.
+                        awayThirdOverTimeScore:
+                          type: integer
+                          description: Score of the away team in the 3rd overtime.
+                        leagueSeason:
+                          type: string
+                          description: Season of the league, e.g. 26.
+                        matchType:
+                          type: integer
+                          description: "1: Regular season \n 2: Post season \n 3: Pre-season \n - 1: Unclassified"
+                        playoffsId:
+                          type: string
+                          description: ID of the playoff round. Only present for playoff matches.
+                        stageId:
+                          type: string
+                          description: ID of the cup stage. Only present for cup matches.
+                        hasStats:
+                          type: boolean
+                          description: "true: match stats data is available \n false: match stats data is not available"
+                        explain:
+                          type: string
+                          description: 'The latest live-text event description for the match, e.g. [Spurs] [SAS] Team Timeout: Regular.'
+                        roundType:
+                          type: string
+                          description: "Round description. \n\n For cups, e.g. Groups. \n For league playoffs, e.g. Western 1 Round."
+                        group:
+                          type: string
+                          description: Group name of the cup, e.g. A.
+                        neutral:
+                          type: boolean
+                          description: "true: match is played at a neutral venue \n false: match is not played at a neutral venue"
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=19
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=19
+      x-rate-limit: This interface is limited to 10 seconds/call;
+      x-recommended-call-frequency: 1 minute/call
+      x-plan-products:
+      - Live Data
+      x-doc-modified: '2026-07-09'
+  /sport/basketball/schedule:
+    get:
+      operationId: getBasketballSchedule
+      summary: Schedule & Results
+      description: "• This API endpoint returns schedule and result information for basketball matches from the past two months up to future fixtures, filtered by date or leagueId. \n\n\n\n• One of the following parameters is required: date, leagueId, or matchId — these three cannot be used together in the same request. The season parameter can only be used in combination with leagueId, to retrieve matches for a specific season; if omitted, the current season is returned by default.\n\n\n\n• You can use it with the <a href=\"/docs.html?id=34\" style=\"color:blue\">Match Modify Record\n</a> \nendpoint to keep locally stored match data in sync."
+      tags:
+      - Basketball Live Data
+      parameters:
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: "Match date, format yyyy-MM-dd, e.g. 2026-07-01. \n\n\n\nReturns matches scheduled for the specified date (GMT+0 00:00–23:59)."
+      - name: leagueId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: "Filter by a specific league or cup ID. \n\n\n\nReturns schedule data for the current season of the specified league or cup."
+      - name: season
+        in: query
+        required: false
+        schema:
+          type: string
+        description: "Used together with leagueId to retrieve matches for a specific season, e.g. 25-26. \n\n\n\nReturns the current season by default."
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter by a specific match ID.
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                          description: Unique ID of the match.
+                        leagueId:
+                          type: string
+                          description: Unique ID of the league or cup.
+                        leagueName:
+                          type: string
+                          description: Short name of the league or cup, e.g. NBA.
+                        quarterCount:
+                          type: integer
+                          description: "2: match has 2 quarters \n 4: match has 4 quarters"
+                        matchTime:
+                          type: integer
+                          description: Match scheduled time (Unix timestamp, GMT+0).
+                        status:
+                          type: integer
+                          description: "0: Not started \n 1: First quarter \n 2: Second quarter \n 3: Third quarter \n 4: Fourth quarter \n 5: First OT \n 6: Second OT \n 7: Third OT \n 50: Half-time \n -1: Finished \n -2: TBD \n -3: Interrupted \n -4: Cancelled \n -5: Postponed"
+                        quarterRemainTime:
+                          type: string
+                          description: Remaining time in the current quarter, e.g. 06:43.
+                        homeId:
+                          type: string
+                          description: Unique ID of the home team.
+                        homeName:
+                          type: string
+                          description: Name of the home team.
+                        homeRank:
+                          type: integer
+                          description: "League ranking of the home team. \n\n Returns 0 if not ranked."
+                        awayId:
+                          type: string
+                          description: Unique ID of the away team.
+                        awayName:
+                          type: string
+                          description: Name of the away team.
+                        awayRank:
+                          type: integer
+                          description: "League ranking of the away team. \n\n Returns 0 if not ranked."
+                        homeScore:
+                          type: integer
+                          description: Total score of the home team.
+                        awayScore:
+                          type: integer
+                          description: Total score of the away team.
+                        homeFirstQuarterScore:
+                          type: integer
+                          description: Score of the home team in the 1st quarter.
+                        awayFirstQuarterScore:
+                          type: integer
+                          description: Score of the away team in the 1st quarter.
+                        homeSecondQuarterScore:
+                          type: integer
+                          description: Score of the home team in the 2nd quarter.
+                        awaySecondQuarterScore:
+                          type: integer
+                          description: Score of the away team in the 2nd quarter.
+                        homeThirdQuarterScore:
+                          type: integer
+                          description: Score of the home team in the 3rd quarter.
+                        awayThirdQuarterScore:
+                          type: integer
+                          description: Score of the away team in the 3rd quarter.
+                        homeFourthQuarterScore:
+                          type: integer
+                          description: Score of the home team in the 4th quarter.
+                        awayFourthQuarterScore:
+                          type: integer
+                          description: Score of the away team in the 4th quarter.
+                        overTimeCount:
+                          type: integer
+                          description: Number of overtime periods played.
+                        homeFirstOverTimeScore:
+                          type: integer
+                          description: Score of the home team in the 1st overtime.
+                        awayFirstOverTimeScore:
+                          type: integer
+                          description: Score of the away team in the 1st overtime.
+                        homeSecondOverTimeScore:
+                          type: integer
+                          description: Score of the home team in the 2nd overtime.
+                        awaySecondOverTimeScore:
+                          type: integer
+                          description: Score of the away team in the 2nd overtime.
+                        homeThirdOverTimeScore:
+                          type: integer
+                          description: Score of the home team in the 3rd overtime.
+                        awayThirdOverTimeScore:
+                          type: integer
+                          description: Score of the away team in the 3rd overtime.
+                        leagueSeason:
+                          type: string
+                          description: Season of the league, e.g. 25-26.
+                        matchType:
+                          type: integer
+                          description: "1: Regular season \n 2: Post season \n 3: Pre-season \n - 1: Unclassified"
+                        playoffsId:
+                          type: string
+                          description: ID of the playoff round. Only present for playoff matches.
+                        stageId:
+                          type: string
+                          description: ID of the cup stage. Only present for cup matches.
+                        hasStats:
+                          type: boolean
+                          description: "true: match stats data is available \n false: match stats data is not available"
+                        explain:
+                          type: string
+                          description: 'The latest live-text event description for the match, e.g. [Spurs] [SAS] Team Timeout: Regular.'
+                        roundType:
+                          type: string
+                          description: "Round description. \n\n For cups, e.g. Groups. \n For league playoffs, e.g. Western 1 Round."
+                        group:
+                          type: string
+                          description: Group name of the cup, e.g. A.
+                        neutral:
+                          type: boolean
+                          description: "true: match is played at a neutral venue \n false: match is not played at a neutral venue"
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=26
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=26
+      x-rate-limit: This interface is limited to 60 seconds/call;
+      x-recommended-call-frequency: 12 hours/call
+      x-plan-products:
+      - Live Data
+      x-doc-modified: '2026-07-09'
+  /sport/basketball/lineups:
+    get:
+      operationId: getBasketballLineups
+      summary: Lineups
+      description: "• This API endpoint returns basketball match lineups and injury reports. By default, it returns the official confirmed starting lineup once it becomes available from the data source — availability depends on the data source and is not guaranteed for every match. \n\n\n\n• To retrieve predicted lineups instead, set isPreview=true, which returns predicted lineups, bench players, and injury reports for matches in the last 24 hours and the next 48 hours. \n\n\n\n• Supported League Coverage: <a href=\"https://drive.google.com/file/d/1a_Ts-ez5uS2tP-ICMILBKjnY-JicMabz/view?usp=sharing\" style=\"color:blue\">Click Here</a>"
+      tags:
+      - Basketball Live Data
+      parameters:
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter by a specific match ID. If omitted, returns lineups and injuries for all applicable matches.
+      - name: isPreview
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'true: returns predicted lineups (last 24 hours and next 48 hours)'
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                          description: Unique ID of the match.
+                        homeLineup:
+                          type: array
+                          description: Starting lineup of the home team.
+                          items:
+                            type: object
+                            properties:
+                              playerId:
+                                type: string
+                                description: Unique ID of the player.
+                              number:
+                                type: integer
+                                description: Jersey number.
+                              name:
+                                type: string
+                                description: Player name.
+                              position:
+                                type: string
+                                description: Player position.
+                        homeBackup:
+                          type: array
+                          description: Bench players of the home team. Same structure as homeLineup.
+                          items: {}
+                        awayLineup:
+                          type: array
+                          description: Starting lineup of the away team. Same structure as homeLineup.
+                          items: {}
+                        awayBackup:
+                          type: array
+                          description: Bench players of the away team. Same structure as homeLineup.
+                          items: {}
+                        homeInjury:
+                          type: array
+                          description: Injury report for the home team.
+                          items:
+                            type: object
+                            properties:
+                              playerId:
+                                type: string
+                                description: Unique ID of the player.
+                              name:
+                                type: string
+                                description: Player name.
+                              position:
+                                type: string
+                                description: Player position.
+                              date:
+                                type: string
+                                description: Date the injury was reported, format yyyy-MM-dd.
+                        awayInjury:
+                          type: array
+                          description: Injury report for the away team. Same structure as homeInjury.
+                          items: {}
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=35
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=35
+      x-rate-limit: This interface is limited to 60 seconds/call;
+      x-recommended-call-frequency: 12 hours/call
+      x-plan-products:
+      - Live Data
+      x-doc-modified: '2026-08-07'
+  /sport/basketball/transfer:
+    get:
+      operationId: getBasketballTransfer
+      summary: NBA Transfer
+      description: "• This API endpoint returns NBA player transfer records. \n\n\n\n• If the day parameter is omitted, returns transfer data within the past month. Use day=n to specify a custom range in days (maximum 400 days)."
+      tags:
+      - Basketball Live Data
+      parameters:
+      - name: day
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Number of days to look back from today, e.g. day=10 returns transfer data from the past 10 days. Maximum value is 400.
+
+
+
+
+          If omitted, returns transfer data within the past month.'
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        recordId:
+                          type: string
+                          description: Unique ID of this transfer record.
+                        playerId:
+                          type: string
+                          description: Unique ID of the player.
+                        transferTime:
+                          type: integer
+                          description: Time the transfer occurred (Unix timestamp, GMT+0).
+                        fromTeam:
+                          type: string
+                          description: Name of the team the player transferred from.
+                        fromTeamId:
+                          type: string
+                          description: Unique ID of the team the player transferred from.
+                        toTeam:
+                          type: string
+                          description: Name of the team the player transferred to.
+                        toTeamId:
+                          type: string
+                          description: Unique ID of the team the player transferred to.
+                        season:
+                          type: string
+                          description: Season of the transfer, e.g. 26-27.
+                        type:
+                          type: string
+                          description: "Type of transfer, returned as plain text. Includes 8 types: \n\nFree Transfer (free signing), Renew a Contract (contract extension), Draft, Trade, Suspend (suspension), Rescind a Contract (contract termination), 10-day contract, coach transfer."
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=76
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=76
+      x-rate-limit: This interface is limited to 300 seconds/call;
+      x-recommended-call-frequency: 1 day/call
+      x-plan-products:
+      - Live Data
+      x-doc-modified: '2026-07-09'
+  /sport/basketball/livetext/list:
+    get:
+      operationId: getBasketballLivetextList
+      summary: Match List of Live Text
+      description: "• This API endpoint returns the list of matches with live text coverage for today and the past 8 hours. Only NBA and WNBA matches are supported. \n\n\n\n• You can use it with the <a href=\"/docs.html?id=81\" style=\"color:blue\">Live Text</a> endpoint to retrieve match-by-match live text updates for each matchId returned here."
+      tags:
+      - Basketball Live Data
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                          description: Unique ID of the match.
+                        matchTime:
+                          type: integer
+                          description: Match scheduled time (Unix timestamp, GMT+0).
+                        leagueName:
+                          type: string
+                          description: Name of the league, e.g. Women's National Basketball Association.
+                        homeName:
+                          type: string
+                          description: Name of the home team.
+                        awayName:
+                          type: string
+                          description: Name of the away team.
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=80
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=80
+      x-rate-limit: This interface is limited to 60 seconds/call;
+      x-recommended-call-frequency: 12 hours/call
+      x-plan-products:
+      - Live Data
+      x-doc-modified: '2026-07-09'
+  /sport/basketball/livetext:
+    get:
+      operationId: getBasketballLivetext
+      summary: Live Text
+      description: "• This API endpoint returns live text content for a specified matchId. Only NBA and WNBA matches are supported.\n\n\n\n• If matchId is omitted, all live text content updated in the last 2 minutes across matches is returned. \n\n\n\n• You can use it with the <a href=\"/docs.html?id=80\" style=\"color:blue\">Match List of Live Text</a> endpoint to first obtain a list of available matchIds."
+      tags:
+      - Basketball Live Data
+      parameters:
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: "Returns live text content for the specified match. \n\n\n\nIf omitted, returns all live text content updated in the last 2 minutes across matches."
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        recordId:
+                          type: string
+                          description: Unique ID of this live text record.
+                        matchId:
+                          type: string
+                          description: Unique ID of the match.
+                        remainTime:
+                          type: string
+                          description: Remaining time in the current quarter, e.g. 10:00.
+                        teamKind:
+                          type: integer
+                          description: "1: Home team \n 2: Away team \n 3: Neutral — used for events that are not attributed to either team, e.g. quarter or game start/end."
+                        matchState:
+                          type: integer
+                          description: "0: Not started \n 1: First quarter \n 2: Second quarter \n 3: Third quarter \n 4: Fourth quarter \n 5: First OT \n 6: Second OT \n 7: Third OT \n 50: Half-time \n -1: Finished \n -2: TBD \n -3: Interrupted \n -4: Cancelled \n -5: Postponed"
+                        score:
+                          type: string
+                          description: Current score, e.g. 2-0.
+                        content:
+                          type: string
+                          description: Description of the live text event, e.g. Charlisse Leger-Walker makes 12-foot pullup jump shot (Diamond Miller assists).
+                        playerId1:
+                          type: string
+                          description: ID of the player primarily involved in this event (e.g. shooter, scorer). Returns empty if not applicable.
+                        playerId2:
+                          type: string
+                          description: ID of a secondary player involved in this event (e.g. assist provider). Returns empty if not applicable.
+                        playerId3:
+                          type: string
+                          description: ID of a third player involved in this event, if applicable. Returns empty if not applicable.
+                        refereeId:
+                          type: string
+                          description: ID of the referee involved in this event (e.g. foul call). Returns empty if not applicable.
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=81
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=81
+      x-rate-limit: This interface is limited to 3 seconds/call;
+      x-recommended-call-frequency: 10 seconds/call
+      x-plan-products:
+      - Live Data
+      x-doc-modified: '2026-08-03'
+components:
+  securitySchemes:
+    apiKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key
+      description: Personal API key issued from the iSports account settings page and passed on every request as the `api_key` query parameter.
+externalDocs:
+  description: iSports API documentation
+  url: https://www.isportsapi.com/en/docs.html

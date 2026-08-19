@@ -1,0 +1,202 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "iSports Football Profile API",
+    "version": "2026-08-09"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Football Profile",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Team Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/team",
+            "params": [
+              {
+                "name": "leagueId",
+                "value": "",
+                "type": "query",
+                "description": "League ID; references League table (note: not applicable for Cup IDs)."
+              },
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "query",
+                "description": "Team ID; references Team table."
+              },
+              {
+                "name": "day",
+                "value": "",
+                "type": "query",
+                "description": "Data modification window; \n\nreturns teams added or updated within the last N days, e.g. 1 or 2."
+              },
+              {
+                "name": "cmd",
+                "value": "",
+                "type": "query",
+                "description": "Extended data flag; set to more to include team introductions and honors."
+              }
+            ]
+          },
+          "docs": "• This API endpoint returns detailed identity and background information for football teams.\n\n\n\n• It provides metadata such as founding dates, home venues, coaching staff, and official website links.\n\n\n\n• Use it to build comprehensive team profile pages or to display team logos and details in match-related interfaces."
+        },
+        {
+          "info": {
+            "name": "Player Profile / Teamlist with Player Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/player",
+            "params": [
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "query",
+                "description": "Get player data for a specified team.　Supports up to 50 IDs."
+              },
+              {
+                "name": "playerId",
+                "value": "",
+                "type": "query",
+                "description": "Get specified player data."
+              },
+              {
+                "name": "day",
+                "value": "",
+                "type": "query",
+                "description": "Data modification window;\n\nreturns players updated within the last N days."
+              },
+              {
+                "name": "cmd",
+                "value": "",
+                "type": "query",
+                "description": "Extended data flag; \n\nset to more to include player honors."
+              }
+            ]
+          },
+          "docs": "**Player Profile** (teamId=82)\n\n• This API endpoint returns comprehensive profile and identity data for football players, supporting records for both club and national team associations.\n\n\n\n• Requests require at least one parameter from teamId, day, or playerId (these three parameters are mutually exclusive and cannot be used simultaneously).\n\n\n\n• Use it after calling the <a href=\"https://www.isportsapi.com/en/docs.html?id=246\" style=\"color:blue\">Teamlist with Player Profile</a> endpoint to obta"
+        },
+        {
+          "info": {
+            "name": "League & Cup Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/league",
+            "params": [
+              {
+                "name": "leagueId",
+                "value": "",
+                "type": "query",
+                "description": "Filter results to a specific league or cup by ID. If omitted, returns all."
+              },
+              {
+                "name": "cmd",
+                "value": "",
+                "type": "query",
+                "description": "cmd=rule;\n\n Pass rule to retrieve the competition format description. Omitted if no data is available."
+              },
+              {
+                "name": "day",
+                "value": "",
+                "type": "query",
+                "description": "Returns leagues and cups modified within the specified number of days (e.g., day=50)."
+              }
+            ]
+          },
+          "docs": "• This API endpoint returns profile data for leagues and cups, including name, logo, current season, and competition structure. By default, returns all available leagues and cups.\n\n\n\n• Use the leagueId parameter to retrieve a specific competition, or day to fetch recently modified records."
+        },
+        {
+          "info": {
+            "name": "Subleague Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/league/sub"
+          },
+          "docs": "• This API endpoint returns the configuration and structural data for different stages or divisions (sub-leagues) within a football league.\n\n\n\n• It provides detailed information such as round counts, historical season ranges, and whether the stage includes standing data.\n\n\n\n• Use it alongside the League & Cup Profile endpoint to construct a complete hierarchical view of league competitions."
+        },
+        {
+          "info": {
+            "name": "Referee Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/referee"
+          },
+          "docs": "• This API endpoint returns referee identity information and their historical performance statistics for specific matches.\n\n\n\n• It covers matches scheduled from the past 24 hours into the future, providing details on referee roles and historical home/away team outcomes under their officiating.\n\n\n\n• Use it to analyze the potential impact of match officials on game results based on their card-issuing averages and win percentages."
+        },
+        {
+          "info": {
+            "name": "Cup Stage Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/league/stage"
+          },
+          "docs": "• This API endpoint returns the structural data for various competition stages of a cup, including qualifying rounds, group stages, and knockout phases.\n\n\n\n• It provides configuration details such as group counts, qualification rules (lineup counts), and stage progression order for a specific season.\n\n\n\n• Use it alongside the League & Cup Profile endpoint to manage and display complex multi-stage tournament brackets."
+        },
+        {
+          "info": {
+            "name": "Team Profile for Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/team/search",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Team name; supports fuzzy search (e.g. Barcelona)."
+              }
+            ]
+          },
+          "docs": "• This API endpoint returns team profile information based on a team name search.\n\n\n\n• It supports fuzzy matching, allowing users to find specific clubs or national teams even with partial names.\n\n\n\n• Use it as a search entry point to retrieve unique team IDs, which can then be used with the Team Profile endpoint for exhaustive data."
+        },
+        {
+          "info": {
+            "name": "Player Profile for Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/player/search",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Get the data of the specified player name, supporting fuzzy search."
+              }
+            ]
+          },
+          "docs": "• This API endpoint returns detailed player profile information based on a name-based search.\n\n\n\n• It supports fuzzy matching and returns multiple records if a player is associated with different teams (e.g., both a club and a national team).\n\n\n\n• Use it to retrieve unique recordId or playerId values when the team context is unknown, or to build search suggestions in player-related interfaces."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

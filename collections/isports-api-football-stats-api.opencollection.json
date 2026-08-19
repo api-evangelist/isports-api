@@ -1,0 +1,204 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "iSports Football Stats API",
+    "version": "2026-08-09"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Football Stats",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List of Player Stats (Match)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/playerstats/match/list"
+          },
+          "docs": "• This API endpoint returns match list which contains players' technical statistics within one day (24H). You can use it with the <a href=\"/docs.html?id=40\" style=\"color:blue\">Player Stats (Match)</a> endpoint.\n\n\n\n• Coverage is limited to selected top leagues. \n\n\n\n• By using endpoints <a href=\"/docs.html?id=41\" style=\"color:blue\">Schedule & Results (Basic)\n</a> and <a href=\"/docs.html?id=33\" style=\"color:blue\">Match Modify Record</a>, you can get basic information of matches."
+        },
+        {
+          "info": {
+            "name": "League Standing (Get Subleague)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/standing/league/getsub",
+            "params": [
+              {
+                "name": "leagueId",
+                "value": "",
+                "type": "query",
+                "description": "League ID to retrieve sub-leagues and stages for."
+              }
+            ]
+          },
+          "docs": "• This API endpoint returns a list of sub-leagues and stages for a specified league. Use the returned subLeagueId with the League Standing endpoint to retrieve standings for each stage.\n\n\n\n• Sub-leagues are used to differentiate divisions or multiple stages within a league (e.g., group stage, play-off). Use the League & Cup Profile endpoint to get full profile information for each league."
+        },
+        {
+          "info": {
+            "name": "Top Scorer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/topscorer",
+            "params": [
+              {
+                "name": "leagueId",
+                "value": "",
+                "type": "query",
+                "description": "League or cup ID to retrieve top scorer data for."
+              },
+              {
+                "name": "season",
+                "value": "",
+                "type": "query",
+                "description": "Season to retrieve data for (e.g., 2025, 2025-2026).\n\n\n\nMust be used together with leagueId. If omitted, returns current season data."
+              }
+            ]
+          },
+          "docs": "• This API endpoint returns top scorer statistics for a specified league or cup, including goals broken down by home, away, and penalty. \n\n\n\n• Coverage is limited to selected major leagues and cups.\n\n\n\n• By using endpoint <a href=\"/docs.html?id=42\" style=\"color:blue\">League & Cup Profile (Basic)\n</a>, you can get basic information of leagues and cups."
+        },
+        {
+          "info": {
+            "name": "Player Stats (Match)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/playerstats/match",
+            "params": [
+              {
+                "name": "matchId",
+                "value": "",
+                "type": "query",
+                "description": "for detailed statistical data specified match;\n\nsupport to check back the matches within a week."
+              }
+            ]
+          },
+          "docs": "• This API endpoint returns players' technical statistics of specified matchId. You can use it with the <a href=\"/docs.html?id=37\" style=\"color:blue\">List of Player Stats (Match)</a> endpoint.\n\n\n\n• Currently only some top leagues are supported.\n\n\n\n• support to check back the matches within a week."
+        },
+        {
+          "info": {
+            "name": "League Standing",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/standing/league",
+            "params": [
+              {
+                "name": "leagueId",
+                "value": "",
+                "type": "query",
+                "description": "League ID to retrieve standings for. \n\n\n\nIf the league has multiple stages or sub-leagues, standings are differentiated by sub-league. \n\n\n\nUse subLeagueId to filter to a specific stage."
+              },
+              {
+                "name": "subLeagueId",
+                "value": "",
+                "type": "query",
+                "description": "Sub-league or stage ID. \n\n\n\nIf omitted, returns the standings of the first sub-league in the subLeagueInfos list by default (e.g., leagueId=1122&subLeagueId=1122)."
+              }
+            ]
+          },
+          "docs": "• This API endpoint returns league standings for a specified league, including total, home, away, and first-half breakdowns.\n\n\n\n• Use it with the League Standing (Get Subleague) endpoint to get available subLeagueId values when a league has multiple stages or divisions.\n\n\n\n• Without parameters, returns all leagues and cups with standings updated in the past 24 hours. Use the League & Cup Profile endpoint to get basic league information."
+        },
+        {
+          "info": {
+            "name": "Cup Standing",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/standing/cup",
+            "params": [
+              {
+                "name": "leagueId",
+                "value": "",
+                "type": "query",
+                "description": "Cup ID to retrieve group stage standings for."
+              }
+            ]
+          },
+          "docs": "• This API endpoint returns group stage standings for a specified cup competition, organized by round and group. \n\n\n\n• Without parameter, returns all leagues and cups with standings updated in the past 24 hours. \n\n\n\n• Use the League & Cup Profile endpoint to get basic information for each cup."
+        },
+        {
+          "info": {
+            "name": "FIFA Ranking",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/fifaranking"
+          },
+          "docs": "• This API endpoint returns FIFA rankings for men's national teams, women's national teams, and club teams. \n\n\n\n• Rankings are updated monthly."
+        },
+        {
+          "info": {
+            "name": "List of Player Stats (League & Cup)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/playerstats/league/list"
+          },
+          "docs": "• This API endpoint returns league list which contains players' seasonal technical statistics. You can use it with <a href=\"/docs.html?id=51\" style=\"color:blue\">Player Stats (League&Cup)</a> endpoint.\n\n\n\n• By using endpoint <a href=\"/docs.html?id=42\" style=\"color:blue\">League & Cup Profile (Basic)\n</a>, you can get basic information of leagues and cups."
+        },
+        {
+          "info": {
+            "name": "Player Stats (League & Cup)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/playerstats/league",
+            "params": [
+              {
+                "name": "leagueId",
+                "value": "",
+                "type": "query",
+                "description": "League or cup ID to retrieve player statistics for."
+              }
+            ]
+          },
+          "docs": "• This API endpoint returns players' seasonal technical statistics of specified league or cup id. You can use it with <a href=\"/docs.html?id=49\" style=\"color:blue\">List of Player Stats (League&Cup)</a> endpoint.\n\n\n\n• Data is split by home and away matches — aggregate both to get full-season totals."
+        },
+        {
+          "info": {
+            "name": "Matches Analysis",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/football/analysis",
+            "params": [
+              {
+                "name": "matchId",
+                "value": "",
+                "type": "query",
+                "description": "Match ID to retrieve analysis for."
+              }
+            ]
+          },
+          "docs": "• This API endpoint returns match analysis data for the past 24 hours and the next 7 days, including head-to-head history, recent form, future schedule, odds statistics, goals distribution, and half-time/full-time results.\n\n\n\n• Data is cached for 24 hours — no need for frequent polling. Use matchId to retrieve analysis for a specific match. \n\n\n\n• Data presentation：https://live9.nowgoal26.com/match/h2h-2591211"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

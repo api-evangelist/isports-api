@@ -1,0 +1,701 @@
+{
+  "item": [
+    {
+      "id": "78234f17-ab7a-4e15-a674-fc30afdb2516",
+      "name": "Basketball Profile",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fd2b1269-0c84-4e39-85e4-8b9658af6b8c",
+          "name": "Team Profile",
+          "request": {
+            "name": "Team Profile",
+            "description": {
+              "content": "• This API endpoint returns basketball team profile information. Filter by leagueId or teamId; if both are omitted, returns information for all teams. \n\n\n\n• Note that detailed fields such as website, conference, division, city, venue, capacity, joinYear, and coach may return empty or 0 for teams in lower-tier leagues where such information is not tracked.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "basketball",
+                "team"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "leagueId",
+                  "value": "<string>",
+                  "description": "Returns team information for all teams under the specified leagueId."
+                },
+                {
+                  "disabled": false,
+                  "key": "teamId",
+                  "value": "<string>",
+                  "description": "Returns team information for the specified teamId."
+                },
+                {
+                  "disabled": false,
+                  "key": "day",
+                  "value": "<string>",
+                  "description": "Returns team data that has been added or modified within the specified number of days, e.g. day=1 or day=2."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4ab44d4f-3ac3-4212-bacd-1fd2da3ff668",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "basketball",
+                    "team"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "leagueId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "teamId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "day",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9522,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"teamId\": \"string\",\n      \"leagueId\": \"string\",\n      \"name\": \"string\",\n      \"shortName\": \"string\",\n      \"logo\": \"string\",\n      \"website\": \"string\",\n      \"conference\": \"string\",\n      \"division\": \"string\",\n      \"city\": \"string\",\n      \"venue\": \"string\",\n      \"capacity\": 9738,\n      \"joinYear\": 7656,\n      \"championCount\": 7100,\n      \"coach\": \"string\"\n    },\n    {\n      \"teamId\": \"string\",\n      \"leagueId\": \"string\",\n      \"name\": \"string\",\n      \"shortName\": \"string\",\n      \"logo\": \"string\",\n      \"website\": \"string\",\n      \"conference\": \"string\",\n      \"division\": \"string\",\n      \"city\": \"string\",\n      \"venue\": \"string\",\n      \"capacity\": 6036,\n      \"joinYear\": 1803,\n      \"championCount\": 8588,\n      \"coach\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d4aeb2a9-e951-4315-b132-a788a94b2a4e",
+          "name": "Player Profile",
+          "request": {
+            "name": "Player Profile",
+            "description": {
+              "content": "• This API endpoint returns basketball player profile information. All players are returned by default.\n\n\n\n• Note: The request must include the parameter cmd=new, e.g. http://api.isportsapi.com/sport/basketball/player?api_key=<YOUR_API_KEY>&cmd=new.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "basketball",
+                "player"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cmd",
+                  "value": "<string>",
+                  "description": "(Required) Fixed value new. Required for this endpoint to return data correctly."
+                },
+                {
+                  "disabled": false,
+                  "key": "day",
+                  "value": "<string>",
+                  "description": "Returns player data that has been added or modified within the specified number of days, e.g. day=1 or day=2."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b3c101ac-8dd1-4b35-a3e0-3f325b8a60e3",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "basketball",
+                    "player"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cmd",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "day",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 654,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"playerId\": \"string\",\n      \"number\": 9507,\n      \"name\": \"string\",\n      \"teamId\": \"string\",\n      \"place\": \"string\",\n      \"birthday\": 2660,\n      \"height\": 3022,\n      \"weight\": 2082,\n      \"photo\": \"string\",\n      \"nbaAge\": 2054,\n      \"salary\": \"string\",\n      \"country\": \"string\",\n      \"isNational\": false\n    },\n    {\n      \"playerId\": \"string\",\n      \"number\": 2200,\n      \"name\": \"string\",\n      \"teamId\": \"string\",\n      \"place\": \"string\",\n      \"birthday\": 7329,\n      \"height\": 5431,\n      \"weight\": 8656,\n      \"photo\": \"string\",\n      \"nbaAge\": 6063,\n      \"salary\": \"string\",\n      \"country\": \"string\",\n      \"isNational\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e856ffb5-1b89-4537-9447-a67f8cfb2d6d",
+          "name": "Cup Stage Profile",
+          "request": {
+            "name": "Cup Stage Profile",
+            "description": {
+              "content": "• This API endpoint returns stage type information for basketball cups, such as qualifying rounds, group stages, and regular season. \n\n\n\n• The recordId returned by this endpoint corresponds to the stageId field in the Schedule & Results endpoint, allowing you to match a specific match to its cup stage.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "basketball",
+                "cupqualify"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "513cbb52-1174-4ccd-8597-b522cadf5971",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "basketball",
+                    "cupqualify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7221,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"recordId\": \"string\",\n      \"leagueId\": \"string\",\n      \"name\": \"string\",\n      \"season\": \"string\",\n      \"groupCount\": 1787,\n      \"roundCount\": 256,\n      \"sortNumber\": 2327,\n      \"currentGroup\": true,\n      \"group\": false\n    },\n    {\n      \"recordId\": \"string\",\n      \"leagueId\": \"string\",\n      \"name\": \"string\",\n      \"season\": \"string\",\n      \"groupCount\": 9660,\n      \"roundCount\": 102,\n      \"sortNumber\": 974,\n      \"currentGroup\": true,\n      \"group\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a42fc015-1112-4f76-917c-eb5e70d01d81",
+          "name": "Playoffs Stage Profile",
+          "request": {
+            "name": "Playoffs Stage Profile",
+            "description": {
+              "content": "• This API endpoint returns playoff stage type information for basketball leagues, such as Quarter Final, Semi Final, and Final. \n\n\n\n• The recordId returned by this endpoint corresponds to the playoffsId field in the Schedule & Results endpoint, allowing you to match a specific match to its playoff stage.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "basketball",
+                "playoffs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f9605425-8375-4a9f-a79f-ac61af532013",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "basketball",
+                    "playoffs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2901,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"recordId\": \"string\",\n      \"leagueId\": \"string\",\n      \"name\": \"string\",\n      \"season\": \"string\",\n      \"groupCount\": 365,\n      \"roundCount\": 8678,\n      \"sortNumber\": 8683,\n      \"currentGroup\": true,\n      \"group\": false\n    },\n    {\n      \"recordId\": \"string\",\n      \"leagueId\": \"string\",\n      \"name\": \"string\",\n      \"season\": \"string\",\n      \"groupCount\": 3017,\n      \"roundCount\": 3779,\n      \"sortNumber\": 2219,\n      \"currentGroup\": false,\n      \"group\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7d34ead8-77b3-45b5-ac55-3352b1e03603",
+          "name": "League & Cup Profile",
+          "request": {
+            "name": "League & Cup Profile",
+            "description": {
+              "content": "This API endpoint returns complete profile information for basketball leagues and cups, including league rules, ranking format, and season details. <a target=\"_blank\" href=\"http://api.isportsapi.com/league.aspx?sport=basketball\" style=\"color:blue\">Click here</a> to view all leagues & cups.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "basketball",
+                "league"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "leagueId",
+                  "value": "<string>",
+                  "description": "Returns profile information for the specified leagueId. If omitted, returns profile information for all leagues and cups."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "081fa594-ccb9-48e8-a44e-d5961e9f3438",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "basketball",
+                    "league"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "leagueId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9114,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"leagueId\": \"string\",\n      \"color\": \"string\",\n      \"leagueName\": \"string\",\n      \"leagueShortName\": \"string\",\n      \"leagueType\": \"string\",\n      \"currentMatchSeason\": \"string\",\n      \"countryId\": \"string\",\n      \"country\": \"string\",\n      \"leagueKind\": \"string\",\n      \"logo\": \"string\",\n      \"partTime\": \"string\",\n      \"rule\": \"string\"\n    },\n    {\n      \"leagueId\": \"string\",\n      \"color\": \"string\",\n      \"leagueName\": \"string\",\n      \"leagueShortName\": \"string\",\n      \"leagueType\": \"string\",\n      \"currentMatchSeason\": \"string\",\n      \"countryId\": \"string\",\n      \"country\": \"string\",\n      \"leagueKind\": \"string\",\n      \"logo\": \"string\",\n      \"partTime\": \"string\",\n      \"rule\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8e152d26-3e9a-4b22-b15e-907b96798d73",
+          "name": "Team Profile for Search",
+          "request": {
+            "name": "Team Profile for Search",
+            "description": {
+              "content": "• This API endpoint supports searching for basketball team information by team name, with fuzzy matching supported. \n\n\n\n• Note that detailed fields such as website, conference, division, city, venue, capacity, joinYear, and coach may return empty or 0 for teams in lower-tier leagues where such information is not tracked.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "basketball",
+                "team",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) Team name to search for. Supports fuzzy search."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "037ece0d-878f-45c9-8f40-80d115eaecf3",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "basketball",
+                    "team",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9522,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"teamId\": \"string\",\n      \"leagueId\": \"string\",\n      \"name\": \"string\",\n      \"shortName\": \"string\",\n      \"logo\": \"string\",\n      \"website\": \"string\",\n      \"conference\": \"string\",\n      \"division\": \"string\",\n      \"city\": \"string\",\n      \"venue\": \"string\",\n      \"capacity\": 9738,\n      \"joinYear\": 7656,\n      \"championCount\": 7100,\n      \"coach\": \"string\"\n    },\n    {\n      \"teamId\": \"string\",\n      \"leagueId\": \"string\",\n      \"name\": \"string\",\n      \"shortName\": \"string\",\n      \"logo\": \"string\",\n      \"website\": \"string\",\n      \"conference\": \"string\",\n      \"division\": \"string\",\n      \"city\": \"string\",\n      \"venue\": \"string\",\n      \"capacity\": 6036,\n      \"joinYear\": 1803,\n      \"championCount\": 8588,\n      \"coach\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "92a8d362-581c-4cfd-be5b-c649a3d8188a",
+          "name": "Player Profile for Search",
+          "request": {
+            "name": "Player Profile for Search",
+            "description": {
+              "content": "• This API endpoint supports searching for basketball player information by player name, with fuzzy matching supported.\n\n\n\n• Note: The request must include the parameter cmd=new, e.g. http://api.isportsapi.com/sport/basketball/player/search?api_key=<YOUR_API_KEY>&cmd=new&name=James.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "basketball",
+                "player",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cmd",
+                  "value": "<string>",
+                  "description": "(Required) Fixed value new. Required for this endpoint to return data correctly."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) Player name to search for. Supports fuzzy search."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e581131e-f2d3-4494-a773-2cc51f86d4fe",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "basketball",
+                    "player",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cmd",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1635,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"playerId\": \"string\",\n      \"number\": 2279,\n      \"name\": \"string\",\n      \"teamId\": \"string\",\n      \"place\": \"string\",\n      \"birthday\": 7565,\n      \"height\": 8854,\n      \"weight\": 7209,\n      \"photo\": \"string\",\n      \"nbaAge\": 5220,\n      \"salary\": \"string\",\n      \"country\": \"string\",\n      \"isNational\": false\n    },\n    {\n      \"playerId\": \"string\",\n      \"number\": 6772,\n      \"name\": \"string\",\n      \"teamId\": \"string\",\n      \"place\": \"string\",\n      \"birthday\": 7539,\n      \"height\": 2701,\n      \"weight\": 5201,\n      \"photo\": \"string\",\n      \"nbaAge\": 5230,\n      \"salary\": \"string\",\n      \"country\": \"string\",\n      \"isNational\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.isportsapi.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "751b8ad0-0b97-46eb-b472-5abc108214fa",
+    "name": "iSports Basketball Profile API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.\n\nAll operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).\n\nThis document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.\n\nContact Support:\n Name: iSports API",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "iSports Basketball Live animation API",
+    "version": "2026-08-09"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Basketball Live animation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Schedule & Results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.isportsapi.com/sport/basketball/liveanimation/schedule"
+          },
+          "docs": "This API is used to get the results of live basketball animation matches; \nThe return schedule time range is the past 4 hours and the next 24 hours."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

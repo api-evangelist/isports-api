@@ -1,0 +1,2551 @@
+openapi: 3.2.0
+info:
+  title: iSports Football Odds (18 Agencies) Football Odds (18 Agencies) API
+  version: '2026-08-09'
+  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.
+
+
+    All operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).
+
+
+    This document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.'
+  termsOfService: https://www.isportsapi.com/en/home/terms.html
+  contact:
+    name: iSports API
+    url: https://www.isportsapi.com/en/
+  x-derived-by: API Evangelist enrichment pipeline
+  x-derived-from: https://www.isportsapi.com/en/docs.html
+  x-derived-on: '2026-08-09'
+servers:
+- url: https://api.isportsapi.com
+  description: Primary API host
+- url: https://api2.isportsapi.com
+  description: Alternate host, documented for when the primary host is slow or unreachable
+security:
+- apiKeyQuery: []
+tags:
+- name: Football Odds (18 Agencies)
+paths:
+  /sport/football/odds/main:
+    get:
+      operationId: getFootballOddsMain
+      summary: Pre-match and In-play Odds (Main)
+      description: "• This API endpoint returns pre-match and in-play odds for major markets, including Asian Handicap, 1X2, and over/under — with both full-match and first-half breakdowns.\n\n\n\n• Returns matches with odds available for the next 14 days, covering both pre-match and in-play. Use it alongside the Live Odds Changes (Main) endpoint for real-time updates, and Schedule & Results or Match Modify Record to get basic match information.\n\n\n\n• Handicap and over/under line format: Lines are multiples of 0.25. \n\n0 = 0 goals, 0.25 = 0/0.5, 0.5 = 0.5, 0.75 = 0.5/1, 1 = 1 goal, and so on. A positive value means the home team gives goals; a negative value means the away team gives goals.\n\n\n\n• The company ID corresponds to the company:\n\n1: Macauslot, 3: Crown, 4: Ladbrokes, 7: SNAI, 8: Bet365, 9: William Hill, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:Bwin, 50:1xbet \n\n\n\n• Odds format: All odds values are returned in Hong Kong Odds format. \n\nTo convert to other formats: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85); Malay Odds = HK if HK ≤ 1, or −(1 ÷ HK) if HK > 1 (e.g., 0.85 → 0.85, 1.5 → −0.67); Indonesian Odds = HK if HK ≥ 1, or −(1 ÷ HK) if HK < 1 (e.g., 0.85 → −1.18, 1.5 → 1.5); American Odds = HK × 100 if HK ≥ 1, or −(100 ÷ HK) if HK < 1 (e.g., 0.85 → −118, 1.5 → +150).\n\n\n\n• close field: Only supported by selected bookmakers: Macauslot (1), Crown (3), Bet365 (8), Easybets (12), Mansion88 (17), 10BET (22), 12bet (24), Sbobet (31), Wewbet (35), 18bet (42)."
+      tags:
+      - Football Odds (18 Agencies)
+      parameters:
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific matches. Separate multiple IDs with "," (e.g., matchId=322964610,322964611). Maximum 100 match IDs per request.
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific bookmakers. Separate multiple IDs with "," (e.g., companyId=3,8).
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        handicap:
+                          type: object
+                          description: Asian Handicap odds. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHandicap:
+                              type: string
+                              description: "Opening handicap line. \n\n Positive = home team gives goals (e.g., 1 = home −1).\n Negative = away team gives goals (e.g., -1 = home +1). Quarter lines as decimals (e.g., 1.25 = 1/1.5)."
+                            initialHome:
+                              type: string
+                              description: Opening Asian Handicap odds — home side (Hong Kong Odds)
+                            initialAway:
+                              type: string
+                              description: Opening Asian Handicap odds — away side (Hong Kong Odds)
+                            instantHandicap:
+                              type: string
+                              description: Current handicap line. Same format as initialHandicap.
+                            instantHome:
+                              type: string
+                              description: Current Asian Handicap odds — home side (Hong Kong Odds)
+                            instantAway:
+                              type: string
+                              description: Current Asian Handicap odds — away side (Hong Kong Odds)
+                            maintenance:
+                              type: boolean
+                              description: "true: Official data is under maintenance or experiencing an anomaly — data updates are temporarily paused \n false: Normal"
+                            inPlay:
+                              type: boolean
+                              description: "true: In-play odds available \n false: Pre-match only"
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                            close:
+                              type: boolean
+                              description: "true: Betting is temporarily suspended or in-play has stopped \n false: Betting is open."
+                            Odds Type:
+                              type: string
+                              description: "Odds stage\n 0: Unable to determine\n 1: Early odds \n 2: Pre-match closing odds (after early odds, before kick-off) \n 3: In-play odds"
+                        europeOdds:
+                          type: object
+                          description: 1X2 odds. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHome:
+                              type: string
+                              description: Opening 1X2 odds — home win (Hong Kong Odds)
+                            initialDraw:
+                              type: string
+                              description: Opening 1X2 odds — draw (Hong Kong Odds)
+                            initialAway:
+                              type: string
+                              description: Opening 1X2 odds — away win (Hong Kong Odds)
+                            instantHome:
+                              type: string
+                              description: Current 1X2 odds — home win (Hong Kong Odds)
+                            instantDraw:
+                              type: string
+                              description: Current 1X2 odds — draw (Hong Kong Odds)
+                            instantAway:
+                              type: string
+                              description: Current 1X2 odds — away win (Hong Kong Odds)
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                            close:
+                              type: boolean
+                              description: "true: Betting is temporarily suspended or in-play has stopped \n false: Betting is open."
+                            Odds Type:
+                              type: string
+                              description: "Odds stage\n 0: Unable to determine\n 1: Early odds \n 2: Pre-match closing odds (after early odds, before kick-off) \n 3: In-play odds"
+                        overUnder:
+                          type: object
+                          description: Over/under odds. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHandicap:
+                              type: string
+                              description: "Opening over/under line. \n\n Positive integer = exact goal total (e.g., 1 = 1 goal). Quarter lines as decimals (e.g., 1.25 = 1/1.5)."
+                            initialOver:
+                              type: string
+                              description: Opening over odds (Hong Kong Odds)
+                            initialUnder:
+                              type: string
+                              description: Opening under odds (Hong Kong Odds)
+                            instantHandicap:
+                              type: string
+                              description: Current over/under line. Same format as initialHandicap.
+                            instantOver:
+                              type: string
+                              description: Current over odds (Hong Kong Odds)
+                            instantUnder:
+                              type: string
+                              description: Current under odds (Hong Kong Odds)
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                            close:
+                              type: boolean
+                              description: "true: Betting is temporarily suspended or in-play has stopped \n false: Betting is open."
+                            Odds Type:
+                              type: string
+                              description: "Odds stage\n 0: Unable to determine\n 1: Early odds \n 2: Pre-match closing odds (after early odds, before kick-off) \n 3: In-play odds"
+                        handicapHalf:
+                          type: object
+                          description: First-half Asian Handicap odds. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHandicap:
+                              type: string
+                              description: Opening first-half handicap line. Same format as handicap initialHandicap.
+                            initialHome:
+                              type: string
+                              description: Opening first-half Asian Handicap odds — home side (Hong Kong Odds)
+                            initialAway:
+                              type: string
+                              description: Opening first-half Asian Handicap odds — away side (Hong Kong Odds)
+                            instantHandicap:
+                              type: string
+                              description: Current first-half handicap line. Same format as initialHandicap.
+                            instantHome:
+                              type: string
+                              description: Current first-half Asian Handicap odds — home side (Hong Kong Odds)
+                            instantAway:
+                              type: string
+                              description: Current first-half Asian Handicap odds — away side (Hong Kong Odds)
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                            Odds Type:
+                              type: string
+                              description: "Odds stage\n 0: Unable to determine\n 1: Early odds \n 2: Pre-match closing odds (after early odds, before kick-off) \n 3: In-play odds"
+                        overUnderHalf:
+                          type: object
+                          description: First-half over/under odds. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHandicap:
+                              type: string
+                              description: Opening first-half over/under line. Same format as overUnder initialHandicap.
+                            initialOver:
+                              type: string
+                              description: Opening first-half over odds (Hong Kong Odds)
+                            initialUnder:
+                              type: string
+                              description: Opening first-half under odds (Hong Kong Odds)
+                            instantHandicap:
+                              type: string
+                              description: Current first-half over/under line. Same format as initialHandicap.
+                            instantOver:
+                              type: string
+                              description: Current first-half over odds (Hong Kong Odds)
+                            instantUnder:
+                              type: string
+                              description: Current first-half under odds (Hong Kong Odds)
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                            Odds Type:
+                              type: string
+                              description: "Odds stage\n 0: Unable to determine\n 1: Early odds \n 2: Pre-match closing odds (after early odds, before kick-off) \n 3: In-play odds"
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=24
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=24
+      x-rate-limit: This interface is limited to 10 seconds/call;
+      x-recommended-call-frequency: 1 minute/call
+      x-plan-products:
+      - Odds
+      - Odds Pro
+      x-doc-modified: '2026-06-29'
+  /sport/football/odds/main/changes:
+    get:
+      operationId: getFootballOddsMainChanges
+      summary: Live Odds Changes (Main)
+      description: '• This API endpoint returns real-time odds changes for major market types (Handicap, Europe Odds, and Over/Under) that occurred within the last 20 seconds.
+
+
+
+
+        • Data is delivered incrementally in a high-efficiency format, using comma-separated strings within arrays to represent various odds parameters and flags.
+
+
+
+
+        • Use it alongside the Pre-match and In-play Odds (Main) endpoint to synchronize and maintain a real-time local odds database.'
+      tags:
+      - Football Odds (18 Agencies)
+      parameters:
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific matches. Separate multiple IDs with "," (e.g., matchId=322964610,322964611). Maximum 100 match IDs per request.
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific bookmakers. Separate multiple IDs with "," (e.g., companyId=3,8).
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        handicap:
+                          type: object
+                          description: Asian Handicap odds. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            instantHandicap:
+                              type: string
+                              description: "Current handicap line. \n\n Positive = home team gives goals (e.g., 1 = home −1).\n Negative = away team gives goals (e.g., -1 = home +1). Quarter lines as decimals (e.g., 1.25 = 1/1.5)."
+                            instantHome:
+                              type: string
+                              description: Current Asian Handicap odds — home side (Hong Kong Odds)
+                            instantAway:
+                              type: string
+                              description: Current Asian Handicap odds — away side (Hong Kong Odds)
+                            maintenance:
+                              type: boolean
+                              description: "true: Official data is under maintenance or experiencing an anomaly — data updates are temporarily paused \n false: Normal"
+                            inPlay:
+                              type: boolean
+                              description: "true: In-play odds available \n false: Pre-match only"
+                            changeTime:
+                              type: integer
+                              description: Timestamp of this odds change (Unix timestamp, GMT+0)
+                            close:
+                              type: boolean
+                              description: "true: Betting is temporarily suspended or in-play has stopped \n false: Betting is open."
+                            Odds Type:
+                              type: string
+                              description: "Odds stage\n 0: Unable to determine\n 1: Early odds \n 2: Pre-match closing odds (after early odds, before kick-off) \n 3: In-play odds"
+                        europeOdds:
+                          type: object
+                          description: 1X2 odds. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            instantHome:
+                              type: string
+                              description: Current 1X2 odds — home win (Hong Kong Odds)
+                            instantDraw:
+                              type: string
+                              description: Current 1X2 odds — draw (Hong Kong Odds)
+                            instantAway:
+                              type: string
+                              description: Current 1X2 odds — away win (Hong Kong Odds)
+                            changeTime:
+                              type: integer
+                              description: Timestamp of this odds change (Unix timestamp, GMT+0)
+                            close:
+                              type: boolean
+                              description: "true: Betting is temporarily suspended or in-play has stopped \n false: Betting is open."
+                            Odds Type:
+                              type: string
+                              description: "Odds stage\n 0: Unable to determine\n 1: Early odds \n 2: Pre-match closing odds (after early odds, before kick-off) \n 3: In-play odds"
+                        overUnder:
+                          type: object
+                          description: Over/under odds. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            instantHandicap:
+                              type: string
+                              description: "Current over/under line. \n\n Positive integer = exact goal total (e.g., 1 = 1 goal). Quarter lines as decimals (e.g., 1.25 = 1/1.5)."
+                            instantOver:
+                              type: string
+                              description: Current over odds (Hong Kong Odds)
+                            instantUnder:
+                              type: string
+                              description: Current under odds (Hong Kong Odds)
+                            changeTime:
+                              type: integer
+                              description: Timestamp of this odds change (Unix timestamp, GMT+0)
+                            close:
+                              type: boolean
+                              description: "true: Betting is temporarily suspended or in-play has stopped \n false: Betting is open."
+                            Odds Type:
+                              type: string
+                              description: "Odds stage\n 0: Unable to determine\n 1: Early odds \n 2: Pre-match closing odds (after early odds, before kick-off) \n 3: In-play odds"
+                        handicapHalf:
+                          type: object
+                          description: First-half Asian Handicap odds. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            instantHandicap:
+                              type: string
+                              description: "Current first-half handicap line. n\n Positive = home team gives goals (e.g., 1 = home −1).\n Negative = away team gives goals (e.g., -1 = home +1). Quarter lines as decimals (e.g., 1.25 = 1/1.5)."
+                            instantHome:
+                              type: string
+                              description: Current first-half Asian Handicap odds — home side (Hong Kong Odds)
+                            instantAway:
+                              type: string
+                              description: Current first-half Asian Handicap odds — away side (Hong Kong Odds)
+                            changeTime:
+                              type: integer
+                              description: Timestamp of this odds change (Unix timestamp, GMT+0)
+                            Odds Type:
+                              type: string
+                              description: "Odds stage\n 0: Unable to determine\n 1: Early odds \n 2: Pre-match closing odds (after early odds, before kick-off) \n 3: In-play odds"
+                        overUnderHalf:
+                          type: object
+                          description: First-half over/under odds. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            instantHandicap:
+                              type: string
+                              description: "Current first-half over/under line. \n\n Positive integer = exact goal total (e.g., 1 = 1 goal). Quarter lines as decimals (e.g., 1.25 = 1/1.5)."
+                            instantOver:
+                              type: string
+                              description: Current first-half over odds (Hong Kong Odds)
+                            instantUnder:
+                              type: string
+                              description: Current first-half under odds (Hong Kong Odds)
+                            changeTime:
+                              type: integer
+                              description: Timestamp of this odds change (Unix timestamp, GMT+0)
+                            Odds Type:
+                              type: string
+                              description: "Odds stage\n 0: Unable to determine\n 1: Early odds \n 2: Pre-match closing odds (after early odds, before kick-off) \n 3: In-play odds"
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=25
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=25
+      x-rate-limit: This interface is limited to 1 second/call;
+      x-recommended-call-frequency: 2 seconds/call
+      x-plan-products:
+      - Odds
+      - Odds Pro
+      x-doc-modified: '2026-06-29'
+  /sport/football/odds/main/history:
+    get:
+      operationId: getFootballOddsMainHistory
+      summary: Historical Odds (Main)
+      description: "• This API endpoint returns historical opening and closing odds for major football betting markets.It defaults to records from GMT+0 0:00 today, while supporting a date parameter for historical back-checking up to one month.\n\n\n\n• Handicap and over/under line format: Lines are multiples of 0.25. \n\n0 = 0 goals, 0.25 = 0/0.5, 0.5 = 0.5, 0.75 = 0.5/1, 1 = 1 goal, and so on. A positive value means the home team gives goals; a negative value means the away team gives goals.\n\n\n\n• Odds format: All odds values are returned in Hong Kong Odds format. \n\nTo convert to other formats: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85); Malay Odds = HK if HK ≤ 1, or −(1 ÷ HK) if HK > 1 (e.g., 0.85 → 0.85, 1.5 → −0.67); Indonesian Odds = HK if HK ≥ 1, or −(1 ÷ HK) if HK < 1 (e.g., 0.85 → −1.18, 1.5 → 1.5); American Odds = HK × 100 if HK ≥ 1, or −(100 ÷ HK) if HK < 1 (e.g., 0.85 → −118, 1.5 → +150).\n\n\n\n• The company ID corresponds to the company:\n\n1: Macauslot, 3: Crown, 4: Ladbrokes, 7: SNAI, 8: Bet365, 9: William Hill, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:Bwin, 50:1xbet\n\n\n\n• close field: Only supported by selected bookmakers: Macauslot (1), Crown (3), Bet365 (8), Easybets (12), Mansion88 (17), 10BET (22), 12bet (24), Sbobet (31), Wewbet (35), 18bet (42)."
+      tags:
+      - Football Odds (18 Agencies)
+      parameters:
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: "Filter results by date (GMT+0 00:00–23:59). Supports back-checking within the past month. Format: yyyy-MM-dd (e.g., date=2026-06-18). \n\n\n\nIf omitted, returns data for the current day."
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific matches. Separate multiple IDs with "," (e.g., matchId=322964610,322964611). Maximum 100 match IDs per request.
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific bookmakers. Separate multiple IDs with "," (e.g., companyId=3,8).
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        handicap:
+                          type: object
+                          description: Asian Handicap odds. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHandicap:
+                              type: string
+                              description: "Opening handicap line. \n\n Positive = home team gives goals (e.g., 1 = home −1).\n Negative = away team gives goals (e.g., -1 = home +1). Quarter lines as decimals (e.g., 1.25 = 1/1.5)."
+                            initialHome:
+                              type: string
+                              description: Opening Asian Handicap odds — home side (Hong Kong Odds)
+                            initialAway:
+                              type: string
+                              description: Opening Asian Handicap odds — away side (Hong Kong Odds)
+                            instantHandicap:
+                              type: string
+                              description: Current handicap line. Same format as initialHandicap.
+                            instantHome:
+                              type: string
+                              description: Current Asian Handicap odds — home side (Hong Kong Odds)
+                            instantAway:
+                              type: string
+                              description: Current Asian Handicap odds — away side (Hong Kong Odds)
+                            maintenance:
+                              type: boolean
+                              description: "true: Official data is under maintenance or experiencing an anomaly — data updates are temporarily paused \n false: Normal"
+                            inPlay:
+                              type: boolean
+                              description: "true: In-play odds available \n false: Pre-match only"
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                            close:
+                              type: boolean
+                              description: "true: Betting is temporarily suspended or in-play has stopped \n false: Betting is open."
+                        europeOdds:
+                          type: object
+                          description: 1X2 odds. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHome:
+                              type: string
+                              description: Opening 1X2 odds — home win (Hong Kong Odds)
+                            initialDraw:
+                              type: string
+                              description: Opening 1X2 odds — draw (Hong Kong Odds)
+                            initialAway:
+                              type: string
+                              description: Opening 1X2 odds — away win (Hong Kong Odds)
+                            instantHome:
+                              type: string
+                              description: Current 1X2 odds — home win (Hong Kong Odds)
+                            instantDraw:
+                              type: string
+                              description: Current 1X2 odds — draw (Hong Kong Odds)
+                            instantAway:
+                              type: string
+                              description: Current 1X2 odds — away win (Hong Kong Odds)
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                            close:
+                              type: boolean
+                              description: "true: Betting is temporarily suspended or in-play has stopped \n false: Betting is open."
+                        overUnder:
+                          type: object
+                          description: Over/under odds. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHandicap:
+                              type: string
+                              description: "Opening over/under line. \n\n Positive integer = exact goal total (e.g., 1 = 1 goal). Quarter lines as decimals (e.g., 1.25 = 1/1.5)."
+                            initialOver:
+                              type: string
+                              description: Opening over odds (Hong Kong Odds)
+                            initialUnder:
+                              type: string
+                              description: Opening under odds (Hong Kong Odds)
+                            instantHandicap:
+                              type: string
+                              description: Current over/under line. Same format as initialHandicap.
+                            instantOver:
+                              type: string
+                              description: Current over odds (Hong Kong Odds)
+                            instantUnder:
+                              type: string
+                              description: Current under odds (Hong Kong Odds)
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                            close:
+                              type: boolean
+                              description: "true: Betting is temporarily suspended or in-play has stopped \n false: Betting is open."
+                        handicapHalf:
+                          type: object
+                          description: First-half Asian Handicap odds. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHandicap:
+                              type: string
+                              description: Opening first-half handicap line. Same format as handicap initialHandicap.
+                            initialHome:
+                              type: string
+                              description: Opening first-half Asian Handicap odds — home side (Hong Kong Odds)
+                            initialAway:
+                              type: string
+                              description: Opening first-half Asian Handicap odds — away side (Hong Kong Odds)
+                            instantHandicap:
+                              type: string
+                              description: Current first-half handicap line. Same format as initialHandicap.
+                            instantHome:
+                              type: string
+                              description: Current first-half Asian Handicap odds — home side (Hong Kong Odds)
+                            instantAway:
+                              type: string
+                              description: Current first-half Asian Handicap odds — away side (Hong Kong Odds)
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                        overUnderHalf:
+                          type: object
+                          description: First-half over/under odds. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHandicap:
+                              type: string
+                              description: Opening first-half over/under line. Same format as overUnder initialHandicap.
+                            initialOver:
+                              type: string
+                              description: Opening first-half over odds (Hong Kong Odds)
+                            initialUnder:
+                              type: string
+                              description: Opening first-half under odds (Hong Kong Odds)
+                            instantHandicap:
+                              type: string
+                              description: Current first-half over/under line. Same format as initialHandicap.
+                            instantOver:
+                              type: string
+                              description: Current first-half over odds (Hong Kong Odds)
+                            instantUnder:
+                              type: string
+                              description: Current first-half under odds (Hong Kong Odds)
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=52
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=52
+      x-rate-limit: This interface is limited to 60 seconds/call;
+      x-recommended-call-frequency: 10 minutes/call
+      x-plan-products:
+      - Odds
+      - Odds Pro
+      x-doc-modified: '2026-07-20'
+  /sport/football/odds/main/future:
+    get:
+      operationId: getFootballOddsMainFuture
+      summary: Future Odds (Main)
+      description: "• This API endpoint returns pre-match odds for all matches starting more than 10 days from now, covering Asian Handicap (handicap), 1X2 (europeOdds), over/under (overUnder), and their first-half equivalents (handicapHalf, overUnderHalf).\n\n\n\n• Handicap and over/under line format: Lines are multiples of 0.25. \n\n0 = 0 goals, 0.25 = 0/0.5, 0.5 = 0.5, 0.75 = 0.5/1, 1 = 1 goal, and so on. A positive value means the home team gives goals; a negative value means the away team gives goals.\n\n\n\n• The company ID corresponds to the company:\n\n1: Macauslot, 3: Crown, 4: Ladbrokes, 7: SNAI, 8: Bet365, 9: William Hill, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:Bwin, 50:1xbet\n\n\n\n• Odds format: All odds values are returned in Hong Kong Odds format. \n\nTo convert to other formats: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85); Malay Odds = HK if HK ≤ 1, or −(1 ÷ HK) if HK > 1 (e.g., 0.85 → 0.85, 1.5 → −0.67); Indonesian Odds = HK if HK ≥ 1, or −(1 ÷ HK) if HK < 1 (e.g., 0.85 → −1.18, 1.5 → 1.5); American Odds = HK × 100 if HK ≥ 1, or −(100 ÷ HK) if HK < 1 (e.g., 0.85 → −118, 1.5 → +150).\n\n\n\n• close field: Only supported by selected bookmakers: Macauslot (1), Crown (3), Bet365 (8), Easybets (12), Mansion88 (17), 10BET (22), 12bet (24), Sbobet (31), Wewbet (35), 18bet (42)."
+      tags:
+      - Football Odds (18 Agencies)
+      parameters:
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific matches. Separate multiple IDs with "," (e.g., matchId=322964610,322964611). Maximum 100 match IDs per request.
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific bookmakers. Separate multiple IDs with "," (e.g., companyId=3,8).
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        handicap:
+                          type: object
+                          description: Asian Handicap odds. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHandicap:
+                              type: string
+                              description: "Opening handicap line. \n\n Positive = home team gives goals (e.g., 1 = home −1).\n Negative = away team gives goals (e.g., -1 = home +1). Quarter lines as decimals (e.g., 1.25 = 1/1.5)."
+                            initialHome:
+                              type: string
+                              description: Opening Asian Handicap odds — home side (Hong Kong Odds)
+                            initialAway:
+                              type: string
+                              description: Opening Asian Handicap odds — away side (Hong Kong Odds)
+                            instantHandicap:
+                              type: string
+                              description: Current handicap line. Same format as initialHandicap.
+                            instantHome:
+                              type: string
+                              description: Current Asian Handicap odds — home side (Hong Kong Odds)
+                            instantAway:
+                              type: string
+                              description: Current Asian Handicap odds — away side (Hong Kong Odds)
+                            maintenance:
+                              type: boolean
+                              description: "true: Official data is under maintenance or experiencing an anomaly — data updates are temporarily paused \n false: Normal"
+                            inPlay:
+                              type: boolean
+                              description: "true: In-play odds available \n false: Pre-match only"
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                            close:
+                              type: boolean
+                              description: "true: Betting is temporarily suspended or in-play has stopped \n false: Betting is open."
+                        europeOdds:
+                          type: object
+                          description: 1X2 odds. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHome:
+                              type: string
+                              description: Opening 1X2 odds — home win (Hong Kong Odds)
+                            initialDraw:
+                              type: string
+                              description: Opening 1X2 odds — draw (Hong Kong Odds)
+                            initialAway:
+                              type: string
+                              description: Opening 1X2 odds — away win (Hong Kong Odds)
+                            instantHome:
+                              type: string
+                              description: Current 1X2 odds — home win (Hong Kong Odds)
+                            instantDraw:
+                              type: string
+                              description: Current 1X2 odds — draw (Hong Kong Odds)
+                            instantAway:
+                              type: string
+                              description: Current 1X2 odds — away win (Hong Kong Odds)
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                            close:
+                              type: boolean
+                              description: "true: Betting is temporarily suspended or in-play has stopped \n false: Betting is open."
+                        overUnder:
+                          type: object
+                          description: Over/under odds. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHandicap:
+                              type: string
+                              description: "Opening over/under line. \n\n Positive integer = exact goal total (e.g., 1 = 1 goal). Quarter lines as decimals (e.g., 1.25 = 1/1.5)."
+                            initialOver:
+                              type: string
+                              description: Opening over odds (Hong Kong Odds)
+                            initialUnder:
+                              type: string
+                              description: Opening under odds (Hong Kong Odds)
+                            instantHandicap:
+                              type: string
+                              description: Current over/under line. Same format as initialHandicap.
+                            instantOver:
+                              type: string
+                              description: Current over odds (Hong Kong Odds)
+                            instantUnder:
+                              type: string
+                              description: Current under odds (Hong Kong Odds)
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                            close:
+                              type: boolean
+                              description: "true: Betting is temporarily suspended or in-play has stopped \n false: Betting is open."
+                        handicapHalf:
+                          type: object
+                          description: First-half Asian Handicap odds. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHandicap:
+                              type: string
+                              description: Opening first-half handicap line. Same format as handicap initialHandicap.
+                            initialHome:
+                              type: string
+                              description: Opening first-half Asian Handicap odds — home side (Hong Kong Odds)
+                            initialAway:
+                              type: string
+                              description: Opening first-half Asian Handicap odds — away side (Hong Kong Odds)
+                            instantHandicap:
+                              type: string
+                              description: Current first-half handicap line. Same format as initialHandicap.
+                            instantHome:
+                              type: string
+                              description: Current first-half Asian Handicap odds — home side (Hong Kong Odds)
+                            instantAway:
+                              type: string
+                              description: Current first-half Asian Handicap odds — away side (Hong Kong Odds)
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                        overUnderHalf:
+                          type: object
+                          description: First-half over/under odds. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHandicap:
+                              type: string
+                              description: Opening first-half over/under line. Same format as overUnder initialHandicap.
+                            initialOver:
+                              type: string
+                              description: Opening first-half over odds (Hong Kong Odds)
+                            initialUnder:
+                              type: string
+                              description: Opening first-half under odds (Hong Kong Odds)
+                            instantHandicap:
+                              type: string
+                              description: Current first-half over/under line. Same format as initialHandicap.
+                            instantOver:
+                              type: string
+                              description: Current first-half over odds (Hong Kong Odds)
+                            instantUnder:
+                              type: string
+                              description: Current first-half under odds (Hong Kong Odds)
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=60
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=60
+      x-rate-limit: This interface is limited to 60 seconds/call;
+      x-recommended-call-frequency: 10 minutes/call
+      x-plan-products:
+      - Odds
+      - Odds Pro
+      x-doc-modified: '2026-06-29'
+  /sport/football/odds/all/history:
+    get:
+      operationId: getFootballOddsAllHistory
+      summary: Historical Odds (All)
+      description: "• This API endpoint returns the historical initial and final odds across all available handicap and goal lines for finished matches, covering Asian Handicap (handicap), 1X2 (europeOdds), over/under (overUnder), and their first-half equivalents (handicapHalf, overUnderHalf).\n\n\n\n• The content is consistent with the Historical Odds (Main) endpoint — the entry where handicapIndex = 1 represents the main market line.\n\n\n\n• By default, returns all finished matches from GMT+0 00:00 to the present.\n\n\n\n• Handicap and over/under line format: Lines are multiples of 0.25. \n\n0 = 0 goals, 0.25 = 0/0.5, 0.5 = 0.5, 0.75 = 0.5/1, 1 = 1 goal, and so on. A positive value means the home team gives goals; a negative value means the away team gives goals.\n\n\n\n• Odds format: All odds values are returned in Hong Kong Odds format. \n\nTo convert to other formats: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85); Malay Odds = HK if HK ≤ 1, or −(1 ÷ HK) if HK > 1 (e.g., 0.85 → 0.85, 1.5 → −0.67); Indonesian Odds = HK if HK ≥ 1, or −(1 ÷ HK) if HK < 1 (e.g., 0.85 → −1.18, 1.5 → 1.5); American Odds = HK × 100 if HK ≥ 1, or −(100 ÷ HK) if HK < 1 (e.g., 0.85 → −118, 1.5 → +150).\n\n\n\n• The company ID corresponds to the company:\n\n1: Macauslot, 3: Crown, 4: Ladbrokes, 7: SNAI, 8: Bet365, 9: William Hill, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:Bwin, 50:1xbet\n\n\n\n• close field: Only supported by selected bookmakers: Macauslot (1), Crown (3), Bet365 (8), Easybets (12), Mansion88 (17), 10BET (22), 12bet (24), Sbobet (31), Wewbet (35), 18bet (42)."
+      tags:
+      - Football Odds (18 Agencies)
+      parameters:
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: "Filter results by date (GMT+0 00:00–23:59). Supports back-checking within the past month. Format: yyyy-MM-dd (e.g., date=2026-06-18). \n\n\n\nIf omitted, returns data for the current day."
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific matches. Separate multiple IDs with "," (e.g., matchId=322964610,322964611). Maximum 100 match IDs per request.
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific bookmakers. Separate multiple IDs with "," (e.g., companyId=3,8).
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        handicap:
+                          type: object
+                          description: Asian Handicap odds across all available lines. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHandicap:
+                              type: string
+                              description: "Opening handicap line. \n\n Positive = home team gives goals (e.g., 1 = home −1).\n Negative = away team gives goals (e.g., -1 = home +1). Quarter lines as decimals (e.g., 1.25 = 1/1.5)."
+                            initialHome:
+                              type: string
+                              description: Opening Asian Handicap odds — home side (Hong Kong Odds)
+                            initialAway:
+                              type: string
+                              description: Opening Asian Handicap odds — away side (Hong Kong Odds)
+                            instantHandicap:
+                              type: string
+                              description: Last pre-match handicap line for this entry. Same format as initialHandicap.
+                            instantHome:
+                              type: string
+                              description: Last pre-match Asian Handicap odds — home side (Hong Kong Odds)
+                            instantAway:
+                              type: string
+                              description: Last pre-match Asian Handicap odds — away side (Hong Kong Odds)
+                            maintenance:
+                              type: boolean
+                              description: "true: Official data is under maintenance or experiencing an anomaly — data updates are temporarily paused \n false: Normal"
+                            inPlay:
+                              type: boolean
+                              description: "true: In-play odds were available \n false: Pre-match only"
+                            handicapIndex:
+                              type: integer
+                              description: "Index of this line among all lines offered by the bookmaker for this match (starting from 1). \n\n 1 represents the main market line, matching the Pre-match and In-play Odds (Main) endpoint."
+                            handicapCount:
+                              type: integer
+                              description: Total number of lines offered by this bookmaker for this match
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                            close:
+                              type: boolean
+                              description: "true: Betting was closed \n false: Betting was open"
+                        europeOdds:
+                          type: object
+                          description: 1X2 odds. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHome:
+                              type: string
+                              description: Opening 1X2 odds — home win (Hong Kong Odds)
+                            initialDraw:
+                              type: string
+                              description: Opening 1X2 odds — draw (Hong Kong Odds)
+                            initialAway:
+                              type: string
+                              description: Opening 1X2 odds — away win (Hong Kong Odds)
+                            instantHome:
+                              type: string
+                              description: Last pre-match 1X2 odds — home win (Hong Kong Odds)
+                            instantDraw:
+                              type: string
+                              description: Last pre-match 1X2 odds — draw (Hong Kong Odds)
+                            instantAway:
+                              type: string
+                              description: Last pre-match 1X2 odds — away win (Hong Kong Odds)
+                            handicapIndex:
+                              type: integer
+                              description: Always 1 for europeOdds, since there is only a single line for this market.
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                            close:
+                              type: boolean
+                              description: "true: Betting was closed \n false: Betting was open"
+                        overUnder:
+                          type: object
+                          description: Over/under odds across all available lines. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHandicap:
+                              type: string
+                              description: "Opening over/under line for this entry. \n\n Positive integer = exact goal total (e.g., 1 = 1 goal). Quarter lines as decimals (e.g., 1.25 = 1/1.5)."
+                            initialOver:
+                              type: string
+                              description: Opening over odds (Hong Kong Odds)
+                            initialUnder:
+                              type: string
+                              description: Opening under odds (Hong Kong Odds)
+                            instantHandicap:
+                              type: string
+                              description: Last pre-match over/under line for this entry. Same format as initialHandicap.
+                            instantOver:
+                              type: string
+                              description: Last pre-match over odds (Hong Kong Odds)
+                            instantUnder:
+                              type: string
+                              description: Last pre-match under odds (Hong Kong Odds)
+                            handicapIndex:
+                              type: integer
+                              description: "Index of this line among all lines offered by the bookmaker for this match (starting from 1). \n\n 1 represents the main market line, matching the Pre-match and In-play Odds (Main) endpoint."
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                            close:
+                              type: boolean
+                              description: "true: Betting was closed \n false: Betting was open"
+                        handicapHalf:
+                          type: object
+                          description: First-half Asian Handicap odds across all available lines. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHandicap:
+                              type: string
+                              description: Opening first-half handicap line for this entry. Same format as handicap initialHandicap.
+                            initialHome:
+                              type: string
+                              description: Opening first-half Asian Handicap odds — home side (Hong Kong Odds)
+                            initialAway:
+                              type: string
+                              description: Opening first-half Asian Handicap odds — away side (Hong Kong Odds)
+                            instantHandicap:
+                              type: string
+                              description: Last pre-match first-half handicap line for this entry. Same format as initialHandicap.
+                            instantHome:
+                              type: string
+                              description: Last pre-match first-half Asian Handicap odds — home side (Hong Kong Odds)
+                            instantAway:
+                              type: string
+                              description: Last pre-match first-half Asian Handicap odds — away side (Hong Kong Odds)
+                            inPlay:
+                              type: boolean
+                              description: "true: In-play odds were available \n false: Pre-match only"
+                            handicapIndex:
+                              type: integer
+                              description: Index of this line among all lines offered by the bookmaker for this match (starting from 1). 1 represents the main market line.
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                        overUnderHalf:
+                          type: object
+                          description: First-half over/under odds across all available lines. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHandicap:
+                              type: string
+                              description: Opening first-half over/under line for this entry. Same format as overUnder initialHandicap.
+                            initialOver:
+                              type: string
+                              description: Opening first-half over odds (Hong Kong Odds)
+                            initialUnder:
+                              type: string
+                              description: Opening first-half under odds (Hong Kong Odds)
+                            instantHandicap:
+                              type: string
+                              description: Last pre-match first-half over/under line for this entry. Same format as initialHandicap.
+                            instantOver:
+                              type: string
+                              description: Last pre-match first-half over odds (Hong Kong Odds)
+                            instantUnder:
+                              type: string
+                              description: Last pre-match first-half under odds (Hong Kong Odds)
+                            handicapIndex:
+                              type: integer
+                              description: Index of this line among all lines offered by the bookmaker for this match (starting from 1). 1 represents the main market line.
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=62
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=62
+      x-rate-limit: This interface is limited to 60 seconds/call;
+      x-recommended-call-frequency: 10 minutes/call
+      x-plan-products:
+      - Odds
+      - Odds Pro
+      x-doc-modified: '2026-07-20'
+  /sport/football/odds/european/half:
+    get:
+      operationId: getFootballOddsEuropeanHalf
+      summary: European Odds (Halftime)
+      description: '• This API endpoint returns half-time 1X2 odds, including pre-match and in-play odds.
+
+
+
+
+        • By using endpoints <a href="/docs.html?id=41" style="color:blue">Schedule & Results (Basic)
+
+        </a> and <a href="/docs.html?id=33" style="color:blue">Match Modify Record</a>, you can get basic information of matches.
+
+
+
+
+        • The company ID corresponds to the company:
+
+
+        1: Macauslot, 3: Crown, 4: Ladbrokes, 8: Bet365, 9: William Hill, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:Bwin,50:1xbet'
+      tags:
+      - Football Odds (18 Agencies)
+      parameters:
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific matches. Separate multiple IDs with "," (e.g., matchId=322964610,322964611). Maximum 100 match IDs per request.
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific bookmakers. Separate multiple IDs with "," (e.g., companyId=3,8).
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchId:
+                          type: string
+                        matchTime:
+                          type: integer
+                          description: Match kick-off time (Unix timestamp, GMT+0)
+                        leagueName:
+                          type: string
+                          description: League or cup name
+                        homeName:
+                          type: string
+                          description: Home team name
+                        awayName:
+                          type: string
+                          description: Away team name
+                        odds:
+                          type: array
+                          description: List of half-time 1X2 odds from all bookmakers for this match
+                          items:
+                            type: object
+                            properties:
+                              oddsId:
+                                type: string
+                                description: Unique odds entry ID
+                              changeTime:
+                                type: integer
+                                description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                              oddsDetail:
+                                type: object
+                                description: Half-time 1X2 odds detail. Each entry is a comma-separated string containing the fields below.
+                                properties:
+                                  companyId:
+                                    type: integer
+                                    description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club \n49:Bwin\n 50:1xbet"
+                                  companyName:
+                                    type: string
+                                    description: Bookmaker name
+                                  initialHome:
+                                    type: string
+                                    description: Opening half-time 1X2 odds — home win (Hong Kong Odds)
+                                  initialDraw:
+                                    type: string
+                                    description: Opening half-time 1X2 odds — draw (Hong Kong Odds)
+                                  initialAway:
+                                    type: string
+                                    description: Opening half-time 1X2 odds — away win (Hong Kong Odds)
+                                  instantHome:
+                                    type: string
+                                    description: Current half-time 1X2 odds — home win (Hong Kong Odds)
+                                  instantDraw:
+                                    type: string
+                                    description: Current half-time 1X2 odds — draw (Hong Kong Odds)
+                                  instantAway:
+                                    type: string
+                                    description: Current half-time 1X2 odds — away win (Hong Kong Odds)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=70
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=70
+      x-rate-limit: This interface is limited to 10 seconds/call;
+      x-recommended-call-frequency: 15 seconds/call
+      x-plan-products:
+      - Odds
+      - Odds Pro
+      x-doc-modified: '2026-06-29'
+  /sport/football/odds/all:
+    get:
+      operationId: getFootballOddsAll
+      summary: Pre-match and In-play Odds (All)
+      description: "• This API endpoint returns pre-match and in-play odds for multiple market lines (alternative lines), including Asian Handicap, 1X2, and over/under — with both full-match and first-half breakdowns.\n\n\n\n• The content is consistent with the Pre-match and In-play Odds (Main) endpoint — the entry where handicapIndex = 1 represents the main market line.\n\n\n\n• It covers upcoming matches scheduled within the next 14 days (where odds are available) and ongoing matches, including both pre-match and in-play (live) odds.\n\n\n\n• Use it alongside the Live Odds Changes (All) endpoint for real-time updates, and Schedule & Results or Match Modify Record to get basic match information.\n\n\n\n• Handicap and over/under line format: Lines are multiples of 0.25. \n\n0 = 0 goals, 0.25 = 0/0.5, 0.5 = 0.5, 0.75 = 0.5/1, 1 = 1 goal, and so on. A positive value means the home team gives goals; a negative value means the away team gives goals.\\\n\n\n\n• The company ID corresponds to the company:\n\n1: Macauslot, 3: Crown, 4: Ladbrokes, 7: SNAI, 8: Bet365, 9: William Hill, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:Bwin, 50:1xbet\n\n\n\n• Odds format: All odds values are returned in Hong Kong Odds format. \n\nTo convert to other formats: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85); Malay Odds = HK if HK ≤ 1, or −(1 ÷ HK) if HK > 1 (e.g., 0.85 → 0.85, 1.5 → −0.67); Indonesian Odds = HK if HK ≥ 1, or −(1 ÷ HK) if HK < 1 (e.g., 0.85 → −1.18, 1.5 → 1.5); American Odds = HK × 100 if HK ≥ 1, or −(100 ÷ HK) if HK < 1 (e.g., 0.85 → −118, 1.5 → +150).\n\n\n\n• close field: Only supported by selected bookmakers: Macauslot (1), Crown (3), Bet365 (8), Easybets (12), Mansion88 (17), 10BET (22), 12bet (24), Sbobet (31), Wewbet (35), 18bet (42)."
+      tags:
+      - Football Odds (18 Agencies)
+      parameters:
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific matches. Separate multiple IDs with "," (e.g., matchId=322964610,322964611). Maximum 100 match IDs per request.
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific bookmakers. Separate multiple IDs with "," (e.g., companyId=3,8).
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        handicap:
+                          type: object
+                          description: Asian Handicap odds across all available lines. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHandicap:
+                              type: string
+                              description: "Opening handicap line. \n\n Positive = home team gives goals (e.g., 1 = home −1).\n Negative = away team gives goals (e.g., -1 = home +1). Quarter lines as decimals (e.g., 1.25 = 1/1.5)."
+                            initialHome:
+                              type: string
+                              description: Opening Asian Handicap odds — home side (Hong Kong Odds)
+                            initialAway:
+                              type: string
+                              description: Opening Asian Handicap odds — away side (Hong Kong Odds)
+                            instantHandicap:
+                              type: string
+                              description: Current handicap line. Same format as initialHandicap.
+                            instantHome:
+                              type: string
+                              description: Current Asian Handicap odds — home side (Hong Kong Odds)
+                            instantAway:
+                              type: string
+                              description: Current Asian Handicap odds — away side (Hong Kong Odds)
+                            maintenance:
+                              type: boolean
+                              description: "true: Official data is under maintenance or experiencing an anomaly — data updates are temporarily paused \n false: Normal"
+                            inPlay:
+                              type: boolean
+                              description: "true: In-play odds available \n false: Pre-match only"
+                            handicapIndex:
+                              type: integer
+                              description: "Index of this line among all lines offered by the bookmaker for this match (starting from 1). \n\n 1 represents the main market line, matching the Pre-match and In-play Odds (Main) endpoint."
+                            handicapCount:
+                              type: integer
+                              description: Total number of lines offered by this bookmaker for this match
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                            close:
+                              type: boolean
+                              description: "true: Betting is temporarily suspended or in-play has stopped \n false: Betting is open."
+                            Odds Type:
+                              type: string
+                              description: "Odds stage\n 0: Unable to determine\n 1: Early odds \n 2: Pre-match closing odds (after early odds, before kick-off) \n 3: In-play odds"
+                        europeOdds:
+                          type: object
+                          description: 1X2 odds. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHome:
+                              type: string
+                              description: Opening 1X2 odds — home win (Hong Kong Odds)
+                            initialDraw:
+                              type: string
+                              description: Opening 1X2 odds — draw (Hong Kong Odds)
+                            initialAway:
+                              type: string
+                              description: Opening 1X2 odds — away win (Hong Kong Odds)
+                            instantHome:
+                              type: string
+                              description: Current 1X2 odds — home win (Hong Kong Odds)
+                            instantDraw:
+                              type: string
+                              description: Current 1X2 odds — draw (Hong Kong Odds)
+                            instantAway:
+                              type: string
+                              description: Current 1X2 odds — away win (Hong Kong Odds)
+                            handicapIndex:
+                              type: integer
+                              description: Always 1 for europeOdds, since there is only a single line for this market.
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                            close:
+                              type: boolean
+                              description: "true: Betting is temporarily suspended or in-play has stopped \n false: Betting is open."
+                            Odds Type:
+                              type: string
+                              description: "Odds stage\n 0: Unable to determine\n 1: Early odds \n 2: Pre-match closing odds (after early odds, before kick-off) \n 3: In-play odds"
+                        overUnder:
+                          type: object
+                          description: Over/under odds across all available lines. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHandicap:
+                              type: string
+                              description: "Opening over/under line. \n\n Positive integer = exact goal total (e.g., 1 = 1 goal). Quarter lines as decimals (e.g., 1.25 = 1/1.5)."
+                            initialOver:
+                              type: string
+                              description: Opening over odds (Hong Kong Odds)
+                            initialUnder:
+                              type: string
+                              description: Opening under odds (Hong Kong Odds)
+                            instantHandicap:
+                              type: string
+                              description: Current over/under line. Same format as initialHandicap.
+                            instantOver:
+                              type: string
+                              description: Current over odds (Hong Kong Odds)
+                            instantUnder:
+                              type: string
+                              description: Current under odds (Hong Kong Odds)
+                            handicapIndex:
+                              type: integer
+                              description: "Index of this line among all lines offered by the bookmaker for this match (starting from 1). \n\n 1 represents the main market line, matching the Pre-match and In-play Odds (Main) endpoint."
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                            close:
+                              type: boolean
+                              description: "true: Betting is temporarily suspended or in-play has stopped \n false: Betting is open."
+                            Odds Type:
+                              type: string
+                              description: "Odds stage\n 0: Unable to determine\n 1: Early odds \n 2: Pre-match closing odds (after early odds, before kick-off) \n 3: In-play odds"
+                        handicapHalf:
+                          type: object
+                          description: First-half Asian Handicap odds across all available lines. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHandicap:
+                              type: string
+                              description: Opening first-half handicap line. Same format as handicap initialHandicap.
+                            initialHome:
+                              type: string
+                              description: Opening first-half Asian Handicap odds — home side (Hong Kong Odds)
+                            initialAway:
+                              type: string
+                              description: Opening first-half Asian Handicap odds — away side (Hong Kong Odds)
+                            instantHandicap:
+                              type: string
+                              description: Current first-half handicap line. Same format as initialHandicap.
+                            instantHome:
+                              type: string
+                              description: Current first-half Asian Handicap odds — home side (Hong Kong Odds)
+                            instantAway:
+                              type: string
+                              description: Current first-half Asian Handicap odds — away side (Hong Kong Odds)
+                            inPlay:
+                              type: boolean
+                              description: "true: In-play odds available \n false: Pre-match only"
+                            handicapIndex:
+                              type: integer
+                              description: "Index of this line among all lines offered by the bookmaker for this match (starting from 1). \n\n 1 represents the main market line, matching the Pre-match and In-play Odds (Main) endpoint."
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                            Odds Type:
+                              type: string
+                              description: "Odds stage\n 0: Unable to determine\n 1: Early odds \n 2: Pre-match closing odds (after early odds, before kick-off) \n 3: In-play odds"
+                        overUnderHalf:
+                          type: object
+                          description: First-half over/under odds across all available lines. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHandicap:
+                              type: string
+                              description: Opening first-half over/under line. Same format as overUnder initialHandicap.
+                            initialOver:
+                              type: string
+                              description: Opening first-half over odds (Hong Kong Odds)
+                            initialUnder:
+                              type: string
+                              description: Opening first-half under odds (Hong Kong Odds)
+                            instantHandicap:
+                              type: string
+                              description: Current first-half over/under line. Same format as initialHandicap.
+                            instantOver:
+                              type: string
+                              description: Current first-half over odds (Hong Kong Odds)
+                            instantUnder:
+                              type: string
+                              description: Current first-half under odds (Hong Kong Odds)
+                            handicapIndex:
+                              type: integer
+                              description: "Index of this line among all lines offered by the bookmaker for this match (starting from 1). \n\n 1 represents the main market line, matching the Pre-match and In-play Odds (Main) endpoint."
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                            Odds Type:
+                              type: string
+                              description: "Odds stage\n 0: Unable to determine\n 1: Early odds \n 2: Pre-match closing odds (after early odds, before kick-off) \n 3: In-play odds"
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=71
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=71
+      x-rate-limit: This interface is limited to 10 seconds/call;
+      x-recommended-call-frequency: 1 minute/call
+      x-plan-products:
+      - Odds
+      - Odds Pro
+      x-doc-modified: '2026-06-29'
+  /sport/football/odds/all/changes:
+    get:
+      operationId: getFootballOddsAllChanges
+      summary: Live Odds Changes (All)
+      description: "• This API endpoint returns all odds that changed in the past 20 seconds. \n\n\n\n• You can use it with the <a href=\"/docs.html?id=71\" style=\"color:blue\">Pre-match and In-play Odds (All)</a> endpoint— call that endpoint once to get the full odds list, then poll this endpoint every 2 seconds to receive incremental updates."
+      tags:
+      - Football Odds (18 Agencies)
+      parameters:
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific matches. Separate multiple IDs with "," (e.g., matchId=322964610,322964611). Maximum 100 match IDs per request.
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific bookmakers. Separate multiple IDs with "," (e.g., companyId=3,8).
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        handicap:
+                          type: object
+                          description: Asian Handicap odds that changed in the past 20 seconds. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            instantHandicap:
+                              type: string
+                              description: "Current handicap line. \n\n Positive = home team gives goals (e.g., 1 = home −1).\n Negative = away team gives goals (e.g., -1 = home +1). Quarter lines as decimals (e.g., 1.25 = 1/1.5)."
+                            instantHome:
+                              type: string
+                              description: Current Asian Handicap odds — home side (Hong Kong Odds)
+                            instantAway:
+                              type: string
+                              description: Current Asian Handicap odds — away side (Hong Kong Odds)
+                            maintenance:
+                              type: boolean
+                              description: "true: Official data is under maintenance or experiencing an anomaly — data updates are temporarily paused \n false: Normal"
+                            inPlay:
+                              type: boolean
+                              description: "true: In-play odds available \n false: Pre-match only"
+                            handicapIndex:
+                              type: integer
+                              description: "Index of this line among all lines offered by the bookmaker for this match (starting from 1). \n\n 1 represents the main market line."
+                            changeTime:
+                              type: integer
+                              description: Timestamp of this odds change (Unix timestamp, GMT+0)
+                            close:
+                              type: boolean
+                              description: "true: Betting is temporarily suspended or in-play has stopped \n false: Betting is open."
+                            Odds Type:
+                              type: string
+                              description: "Odds stage\n 0: Unable to determine\n 1: Early odds \n 2: Pre-match closing odds (after early odds, before kick-off) \n 3: In-play odds"
+                        europeOdds:
+                          type: object
+                          description: 1X2 odds that changed in the past 20 seconds. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            instantHome:
+                              type: string
+                              description: Current 1X2 odds — home win (Hong Kong Odds)
+                            instantDraw:
+                              type: string
+                              description: Current 1X2 odds — draw (Hong Kong Odds)
+                            instantAway:
+                              type: string
+                              description: Current 1X2 odds — away win (Hong Kong Odds)
+                            handicapIndex:
+                              type: integer
+                              description: Always 1 for europeOdds, since there is only a single line for this market.
+                            changeTime:
+                              type: integer
+                              description: Timestamp of this odds change (Unix timestamp, GMT+0)
+                            close:
+                              type: boolean
+                              description: "true: Betting is temporarily suspended or in-play has stopped \n false: Betting is open."
+                            Odds Type:
+                              type: string
+                              description: "Odds stage\n 0: Unable to determine\n 1: Early odds \n 2: Pre-match closing odds (after early odds, before kick-off) \n 3: In-play odds"
+                        overUnder:
+                          type: object
+                          description: Over/under odds that changed in the past 20 seconds. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            instantHandicap:
+                              type: string
+                              description: "Current over/under line. \n\n Positive integer = exact goal total (e.g., 1 = 1 goal). Quarter lines as decimals (e.g., 1.25 = 1/1.5)."
+                            instantOver:
+                              type: string
+                              description: Current over odds (Hong Kong Odds)
+                            instantUnder:
+                              type: string
+                              description: Current under odds (Hong Kong Odds)
+                            handicapIndex:
+                              type: integer
+                              description: "Index of this line among all lines offered by the bookmaker for this match (starting from 1). \n\n 1 represents the main market line."
+                            changeTime:
+                              type: integer
+                              description: Timestamp of this odds change (Unix timestamp, GMT+0)
+                            close:
+                              type: boolean
+                              description: "true: Betting is temporarily suspended or in-play has stopped \n false: Betting is open."
+                            Odds Type:
+                              type: string
+                              description: "Odds stage\n 0: Unable to determine\n 1: Early odds \n 2: Pre-match closing odds (after early odds, before kick-off) \n 3: In-play odds"
+                        handicapHalf:
+                          type: object
+                          description: First-half Asian Handicap odds that changed in the past 20 seconds. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            instantHandicap:
+                              type: string
+                              description: Current first-half handicap line. Same format as handicap instantHandicap.
+                            instantHome:
+                              type: string
+                              description: Current first-half Asian Handicap odds — home side (Hong Kong Odds)
+                            instantAway:
+                              type: string
+                              description: Current first-half Asian Handicap odds — away side (Hong Kong Odds)
+                            inPlay:
+                              type: boolean
+                              description: "true: In-play odds available \n false: Pre-match only"
+                            handicapIndex:
+                              type: integer
+                              description: "Index of this line among all lines offered by the bookmaker for this match (starting from 1). \n\n 1 represents the main market line."
+                            changeTime:
+                              type: integer
+                              description: Timestamp of this odds change (Unix timestamp, GMT+0)
+                            Odds Type:
+                              type: string
+                              description: "Odds stage\n 0: Unable to determine\n 1: Early odds \n 2: Pre-match closing odds (after early odds, before kick-off) \n 3: In-play odds"
+                        overUnderHalf:
+                          type: object
+                          description: First-half over/under odds that changed in the past 20 seconds. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            instantHandicap:
+                              type: string
+                              description: Current first-half over/under line. Same format as overUnder instantHandicap.
+                            instantOver:
+                              type: string
+                              description: Current first-half over odds (Hong Kong Odds)
+                            instantUnder:
+                              type: string
+                              description: Current first-half under odds (Hong Kong Odds)
+                            handicapIndex:
+                              type: integer
+                              description: "Index of this line among all lines offered by the bookmaker for this match (starting from 1). \n\n 1 represents the main market line."
+                            changeTime:
+                              type: integer
+                              description: Timestamp of this odds change (Unix timestamp, GMT+0)
+                            Odds Type:
+                              type: string
+                              description: "Odds stage\n 0: Unable to determine\n 1: Early odds \n 2: Pre-match closing odds (after early odds, before kick-off) \n 3: In-play odds"
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=72
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=72
+      x-rate-limit: This interface is limited to 1 second/call;
+      x-recommended-call-frequency: 2 seconds/call
+      x-plan-products:
+      - Odds
+      - Odds Pro
+      x-doc-modified: '2026-06-29'
+  /sport/football/odds/inplay:
+    get:
+      operationId: getFootballOddsInplay
+      summary: In-play Odds
+      description: '• This API endpoint returns in-play odds for the main market, covering Asian Handicap (handicap), 1X2 (europeOdds), and over/under (overUnder).
+
+
+
+
+        • By default, returns in-play odds updated in the past 3 minutes for all matches.
+
+
+
+
+        • The company ID corresponds to the company:
+
+
+        1: Macauslot, 3: Crown, 4: Ladbrokes ,8: Bet365, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:BWin, 50:1xbet
+
+
+
+
+
+        • By using endpoints <a href="/docs.html?id=41" style="color:blue">Schedule & Results (Basic)
+
+        </a> and <a href="/docs.html?id=33" style="color:blue">Match Modify Record</a>, you can get basic information of matches.'
+      tags:
+      - Football Odds (18 Agencies)
+      parameters:
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: "Filter results to specific matches. Separate multiple IDs with \",\" (e.g., matchId=322964610,322964611). Maximum 100 match IDs per request. \n\n\n\nOnly supports querying matches within the past 20 days."
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific bookmakers. Separate multiple IDs with "," (e.g., companyId=3,8).
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        recordId:
+                          type: string
+                          description: Unique odds record ID
+                        matchId:
+                          type: string
+                        matchTime:
+                          type: integer
+                          description: "Match minute at which this odds entry was recorded. \n\n -1: Half-time"
+                        homeScore:
+                          type: integer
+                          description: Live score, home team
+                        awayScore:
+                          type: integer
+                          description: Live score, away team
+                        homeRedCount:
+                          type: integer
+                          description: Deprecated. Always returns 0 — no longer updated.
+                        awayRedCount:
+                          type: integer
+                          description: Deprecated. Always returns 0 — no longer updated.
+                        type:
+                          type: integer
+                          description: "Odds market type \n\n 1: Asian Handicap update (odds1–3: home odds, handicap line, away odds) \n 2: Over/Under update (odds1–3: over odds, line, under odds) \n 3: All markets closed (odds1–3: 0) \n 4: 1X2 update (odds1–3: home win odds, draw odds, away win odds) \n 5: 1X2 closed (odds1–3: 0) \n 6: Asian Handicap closed (odds1–3: 0) \n 7: Over/Under closed (odds1–3: 0)"
+                        companyId:
+                          type: string
+                          description: "1: Macauslot\n3: Crown\n4: Ladbrokes (In-play: Handicap & O/U only)\n8: Bet365\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n35: Wewbet\n42: 18bet\n 48: HK Jockey Club\n 49:BWin(In-play: Handicap & O/U only) \n 50:1xbet"
+                        odds1:
+                          type: string
+                          description: First odds value. Meaning depends on type — see type field above.
+                        odds2:
+                          type: string
+                          description: Second odds value. Meaning depends on type — see type field above.
+                        odds3:
+                          type: string
+                          description: Third odds value. Meaning depends on type — see type field above.
+                        changeTime:
+                          type: integer
+                          description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=73
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=73
+      x-rate-limit: This interface is limited to 3 seconds/call;
+      x-recommended-call-frequency: 15 seconds/call
+      x-plan-products:
+      - Odds
+      - Odds Pro
+      x-doc-modified: '2026-06-26'
+  /sport/football/odds/all/future:
+    get:
+      operationId: getFootballOddsAllFuture
+      summary: Future Odds (All)
+      description: "• This API endpoint returns pre-match odds across all available handicap and goal lines for matches starting more than 10 days from now, covering Asian Handicap (handicap), 1X2 (europeOdds), over/under (overUnder), and their first-half equivalents (handicapHalf, overUnderHalf).\n\n\n\n• Handicap and over/under line format: Lines are multiples of 0.25. \n\n0 = 0 goals, 0.25 = 0/0.5, 0.5 = 0.5, 0.75 = 0.5/1, 1 = 1 goal, and so on. A positive value means the home team gives goals; a negative value means the away team gives goals.\n\n\n\n• Odds format: All odds values are returned in Hong Kong Odds format. \n\nTo convert to other formats: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85); Malay Odds = HK if HK ≤ 1, or −(1 ÷ HK) if HK > 1 (e.g., 0.85 → 0.85, 1.5 → −0.67); Indonesian Odds = HK if HK ≥ 1, or −(1 ÷ HK) if HK < 1 (e.g., 0.85 → −1.18, 1.5 → 1.5); American Odds = HK × 100 if HK ≥ 1, or −(100 ÷ HK) if HK < 1 (e.g., 0.85 → −118, 1.5 → +150).\n\n\n\n• The company ID corresponds to the company:\n\n1: Macauslot, 3: Crown, 4: Ladbrokes, 7: SNAI, 8: Bet365, 9: William Hill, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:Bwin, 50:1xbet\n\n\n\n• close field: Only supported by selected bookmakers: Macauslot (1), Crown (3), Bet365 (8), Easybets (12), Mansion88 (17), 10BET (22), 12bet (24), Sbobet (31), Wewbet (35), 18bet (42)."
+      tags:
+      - Football Odds (18 Agencies)
+      parameters:
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific matches. Separate multiple IDs with "," (e.g., matchId=322964610,322964611). Maximum 100 match IDs per request.
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific bookmakers. Separate multiple IDs with "," (e.g., companyId=3,8).
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        handicap:
+                          type: object
+                          description: Asian Handicap odds across all available lines. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHandicap:
+                              type: string
+                              description: "Opening handicap line. \n\n Positive = home team gives goals (e.g., 1 = home −1).\n Negative = away team gives goals (e.g., -1 = home +1). Quarter lines as decimals (e.g., 1.25 = 1/1.5)."
+                            initialHome:
+                              type: string
+                              description: Opening Asian Handicap odds — home side (Hong Kong Odds)
+                            initialAway:
+                              type: string
+                              description: Opening Asian Handicap odds — away side (Hong Kong Odds)
+                            instantHandicap:
+                              type: string
+                              description: Current handicap line for this entry. Same format as initialHandicap.
+                            instantHome:
+                              type: string
+                              description: Current Asian Handicap odds — home side (Hong Kong Odds)
+                            instantAway:
+                              type: string
+                              description: Current Asian Handicap odds — away side (Hong Kong Odds)
+                            maintenance:
+                              type: boolean
+                              description: "true: Official data is under maintenance or experiencing an anomaly — data updates are temporarily paused \n false: Normal"
+                            inPlay:
+                              type: boolean
+                              description: "true: The bookmaker has scheduled in-play odds for this match, though actual in-play odds may not appear if the match situation doesn't warrant it. Refer to actual updates for ground truth. \n\n false: No in-play odds planned."
+                            handicapIndex:
+                              type: integer
+                              description: "Index of this line among all lines offered by the bookmaker for this match (starting from 1). \n\n 1 represents the main market line, matching the Future Odds (Main) endpoint."
+                            handicapCount:
+                              type: integer
+                              description: Total number of lines offered by this bookmaker for this match
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                            close:
+                              type: boolean
+                              description: "true: Betting is temporarily suspended or in-play has stopped \n false: Betting is open."
+                        europeOdds:
+                          type: object
+                          description: 1X2 odds. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHome:
+                              type: string
+                              description: Opening 1X2 odds — home win (Hong Kong Odds)
+                            initialDraw:
+                              type: string
+                              description: Opening 1X2 odds — draw (Hong Kong Odds)
+                            initialAway:
+                              type: string
+                              description: Opening 1X2 odds — away win (Hong Kong Odds)
+                            instantHome:
+                              type: string
+                              description: Current 1X2 odds — home win (Hong Kong Odds)
+                            instantDraw:
+                              type: string
+                              description: Current 1X2 odds — draw (Hong Kong Odds)
+                            instantAway:
+                              type: string
+                              description: Current 1X2 odds — away win (Hong Kong Odds)
+                            handicapIndex:
+                              type: integer
+                              description: Always 1 for europeOdds, since there is only a single line for this market.
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                            close:
+                              type: boolean
+                              description: "true: Betting is temporarily suspended or in-play has stopped \n false: Betting is open."
+                        overUnder:
+                          type: object
+                          description: Over/under odds across all available lines. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHandicap:
+                              type: string
+                              description: "Opening over/under line for this entry. \n\n Positive integer = exact goal total (e.g., 1 = 1 goal). Quarter lines as decimals (e.g., 1.25 = 1/1.5)."
+                            initialOver:
+                              type: string
+                              description: Opening over odds (Hong Kong Odds)
+                            initialUnder:
+                              type: string
+                              description: Opening under odds (Hong Kong Odds)
+                            instantHandicap:
+                              type: string
+                              description: Current over/under line for this entry. Same format as initialHandicap.
+                            instantOver:
+                              type: string
+                              description: Current over odds (Hong Kong Odds)
+                            instantUnder:
+                              type: string
+                              description: Current under odds (Hong Kong Odds)
+                            handicapIndex:
+                              type: integer
+                              description: "Index of this line among all lines offered by the bookmaker for this match (starting from 1). \n\n 1 represents the main market line."
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                            close:
+                              type: boolean
+                              description: "true: Betting is temporarily suspended or in-play has stopped \n false: Betting is open."
+                        handicapHalf:
+                          type: object
+                          description: First-half Asian Handicap odds across all available lines. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHandicap:
+                              type: string
+                              description: Opening first-half handicap line for this entry. Same format as handicap initialHandicap.
+                            initialHome:
+                              type: string
+                              description: Opening first-half Asian Handicap odds — home side (Hong Kong Odds)
+                            initialAway:
+                              type: string
+                              description: Opening first-half Asian Handicap odds — away side (Hong Kong Odds)
+                            instantHandicap:
+                              type: string
+                              description: Current first-half handicap line for this entry. Same format as initialHandicap.
+                            instantHome:
+                              type: string
+                              description: Current first-half Asian Handicap odds — home side (Hong Kong Odds)
+                            instantAway:
+                              type: string
+                              description: Current first-half Asian Handicap odds — away side (Hong Kong Odds)
+                            inPlay:
+                              type: boolean
+                              description: "true: The bookmaker has scheduled in-play odds for this match, though actual in-play odds may not appear if the match situation doesn't warrant it. Refer to actual updates for ground truth. \n\n false: No in-play odds planned."
+                            handicapIndex:
+                              type: integer
+                              description: "Index of this line among all lines offered by the bookmaker for this match (starting from 1). \n\n 1 represents the main market line."
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                        overUnderHalf:
+                          type: object
+                          description: First-half over/under odds across all available lines. Each entry is a comma-separated string containing the fields below.
+                          properties:
+                            matchId:
+                              type: string
+                            companyId:
+                              type: string
+                              description: "1: Macauslot\n 3: Crown\n 4: Ladbrokes\n 7: SNAI\n 8: Bet365\n 9: William Hill\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n 19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n 35: Wewbet\n 42: 18bet\n 48: HK Jockey Club"
+                            initialHandicap:
+                              type: string
+                              description: Opening first-half over/under line for this entry. Same format as overUnder initialHandicap.
+                            initialOver:
+                              type: string
+                              description: Opening first-half over odds (Hong Kong Odds)
+                            initialUnder:
+                              type: string
+                              description: Opening first-half under odds (Hong Kong Odds)
+                            instantHandicap:
+                              type: string
+                              description: Current first-half over/under line for this entry. Same format as initialHandicap.
+                            instantOver:
+                              type: string
+                              description: Current first-half over odds (Hong Kong Odds)
+                            instantUnder:
+                              type: string
+                              description: Current first-half under odds (Hong Kong Odds)
+                            handicapIndex:
+                              type: integer
+                              description: "Index of this line among all lines offered by the bookmaker for this match (starting from 1). \n\n 1 represents the main market line."
+                            changeTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=74
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=74
+      x-rate-limit: This interface is limited to 60 seconds/call;
+      x-recommended-call-frequency: 10 minutes/call
+      x-plan-products:
+      - Odds
+      - Odds Pro
+      x-doc-modified: '2026-06-29'
+  /sport/football/odds/inplay/half:
+    get:
+      operationId: getFootballOddsInplayHalf
+      summary: In-play Odds (Halftime)
+      description: '• This API endpoint returns half-time in-play odds for the main market, covering Asian Handicap (handicapHalf), 1X2 (europeOddHalf), and over/under (overUnderHalf).
+
+
+
+
+        • By default, returns in-play odds updated in the past 3 minutes for all matches.
+
+
+
+
+        • The company ID corresponds to the company:
+
+
+        1: Macauslot, 3: Crown, 4: Ladbrokes ,8: Bet365, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:BWin, 50:1xbet'
+      tags:
+      - Football Odds (18 Agencies)
+      parameters:
+      - name: matchId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: "Filter results to specific matches. Separate multiple IDs with \",\" (e.g., matchId=322964610,322964611). Maximum 100 match IDs per request. \n\n\n\nOnly supports querying matches within the past 20 days."
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter results to specific bookmakers. Separate multiple IDs with "," (e.g., companyId=3,8).
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        recordId:
+                          type: string
+                          description: Unique odds record ID
+                        matchId:
+                          type: string
+                        matchTime:
+                          type: integer
+                          description: "Match minute at which this odds entry was recorded. \n\n -1: Half-time"
+                        homeScore:
+                          type: integer
+                          description: Live score, home team
+                        awayScore:
+                          type: integer
+                          description: Live score, away team
+                        homeRedCount:
+                          type: integer
+                          description: Deprecated. Always returns 0 — no longer updated.
+                        awayRedCount:
+                          type: integer
+                          description: Deprecated. Always returns 0 — no longer updated.
+                        type:
+                          type: integer
+                          description: "Odds market type \n\n 1: Asian Handicap update (odds1–3: home odds, handicap line, away odds) \n 2: Over/Under update (odds1–3: over odds, line, under odds) \n 3: All markets closed (odds1–3: 0) \n 4: 1X2 update (odds1–3: home win odds, draw odds, away win odds) \n 5: 1X2 closed (odds1–3: 0) \n 6: Asian Handicap closed (odds1–3: 0) \n 7: Over/Under closed (odds1–3: 0)"
+                        companyId:
+                          type: string
+                          description: "1: Macauslot\n3: Crown\n4: Ladbrokes (In-play: Handicap & O/U only)\n8: Bet365\n 12: Easybets\n 14: Vcbet\n 17: Mansion88\n19: Interwetten\n 22: 10BET\n 24: 12bet\n 31: Sbobet\n35: Wewbet\n42: 18bet\n 48: HK Jockey Club\n 49:BWin(In-play: Handicap & O/U only) \n 50:1xbet"
+                        odds1:
+                          type: string
+                          description: First odds value. Meaning depends on type — see type field above.
+                        odds2:
+                          type: string
+                          description: Second odds value. Meaning depends on type — see type field above.
+                        odds3:
+                          type: string
+                          description: Third odds value. Meaning depends on type — see type field above.
+                        changeTime:
+                          type: integer
+                          description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=75
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=75
+      x-rate-limit: This interface is limited to 3 seconds/call;
+      x-recommended-call-frequency: 15 seconds/call
+      x-plan-products:
+      - Odds
+      - Odds Pro
+      x-doc-modified: '2026-06-26'
+  /sport/football/odds/oddsbyid:
+    get:
+      operationId: getFootballOddsOddsbyid
+      summary: Odd Modify Record
+      description: "• This API endpoint returns historical odds for matches whose odds changed within a specific time window, supporting three query modes:\n\n\n 1.type=match — Returns a list of matches with historical odds that may have increased or decreased in the last hour, along with the bookmaker that changed and the operation time.\n\n\n\n 2.matchId + companyId — Returns historical odds for a specific match and bookmaker, main market only (e.g., /sport/football/odds/oddsbyid?api_key&matchId=256921227&companyId=3).\n\n\n\n 3.type=multi + matchId + companyId — Returns historical odds for a specific match and bookmaker, all markets (e.g., /sport/football/odds/oddsbyid?api_key&type=multi&matchId=256921227&companyId=3).\n\n\n\n• In-play odds history is available for the past month. Opening and latest pre-match odds are available for up to one year."
+      tags:
+      - Football Odds (18 Agencies)
+      parameters:
+      - name: type
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - match
+          - multi + matchId + companyId
+        description: Returns a list of matches with historical odds that may have changed in the last hour.
+      - name: matchId + companyId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Returns historical odds for the specified match and bookmaker (main market only).
+      responses:
+        '200':
+          description: Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0 on success; 2 on invalid/illegal api_key
+                  message:
+                    type: string
+                    description: '"success" on success; otherwise the error message'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        list:
+                          type: array
+                          description: Returned only when type=match is used.
+                          items:
+                            type: object
+                            properties:
+                              matchId:
+                                type: string
+                              companyId:
+                                type: string
+                                description: Bookmaker ID that changed odds for this match. 0 means all odds for this match have been cleared.
+                              operateTime:
+                                type: integer
+                                description: Timestamp of this odds change (Unix timestamp, GMT+0)
+                        handicap:
+                          type: object
+                          description: Asian Handicap odds
+                          properties:
+                            companyID:
+                              type: string
+                              description: Bookmaker ID
+                            num:
+                              type: integer
+                              description: Line sequence number. Multi-market interface only — not present when querying the main-market interface.
+                            odds1:
+                              type: string
+                              description: Opening handicap line
+                            odds2:
+                              type: string
+                              description: Opening Asian Handicap odds — home side
+                            odds3:
+                              type: string
+                              description: Opening Asian Handicap odds — away side
+                            odds4:
+                              type: string
+                              description: Current handicap line
+                            odds5:
+                              type: string
+                              description: Current Asian Handicap odds — home side
+                            odds6:
+                              type: string
+                              description: Current Asian Handicap odds — away side
+                            modifyTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                            detail:
+                              type: object
+                              description: Full change history for this line
+                              properties:
+                                id:
+                                  type: string
+                                  description: Unique record ID
+                                odds1:
+                                  type: string
+                                  description: Handicap line at this point in time
+                                odds2:
+                                  type: string
+                                  description: Home side odds at this point in time
+                                odds3:
+                                  type: string
+                                  description: Away side odds at this point in time
+                                modifyTime:
+                                  type: integer
+                                  description: Timestamp of this change (Unix timestamp, GMT+0)
+                                type:
+                                  type: string
+                                  description: "Multi-market interface only. \n 1: Early odds \n 2: Pre-match closing odds (after early odds, before kick-off) \n 3: In-play odds"
+                                isEarly:
+                                  type: boolean
+                                  description: "Main-market interface only. \n\n true: Early odds \n false: Not early odds"
+                        overUnder:
+                          type: object
+                          description: Over/under odds
+                          properties:
+                            companyID:
+                              type: string
+                              description: Bookmaker ID
+                            num:
+                              type: integer
+                              description: Line sequence number. Multi-market interface only — not present when querying the main-market interface.
+                            odds1:
+                              type: string
+                              description: Opening over/under line
+                            odds2:
+                              type: string
+                              description: Opening over odds
+                            odds3:
+                              type: string
+                              description: Opening under odds
+                            odds4:
+                              type: string
+                              description: Current over/under line
+                            odds5:
+                              type: string
+                              description: Current over odds
+                            odds6:
+                              type: string
+                              description: Current under odds
+                            modifyTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                            detail:
+                              type: object
+                              description: Full change history for this line
+                              properties:
+                                id:
+                                  type: string
+                                  description: Unique record ID
+                                odds1:
+                                  type: string
+                                  description: Over/under line at this point in time
+                                odds2:
+                                  type: string
+                                  description: Over odds at this point in time
+                                odds3:
+                                  type: string
+                                  description: Under odds at this point in time
+                                modifyTime:
+                                  type: integer
+                                  description: Timestamp of this change (Unix timestamp, GMT+0)
+                                type:
+                                  type: string
+                                  description: Multi-market interface only. Same values as handicap detail.type.
+                                isEarly:
+                                  type: boolean
+                                  description: Main-market interface only. Same values as handicap detail.isEarly.
+                        europe:
+                          type: object
+                          description: 1X2 odds
+                          properties:
+                            companyID:
+                              type: string
+                              description: Bookmaker ID
+                            odds1:
+                              type: string
+                              description: Opening 1X2 odds — home win
+                            odds2:
+                              type: string
+                              description: Opening 1X2 odds — draw
+                            odds3:
+                              type: string
+                              description: Opening 1X2 odds — away win
+                            odds4:
+                              type: string
+                              description: Current 1X2 odds — home win
+                            odds5:
+                              type: string
+                              description: Current 1X2 odds — draw
+                            odds6:
+                              type: string
+                              description: Current 1X2 odds — away win
+                            modifyTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                            detail:
+                              type: object
+                              description: Full change history
+                              properties:
+                                id:
+                                  type: string
+                                  description: Unique record ID
+                                odds1:
+                                  type: string
+                                  description: Home win odds at this point in time
+                                odds2:
+                                  type: string
+                                  description: Draw odds at this point in time
+                                odds3:
+                                  type: string
+                                  description: Away win odds at this point in time
+                                modifyTime:
+                                  type: integer
+                                  description: Timestamp of this change (Unix timestamp, GMT+0)
+                                isEarly:
+                                  type: boolean
+                                  description: "true: Early odds \n false: Not early odds"
+                        halfHandicap:
+                          type: object
+                          description: First-half Asian Handicap odds
+                          properties:
+                            companyID:
+                              type: string
+                              description: Bookmaker ID
+                            num:
+                              type: integer
+                              description: Line sequence number. Multi-market interface only — not present when querying the main-market interface.
+                            odds1:
+                              type: string
+                              description: Opening first-half handicap line
+                            odds2:
+                              type: string
+                              description: Opening first-half Asian Handicap odds — home side
+                            odds3:
+                              type: string
+                              description: Opening first-half Asian Handicap odds — away side
+                            odds4:
+                              type: string
+                              description: Current first-half handicap line
+                            odds5:
+                              type: string
+                              description: Current first-half Asian Handicap odds — home side
+                            odds6:
+                              type: string
+                              description: Current first-half Asian Handicap odds — away side
+                            modifyTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                            detail:
+                              type: object
+                              description: Full change history for this line
+                              properties:
+                                id:
+                                  type: string
+                                  description: Unique record ID
+                                odds1:
+                                  type: string
+                                  description: Handicap line at this point in time
+                                odds2:
+                                  type: string
+                                  description: Home side odds at this point in time
+                                odds3:
+                                  type: string
+                                  description: Away side odds at this point in time
+                                modifyTime:
+                                  type: integer
+                                  description: Timestamp of this change (Unix timestamp, GMT+0)
+                                type:
+                                  type: string
+                                  description: Multi-market interface only. Same values as handicap detail.type.
+                                isEarly:
+                                  type: boolean
+                                  description: Main-market interface only. Same values as handicap detail.isEarly.
+                        halfOverUnder:
+                          type: object
+                          description: First-half over/under odds
+                          properties:
+                            companyID:
+                              type: string
+                              description: Bookmaker ID
+                            num:
+                              type: integer
+                              description: Line sequence number. Multi-market interface only — not present when querying the main-market interface.
+                            odds1:
+                              type: string
+                              description: Opening first-half over/under line
+                            odds2:
+                              type: string
+                              description: Opening first-half over odds
+                            odds3:
+                              type: string
+                              description: Opening first-half under odds
+                            odds4:
+                              type: string
+                              description: Current first-half over/under line
+                            odds5:
+                              type: string
+                              description: Current first-half over odds
+                            odds6:
+                              type: string
+                              description: Current first-half under odds
+                            modifyTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                            detail:
+                              type: object
+                              description: Full change history for this line
+                              properties:
+                                id:
+                                  type: string
+                                  description: Unique record ID
+                                odds1:
+                                  type: string
+                                  description: Over/under line at this point in time
+                                odds2:
+                                  type: string
+                                  description: Over odds at this point in time
+                                odds3:
+                                  type: string
+                                  description: Under odds at this point in time
+                                modifyTime:
+                                  type: integer
+                                  description: Timestamp of this change (Unix timestamp, GMT+0)
+                                type:
+                                  type: string
+                                  description: Multi-market interface only. Same values as handicap detail.type.
+                                isEarly:
+                                  type: boolean
+                                  description: Main-market interface only. Same values as handicap detail.isEarly.
+                        halfEurope:
+                          type: object
+                          description: First-half 1X2 odds
+                          properties:
+                            companyID:
+                              type: string
+                              description: Bookmaker ID
+                            odds1:
+                              type: string
+                              description: Opening first-half 1X2 odds — home win
+                            odds2:
+                              type: string
+                              description: Opening first-half 1X2 odds — draw
+                            odds3:
+                              type: string
+                              description: Opening first-half 1X2 odds — away win
+                            odds4:
+                              type: string
+                              description: Current first-half 1X2 odds — home win
+                            odds5:
+                              type: string
+                              description: Current first-half 1X2 odds — draw
+                            odds6:
+                              type: string
+                              description: Current first-half 1X2 odds — away win
+                            modifyTime:
+                              type: integer
+                              description: Timestamp of the last odds update (Unix timestamp, GMT+0)
+                            detail:
+                              type: object
+                              description: Full change history
+                              properties:
+                                id:
+                                  type: string
+                                  description: Unique record ID
+                                odds1:
+                                  type: string
+                                  description: Home win odds at this point in time
+                                odds2:
+                                  type: string
+                                  description: Draw odds at this point in time
+                                odds3:
+                                  type: string
+                                  description: Away win odds at this point in time
+                                modifyTime:
+                                  type: integer
+                                  description: Timestamp of this change (Unix timestamp, GMT+0)
+                                isEarly:
+                                  type: boolean
+                                  description: "true: Early odds \n false: Not early odds"
+      externalDocs:
+        description: iSports API documentation
+        url: https://www.isportsapi.com/en/docs.html?id=245
+      x-documentation:
+      - https://www.isportsapi.com/en/docs.html?id=245
+      x-rate-limit: This interface is limited to 10 seconds/call;
+      x-recommended-call-frequency: 20 seconds/call
+      x-plan-products:
+      - Odds
+      - Odds Pro
+      x-doc-modified: '2026-06-27'
+components:
+  securitySchemes:
+    apiKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key
+      description: Personal API key issued from the iSports account settings page and passed on every request as the `api_key` query parameter.
+externalDocs:
+  description: iSports API documentation
+  url: https://www.isportsapi.com/en/docs.html

@@ -1,0 +1,130 @@
+{
+  "item": [
+    {
+      "id": "abbcaad0-7769-4959-b5ff-739282b394cd",
+      "name": "Basketball Live animation",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2f0ad96d-21b5-4d7b-9d19-231fb9c7a277",
+          "name": "Schedule & Results",
+          "request": {
+            "name": "Schedule & Results",
+            "description": {
+              "content": "This API is used to get the results of live basketball animation matches; \nThe return schedule time range is the past 4 hours and the next 24 hours.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "basketball",
+                "liveanimation",
+                "schedule"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e07451b2-ac26-4b12-b9be-6687f528c543",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "basketball",
+                    "liveanimation",
+                    "schedule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6950,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"leagueId\": \"string\",\n      \"leagueName\": \"string\",\n      \"quarterCount\": 264,\n      \"matchTime\": 4717,\n      \"status\": 3960,\n      \"quarterRemainTime\": \"string\",\n      \"homeId\": \"string\",\n      \"homeName\": \"string\",\n      \"homeRank\": 6339,\n      \"awayId\": \"string\",\n      \"awayName\": \"string\",\n      \"awayRank\": 5806,\n      \"homeScore\": 6750,\n      \"awayScore\": 2253,\n      \"homeFirstQuarterScore\": 9432,\n      \"awayFirstQuarterScore\": 8487,\n      \"homeSecondQuarterScore\": 6359,\n      \"awaySecondQuarterScore\": 163,\n      \"homeThirdQuarterScore\": 3611,\n      \"awayThirdQuarterScore\": 4676,\n      \"homeFourthQuarterScore\": 1035,\n      \"awayFourthQuarterScore\": 5842,\n      \"overTimeCount\": 4141,\n      \"homeFirstOverTimeScore\": 8526,\n      \"awayFirstOverTimeScore\": 4536,\n      \"homeSecondOverTimeScore\": 6350,\n      \"awaySecondOverTimeScore\": 6314,\n      \"homeThirdOverTimeScore\": 4635,\n      \"awayThirdOverTimeScore\": 3311,\n      \"leagueSeason\": \"string\",\n      \"matchType\": 6632,\n      \"hasStats\": false,\n      \"explain\": \"string\",\n      \"playoffsId\": \"string\",\n      \"stageId\": \"string\",\n      \"roundType\": \"string\",\n      \"group\": \"string\",\n      \"neutral\": true\n    },\n    {\n      \"matchId\": \"string\",\n      \"leagueId\": \"string\",\n      \"leagueName\": \"string\",\n      \"quarterCount\": 580,\n      \"matchTime\": 6239,\n      \"status\": 4305,\n      \"quarterRemainTime\": \"string\",\n      \"homeId\": \"string\",\n      \"homeName\": \"string\",\n      \"homeRank\": 2783,\n      \"awayId\": \"string\",\n      \"awayName\": \"string\",\n      \"awayRank\": 2802,\n      \"homeScore\": 5577,\n      \"awayScore\": 9847,\n      \"homeFirstQuarterScore\": 6687,\n      \"awayFirstQuarterScore\": 7238,\n      \"homeSecondQuarterScore\": 9850,\n      \"awaySecondQuarterScore\": 9668,\n      \"homeThirdQuarterScore\": 2091,\n      \"awayThirdQuarterScore\": 3917,\n      \"homeFourthQuarterScore\": 202,\n      \"awayFourthQuarterScore\": 6939,\n      \"overTimeCount\": 9252,\n      \"homeFirstOverTimeScore\": 7572,\n      \"awayFirstOverTimeScore\": 4217,\n      \"homeSecondOverTimeScore\": 4970,\n      \"awaySecondOverTimeScore\": 4280,\n      \"homeThirdOverTimeScore\": 7030,\n      \"awayThirdOverTimeScore\": 6980,\n      \"leagueSeason\": \"string\",\n      \"matchType\": 6490,\n      \"hasStats\": false,\n      \"explain\": \"string\",\n      \"playoffsId\": \"string\",\n      \"stageId\": \"string\",\n      \"roundType\": \"string\",\n      \"group\": \"string\",\n      \"neutral\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.isportsapi.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f52ebc58-4c1f-4ef2-8747-fa3ea1a02cdf",
+    "name": "iSports Basketball Live animation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.\n\nAll operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).\n\nThis document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.\n\nContact Support:\n Name: iSports API",
+      "type": "text/plain"
+    }
+  }
+}

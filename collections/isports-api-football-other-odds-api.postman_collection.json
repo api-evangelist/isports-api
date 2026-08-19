@@ -1,0 +1,2320 @@
+{
+  "item": [
+    {
+      "id": "5bb1e822-5c00-47c5-8a26-d05291812a34",
+      "name": "Football Other Odds",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c145b874-4ef8-4273-a4e5-2fec14c6eb59",
+          "name": "First/Last Team To Score (pre-match)",
+          "request": {
+            "name": "First/Last Team To Score (pre-match)",
+            "description": {
+              "content": "• This API endpoint returns pre-match odds for which team scores first and which team scores last in the match.\n\n\n\n• By default, returns data for the next 10 days.\n\n\n\n• Currently supports Macauslot (1) and Crown (3).\n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "teamtoscore",
+                "prematch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Filter results to specific matches. Separate multiple IDs with \",\" (e.g., matchId=322964610,322964611)."
+                },
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Filter results to specific bookmakers. Separate multiple IDs with \",\" (e.g., companyId=1,3)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dc7de8d6-eb18-46d5-b0a0-7ccd95a9d014",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "teamtoscore",
+                    "prematch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7265,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"firstIsHome\": \"string\",\n        \"firstIsAway\": \"string\",\n        \"lastIsHome\": \"string\",\n        \"lastIsAway\": \"string\",\n        \"noGoal\": \"string\"\n      },\n      \"changeTime\": 5224\n    },\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"firstIsHome\": \"string\",\n        \"firstIsAway\": \"string\",\n        \"lastIsHome\": \"string\",\n        \"lastIsAway\": \"string\",\n        \"noGoal\": \"string\"\n      },\n      \"changeTime\": 7809\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f8db39b0-7989-44ae-ace6-606027fa578b",
+          "name": "Goals Odd/Even (pre-match)",
+          "request": {
+            "name": "Goals Odd/Even (pre-match)",
+            "description": {
+              "content": "• This API endpoint returns pre-match odds for whether the total number of goals in the match is odd or even.\n\n\n\n• By default, returns data for matches in the next 10 days.\n\n\n\n• Currently supports Macauslot (1) and Crown (3).\n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "oddeven",
+                "prematch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Filter results to specific matches. Separate multiple IDs with \",\" (e.g., matchId=322964610,322964611)."
+                },
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Filter results to specific bookmakers. Separate multiple IDs with \",\" (e.g., companyId=1,3)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a3c264a2-c64c-454e-a0e6-dee4d1ef776d",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "oddeven",
+                    "prematch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 3363,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"single\": \"string\",\n        \"double\": \"string\"\n      },\n      \"changeTime\": 4888\n    },\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"single\": \"string\",\n        \"double\": \"string\"\n      },\n      \"changeTime\": 5382\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dcb283d0-570d-4942-818c-79585423018e",
+          "name": "Number of Goals in Match (pre-match)",
+          "request": {
+            "name": "Number of Goals in Match (pre-match)",
+            "description": {
+              "content": "• This API endpoint returns the pre-match odds for the number of goals in the match.\n\n\n\n• By default, returns data for the next 10 days.\n\n\n\n• Odds format: All odds values are returned in Hong Kong Odds format. To convert to Decimal Odds: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85).\n\n\n\n• Currently supported by: Macauslot (1), Crown (3). Additional bookmakers may be added in the future.\n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "totalgoals",
+                "prematch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Filter results to specific matches. Separate multiple IDs with \",\" (e.g., matchId=322964610,322964611)."
+                },
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Filter results to specific bookmakers. Separate multiple IDs with \",\" (e.g., companyId=3,8)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4cff2048-af30-4490-b3a0-454d742a6410",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "totalgoals",
+                    "prematch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4127,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"zeroToOne\": \"string\",\n        \"twoToThree\": \"string\",\n        \"fourToSix\": \"string\",\n        \"moreThanSix\": \"string\"\n      },\n      \"changeTime\": 5105\n    },\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"zeroToOne\": \"string\",\n        \"twoToThree\": \"string\",\n        \"fourToSix\": \"string\",\n        \"moreThanSix\": \"string\"\n      },\n      \"changeTime\": 3332\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "77bf2c26-b865-4900-940c-2a1ae9c26a88",
+          "name": "Half Time/Full Time (pre-match)",
+          "request": {
+            "name": "Half Time/Full Time (pre-match)",
+            "description": {
+              "content": "• This API endpoint returns pre-match odds for Half Time/Full Time, where the result is based on the combination of the half-time result and the full-time result.\n\n\n\n• By default, returns data for matches in the next 10 days.\n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "halffull",
+                "prematch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Filter results to specific matches. Separate multiple IDs with \",\" (e.g., matchId=322964610,322964611)."
+                },
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Filter results to specific bookmakers. Separate multiple IDs with \",\" (e.g., companyId=3,8)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8b2c7054-4dc8-4c0f-97d4-d998a1afa57b",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "halffull",
+                    "prematch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7466,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"halfWinFullWin\": \"string\",\n        \"halfWinFullDraw\": \"string\",\n        \"halfWinFullLose\": \"string\",\n        \"halfDrawFullWin\": \"string\",\n        \"halfDrawFullDraw\": \"string\",\n        \"halfDrawFullLose\": \"string\",\n        \"halfLoseFullWin\": \"string\",\n        \"halfLoseFullDraw\": \"string\",\n        \"halfLoseFullLose\": \"string\"\n      },\n      \"changeTime\": 9294\n    },\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"halfWinFullWin\": \"string\",\n        \"halfWinFullDraw\": \"string\",\n        \"halfWinFullLose\": \"string\",\n        \"halfDrawFullWin\": \"string\",\n        \"halfDrawFullDraw\": \"string\",\n        \"halfDrawFullLose\": \"string\",\n        \"halfLoseFullWin\": \"string\",\n        \"halfLoseFullDraw\": \"string\",\n        \"halfLoseFullLose\": \"string\"\n      },\n      \"changeTime\": 2548\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d3f660a1-1f40-4d6b-8efe-b308259a8602",
+          "name": "Correct Score (pre-match)",
+          "request": {
+            "name": "Correct Score (pre-match)",
+            "description": {
+              "content": "• This API endpoint returns pre-match correct score odds for each possible scoreline.\n\n\n\n• By default, returns data for matches in the next 10 days. \n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "score",
+                "prematch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Filter results to specific matches. Separate multiple IDs with \",\" (e.g., matchId=322964610,322964611)."
+                },
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Filter results to specific bookmakers. Separate multiple IDs with \",\" (e.g., companyId=1,3)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8e55649f-c74b-4fbc-baa6-b62c5203948f",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "score",
+                    "prematch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4835,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"bettingOddsItems\": [\n          {\n            \"homeScore\": 739,\n            \"awayScore\": 4218,\n            \"odds\": \"string\"\n          },\n          {\n            \"homeScore\": 5384,\n            \"awayScore\": 4839,\n            \"odds\": \"string\"\n          }\n        ],\n        \"otherScoresOdds\": \"string\"\n      },\n      \"changeTime\": 3731\n    },\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"bettingOddsItems\": [\n          {\n            \"homeScore\": 343,\n            \"awayScore\": 6614,\n            \"odds\": \"string\"\n          },\n          {\n            \"homeScore\": 7028,\n            \"awayScore\": 2789,\n            \"odds\": \"string\"\n          }\n        ],\n        \"otherScoresOdds\": \"string\"\n      },\n      \"changeTime\": 16\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a0406df7-4102-4f3f-ad34-e4ee9f08e054",
+          "name": "Half Time Correct Score (pre-match)",
+          "request": {
+            "name": "Half Time Correct Score (pre-match)",
+            "description": {
+              "content": "• This API endpoint returns pre-match correct score odds for the first half.\n\n\n\n• By default, returns data for matches in the next 10 days.\n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "score",
+                "half",
+                "prematch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Filter results to specific matches. Separate multiple IDs with \",\" (e.g., matchId=322964610,322964611)."
+                },
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Filter results to specific bookmakers. Separate multiple IDs with \",\" (e.g., companyId=1,3)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "814ac9b9-29ac-47a4-be37-2e45d557b1ae",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "score",
+                    "half",
+                    "prematch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1256,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"bettingOddsItems\": [\n          {\n            \"homeScore\": 9224,\n            \"awayScore\": 6781,\n            \"odds\": \"string\"\n          },\n          {\n            \"homeScore\": 7450,\n            \"awayScore\": 4213,\n            \"odds\": \"string\"\n          }\n        ],\n        \"otherScoresOdds\": \"string\"\n      },\n      \"changeTime\": 1252\n    },\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"bettingOddsItems\": [\n          {\n            \"homeScore\": 9603,\n            \"awayScore\": 6154,\n            \"odds\": \"string\"\n          },\n          {\n            \"homeScore\": 6062,\n            \"awayScore\": 3272,\n            \"odds\": \"string\"\n          }\n        ],\n        \"otherScoresOdds\": \"string\"\n      },\n      \"changeTime\": 4918\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "591d11e8-719d-4b3b-be1b-94899000f68d",
+          "name": "Handicap Corners (pre-match)",
+          "request": {
+            "name": "Handicap Corners (pre-match)",
+            "description": {
+              "content": "• This API endpoint returns pre-match Asian Handicap odds for corners, where a corner handicap is applied to one team.\n\n\n\n• By default, returns data for matches in the next 10 days. \n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "cornershandicap",
+                "prematch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Filter results to specific matches. Separate multiple IDs with \",\" (e.g., matchId=322964610,322964611)."
+                },
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Filter results to specific bookmakers. Separate multiple IDs with \",\" (e.g., companyId=3,8)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7200bae6-8601-498c-b6b6-3380c46d7604",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "cornershandicap",
+                    "prematch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9185,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"handicapCorners\": \"string\",\n        \"home\": \"string\",\n        \"away\": \"string\"\n      },\n      \"changeTime\": 1384\n    },\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"handicapCorners\": \"string\",\n        \"home\": \"string\",\n        \"away\": \"string\"\n      },\n      \"changeTime\": 9460\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8c5bdbc-717b-4cac-8c97-c7831a4ba3d6",
+          "name": "Total Corners (pre-match)",
+          "request": {
+            "name": "Total Corners (pre-match)",
+            "description": {
+              "content": "• This API endpoint returns pre-match over/under odds for the total number of corners in the match. Use cmd=half to retrieve first-half corner totals instead.\n\n\n\n• By default, returns data for matches in the next 10 days. \n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "cornerstotal",
+                "prematch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Filter results to specific matches. Separate multiple IDs with \",\" (e.g., matchId=322964610,322964611)."
+                },
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Filter results to specific bookmakers. Separate multiple IDs with \",\" (e.g., companyId=3,8)."
+                },
+                {
+                  "disabled": false,
+                  "key": "cmd",
+                  "value": "<string>",
+                  "description": "Pass half to return first-half corner total odds instead of full-match."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "da263638-d26f-49f4-ba66-3f5eb364e19b",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "cornerstotal",
+                    "prematch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cmd",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1043,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"totalCorners\": \"string\",\n        \"over\": \"string\",\n        \"under\": \"string\"\n      },\n      \"changeTime\": 6140\n    },\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"totalCorners\": \"string\",\n        \"over\": \"string\",\n        \"under\": \"string\"\n      },\n      \"changeTime\": 7673\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3c5aa2cd-6002-4f5e-a03d-e80af7125513",
+          "name": "Goals Odd/Even (In-play)",
+          "request": {
+            "name": "Goals Odd/Even (In-play)",
+            "description": {
+              "content": "• This API endpoint returns in-play odds for whether the total number of goals in the match is odd or even.\n\n\n\n• Currently supports Crown (3).\n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "oddeven",
+                "inplay"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Filter results to specific matches. Separate multiple IDs with \",\" (e.g., matchId=322964610,322964611)."
+                },
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Filter results to specific bookmakers. Separate multiple IDs with \",\" (e.g., companyId=3,8)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "86701d64-3413-4143-8a50-678130bfa294",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "oddeven",
+                    "inplay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 3815,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"single\": \"string\",\n        \"double\": \"string\",\n        \"close\": false\n      },\n      \"changeTime\": 4086\n    },\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"single\": \"string\",\n        \"double\": \"string\",\n        \"close\": true\n      },\n      \"changeTime\": 5770\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba62888e-8147-4826-919a-c8285028a02c",
+          "name": "Number of Goals in Match (In-play)",
+          "request": {
+            "name": "Number of Goals in Match (In-play)",
+            "description": {
+              "content": "• This API endpoint returns the in-play odds for the number of goals in the match.\n\n\n\n• Odds format: All odds values are returned in Hong Kong Odds format. To convert to Decimal Odds: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85).\n\n\n\n• Currently supported by: Macauslot (1), Crown (3). Additional bookmakers may be added in the future.\n\n\n\n• Suspended market notice: When a specific goal-range market is individually suspended (separate from a full match suspension), this field returns a value of 0, allowing you to distinguish a suspended market from a real data update.\n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "totalgoals",
+                "inplay"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Filter results to specific matches. Separate multiple IDs with \",\" (e.g., matchId=322964610,322964611)."
+                },
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Filter results to specific bookmakers. Separate multiple IDs with \",\" (e.g., companyId=3,8)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a1a20e39-0a43-4b6f-9cc9-21bf0c20dc1d",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "totalgoals",
+                    "inplay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1590,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"zeroToOne\": \"string\",\n        \"twoToThree\": \"string\",\n        \"fourToSix\": \"string\",\n        \"moreThanSix\": \"string\",\n        \"close\": false\n      },\n      \"changeTime\": 3945\n    },\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"zeroToOne\": \"string\",\n        \"twoToThree\": \"string\",\n        \"fourToSix\": \"string\",\n        \"moreThanSix\": \"string\",\n        \"close\": true\n      },\n      \"changeTime\": 640\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "16fb6b22-768a-4ff5-9f34-6bef41ac5e6b",
+          "name": "Half Time/Full Time (In-play)",
+          "request": {
+            "name": "Half Time/Full Time (In-play)",
+            "description": {
+              "content": "• This API endpoint returns in-play odds for Half Time/Full Time, where the result is based on the combination of the half-time result and the full-time result.\n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "halffull",
+                "inplay"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Filter results to specific matches. Separate multiple IDs with \",\" (e.g., matchId=322964610,322964611)."
+                },
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Filter results to specific bookmakers. Separate multiple IDs with \",\" (e.g., companyId=3,8)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4776baa2-7dca-49bc-8298-e20fffbf58c6",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "halffull",
+                    "inplay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1679,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"halfWinFullWin\": \"string\",\n        \"halfWinFullDraw\": \"string\",\n        \"halfWinFullLose\": \"string\",\n        \"halfDrawFullWin\": \"string\",\n        \"halfDrawFullDraw\": \"string\",\n        \"halfDrawFullLose\": \"string\",\n        \"halfLoseFullWin\": \"string\",\n        \"halfLoseFullDraw\": \"string\",\n        \"halfLoseFullLose\": \"string\",\n        \"close\": false\n      },\n      \"changeTime\": 9704\n    },\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"halfWinFullWin\": \"string\",\n        \"halfWinFullDraw\": \"string\",\n        \"halfWinFullLose\": \"string\",\n        \"halfDrawFullWin\": \"string\",\n        \"halfDrawFullDraw\": \"string\",\n        \"halfDrawFullLose\": \"string\",\n        \"halfLoseFullWin\": \"string\",\n        \"halfLoseFullDraw\": \"string\",\n        \"halfLoseFullLose\": \"string\",\n        \"close\": false\n      },\n      \"changeTime\": 9494\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8178168c-91e2-41b5-8f09-5a188baeea6c",
+          "name": "Correct Score (In-play)",
+          "request": {
+            "name": "Correct Score (In-play)",
+            "description": {
+              "content": "• This API endpoint returns in-play correct score odds for each possible scoreline.\n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "score",
+                "inplay"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Filter results to specific matches. Separate multiple IDs with \",\" (e.g., matchId=322964610,322964611)."
+                },
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Filter results to specific bookmakers. Separate multiple IDs with \",\" (e.g., companyId=3,8)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d102ab3a-f918-4b67-a7ff-5baa7c071308",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "score",
+                    "inplay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7266,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"bettingOddsItems\": [\n          {\n            \"homeScore\": \"string\",\n            \"awayScore\": \"string\",\n            \"odds\": \"string\"\n          },\n          {\n            \"homeScore\": \"string\",\n            \"awayScore\": \"string\",\n            \"odds\": \"string\"\n          }\n        ],\n        \"otherScoresOdds\": \"string\",\n        \"close\": false\n      },\n      \"changeTime\": 4657\n    },\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"bettingOddsItems\": [\n          {\n            \"homeScore\": \"string\",\n            \"awayScore\": \"string\",\n            \"odds\": \"string\"\n          },\n          {\n            \"homeScore\": \"string\",\n            \"awayScore\": \"string\",\n            \"odds\": \"string\"\n          }\n        ],\n        \"otherScoresOdds\": \"string\",\n        \"close\": false\n      },\n      \"changeTime\": 6591\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1018bc0b-41ae-4d12-bcab-7c5d5f7852f2",
+          "name": "Half Time Correct Score (In-play)",
+          "request": {
+            "name": "Half Time Correct Score (In-play)",
+            "description": {
+              "content": "• This API endpoint returns in-play correct score odds for the first half.\n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "score",
+                "half",
+                "inplay"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Filter results to specific matches. Separate multiple IDs with \",\" (e.g., matchId=322964610,322964611)."
+                },
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Filter results to specific bookmakers. Separate multiple IDs with \",\" (e.g., companyId=3,8)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "17f19a81-8ede-4a73-96d7-f04357fc0c21",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "score",
+                    "half",
+                    "inplay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"bettingOddsItems\": [\n          {\n            \"homeScore\": 7358,\n            \"awayScore\": 2983,\n            \"odds\": \"string\"\n          },\n          {\n            \"homeScore\": 2342,\n            \"awayScore\": 7303,\n            \"odds\": \"string\"\n          }\n        ],\n        \"otherScoresOdds\": \"string\",\n        \"close\": false\n      },\n      \"changeTime\": 7287\n    },\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"bettingOddsItems\": [\n          {\n            \"homeScore\": 9356,\n            \"awayScore\": 1920,\n            \"odds\": \"string\"\n          },\n          {\n            \"homeScore\": 7986,\n            \"awayScore\": 327,\n            \"odds\": \"string\"\n          }\n        ],\n        \"otherScoresOdds\": \"string\",\n        \"close\": true\n      },\n      \"changeTime\": 5390\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5777fcfc-ab2e-4115-b8e5-7c671ce01250",
+          "name": "Handicap Corners (In-play)",
+          "request": {
+            "name": "Handicap Corners (In-play)",
+            "description": {
+              "content": "• This API endpoint returns in-play Asian Handicap odds for corners, updated in real time. \n\n\n\n• Returns all data updates captured within the last 3 minutes. \n\n\n\n• A single match and bookmaker may return multiple records tracking odds movement, or zero records if no movement occurred.\n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "cornershandicap",
+                "inplay"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Filter results to specific bookmakers. Returns the last 3 minutes of data for the specified bookmaker. Separate multiple IDs with \",\" (e.g., companyId=3,8)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "68ba335f-3af0-4b01-a40f-94ff151a91d0",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "cornershandicap",
+                    "inplay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6608,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"matchTime\": \"string\",\n      \"homeCorner\": \"string\",\n      \"awayCorner\": \"string\",\n      \"odds\": {\n        \"handicapCorners\": \"string\",\n        \"home\": \"string\",\n        \"away\": \"string\",\n        \"close\": true\n      },\n      \"changeTime\": 8245\n    },\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"matchTime\": \"string\",\n      \"homeCorner\": \"string\",\n      \"awayCorner\": \"string\",\n      \"odds\": {\n        \"handicapCorners\": \"string\",\n        \"home\": \"string\",\n        \"away\": \"string\",\n        \"close\": true\n      },\n      \"changeTime\": 733\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3dba24fc-27b1-4e2a-8dba-ccb6083da754",
+          "name": "Total Corners (In-play)",
+          "request": {
+            "name": "Total Corners (In-play)",
+            "description": {
+              "content": "• This API endpoint returns in-play over/under odds for the total number of corners, updated in real time. \n\n\n\n• Returns all data updates captured within the last 3 minutes. \n\n\n\n• A single match and bookmaker may return multiple records tracking odds movement, or zero records if no movement occurred. \n\n\n\n• Use cmd=half to retrieve first-half corner totals instead.\n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "cornerstotal",
+                "inplay"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Filter results to specific bookmakers. Returns the last 3 minutes of data for the specified bookmaker. Separate multiple IDs with \",\" (e.g., companyId=3,8)."
+                },
+                {
+                  "disabled": false,
+                  "key": "cmd",
+                  "value": "<string>",
+                  "description": "Pass half to return first-half corner total odds instead of full-match."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b97c1076-e28e-4e55-894a-d797670b3f90",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "cornerstotal",
+                    "inplay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cmd",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5553,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"matchTime\": \"string\",\n      \"homeCorner\": \"string\",\n      \"awayCorner\": \"string\",\n      \"odds\": {\n        \"totalCorners\": \"string\",\n        \"over\": \"string\",\n        \"under\": \"string\",\n        \"close\": false\n      },\n      \"changeTime\": 2830\n    },\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"matchTime\": \"string\",\n      \"homeCorner\": \"string\",\n      \"awayCorner\": \"string\",\n      \"odds\": {\n        \"totalCorners\": \"string\",\n        \"over\": \"string\",\n        \"under\": \"string\",\n        \"close\": true\n      },\n      \"changeTime\": 1064\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e328e66d-2024-4906-9288-db0b2c9dd8ed",
+          "name": "Outrights",
+          "request": {
+            "name": "Outrights",
+            "description": {
+              "content": "• This API endpoint returns outright odds, including league champion, top goalscorer, and group-stage qualification markets.\n\n\n\n• By default, returns data for leagues and cups with outright odds available in the next 10 days.\n\n\n\n• Note: The odds returned already include the stake (principal). No conversion is needed to calculate the full payout.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "outrights"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f3c8e4bc-0598-471b-87d0-9db71ebae746",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "outrights"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8693,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"leagueId\": \"string\",\n      \"leagueShortName\": \"string\",\n      \"season\": \"string\",\n      \"typeId\": 769,\n      \"type\": \"string\",\n      \"itemList\": [\n        {\n          \"itemId\": \"string\",\n          \"item\": \"string\",\n          \"oddsList\": [\n            {\n              \"companyId\": \"string\",\n              \"company\": \"string\",\n              \"odds\": \"string\"\n            },\n            {\n              \"companyId\": \"string\",\n              \"company\": \"string\",\n              \"odds\": \"string\"\n            }\n          ],\n          \"valid\": true\n        },\n        {\n          \"itemId\": \"string\",\n          \"item\": \"string\",\n          \"oddsList\": [\n            {\n              \"companyId\": \"string\",\n              \"company\": \"string\",\n              \"odds\": \"string\"\n            },\n            {\n              \"companyId\": \"string\",\n              \"company\": \"string\",\n              \"odds\": \"string\"\n            }\n          ],\n          \"valid\": true\n        }\n      ]\n    },\n    {\n      \"leagueId\": \"string\",\n      \"leagueShortName\": \"string\",\n      \"season\": \"string\",\n      \"typeId\": 924,\n      \"type\": \"string\",\n      \"itemList\": [\n        {\n          \"itemId\": \"string\",\n          \"item\": \"string\",\n          \"oddsList\": [\n            {\n              \"companyId\": \"string\",\n              \"company\": \"string\",\n              \"odds\": \"string\"\n            },\n            {\n              \"companyId\": \"string\",\n              \"company\": \"string\",\n              \"odds\": \"string\"\n            }\n          ],\n          \"valid\": false\n        },\n        {\n          \"itemId\": \"string\",\n          \"item\": \"string\",\n          \"oddsList\": [\n            {\n              \"companyId\": \"string\",\n              \"company\": \"string\",\n              \"odds\": \"string\"\n            },\n            {\n              \"companyId\": \"string\",\n              \"company\": \"string\",\n              \"odds\": \"string\"\n            }\n          ],\n          \"valid\": false\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9d665fe3-cd5e-4a6c-b746-c009826f44a4",
+          "name": "EuroHandicap (pre-match)",
+          "request": {
+            "name": "EuroHandicap (pre-match)",
+            "description": {
+              "content": "• This API endpoint returns pre-match odds for European Handicap (EuroHandicap), which applies a goal handicap (typically starting from 1 goal) to one team and offers a 1X2-style market (home win / draw / away win) on the adjusted score. This follows the same concept as \"Asian Handicap,\" and is the basis for the \"Handicap 1X2\" odds offered by some domestic platforms.\n\n\n\n• Handicap direction: \n\nPositive value = home team gives goals (home team favored). \n\nNegative value = home team receives goals, i.e., the away team gives goals (away team favored). \n\nThis follows the same convention as Asian Handicap.\n\n\n\n\n• Currently supports Bet365 (8) and Interwetten (19).\n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "eurohandicap",
+                "prematch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Get the data for the specified match. \n\nWhen multiple matches are acquired at the same time, use \",\" to separate the matchId. e.g. matchId=322964610,322964611."
+                },
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Get the data for the specified company. \n\nWhen multiple companies are acquired at the same time, use \",\" to separate the companyId. e.g. companyId=8,19."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "284335ce-776e-4d85-a05d-302379c8f7e4",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "eurohandicap",
+                    "prematch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9463,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"handicap\": \"string\",\n        \"home\": \"string\",\n        \"draw\": \"string\",\n        \"away\": \"string\"\n      },\n      \"changeTime\": 9480\n    },\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"handicap\": \"string\",\n        \"home\": \"string\",\n        \"draw\": \"string\",\n        \"away\": \"string\"\n      },\n      \"changeTime\": 2916\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b50f0b90-f374-4e8d-b16b-a059b7909b1c",
+          "name": "Double Chance (pre-match)",
+          "request": {
+            "name": "Double Chance (pre-match)",
+            "description": {
+              "content": "• This API endpoint returns pre-match odds for Double Chance, where a bet wins if either of two outcomes occurs: home win or draw, home win or away win, or draw or away win.\n\n\n\n• Currently supports Bet365 (8), William Hill (9), Interwetten (19), Sbobet (31), and Bwin (49).\n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "doublechance",
+                "prematch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "matchId",
+                  "value": "<string>",
+                  "description": "Filter results to specific matches. Separate multiple IDs with \",\" (e.g., matchId=322964610,322964611)."
+                },
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "Filter results to specific bookmakers. Separate multiple IDs with \",\" (e.g., companyId=9,19,31)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "266f8bcd-31ef-4a98-9197-949cb527615e",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "doublechance",
+                    "prematch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "matchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7839,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"home_draw\": \"string\",\n        \"home_away\": \"string\",\n        \"draw_away\": \"string\"\n      },\n      \"changeTime\": 623\n    },\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"home_draw\": \"string\",\n        \"home_away\": \"string\",\n        \"draw_away\": \"string\"\n      },\n      \"changeTime\": 1184\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fefb479e-b6cb-4b63-a3ab-7115f1e06ffe",
+          "name": "Corners 1x2 (pre-match)",
+          "request": {
+            "name": "Corners 1x2 (pre-match)",
+            "description": {
+              "content": "• This API endpoint returns pre-match Corners 1X2 odds, where the result (home / draw / away) is determined by which team takes more corners during the match.\n\n\n\n• Currently only supports Crown (companyId 3).\n\n\n\n• Note: The odds returned already include the stake (principal). No conversion is needed to calculate the full payout.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "corners1x2",
+                "prematch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f8439021-3f05-4f78-b05c-daec616d7a09",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "corners1x2",
+                    "prematch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9498,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"home\": \"string\",\n        \"draw\": \"string\",\n        \"away\": \"string\"\n      },\n      \"changeTime\": 6391\n    },\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"odds\": {\n        \"home\": \"string\",\n        \"draw\": \"string\",\n        \"away\": \"string\"\n      },\n      \"changeTime\": 3941\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "34fa4e04-c026-4860-8b97-f7c1c7384c2e",
+          "name": "Team Goals",
+          "request": {
+            "name": "Team Goals",
+            "description": {
+              "content": "• This API endpoint returns over/under odds for each team's individual goal total (Team Goals).\n\n\n\n• Currently only supports Crown (companyId 3).\n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "teamGoals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e88012aa-22cc-405c-b351-7db86d437db9",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "teamGoals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4724,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"home\": {\n        \"total\": \"string\",\n        \"over\": \"string\",\n        \"under\": \"string\"\n      },\n      \"away\": {\n        \"total\": \"string\",\n        \"over\": \"string\",\n        \"under\": \"string\"\n      },\n      \"changeTime\": 3107\n    },\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"home\": {\n        \"total\": \"string\",\n        \"over\": \"string\",\n        \"under\": \"string\"\n      },\n      \"away\": {\n        \"total\": \"string\",\n        \"over\": \"string\",\n        \"under\": \"string\"\n      },\n      \"changeTime\": 6707\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4968f1cd-547c-4548-8ce4-d7b7c898cb18",
+          "name": "Both Teams to Score",
+          "request": {
+            "name": "Both Teams to Score",
+            "description": {
+              "content": "• This API endpoint returns odds for Both Teams to Score, based on whether both the home and away teams score at least one goal during the match.\n\n\n\n• Currently supports Ladbrokes (4), Bet365 (8), William Hill (9), Interwetten (19), Sbobet (31), and Bwin (49).\n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "bothScore"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ad8bcba4-abef-4f58-9b94-19c293962707",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "bothScore"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5331,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"yes\": \"string\",\n      \"no\": \"string\",\n      \"changeTime\": 8396\n    },\n    {\n      \"matchId\": \"string\",\n      \"companyId\": \"string\",\n      \"yes\": \"string\",\n      \"no\": \"string\",\n      \"changeTime\": 6892\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "64c6d482-ec2a-407b-ba69-6e9974bcd311",
+          "name": "Card",
+          "request": {
+            "name": "Card",
+            "description": {
+              "content": "• This API endpoint returns odds for Cards markets, including standard (1X2), handicap, and total (Over/Under), based on the number of cards (yellow and red) shown by the referee during the match.\n\n\n\n• Currently only supports Crown (companyId 3).\n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "card"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e9354c1f-bcec-47f8-9564-2ebab3999ecf",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "card"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 3649,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"standard\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"odds\": {\n          \"home\": \"string\",\n          \"draw\": \"string\",\n          \"away\": \"string\"\n        },\n        \"changeTime\": 3134\n      },\n      \"handciap\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"odds\": {\n          \"handicap\": \"string\",\n          \"home\": \"string\",\n          \"away\": \"string\"\n        },\n        \"changeTime\": 8759\n      },\n      \"total\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"odds\": {\n          \"total\": \"string\",\n          \"over\": \"string\",\n          \"under\": \"string\"\n        },\n        \"changeTime\": 6924\n      }\n    },\n    {\n      \"standard\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"odds\": {\n          \"home\": \"string\",\n          \"draw\": \"string\",\n          \"away\": \"string\"\n        },\n        \"changeTime\": 5777\n      },\n      \"handciap\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"odds\": {\n          \"handicap\": \"string\",\n          \"home\": \"string\",\n          \"away\": \"string\"\n        },\n        \"changeTime\": 5854\n      },\n      \"total\": {\n        \"matchId\": \"string\",\n        \"companyId\": \"string\",\n        \"odds\": {\n          \"total\": \"string\",\n          \"over\": \"string\",\n          \"under\": \"string\"\n        },\n        \"changeTime\": 5080\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "984b3e05-0773-4851-9268-29892aae76c3",
+          "name": "Overtime & Penalty Shootout ",
+          "request": {
+            "name": "Overtime & Penalty Shootout ",
+            "description": {
+              "content": "• This API endpoint returns pre-match and in-play odds for Overtime (Extra Time) and Penalty Shootout markets.\n\n\n\n• Currently only supports SB (companyId 3). Company IDs in this endpoint are independent from the IDs used in Odds (18 Agencies).\n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sport",
+                "football",
+                "odds",
+                "overtime"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cmd",
+                  "value": "<string>",
+                  "description": "(Required) Must be set to example."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e6785987-adc8-41d5-b8a3-072729dd1873",
+              "name": "Standard iSports envelope. `code` 0 indicates success; a non-zero `code` carries the error in `message` (HTTP status is 200 in both cases).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sport",
+                    "football",
+                    "odds",
+                    "overtime"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cmd",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4358,\n  \"message\": \"string\",\n  \"data\": [\n    {\n      \"id\": 5625,\n      \"matchId\": 7471,\n      \"companyId\": 9070,\n      \"oddsType\": 9602,\n      \"type\": 434,\n      \"datatype\": 5756,\n      \"odds1_first\": \"string\",\n      \"odds2_first\": \"string\",\n      \"odds3_first\": \"string\",\n      \"odds1\": \"string\",\n      \"odds2\": \"string\",\n      \"odds3\": \"string\",\n      \"running\": false,\n      \"close\": true,\n      \"changeTime\": 6558\n    },\n    {\n      \"id\": 8028,\n      \"matchId\": 7831,\n      \"companyId\": 8270,\n      \"oddsType\": 3274,\n      \"type\": 6174,\n      \"datatype\": 1638,\n      \"odds1_first\": \"string\",\n      \"odds2_first\": \"string\",\n      \"odds3_first\": \"string\",\n      \"odds1\": \"string\",\n      \"odds2\": \"string\",\n      \"odds3\": \"string\",\n      \"running\": true,\n      \"close\": true,\n      \"changeTime\": 2510\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.isportsapi.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "72896118-35b8-4f39-90e0-d2309c44a8e0",
+    "name": "iSports Football Other Odds API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.\n\nAll operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).\n\nThis document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.\n\nContact Support:\n Name: iSports API",
+      "type": "text/plain"
+    }
+  }
+}
