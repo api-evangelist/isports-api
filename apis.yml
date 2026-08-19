@@ -13,7 +13,7 @@ image: https://globalcdn.feijing88.com/webpc/img/silk/isports_api_og.png
 url: https://raw.githubusercontent.com/api-evangelist/isports-api/refs/heads/main/apis.yml
 created: '2026-07-28'
 modified: '2026-08-09'
-specificationVersion: '0.21'
+specificationVersion: '0.23'
 tags:
   - Sports API
   - Sports Data
