@@ -1,0 +1,14 @@
+{
+  "repo": "isports-api",
+  "feeds": [
+    {
+      "source": "https://www.isportsapi.com/en/faq/support-26.html",
+      "feed_url": "https://www.isportsapi.com/en/faq/support-26.html",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-08-22T20:20:02Z"
+}
