@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: iSports Football European Odds (200+ Agencies) Football European Odds (200+ Agencies) API
+  title: iSports Football European Odds (200+ Agencies) Football European Odds (200+ Agencies) Football European Odds (200+ Agencies) API
   version: '2026-08-09'
   description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.
 
