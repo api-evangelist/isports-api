@@ -9,6 +9,18 @@ description: >-
   ships iframe-embeddable live-animation and livescore widgets. Every response uses the same
   {code, message, data} envelope returned over HTTP 200, authenticated with an api_key query parameter, and is
   sold as per-product monthly, quarterly or yearly subscriptions with a 15-day free trial.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://globalcdn.feijing88.com/webpc/img/silk/isports_api_og.png
 url: https://raw.githubusercontent.com/api-evangelist/isports-api/refs/heads/main/apis.yml
 created: '2026-07-28'
