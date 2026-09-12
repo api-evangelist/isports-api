@@ -442,6 +442,8 @@ generated:
   confidence: 90
   at: '2026-07-28T08:14:10.426Z'
 common:
+- type: Website
+  url: https://www.isportsapi.com/
 - type: Overlay
   url: overlays/isports-api-openapi-overlay.yaml
 - type: DeveloperPortal
