@@ -1,14 +1,14 @@
 name: iSports API
-description: >-
-  iSports API is a sports-data provider selling key-authenticated REST/HTTP feeds for football (soccer) and
-  basketball to sportsbooks, media sites and app developers. The catalogue covers 2,000+ football leagues and
-  cups and 800+ basketball leagues and cups across 113 documented GET endpoints: livescores and delta feeds,
-  schedules and results, match events and shooting data, lineups, live text commentary, team, player and
-  referee profiles, transfers, league and cup standings, player and match statistics, FIFA rankings,
-  multi-language name packs, and pre-match, in-play, future and historical odds from 200+ bookmakers. It also
-  ships iframe-embeddable live-animation and livescore widgets. Every response uses the same
-  {code, message, data} envelope returned over HTTP 200, authenticated with an api_key query parameter, and is
-  sold as per-product monthly, quarterly or yearly subscriptions with a 15-day free trial.
+description: 'iSports API is a sports-data provider selling key-authenticated REST/HTTP feeds for football
+  (soccer) and basketball to sportsbooks, media sites and app developers. The catalogue covers 2,000+
+  football leagues and cups and 800+ basketball leagues and cups across 113 documented GET endpoints:
+  livescores and delta feeds, schedules and results, match events and shooting data, lineups, live text
+  commentary, team, player and referee profiles, transfers, league and cup standings, player and match
+  statistics, FIFA rankings, multi-language name packs, and pre-match, in-play, future and historical
+  odds from 200+ bookmakers. It also ships iframe-embeddable live-animation and livescore widgets. Every
+  response uses the same {code, message, data} envelope returned over HTTP 200, authenticated with an
+  api_key query parameter, and is sold as per-product monthly, quarterly or yearly subscriptions with
+  a 15-day free trial.'
 deliveryModel:
   model: saas
   open_source: false
@@ -40,35 +40,34 @@ accessModel:
 image: https://globalcdn.feijing88.com/webpc/img/silk/isports_api_og.png
 url: https://raw.githubusercontent.com/api-evangelist/isports-api/refs/heads/main/apis.yml
 created: '2026-07-28'
-modified: '2026-08-09'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 tags:
-  - Sports API
-  - Sports Data
-  - Football
-  - Basketball
-  - Odds
-  - Live Data
-  - Sports Statistics
-  - Live Scores
-  - Widgets
-  - REST API
+- Sports API
+- Sports Data
+- Football
+- Basketball
+- Odds
+- Live Data
+- Sports Statistics
+- Live Scores
+- Widgets
+- REST API
 tags_raw:
-  - Sports API
-  - Sports Data
-  - Football
-  - Basketball
-  - Odds
-  - Live Data
-  - Sports Statistics
-  - Livescores
-  - Widgets
-  - REST API
+- Sports API
+- Sports Data
+- Football
+- Basketball
+- Odds
+- Live Data
+- Sports Statistics
+- Livescores
+- Widgets
+- REST API
 apis:
 - aid: isports-api:isports-api-basketball-common-api-api
-  name: iSports API Basketball Common API API
-  description: >-
-    The Basketball Common API API from iSports API — 5 operation(s) for basketball common api.
+  name: iSports API Basketball Common API
+  description: The Basketball Common API API from iSports API — 5 operation(s) for basketball common api.
   humanURL: https://www.isportsapi.com/en/docs.html
   baseURL: https://api.isportsapi.com/
   tags:
@@ -92,8 +91,8 @@ apis:
     url: data-model/isports-api-data-model.yml
 - aid: isports-api:isports-api-basketball-live-animation-api
   name: iSports API Basketball Live animation API
-  description: >-
-    The Basketball Live animation API from iSports API — 1 operation(s) for basketball live animation.
+  description: The Basketball Live animation API from iSports API — 1 operation(s) for basketball live
+    animation.
   humanURL: https://www.isportsapi.com/en/docs.html
   baseURL: https://api.isportsapi.com/
   tags:
@@ -212,7 +211,7 @@ apis:
   - type: DataModel
     url: data-model/isports-api-data-model.yml
 - aid: isports-api:isports-api-football-common-api-api
-  name: iSports API Football Common API API
+  name: iSports API Football Common API
   description: The Football Common API API from iSports API — 8 operation(s) for football common api.
   humanURL: https://www.isportsapi.com/en/docs.html
   baseURL: https://api.isportsapi.com/
@@ -237,9 +236,8 @@ apis:
     url: data-model/isports-api-data-model.yml
 - aid: isports-api:isports-api-football-european-odds-200-agencies-api
   name: iSports API Football European Odds (200+ Agencies) API
-  description: >-
-    The Football European Odds (200+ Agencies) API from iSports API — 1 operation(s) for football european
-    odds (200+ agencies).
+  description: The Football European Odds (200+ Agencies) API from iSports API — 1 operation(s) for football
+    european odds (200+ agencies).
   humanURL: https://www.isportsapi.com/en/docs.html
   baseURL: https://api.isportsapi.com/
   tags:
@@ -263,8 +261,7 @@ apis:
     url: data-model/isports-api-data-model.yml
 - aid: isports-api:isports-api-football-live-animation-api
   name: iSports API Football Live animation API
-  description: >-
-    The Football Live animation API from iSports API — 1 operation(s) for football live animation.
+  description: The Football Live animation API from iSports API — 1 operation(s) for football live animation.
   humanURL: https://www.isportsapi.com/en/docs.html
   baseURL: https://api.isportsapi.com/
   tags:
@@ -312,8 +309,8 @@ apis:
     url: data-model/isports-api-data-model.yml
 - aid: isports-api:isports-api-football-multiple-languages-api
   name: iSports API Football Multiple languages API
-  description: >-
-    The Football Multiple languages API from iSports API — 6 operation(s) for football multiple languages.
+  description: The Football Multiple languages API from iSports API — 6 operation(s) for football multiple
+    languages.
   humanURL: https://www.isportsapi.com/en/docs.html
   baseURL: https://api.isportsapi.com/
   tags:
@@ -337,8 +334,8 @@ apis:
     url: data-model/isports-api-data-model.yml
 - aid: isports-api:isports-api-football-odds-18-agencies-api
   name: iSports API Football Odds (18 Agencies) API
-  description: >-
-    The Football Odds (18 Agencies) API from iSports API — 12 operation(s) for football odds (18 agencies).
+  description: The Football Odds (18 Agencies) API from iSports API — 12 operation(s) for football odds
+    (18 agencies).
   humanURL: https://www.isportsapi.com/en/docs.html
   baseURL: https://api.isportsapi.com/
   tags:
@@ -433,9 +430,9 @@ apis:
   - type: DataModel
     url: data-model/isports-api-data-model.yml
 maintainers:
-  - FN: iSports API
-    url: https://www.isportsapi.com/en/
-    email: isportsapibd@gmail.com
+- FN: iSports API
+  url: https://www.isportsapi.com/en/
+  email: isportsapibd@gmail.com
 generated:
   by: apis.io/add
   model: claude-opus-4-8
@@ -502,7 +499,6 @@ common:
   url: llms/isports-api-llms.txt
 - type: AgentSkill
   url: skills/_index.yml
-
 x-enrichment:
   date: 2026-08-09
   status: enriched
