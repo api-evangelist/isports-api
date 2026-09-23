@@ -2,13 +2,7 @@ openapi: 3.2.0
 info:
   title: iSports Football Live Data API
   version: '2026-08-09'
-  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.
-
-
-    All operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).
-
-
-    This document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.'
+  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.'
   termsOfService: https://www.isportsapi.com/en/home/terms.html
   contact:
     name: iSports API
@@ -30,7 +24,10 @@ paths:
     get:
       operationId: getFootballLivescoresChanges
       summary: Livescores Changes
-      description: "• This API endpoint returns only the matches that have had livescore updates in the last 20 seconds. \n\n\n\n• Use it alongside the Livescores for Today endpoint — call Livescores for Today once to get the full match list, then poll this endpoint every 2–10 seconds to receive incremental updates."
+      description: '• This API endpoint returns only the matches that have had livescore updates in the last 20 seconds.
+
+
+        • Use it alongside the Livescores for Today endpoint — call Livescores for Today once to get the full match list, then poll this endpoint every 2–10 seconds to receive incremental updates.'
       tags:
       - Football Live Data
       responses:
@@ -159,7 +156,28 @@ paths:
     get:
       operationId: getFootballEvents
       summary: Events / Shooting events
-      description: "**Events**\n\n• This API endpoint returns match events for football matches, including goals, cards, substitutions, and VAR reviews.\n\n\n\n• By default, returns events for all matches on the current day (GMT+0 00:00–23:59).\n\n\n\n• Events are identified by eventId and may be added or deleted (not modified). Always synchronize using eventId — if an event is corrected, the old eventId will be deleted and a new one added.\n\n**Shooting events** (cmd=shot)\n\n• This API endpoint provides detailed shooting event data for each match, including shot outcome, scenario, type, and goal zone. \n\n\n\n• XY coordinates use a standardized 0–100 scale: X-axis = pitch width (0: left sideline, 100: right sideline); Y-axis = pitch length (0: opponent's goal line / attacking direction, 100: own goal line). \n\n\n\n• Coordinate data is available for high-level matches only."
+      description: '**Events**
+
+
+        • This API endpoint returns match events for football matches, including goals, cards, substitutions, and VAR reviews.
+
+
+        • By default, returns events for all matches on the current day (GMT+0 00:00–23:59).
+
+
+        • Events are identified by eventId and may be added or deleted (not modified). Always synchronize using eventId — if an event is corrected, the old eventId will be deleted and a new one added.
+
+
+        **Shooting events** (cmd=shot)
+
+
+        • This API endpoint provides detailed shooting event data for each match, including shot outcome, scenario, type, and goal zone.
+
+
+        • XY coordinates use a standardized 0–100 scale: X-axis = pitch width (0: left sideline, 100: right sideline); Y-axis = pitch length (0: opponent''s goal line / attacking direction, 100: own goal line).
+
+
+        • Coordinate data is available for high-level matches only.'
       tags:
       - Football Live Data
       parameters:
@@ -344,7 +362,10 @@ paths:
     get:
       operationId: getFootballStats
       summary: Stats
-      description: "• This API endpoint returns real-time team technical statistics for football matches on the current day (GMT+0 00:00–23:59). \n\n\n\n• Each stat is identified by a type code and provides separate values for home and away teams."
+      description: '• This API endpoint returns real-time team technical statistics for football matches on the current day (GMT+0 00:00–23:59).
+
+
+        • Each stat is identified by a type code and provides separate values for home and away teams.'
       tags:
       - Football Live Data
       parameters:
@@ -416,11 +437,7 @@ paths:
       description: '• This API endpoint returns starting lineups and substitute lists for football matches.
 
 
-
-
         • By default, returns lineups for matches within the past 24 hours to the present. Use the isPreview parameter to access predicted or official lineups for upcoming matches.
-
-
 
 
         • If a match has no formation data, all player position values return 0. Substitute players also return position 0 regardless of formation.'
@@ -525,7 +542,10 @@ paths:
     get:
       operationId: getFootballLivescores
       summary: Livescores for Today
-      description: "• This API endpoint returns livescores for all football matches on the current day (GMT+0 00:00–23:59). \n\n\n\n• Use it alongside the Livescores Changes endpoint to receive incremental updates and avoid repeated full pulls."
+      description: '• This API endpoint returns livescores for all football matches on the current day (GMT+0 00:00–23:59).
+
+
+        • Use it alongside the Livescores Changes endpoint to receive incremental updates and avoid repeated full pulls.'
       tags:
       - Football Live Data
       responses:
@@ -724,11 +744,7 @@ paths:
       description: '• This API endpoint returns match schedule and result data filtered by date, league, or specific match ID.
 
 
-
-
         • At least one of the parameters date, leagueId, or matchId is required. These three parameters cannot be used together at the same time.
-
-
 
 
         • Use it alongside the Match Modify Record endpoint to detect and sync kick-off time changes.
@@ -968,8 +984,6 @@ paths:
       description: '• This API endpoint returns real-time corner kick events and statistics for football matches on the current day (GMT+0 00:00–23:59).
 
 
-
-
         • Corner events are identified by eventId and may only be added or deleted (not modified). Always synchronize using eventId — if a corner event is corrected, the old eventId will be deleted and a new one added.'
       tags:
       - Football Live Data
@@ -1094,8 +1108,6 @@ paths:
       description: '• This endpoint returns a list of football matches that have live text commentary available — covering today''s matches and those from the past 8 hours. Use the returned matchId with the Live Text endpoint to fetch real-time match commentary and events.
 
 
-
-
         • Coverage is limited to major leagues and cup competitions (e.g., UEFA Champions League, International Friendlies).'
       tags:
       - Football Live Data
@@ -1147,7 +1159,13 @@ paths:
     get:
       operationId: getFootballLivetext
       summary: Live Text
-      description: "• This API endpoint returns live text commentary events for a specified match. Use it alongside the Match List of Live Text endpoint to get available match IDs.\n\n\n\n• Without a matchId parameter, returns all live text events updated in the last 2 minutes. \n\n\n\n• Coverage is limited to major leagues and cup competitions."
+      description: '• This API endpoint returns live text commentary events for a specified match. Use it alongside the Match List of Live Text endpoint to get available match IDs.
+
+
+        • Without a matchId parameter, returns all live text events updated in the last 2 minutes.
+
+
+        • Coverage is limited to major leagues and cup competitions.'
       tags:
       - Football Live Data
       parameters:
@@ -1216,7 +1234,13 @@ paths:
     get:
       operationId: getFootballTransfer
       summary: Transfer
-      description: "• This API endpoint returns player transfer records across major leagues worldwide. \n\n\n\n• By default, returns records updated within the past month. Use the day parameter to extend the lookback window up to 2 years.\n\n\n\n• Supported leagues include Premier League, Serie A, La Liga, Bundesliga, Ligue 1, Champions League, and 30+ other competitions globally."
+      description: '• This API endpoint returns player transfer records across major leagues worldwide.
+
+
+        • By default, returns records updated within the past month. Use the day parameter to extend the lookback window up to 2 years.
+
+
+        • Supported leagues include Premier League, Serie A, La Liga, Bundesliga, Ligue 1, Champions League, and 30+ other competitions globally.'
       tags:
       - Football Live Data
       parameters:
@@ -1295,8 +1319,6 @@ paths:
       operationId: getFootballScheduleChange
       summary: Schedule Changes
       description: '• This API endpoint returns newly added and recently modified matches from the past hour. Call it every 20–50 minutes to keep your schedule data up to date.
-
-
 
 
         • The response format is identical to the Livescores for Today endpoint. Use this alongside Schedule & Results to detect newly added fixtures and kick-off time changes.'
@@ -1495,9 +1517,7 @@ paths:
       description: '• This API endpoint provides AI-generated pre-match analysis and post-match summaries for football matches.
 
 
-
         • Pre-match briefings cover matches scheduled within the next 48 hours; post-match summaries cover completed matches from the past 24 hours.
-
 
 
         • Use this endpoint alongside Livescores, Events, and Stats for a complete match data experience.'

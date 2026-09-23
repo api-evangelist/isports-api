@@ -2,13 +2,7 @@ openapi: 3.2.0
 info:
   title: iSports Basketball Profile API
   version: '2026-08-09'
-  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.
-
-
-    All operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).
-
-
-    This document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.'
+  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.'
   termsOfService: https://www.isportsapi.com/en/home/terms.html
   contact:
     name: iSports API
@@ -30,7 +24,10 @@ paths:
     get:
       operationId: getBasketballTeam
       summary: Team Profile
-      description: "• This API endpoint returns basketball team profile information. Filter by leagueId or teamId; if both are omitted, returns information for all teams. \n\n\n\n• Note that detailed fields such as website, conference, division, city, venue, capacity, joinYear, and coach may return empty or 0 for teams in lower-tier leagues where such information is not tracked."
+      description: '• This API endpoint returns basketball team profile information. Filter by leagueId or teamId; if both are omitted, returns information for all teams.
+
+
+        • Note that detailed fields such as website, conference, division, city, venue, capacity, joinYear, and coach may return empty or 0 for teams in lower-tier leagues where such information is not tracked.'
       tags:
       - Basketball Profile
       parameters:
@@ -130,9 +127,7 @@ paths:
       description: '• This API endpoint returns basketball player profile information. All players are returned by default.
 
 
-
-
-        • Note: The request must include the parameter cmd=new, e.g. http://api.isportsapi.com/sport/basketball/player?api_key=<YOUR_API_KEY>&cmd=new.'
+        • Note: The request must include the parameter cmd=new, e.g. http://api.isportsapi.com/sport/basketball/player?api_key=&cmd=new.'
       tags:
       - Basketball Profile
       parameters:
@@ -220,7 +215,10 @@ paths:
     get:
       operationId: getBasketballCupqualify
       summary: Cup Stage Profile
-      description: "• This API endpoint returns stage type information for basketball cups, such as qualifying rounds, group stages, and regular season. \n\n\n\n• The recordId returned by this endpoint corresponds to the stageId field in the Schedule & Results endpoint, allowing you to match a specific match to its cup stage."
+      description: '• This API endpoint returns stage type information for basketball cups, such as qualifying rounds, group stages, and regular season.
+
+
+        • The recordId returned by this endpoint corresponds to the stageId field in the Schedule & Results endpoint, allowing you to match a specific match to its cup stage.'
       tags:
       - Basketball Profile
       responses:
@@ -283,7 +281,10 @@ paths:
     get:
       operationId: getBasketballPlayoffs
       summary: Playoffs Stage Profile
-      description: "• This API endpoint returns playoff stage type information for basketball leagues, such as Quarter Final, Semi Final, and Final. \n\n\n\n• The recordId returned by this endpoint corresponds to the playoffsId field in the Schedule & Results endpoint, allowing you to match a specific match to its playoff stage."
+      description: '• This API endpoint returns playoff stage type information for basketball leagues, such as Quarter Final, Semi Final, and Final.
+
+
+        • The recordId returned by this endpoint corresponds to the playoffsId field in the Schedule & Results endpoint, allowing you to match a specific match to its playoff stage.'
       tags:
       - Basketball Profile
       responses:
@@ -346,7 +347,7 @@ paths:
     get:
       operationId: getBasketballLeague
       summary: League & Cup Profile
-      description: This API endpoint returns complete profile information for basketball leagues and cups, including league rules, ranking format, and season details. <a target="_blank" href="http://api.isportsapi.com/league.aspx?sport=basketball" style="color:blue">Click here</a> to view all leagues & cups.
+      description: This API endpoint returns complete profile information for basketball leagues and cups, including league rules, ranking format, and season details. Click here to view all leagues & cups.
       tags:
       - Basketball Profile
       parameters:
@@ -427,7 +428,10 @@ paths:
     get:
       operationId: getBasketballTeamSearch
       summary: Team Profile for Search
-      description: "• This API endpoint supports searching for basketball team information by team name, with fuzzy matching supported. \n\n\n\n• Note that detailed fields such as website, conference, division, city, venue, capacity, joinYear, and coach may return empty or 0 for teams in lower-tier leagues where such information is not tracked."
+      description: '• This API endpoint supports searching for basketball team information by team name, with fuzzy matching supported.
+
+
+        • Note that detailed fields such as website, conference, division, city, venue, capacity, joinYear, and coach may return empty or 0 for teams in lower-tier leagues where such information is not tracked.'
       tags:
       - Basketball Profile
       parameters:
@@ -514,9 +518,7 @@ paths:
       description: '• This API endpoint supports searching for basketball player information by player name, with fuzzy matching supported.
 
 
-
-
-        • Note: The request must include the parameter cmd=new, e.g. http://api.isportsapi.com/sport/basketball/player/search?api_key=<YOUR_API_KEY>&cmd=new&name=James.'
+        • Note: The request must include the parameter cmd=new, e.g. http://api.isportsapi.com/sport/basketball/player/search?api_key=&cmd=new&name=James.'
       tags:
       - Basketball Profile
       parameters:

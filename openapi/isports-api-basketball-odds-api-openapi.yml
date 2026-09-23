@@ -2,13 +2,7 @@ openapi: 3.2.0
 info:
   title: iSports Basketball Odds API
   version: '2026-08-09'
-  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.
-
-
-    All operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).
-
-
-    This document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.'
+  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.'
   termsOfService: https://www.isportsapi.com/en/home/terms.html
   contact:
     name: iSports API
@@ -30,7 +24,27 @@ paths:
     get:
       operationId: getBasketballOddsFulltime
       summary: Pre-match and In-play Odds
-      description: "• This API endpoint returns basketball odds for Spread, Money Line, and Total markets, covering all upcoming unplayed matches and matches currently in play.\n\n\n\n• Odds type corresponds to company ID and company name:\n\n- Spread/Money Line（1x2 Odds）\n\n 1: Marcauslot；2: Easybet；3: Crown；8: Bet365；9：Vcbet；10： William Hill；19：Interwetten；20：Ladbrokes；31: Sbobet ；24: 12bet; 30：China Sports Lottery; 49:BWin \n\n- Total\n\n 4：Marcauslot；5: Easybet；6：Crown；11:Bet365；12：Vcbet；13： William Hill；22：Interwetten；23：Ladbrokes；34:Sbobet；27:12bett; 33: China Sports Lottery; 52: BWin\n\n\n\n• By using endpoints <a href=\"/docs.html?id=48\" style=\"color:blue\">Schedule & Results (Basic)\n</a> and <a href=\"/docs.html?id=34\" style=\"color:blue\">Match Modify Record</a>, you can get basic information of matches."
+      description: '• This API endpoint returns basketball odds for Spread, Money Line, and Total markets, covering all upcoming unplayed matches and matches currently in play.
+
+
+        • Odds type corresponds to company ID and company name:
+
+
+        - Spread/Money Line（1x2 Odds）
+
+
+        1: Marcauslot；2: Easybet；3: Crown；8: Bet365；9：Vcbet；10： William Hill；19：Interwetten；20：Ladbrokes；31: Sbobet ；24: 12bet; 30：China Sports Lottery; 49:BWin
+
+
+        - Total
+
+
+        4：Marcauslot；5: Easybet；6：Crown；11:Bet365；12：Vcbet；13： William Hill；22：Interwetten；23：Ladbrokes；34:Sbobet；27:12bett; 33: China Sports Lottery; 52: BWin
+
+
+        • By using endpoints Schedule & Results (Basic)
+
+        and Match Modify Record, you can get basic information of matches.'
       tags:
       - Basketball Odds
       responses:
@@ -162,7 +176,10 @@ paths:
     get:
       operationId: getBasketballOddsFulltimeChanges
       summary: Live Odds Changes
-      description: "• This API endpoint returns changes to basketball odds — Spread, Money Line, and Total — within the last 30 seconds. \n\n\n\n• This is a delta feed of the Pre-match and In-play Odds endpoint; use that endpoint to obtain the full current odds snapshot, and use this endpoint to track what has changed since the last update."
+      description: '• This API endpoint returns changes to basketball odds — Spread, Money Line, and Total — within the last 30 seconds.
+
+
+        • This is a delta feed of the Pre-match and In-play Odds endpoint; use that endpoint to obtain the full current odds snapshot, and use this endpoint to track what has changed since the last update.'
       tags:
       - Basketball Odds
       responses:
@@ -261,7 +278,33 @@ paths:
     get:
       operationId: getBasketballOddsHalf
       summary: Pre-match Odds (Halftime)
-      description: "• This interface returns pre-match odds for the halftime (1st half) Spread and Total markets of basketball matches. Values reflect halftime-specific lines only, not full-match odds.\n\n\n\n• Returns data for all matches that have not yet started, as well as matches currently in play. For matches in play, the instant* fields retain the last pregame value recorded before kickoff and do not update with live/in-play odds movement (see field notes below).\n\n\n\n• Odds type corresponds to company ID and company name:\n\n- Spread/Money Line（1x2 Odds）\n\n 1: Marcauslot；2: Easybet；3: Crown；8: Bet365；9：Vcbet；10： William Hill；19：Interwetten；20：Ladbrokes；31: Sbobet；24: 12bet; 30：China Sports Lottery; 49:BWin；\n\n-Total\n\n 4：Marcauslot；5: Easybet；6：Crown；11:Bet365；12：Vcbet；13： William Hill；22：Interwetten；23：Ladbrokes；34:Sbobet；27:12bet; 33: China Sports Lottery; 52: BWin\n\n\n\n• Note: company ID numbering differs between the Spread and Total sections for the same bookmaker (e.g., Bet365 is 8 for Spread, 11 for Total). Always match the ID against the correct section.\n\n\n\n• By using endpoints <a href=\"/docs.html?id=48\" style=\"color:blue\">Schedule & Results (Basic)\n</a> and <a href=\"/docs.html?id=34\" style=\"color:blue\">Match Modify Record</a>, you can get basic information of matches."
+      description: '• This interface returns pre-match odds for the halftime (1st half) Spread and Total markets of basketball matches. Values reflect halftime-specific lines only, not full-match odds.
+
+
+        • Returns data for all matches that have not yet started, as well as matches currently in play. For matches in play, the instant* fields retain the last pregame value recorded before kickoff and do not update with live/in-play odds movement (see field notes below).
+
+
+        • Odds type corresponds to company ID and company name:
+
+
+        - Spread/Money Line（1x2 Odds）
+
+
+        1: Marcauslot；2: Easybet；3: Crown；8: Bet365；9：Vcbet；10： William Hill；19：Interwetten；20：Ladbrokes；31: Sbobet；24: 12bet; 30：China Sports Lottery; 49:BWin；
+
+
+        -Total
+
+
+        4：Marcauslot；5: Easybet；6：Crown；11:Bet365；12：Vcbet；13： William Hill；22：Interwetten；23：Ladbrokes；34:Sbobet；27:12bet; 33: China Sports Lottery; 52: BWin
+
+
+        • Note: company ID numbering differs between the Spread and Total sections for the same bookmaker (e.g., Bet365 is 8 for Spread, 11 for Total). Always match the ID against the correct section.
+
+
+        • By using endpoints Schedule & Results (Basic)
+
+        and Match Modify Record, you can get basic information of matches.'
       tags:
       - Basketball Odds
       responses:
@@ -351,7 +394,33 @@ paths:
     get:
       operationId: getBasketballOddsQuarter
       summary: Pre-match Odds (Quarter)
-      description: "• This interface returns pre-match odds for the Spread and Total markets of each quarter (Q1–Q4) of a basketball match.\n\n\n\n• Returns data for all matches that have not yet started, as well as matches currently in play. All values in this response reflect pregame lines only. In-play/live odds are not included in this endpoint at any point, even after the match or a given quarter has started — this applies to both the initial and non-initial field groups. \n\n\n\n• If you need live/in-play odds (including quarter-level), use our dedicated In-play Odds endpoint (/sport/basketball/odds/inplay), which uses an oddsType field to distinguish Full time / Half time / Q1–Q4.\n\n\n\n• Odds type corresponds to company ID and company name:\n\n- Spread/Money Line（1x2 Odds）\n\n 1: Marcauslot；2: Easybet；3: Crown；8: Bet365；9：Vcbet；10： William Hill；19：Interwetten；20：Ladbrokes；31: Sbobet ；24: 12bet; 30：China Sports Lottery; 49:BWin；\n\n-Total\n\n 4：Marcauslot；5: Easybet；6：Crown；11:Bet365；12：Vcbet；13： William Hill；22：Interwetten；23：Ladbrokes；34:Sbobet；27:12bet; 33: China Sports Lottery; 52: BWin\n\n\n\n• By using endpoints <a href=\"/docs.html?id=48\" style=\"color:blue\">Schedule & Results (Basic)\n</a> and <a href=\"/docs.html?id=34\" style=\"color:blue\">Match Modify Record</a>, you can get basic information of matches."
+      description: '• This interface returns pre-match odds for the Spread and Total markets of each quarter (Q1–Q4) of a basketball match.
+
+
+        • Returns data for all matches that have not yet started, as well as matches currently in play. All values in this response reflect pregame lines only. In-play/live odds are not included in this endpoint at any point, even after the match or a given quarter has started — this applies to both the initial and non-initial field groups.
+
+
+        • If you need live/in-play odds (including quarter-level), use our dedicated In-play Odds endpoint (/sport/basketball/odds/inplay), which uses an oddsType field to distinguish Full time / Half time / Q1–Q4.
+
+
+        • Odds type corresponds to company ID and company name:
+
+
+        - Spread/Money Line（1x2 Odds）
+
+
+        1: Marcauslot；2: Easybet；3: Crown；8: Bet365；9：Vcbet；10： William Hill；19：Interwetten；20：Ladbrokes；31: Sbobet ；24: 12bet; 30：China Sports Lottery; 49:BWin；
+
+
+        -Total
+
+
+        4：Marcauslot；5: Easybet；6：Crown；11:Bet365；12：Vcbet；13： William Hill；22：Interwetten；23：Ladbrokes；34:Sbobet；27:12bet; 33: China Sports Lottery; 52: BWin
+
+
+        • By using endpoints Schedule & Results (Basic)
+
+        and Match Modify Record, you can get basic information of matches.'
       tags:
       - Basketball Odds
       responses:
@@ -526,7 +595,22 @@ paths:
     get:
       operationId: getBasketballOddsHistory
       summary: Historical Odds
-      description: "• This interface returns history odds of basketball match of specified date(GMT +0 0:00-23:59), including Spread, Money Line, Total.\n\n\n\n• Odds type corresponds to company ID and company name:\n\n- Spread/Money Line（1x2 Odds）\n\n 1:Marcauslot；2:Easybet；3:Crown；8:Bet365；9:Vcbet；10：William Hill；19：Interwetten；20：Ladbrokes；31:Sbobet;24: 12bet; 30：China Sports Lottery; 49:BWin.\n\n- Total\n\n 4：Marcauslot；5: Easybet；6：Crown；11:Bet365；12：Vcbet；13： William Hill；22：Interwetten；23：Ladbrokes；34:Sbobet；27:12bet; 33: China Sports Lottery; 52: BWin"
+      description: '• This interface returns history odds of basketball match of specified date(GMT +0 0:00-23:59), including Spread, Money Line, Total.
+
+
+        • Odds type corresponds to company ID and company name:
+
+
+        - Spread/Money Line（1x2 Odds）
+
+
+        1:Marcauslot；2:Easybet；3:Crown；8:Bet365；9:Vcbet；10：William Hill；19：Interwetten；20：Ladbrokes；31:Sbobet;24: 12bet; 30：China Sports Lottery; 49:BWin.
+
+
+        - Total
+
+
+        4：Marcauslot；5: Easybet；6：Crown；11:Bet365；12：Vcbet；13： William Hill；22：Interwetten；23：Ladbrokes；34:Sbobet；27:12bet; 33: China Sports Lottery; 52: BWin'
       tags:
       - Basketball Odds
       parameters:
@@ -650,8 +734,6 @@ paths:
       description: '• This API endpoint returns Money Line odds from nearly 100 international bookmakers, along with basic match information (matchId, matchTime, league, and team names) — no need to call Schedule & Results separately for this endpoint.
 
 
-
-
         • Parameter
 
 
@@ -667,8 +749,6 @@ paths:
         -min=5: returns odds that changed within the last 5 minutes (recommended for tracking updates).
 
 
-
-
         • Win rate and return rate calculation method:
 
 
@@ -682,8 +762,6 @@ paths:
 
 
         (Note: The win rate can also be simply calculated as Return rate / odds)
-
-
 
 
         • For a visual reference of this data, see: https://www.goaloo.com/basketball/women%E2%80%99s-national-basketball-association-dallas-wings-vs-new-york-liberty/1x2-705113'
@@ -790,7 +868,22 @@ paths:
     get:
       operationId: getBasketballOddsInplay
       summary: In-play Odds
-      description: "• This endpoint returns in-play (live) odds for basketball matches, covering the Handicap and Over/Under markets across Full time, Half time, and each individual quarter.\n\n\n\n• By default, returns all odds changes recorded within the past 3 minutes. Use matchId to retrieve the full in-play odds history for a specific match, and/or companyId to filter to one or more bookmakers (e.g. companyId=3,8).\n\n\n\n• Company ID mapping (shared across both Handicap and Over/Under markets — unlike the separate ID sets used in our pregame odds endpoints):\n\n1: Marcauslot；2: Easybet；3: Crown；8: Bet365；9：Vcbet；10： William Hill；19：Interwetten；20：Ladbrokes；31: Sbobet ；24: 12bet; 30：China Sports Lottery; 49:BWin \n\n\n\n• Not every record carries an odds value. Records with type=4 or type=5 indicate that a bookmaker has closed/suspended the Handicap or Over/Under market for that stage of the match — odds1/odds2/odds3 will always be 0 in this case. See the type field description below for how to interpret each record.\n\n\n\n• This endpoint returns in-play data only. For pregame odds, see Pre-match Odds (Halftime) and Pre-match Odds (Quarter)."
+      description: '• This endpoint returns in-play (live) odds for basketball matches, covering the Handicap and Over/Under markets across Full time, Half time, and each individual quarter.
+
+
+        • By default, returns all odds changes recorded within the past 3 minutes. Use matchId to retrieve the full in-play odds history for a specific match, and/or companyId to filter to one or more bookmakers (e.g. companyId=3,8).
+
+
+        • Company ID mapping (shared across both Handicap and Over/Under markets — unlike the separate ID sets used in our pregame odds endpoints):
+
+
+        1: Marcauslot；2: Easybet；3: Crown；8: Bet365；9：Vcbet；10： William Hill；19：Interwetten；20：Ladbrokes；31: Sbobet ；24: 12bet; 30：China Sports Lottery; 49:BWin
+
+
+        • Not every record carries an odds value. Records with type=4 or type=5 indicate that a bookmaker has closed/suspended the Handicap or Over/Under market for that stage of the match — odds1/odds2/odds3 will always be 0 in this case. See the type field description below for how to interpret each record.
+
+
+        • This endpoint returns in-play data only. For pregame odds, see Pre-match Odds (Halftime) and Pre-match Odds (Quarter).'
       tags:
       - Basketball Odds
       parameters:

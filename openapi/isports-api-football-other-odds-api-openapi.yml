@@ -2,13 +2,7 @@ openapi: 3.2.0
 info:
   title: iSports Football Other Odds API
   version: '2026-08-09'
-  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.
-
-
-    All operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).
-
-
-    This document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.'
+  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.'
   termsOfService: https://www.isportsapi.com/en/home/terms.html
   contact:
     name: iSports API
@@ -33,16 +27,10 @@ paths:
       description: '• This API endpoint returns pre-match odds for which team scores first and which team scores last in the match.
 
 
-
-
         • By default, returns data for the next 10 days.
 
 
-
-
         • Currently supports Macauslot (1) and Crown (3).
-
-
 
 
         • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
@@ -124,16 +112,10 @@ paths:
       description: '• This API endpoint returns pre-match odds for whether the total number of goals in the match is odd or even.
 
 
-
-
         • By default, returns data for matches in the next 10 days.
 
 
-
-
         • Currently supports Macauslot (1) and Crown (3).
-
-
 
 
         • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
@@ -206,21 +188,13 @@ paths:
       description: '• This API endpoint returns the pre-match odds for the number of goals in the match.
 
 
-
-
         • By default, returns data for the next 10 days.
-
-
 
 
         • Odds format: All odds values are returned in Hong Kong Odds format. To convert to Decimal Odds: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85).
 
 
-
-
         • Currently supported by: Macauslot (1), Crown (3). Additional bookmakers may be added in the future.
-
-
 
 
         • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
@@ -299,11 +273,7 @@ paths:
       description: '• This API endpoint returns pre-match odds for Half Time/Full Time, where the result is based on the combination of the half-time result and the full-time result.
 
 
-
-
         • By default, returns data for matches in the next 10 days.
-
-
 
 
         • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
@@ -394,7 +364,13 @@ paths:
     get:
       operationId: getFootballOddsScorePrematch
       summary: Correct Score (pre-match)
-      description: "• This API endpoint returns pre-match correct score odds for each possible scoreline.\n\n\n\n• By default, returns data for matches in the next 10 days. \n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5)."
+      description: '• This API endpoint returns pre-match correct score odds for each possible scoreline.
+
+
+        • By default, returns data for matches in the next 10 days.
+
+
+        • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
       tags:
       - Football Other Odds
       parameters:
@@ -476,11 +452,7 @@ paths:
       description: '• This API endpoint returns pre-match correct score odds for the first half.
 
 
-
-
         • By default, returns data for matches in the next 10 days.
-
-
 
 
         • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
@@ -562,7 +534,13 @@ paths:
     get:
       operationId: getFootballOddsCornershandicapPrematch
       summary: Handicap Corners (pre-match)
-      description: "• This API endpoint returns pre-match Asian Handicap odds for corners, where a corner handicap is applied to one team.\n\n\n\n• By default, returns data for matches in the next 10 days. \n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5)."
+      description: '• This API endpoint returns pre-match Asian Handicap odds for corners, where a corner handicap is applied to one team.
+
+
+        • By default, returns data for matches in the next 10 days.
+
+
+        • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
       tags:
       - Football Other Odds
       parameters:
@@ -632,7 +610,13 @@ paths:
     get:
       operationId: getFootballOddsCornerstotalPrematch
       summary: Total Corners (pre-match)
-      description: "• This API endpoint returns pre-match over/under odds for the total number of corners in the match. Use cmd=half to retrieve first-half corner totals instead.\n\n\n\n• By default, returns data for matches in the next 10 days. \n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5)."
+      description: '• This API endpoint returns pre-match over/under odds for the total number of corners in the match. Use cmd=half to retrieve first-half corner totals instead.
+
+
+        • By default, returns data for matches in the next 10 days.
+
+
+        • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
       tags:
       - Football Other Odds
       parameters:
@@ -711,11 +695,7 @@ paths:
       description: '• This API endpoint returns in-play odds for whether the total number of goals in the match is odd or even.
 
 
-
-
         • Currently supports Crown (3).
-
-
 
 
         • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
@@ -791,21 +771,13 @@ paths:
       description: '• This API endpoint returns the in-play odds for the number of goals in the match.
 
 
-
-
         • Odds format: All odds values are returned in Hong Kong Odds format. To convert to Decimal Odds: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85).
-
-
 
 
         • Currently supported by: Macauslot (1), Crown (3). Additional bookmakers may be added in the future.
 
 
-
-
         • Suspended market notice: When a specific goal-range market is individually suspended (separate from a full match suspension), this field returns a value of 0, allowing you to distinguish a suspended market from a real data update.
-
-
 
 
         • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
@@ -885,8 +857,6 @@ paths:
       operationId: getFootballOddsHalffullInplay
       summary: Half Time/Full Time (In-play)
       description: '• This API endpoint returns in-play odds for Half Time/Full Time, where the result is based on the combination of the half-time result and the full-time result.
-
-
 
 
         • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
@@ -983,8 +953,6 @@ paths:
       description: '• This API endpoint returns in-play correct score odds for each possible scoreline.
 
 
-
-
         • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
       tags:
       - Football Other Odds
@@ -1070,8 +1038,6 @@ paths:
       description: '• This API endpoint returns in-play correct score odds for the first half.
 
 
-
-
         • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
       tags:
       - Football Other Odds
@@ -1154,7 +1120,16 @@ paths:
     get:
       operationId: getFootballOddsCornershandicapInplay
       summary: Handicap Corners (In-play)
-      description: "• This API endpoint returns in-play Asian Handicap odds for corners, updated in real time. \n\n\n\n• Returns all data updates captured within the last 3 minutes. \n\n\n\n• A single match and bookmaker may return multiple records tracking odds movement, or zero records if no movement occurred.\n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5)."
+      description: '• This API endpoint returns in-play Asian Handicap odds for corners, updated in real time.
+
+
+        • Returns all data updates captured within the last 3 minutes.
+
+
+        • A single match and bookmaker may return multiple records tracking odds movement, or zero records if no movement occurred.
+
+
+        • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
       tags:
       - Football Other Odds
       parameters:
@@ -1230,7 +1205,19 @@ paths:
     get:
       operationId: getFootballOddsCornerstotalInplay
       summary: Total Corners (In-play)
-      description: "• This API endpoint returns in-play over/under odds for the total number of corners, updated in real time. \n\n\n\n• Returns all data updates captured within the last 3 minutes. \n\n\n\n• A single match and bookmaker may return multiple records tracking odds movement, or zero records if no movement occurred. \n\n\n\n• Use cmd=half to retrieve first-half corner totals instead.\n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5)."
+      description: '• This API endpoint returns in-play over/under odds for the total number of corners, updated in real time.
+
+
+        • Returns all data updates captured within the last 3 minutes.
+
+
+        • A single match and bookmaker may return multiple records tracking odds movement, or zero records if no movement occurred.
+
+
+        • Use cmd=half to retrieve first-half corner totals instead.
+
+
+        • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
       tags:
       - Football Other Odds
       parameters:
@@ -1315,11 +1302,7 @@ paths:
       description: '• This API endpoint returns outright odds, including league champion, top goalscorer, and group-stage qualification markets.
 
 
-
-
         • By default, returns data for leagues and cups with outright odds available in the next 10 days.
-
-
 
 
         • Note: The odds returned already include the stake (principal). No conversion is needed to calculate the full payout.'
@@ -1402,7 +1385,25 @@ paths:
     get:
       operationId: getFootballOddsEurohandicapPrematch
       summary: EuroHandicap (pre-match)
-      description: "• This API endpoint returns pre-match odds for European Handicap (EuroHandicap), which applies a goal handicap (typically starting from 1 goal) to one team and offers a 1X2-style market (home win / draw / away win) on the adjusted score. This follows the same concept as \"Asian Handicap,\" and is the basis for the \"Handicap 1X2\" odds offered by some domestic platforms.\n\n\n\n• Handicap direction: \n\nPositive value = home team gives goals (home team favored). \n\nNegative value = home team receives goals, i.e., the away team gives goals (away team favored). \n\nThis follows the same convention as Asian Handicap.\n\n\n\n\n• Currently supports Bet365 (8) and Interwetten (19).\n\n\n\n• Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5)."
+      description: '• This API endpoint returns pre-match odds for European Handicap (EuroHandicap), which applies a goal handicap (typically starting from 1 goal) to one team and offers a 1X2-style market (home win / draw / away win) on the adjusted score. This follows the same concept as "Asian Handicap," and is the basis for the "Handicap 1X2" odds offered by some domestic platforms.
+
+
+        • Handicap direction:
+
+
+        Positive value = home team gives goals (home team favored).
+
+
+        Negative value = home team receives goals, i.e., the away team gives goals (away team favored).
+
+
+        This follows the same convention as Asian Handicap.
+
+
+        • Currently supports Bet365 (8) and Interwetten (19).
+
+
+        • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
       tags:
       - Football Other Odds
       parameters:
@@ -1478,11 +1479,7 @@ paths:
       description: '• This API endpoint returns pre-match odds for Double Chance, where a bet wins if either of two outcomes occurs: home win or draw, home win or away win, or draw or away win.
 
 
-
-
         • Currently supports Bet365 (8), William Hill (9), Interwetten (19), Sbobet (31), and Bwin (49).
-
-
 
 
         • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
@@ -1558,11 +1555,7 @@ paths:
       description: '• This API endpoint returns pre-match Corners 1X2 odds, where the result (home / draw / away) is determined by which team takes more corners during the match.
 
 
-
-
         • Currently only supports Crown (companyId 3).
-
-
 
 
         • Note: The odds returned already include the stake (principal). No conversion is needed to calculate the full payout.'
@@ -1625,11 +1618,7 @@ paths:
       description: '• This API endpoint returns over/under odds for each team''s individual goal total (Team Goals).
 
 
-
-
         • Currently only supports Crown (companyId 3).
-
-
 
 
         • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
@@ -1705,11 +1694,7 @@ paths:
       description: '• This API endpoint returns odds for Both Teams to Score, based on whether both the home and away teams score at least one goal during the match.
 
 
-
-
         • Currently supports Ladbrokes (4), Bet365 (8), William Hill (9), Interwetten (19), Sbobet (31), and Bwin (49).
-
-
 
 
         • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
@@ -1765,11 +1750,7 @@ paths:
       description: '• This API endpoint returns odds for Cards markets, including standard (1X2), handicap, and total (Over/Under), based on the number of cards (yellow and red) shown by the referee during the match.
 
 
-
-
         • Currently only supports Crown (companyId 3).
-
-
 
 
         • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'
@@ -1882,15 +1863,11 @@ paths:
   /sport/football/odds/overtime:
     get:
       operationId: getFootballOddsOvertime
-      summary: 'Overtime & Penalty Shootout '
+      summary: Overtime & Penalty Shootout
       description: '• This API endpoint returns pre-match and in-play odds for Overtime (Extra Time) and Penalty Shootout markets.
 
 
-
-
         • Currently only supports SB (companyId 3). Company IDs in this endpoint are independent from the IDs used in Odds (18 Agencies).
-
-
 
 
         • Note: The odds returned by this endpoint are net odds (excluding the stake/principal). To calculate the full payout odds, add 1 to the value returned (e.g., a value of 3.5 represents a full payout odds of 4.5).'

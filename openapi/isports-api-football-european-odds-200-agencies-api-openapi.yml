@@ -1,14 +1,8 @@
 openapi: 3.2.0
 info:
-  title: iSports Football European Odds (200+ Agencies) Football European Odds (200+ Agencies) Football European Odds (200+ Agencies) API
+  title: iSports Football European Odds (200+ Agencies) API
   version: '2026-08-09'
-  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.
-
-
-    All operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).
-
-
-    This document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.'
+  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.'
   termsOfService: https://www.isportsapi.com/en/home/terms.html
   contact:
     name: iSports API
@@ -30,7 +24,40 @@ paths:
     get:
       operationId: getFootballOddsEuropeanAll
       summary: European Odds (200+ Bookmakers)
-      description: "• This API endpoint returns 1X2 odds from 200+ bookmakers.\n\n\n\n• Important: Use only one of the following primary filters per request — matchId (single match), date (specific calendar day), day (next N days), or min (recent updates). These parameters are mutually exclusive and should not be combined, though companyId may be used alongside any of them to filter to a specific bookmaker. If omitted, returns matches within the next 1 day.\n\n\n\n• Note: Company IDs in this endpoint are independent from the IDs used in Odds (18 Agencies) — the same bookmaker may have a different ID in each system.\n\n\n\n• Win rate calculation: \n\n- Home win rate = 1 ÷ (1 + home odds ÷ draw odds + home odds ÷ away odds) × 100%; \n\n- Draw rate = 1 ÷ (1 + draw odds ÷ home odds + draw odds ÷ away odds) × 100%; \n\n- Away win rate = 1 ÷ (1 + away odds ÷ home odds + away odds ÷ draw odds) × 100%; \n\n- Payout rate = home win rate × home odds.\n\n\n\n• Kelly Index calculation: First calculate the average odds and average win rate across all bookmakers for the match, then: \n\n- Home Kelly Index = home odds × average home win rate; \n\n- Draw Kelly Index = draw odds × average draw win rate; \n\n- Away Kelly Index = away odds × average away win rate."
+      description: '• This API endpoint returns 1X2 odds from 200+ bookmakers.
+
+
+        • Important: Use only one of the following primary filters per request — matchId (single match), date (specific calendar day), day (next N days), or min (recent updates). These parameters are mutually exclusive and should not be combined, though companyId may be used alongside any of them to filter to a specific bookmaker. If omitted, returns matches within the next 1 day.
+
+
+        • Note: Company IDs in this endpoint are independent from the IDs used in Odds (18 Agencies) — the same bookmaker may have a different ID in each system.
+
+
+        • Win rate calculation:
+
+
+        - Home win rate = 1 ÷ (1 + home odds ÷ draw odds + home odds ÷ away odds) × 100%;
+
+
+        - Draw rate = 1 ÷ (1 + draw odds ÷ home odds + draw odds ÷ away odds) × 100%;
+
+
+        - Away win rate = 1 ÷ (1 + away odds ÷ home odds + away odds ÷ draw odds) × 100%;
+
+
+        - Payout rate = home win rate × home odds.
+
+
+        • Kelly Index calculation: First calculate the average odds and average win rate across all bookmakers for the match, then:
+
+
+        - Home Kelly Index = home odds × average home win rate;
+
+
+        - Draw Kelly Index = draw odds × average draw win rate;
+
+
+        - Away Kelly Index = away odds × average away win rate.'
       tags:
       - Football European Odds (200+ Agencies)
       parameters:

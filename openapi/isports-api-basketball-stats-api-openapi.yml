@@ -2,13 +2,7 @@ openapi: 3.2.0
 info:
   title: iSports Basketball Stats API
   version: '2026-08-09'
-  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.
-
-
-    All operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).
-
-
-    This document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.'
+  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.'
   termsOfService: https://www.isportsapi.com/en/home/terms.html
   contact:
     name: iSports API
@@ -30,7 +24,12 @@ paths:
     get:
       operationId: getBasketballStandingLeague
       summary: League Standing
-      description: "• This API endpoint returns league standing data for the specified leagueId. \n\n\n\n• By using endpoint <a href=\"/docs.html?id=50\" style=\"color:blue\">League Profile (Basic)\n</a>, you can get basic information of leagues and cups."
+      description: '• This API endpoint returns league standing data for the specified leagueId.
+
+
+        • By using endpoint League Profile (Basic)
+
+        , you can get basic information of leagues and cups.'
       tags:
       - Basketball Stats
       parameters:
@@ -130,7 +129,12 @@ paths:
     get:
       operationId: getBasketballStandingCup
       summary: Cup Standing
-      description: "• This API endpoint returns standing data for the specified cup, which may cover the group stage or other stages of the cup (e.g. Groups, Quarter Final). \n\n\n\n• By using endpoint <a href=\"/docs.html?id=50\" style=\"color:blue\">League Profile (Basic)\n</a>, you can get basic information of leagues and cups."
+      description: '• This API endpoint returns standing data for the specified cup, which may cover the group stage or other stages of the cup (e.g. Groups, Quarter Final).
+
+
+        • By using endpoint League Profile (Basic)
+
+        , you can get basic information of leagues and cups.'
       tags:
       - Basketball Stats
       parameters:
@@ -206,7 +210,63 @@ paths:
     get:
       operationId: getBasketballStats
       summary: Match Stats / Quarters Stats
-      description: "**Match Stats**\n\n• This API endpoint returns real-time technical statistics for basketball matches (GMT+0 00:00–23:59). \n\nBy default, returns technical statistics for matches within the last 24 hours.\n\n\n\n• Player statistics currently supports NBA, WNBA, CBA, Asociación de Clubes de Baloncesto, Basketball Bundesliga, Ligue Nationale de Basket, Lega Basket Serie A, Euro, Russian Basketball Super League, NBL(A), and Korea Basketball League.\n\n\n\n• By using endpoints <a href=\"/docs.html?id=48\" style=\"color:blue\">Schedule & Results (Basic)\n</a> and <a href=\"/docs.html?id=34\" style=\"color:blue\">Match Modify Record</a>, you can get basic information of matches.\n\n\n\n• The following offensive statistics can be calculated using formulas.\n\n- Free Throws Percentage (FT%) = Free Throws Made / Free Throws Attempts\n\n- 2-Pointers Percentage (2P%) = 2-Pointers Field Goals Made / 2-Pointers Attempts\n\n- 3-Pointers Percentage (3P%) = 3-Pointers Field Goals Made / 3-Pointers Attempts\n\n- Field Goals Percentage (FG%) = Field Goals Made / Field Goals Attempts\n\n- Total Rebounds (Reb) = Defensive Rebounds + Offensive Rebounds\n\n**Quarters Stats** (cmd=stats)\n\n• This API endpoint returns single-quarter statistics for basketball matches, limited to NBA and similar competitions.\n\n\n\n• The following offensive statistics can be calculated using formulas.\n\n- Free Throws Percentage (FT%) = Free Throws Made / Free Throws Attempts\n\n- 2-Pointers Percentage (2P%) = 2-Pointers Field Goals Made / 2-Pointers Attempts\n\n- 3-Pointers Percentage (3P%) = 3-Pointers Field Goals Made / 3-Pointers Attempts\n\n- Field Goals Percentage (FG%) = Field Goals Made / Field Goals Attempts\n\n- Total Rebounds (Reb) = Defensive Rebounds + Offensive Rebounds"
+      description: '**Match Stats**
+
+
+        • This API endpoint returns real-time technical statistics for basketball matches (GMT+0 00:00–23:59).
+
+
+        By default, returns technical statistics for matches within the last 24 hours.
+
+
+        • Player statistics currently supports NBA, WNBA, CBA, Asociación de Clubes de Baloncesto, Basketball Bundesliga, Ligue Nationale de Basket, Lega Basket Serie A, Euro, Russian Basketball Super League, NBL(A), and Korea Basketball League.
+
+
+        • By using endpoints Schedule & Results (Basic)
+
+        and Match Modify Record, you can get basic information of matches.
+
+
+        • The following offensive statistics can be calculated using formulas.
+
+
+        - Free Throws Percentage (FT%) = Free Throws Made / Free Throws Attempts
+
+
+        - 2-Pointers Percentage (2P%) = 2-Pointers Field Goals Made / 2-Pointers Attempts
+
+
+        - 3-Pointers Percentage (3P%) = 3-Pointers Field Goals Made / 3-Pointers Attempts
+
+
+        - Field Goals Percentage (FG%) = Field Goals Made / Field Goals Attempts
+
+
+        - Total Rebounds (Reb) = Defensive Rebounds + Offensive Rebounds
+
+
+        **Quarters Stats** (cmd=stats)
+
+
+        • This API endpoint returns single-quarter statistics for basketball matches, limited to NBA and similar competitions.
+
+
+        • The following offensive statistics can be calculated using formulas.
+
+
+        - Free Throws Percentage (FT%) = Free Throws Made / Free Throws Attempts
+
+
+        - 2-Pointers Percentage (2P%) = 2-Pointers Field Goals Made / 2-Pointers Attempts
+
+
+        - 3-Pointers Percentage (3P%) = 3-Pointers Field Goals Made / 3-Pointers Attempts
+
+
+        - Field Goals Percentage (FG%) = Field Goals Made / Field Goals Attempts
+
+
+        - Total Rebounds (Reb) = Defensive Rebounds + Offensive Rebounds'
       tags:
       - Basketball Stats
       parameters:
@@ -480,7 +540,13 @@ paths:
     get:
       operationId: getBasketballAnalysis
       summary: Matches Analysis
-      description: "• This API endpoint returns match analysis data for the queried matchId — including historical head-to-head results, each team's recent form, and each team's upcoming/recent schedule — for matches within 7 days before or after the current time. \n\n\n\n• Data is cached for 24 hours and does not update frequently.\n\n\n\n• For a visual reference of this data, see: https://www.goaloo.com/basketball/nba-summer-league-minnesota-timberwolves-vs-indiana-pacers/analysis-719976"
+      description: '• This API endpoint returns match analysis data for the queried matchId — including historical head-to-head results, each team''s recent form, and each team''s upcoming/recent schedule — for matches within 7 days before or after the current time.
+
+
+        • Data is cached for 24 hours and does not update frequently.
+
+
+        • For a visual reference of this data, see: https://www.goaloo.com/basketball/nba-summer-league-minnesota-timberwolves-vs-indiana-pacers/analysis-719976'
       tags:
       - Basketball Stats
       parameters:

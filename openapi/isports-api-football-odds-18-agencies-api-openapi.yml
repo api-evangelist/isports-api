@@ -1,14 +1,8 @@
 openapi: 3.2.0
 info:
-  title: iSports Football Odds (18 Agencies) Football Odds (18 Agencies) Football Odds (18 Agencies) API
+  title: iSports Football Odds (18 Agencies) API
   version: '2026-08-09'
-  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.
-
-
-    All operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).
-
-
-    This document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.'
+  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.'
   termsOfService: https://www.isportsapi.com/en/home/terms.html
   contact:
     name: iSports API
@@ -30,7 +24,31 @@ paths:
     get:
       operationId: getFootballOddsMain
       summary: Pre-match and In-play Odds (Main)
-      description: "• This API endpoint returns pre-match and in-play odds for major markets, including Asian Handicap, 1X2, and over/under — with both full-match and first-half breakdowns.\n\n\n\n• Returns matches with odds available for the next 14 days, covering both pre-match and in-play. Use it alongside the Live Odds Changes (Main) endpoint for real-time updates, and Schedule & Results or Match Modify Record to get basic match information.\n\n\n\n• Handicap and over/under line format: Lines are multiples of 0.25. \n\n0 = 0 goals, 0.25 = 0/0.5, 0.5 = 0.5, 0.75 = 0.5/1, 1 = 1 goal, and so on. A positive value means the home team gives goals; a negative value means the away team gives goals.\n\n\n\n• The company ID corresponds to the company:\n\n1: Macauslot, 3: Crown, 4: Ladbrokes, 7: SNAI, 8: Bet365, 9: William Hill, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:Bwin, 50:1xbet \n\n\n\n• Odds format: All odds values are returned in Hong Kong Odds format. \n\nTo convert to other formats: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85); Malay Odds = HK if HK ≤ 1, or −(1 ÷ HK) if HK > 1 (e.g., 0.85 → 0.85, 1.5 → −0.67); Indonesian Odds = HK if HK ≥ 1, or −(1 ÷ HK) if HK < 1 (e.g., 0.85 → −1.18, 1.5 → 1.5); American Odds = HK × 100 if HK ≥ 1, or −(100 ÷ HK) if HK < 1 (e.g., 0.85 → −118, 1.5 → +150).\n\n\n\n• close field: Only supported by selected bookmakers: Macauslot (1), Crown (3), Bet365 (8), Easybets (12), Mansion88 (17), 10BET (22), 12bet (24), Sbobet (31), Wewbet (35), 18bet (42)."
+      description: '• This API endpoint returns pre-match and in-play odds for major markets, including Asian Handicap, 1X2, and over/under — with both full-match and first-half breakdowns.
+
+
+        • Returns matches with odds available for the next 14 days, covering both pre-match and in-play. Use it alongside the Live Odds Changes (Main) endpoint for real-time updates, and Schedule & Results or Match Modify Record to get basic match information.
+
+
+        • Handicap and over/under line format: Lines are multiples of 0.25.
+
+
+        0 = 0 goals, 0.25 = 0/0.5, 0.5 = 0.5, 0.75 = 0.5/1, 1 = 1 goal, and so on. A positive value means the home team gives goals; a negative value means the away team gives goals.
+
+
+        • The company ID corresponds to the company:
+
+
+        1: Macauslot, 3: Crown, 4: Ladbrokes, 7: SNAI, 8: Bet365, 9: William Hill, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:Bwin, 50:1xbet
+
+
+        • Odds format: All odds values are returned in Hong Kong Odds format.
+
+
+        To convert to other formats: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85); Malay Odds = HK if HK ≤ 1, or −(1 ÷ HK) if HK > 1 (e.g., 0.85 → 0.85, 1.5 → −0.67); Indonesian Odds = HK if HK ≥ 1, or −(1 ÷ HK) if HK < 1 (e.g., 0.85 → −1.18, 1.5 → 1.5); American Odds = HK × 100 if HK ≥ 1, or −(100 ÷ HK) if HK < 1 (e.g., 0.85 → −118, 1.5 → +150).
+
+
+        • close field: Only supported by selected bookmakers: Macauslot (1), Crown (3), Bet365 (8), Easybets (12), Mansion88 (17), 10BET (22), 12bet (24), Sbobet (31), Wewbet (35), 18bet (42).'
       tags:
       - Football Odds (18 Agencies)
       parameters:
@@ -263,11 +281,7 @@ paths:
       description: '• This API endpoint returns real-time odds changes for major market types (Handicap, Europe Odds, and Over/Under) that occurred within the last 20 seconds.
 
 
-
-
         • Data is delivered incrementally in a high-efficiency format, using comma-separated strings within arrays to represent various odds parameters and flags.
-
-
 
 
         • Use it alongside the Pre-match and In-play Odds (Main) endpoint to synchronize and maintain a real-time local odds database.'
@@ -455,7 +469,28 @@ paths:
     get:
       operationId: getFootballOddsMainHistory
       summary: Historical Odds (Main)
-      description: "• This API endpoint returns historical opening and closing odds for major football betting markets.It defaults to records from GMT+0 0:00 today, while supporting a date parameter for historical back-checking up to one month.\n\n\n\n• Handicap and over/under line format: Lines are multiples of 0.25. \n\n0 = 0 goals, 0.25 = 0/0.5, 0.5 = 0.5, 0.75 = 0.5/1, 1 = 1 goal, and so on. A positive value means the home team gives goals; a negative value means the away team gives goals.\n\n\n\n• Odds format: All odds values are returned in Hong Kong Odds format. \n\nTo convert to other formats: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85); Malay Odds = HK if HK ≤ 1, or −(1 ÷ HK) if HK > 1 (e.g., 0.85 → 0.85, 1.5 → −0.67); Indonesian Odds = HK if HK ≥ 1, or −(1 ÷ HK) if HK < 1 (e.g., 0.85 → −1.18, 1.5 → 1.5); American Odds = HK × 100 if HK ≥ 1, or −(100 ÷ HK) if HK < 1 (e.g., 0.85 → −118, 1.5 → +150).\n\n\n\n• The company ID corresponds to the company:\n\n1: Macauslot, 3: Crown, 4: Ladbrokes, 7: SNAI, 8: Bet365, 9: William Hill, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:Bwin, 50:1xbet\n\n\n\n• close field: Only supported by selected bookmakers: Macauslot (1), Crown (3), Bet365 (8), Easybets (12), Mansion88 (17), 10BET (22), 12bet (24), Sbobet (31), Wewbet (35), 18bet (42)."
+      description: '• This API endpoint returns historical opening and closing odds for major football betting markets.It defaults to records from GMT+0 0:00 today, while supporting a date parameter for historical back-checking up to one month.
+
+
+        • Handicap and over/under line format: Lines are multiples of 0.25.
+
+
+        0 = 0 goals, 0.25 = 0/0.5, 0.5 = 0.5, 0.75 = 0.5/1, 1 = 1 goal, and so on. A positive value means the home team gives goals; a negative value means the away team gives goals.
+
+
+        • Odds format: All odds values are returned in Hong Kong Odds format.
+
+
+        To convert to other formats: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85); Malay Odds = HK if HK ≤ 1, or −(1 ÷ HK) if HK > 1 (e.g., 0.85 → 0.85, 1.5 → −0.67); Indonesian Odds = HK if HK ≥ 1, or −(1 ÷ HK) if HK < 1 (e.g., 0.85 → −1.18, 1.5 → 1.5); American Odds = HK × 100 if HK ≥ 1, or −(100 ÷ HK) if HK < 1 (e.g., 0.85 → −118, 1.5 → +150).
+
+
+        • The company ID corresponds to the company:
+
+
+        1: Macauslot, 3: Crown, 4: Ladbrokes, 7: SNAI, 8: Bet365, 9: William Hill, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:Bwin, 50:1xbet
+
+
+        • close field: Only supported by selected bookmakers: Macauslot (1), Crown (3), Bet365 (8), Easybets (12), Mansion88 (17), 10BET (22), 12bet (24), Sbobet (31), Wewbet (35), 18bet (42).'
       tags:
       - Football Odds (18 Agencies)
       parameters:
@@ -676,7 +711,28 @@ paths:
     get:
       operationId: getFootballOddsMainFuture
       summary: Future Odds (Main)
-      description: "• This API endpoint returns pre-match odds for all matches starting more than 10 days from now, covering Asian Handicap (handicap), 1X2 (europeOdds), over/under (overUnder), and their first-half equivalents (handicapHalf, overUnderHalf).\n\n\n\n• Handicap and over/under line format: Lines are multiples of 0.25. \n\n0 = 0 goals, 0.25 = 0/0.5, 0.5 = 0.5, 0.75 = 0.5/1, 1 = 1 goal, and so on. A positive value means the home team gives goals; a negative value means the away team gives goals.\n\n\n\n• The company ID corresponds to the company:\n\n1: Macauslot, 3: Crown, 4: Ladbrokes, 7: SNAI, 8: Bet365, 9: William Hill, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:Bwin, 50:1xbet\n\n\n\n• Odds format: All odds values are returned in Hong Kong Odds format. \n\nTo convert to other formats: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85); Malay Odds = HK if HK ≤ 1, or −(1 ÷ HK) if HK > 1 (e.g., 0.85 → 0.85, 1.5 → −0.67); Indonesian Odds = HK if HK ≥ 1, or −(1 ÷ HK) if HK < 1 (e.g., 0.85 → −1.18, 1.5 → 1.5); American Odds = HK × 100 if HK ≥ 1, or −(100 ÷ HK) if HK < 1 (e.g., 0.85 → −118, 1.5 → +150).\n\n\n\n• close field: Only supported by selected bookmakers: Macauslot (1), Crown (3), Bet365 (8), Easybets (12), Mansion88 (17), 10BET (22), 12bet (24), Sbobet (31), Wewbet (35), 18bet (42)."
+      description: '• This API endpoint returns pre-match odds for all matches starting more than 10 days from now, covering Asian Handicap (handicap), 1X2 (europeOdds), over/under (overUnder), and their first-half equivalents (handicapHalf, overUnderHalf).
+
+
+        • Handicap and over/under line format: Lines are multiples of 0.25.
+
+
+        0 = 0 goals, 0.25 = 0/0.5, 0.5 = 0.5, 0.75 = 0.5/1, 1 = 1 goal, and so on. A positive value means the home team gives goals; a negative value means the away team gives goals.
+
+
+        • The company ID corresponds to the company:
+
+
+        1: Macauslot, 3: Crown, 4: Ladbrokes, 7: SNAI, 8: Bet365, 9: William Hill, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:Bwin, 50:1xbet
+
+
+        • Odds format: All odds values are returned in Hong Kong Odds format.
+
+
+        To convert to other formats: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85); Malay Odds = HK if HK ≤ 1, or −(1 ÷ HK) if HK > 1 (e.g., 0.85 → 0.85, 1.5 → −0.67); Indonesian Odds = HK if HK ≥ 1, or −(1 ÷ HK) if HK < 1 (e.g., 0.85 → −1.18, 1.5 → 1.5); American Odds = HK × 100 if HK ≥ 1, or −(100 ÷ HK) if HK < 1 (e.g., 0.85 → −118, 1.5 → +150).
+
+
+        • close field: Only supported by selected bookmakers: Macauslot (1), Crown (3), Bet365 (8), Easybets (12), Mansion88 (17), 10BET (22), 12bet (24), Sbobet (31), Wewbet (35), 18bet (42).'
       tags:
       - Football Odds (18 Agencies)
       parameters:
@@ -891,7 +947,34 @@ paths:
     get:
       operationId: getFootballOddsAllHistory
       summary: Historical Odds (All)
-      description: "• This API endpoint returns the historical initial and final odds across all available handicap and goal lines for finished matches, covering Asian Handicap (handicap), 1X2 (europeOdds), over/under (overUnder), and their first-half equivalents (handicapHalf, overUnderHalf).\n\n\n\n• The content is consistent with the Historical Odds (Main) endpoint — the entry where handicapIndex = 1 represents the main market line.\n\n\n\n• By default, returns all finished matches from GMT+0 00:00 to the present.\n\n\n\n• Handicap and over/under line format: Lines are multiples of 0.25. \n\n0 = 0 goals, 0.25 = 0/0.5, 0.5 = 0.5, 0.75 = 0.5/1, 1 = 1 goal, and so on. A positive value means the home team gives goals; a negative value means the away team gives goals.\n\n\n\n• Odds format: All odds values are returned in Hong Kong Odds format. \n\nTo convert to other formats: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85); Malay Odds = HK if HK ≤ 1, or −(1 ÷ HK) if HK > 1 (e.g., 0.85 → 0.85, 1.5 → −0.67); Indonesian Odds = HK if HK ≥ 1, or −(1 ÷ HK) if HK < 1 (e.g., 0.85 → −1.18, 1.5 → 1.5); American Odds = HK × 100 if HK ≥ 1, or −(100 ÷ HK) if HK < 1 (e.g., 0.85 → −118, 1.5 → +150).\n\n\n\n• The company ID corresponds to the company:\n\n1: Macauslot, 3: Crown, 4: Ladbrokes, 7: SNAI, 8: Bet365, 9: William Hill, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:Bwin, 50:1xbet\n\n\n\n• close field: Only supported by selected bookmakers: Macauslot (1), Crown (3), Bet365 (8), Easybets (12), Mansion88 (17), 10BET (22), 12bet (24), Sbobet (31), Wewbet (35), 18bet (42)."
+      description: '• This API endpoint returns the historical initial and final odds across all available handicap and goal lines for finished matches, covering Asian Handicap (handicap), 1X2 (europeOdds), over/under (overUnder), and their first-half equivalents (handicapHalf, overUnderHalf).
+
+
+        • The content is consistent with the Historical Odds (Main) endpoint — the entry where handicapIndex = 1 represents the main market line.
+
+
+        • By default, returns all finished matches from GMT+0 00:00 to the present.
+
+
+        • Handicap and over/under line format: Lines are multiples of 0.25.
+
+
+        0 = 0 goals, 0.25 = 0/0.5, 0.5 = 0.5, 0.75 = 0.5/1, 1 = 1 goal, and so on. A positive value means the home team gives goals; a negative value means the away team gives goals.
+
+
+        • Odds format: All odds values are returned in Hong Kong Odds format.
+
+
+        To convert to other formats: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85); Malay Odds = HK if HK ≤ 1, or −(1 ÷ HK) if HK > 1 (e.g., 0.85 → 0.85, 1.5 → −0.67); Indonesian Odds = HK if HK ≥ 1, or −(1 ÷ HK) if HK < 1 (e.g., 0.85 → −1.18, 1.5 → 1.5); American Odds = HK × 100 if HK ≥ 1, or −(100 ÷ HK) if HK < 1 (e.g., 0.85 → −118, 1.5 → +150).
+
+
+        • The company ID corresponds to the company:
+
+
+        1: Macauslot, 3: Crown, 4: Ladbrokes, 7: SNAI, 8: Bet365, 9: William Hill, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:Bwin, 50:1xbet
+
+
+        • close field: Only supported by selected bookmakers: Macauslot (1), Crown (3), Bet365 (8), Easybets (12), Mansion88 (17), 10BET (22), 12bet (24), Sbobet (31), Wewbet (35), 18bet (42).'
       tags:
       - Football Odds (18 Agencies)
       parameters:
@@ -1136,13 +1219,9 @@ paths:
       description: '• This API endpoint returns half-time 1X2 odds, including pre-match and in-play odds.
 
 
+        • By using endpoints Schedule & Results (Basic)
 
-
-        • By using endpoints <a href="/docs.html?id=41" style="color:blue">Schedule & Results (Basic)
-
-        </a> and <a href="/docs.html?id=33" style="color:blue">Match Modify Record</a>, you can get basic information of matches.
-
-
+        and Match Modify Record, you can get basic information of matches.
 
 
         • The company ID corresponds to the company:
@@ -1252,7 +1331,37 @@ paths:
     get:
       operationId: getFootballOddsAll
       summary: Pre-match and In-play Odds (All)
-      description: "• This API endpoint returns pre-match and in-play odds for multiple market lines (alternative lines), including Asian Handicap, 1X2, and over/under — with both full-match and first-half breakdowns.\n\n\n\n• The content is consistent with the Pre-match and In-play Odds (Main) endpoint — the entry where handicapIndex = 1 represents the main market line.\n\n\n\n• It covers upcoming matches scheduled within the next 14 days (where odds are available) and ongoing matches, including both pre-match and in-play (live) odds.\n\n\n\n• Use it alongside the Live Odds Changes (All) endpoint for real-time updates, and Schedule & Results or Match Modify Record to get basic match information.\n\n\n\n• Handicap and over/under line format: Lines are multiples of 0.25. \n\n0 = 0 goals, 0.25 = 0/0.5, 0.5 = 0.5, 0.75 = 0.5/1, 1 = 1 goal, and so on. A positive value means the home team gives goals; a negative value means the away team gives goals.\\\n\n\n\n• The company ID corresponds to the company:\n\n1: Macauslot, 3: Crown, 4: Ladbrokes, 7: SNAI, 8: Bet365, 9: William Hill, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:Bwin, 50:1xbet\n\n\n\n• Odds format: All odds values are returned in Hong Kong Odds format. \n\nTo convert to other formats: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85); Malay Odds = HK if HK ≤ 1, or −(1 ÷ HK) if HK > 1 (e.g., 0.85 → 0.85, 1.5 → −0.67); Indonesian Odds = HK if HK ≥ 1, or −(1 ÷ HK) if HK < 1 (e.g., 0.85 → −1.18, 1.5 → 1.5); American Odds = HK × 100 if HK ≥ 1, or −(100 ÷ HK) if HK < 1 (e.g., 0.85 → −118, 1.5 → +150).\n\n\n\n• close field: Only supported by selected bookmakers: Macauslot (1), Crown (3), Bet365 (8), Easybets (12), Mansion88 (17), 10BET (22), 12bet (24), Sbobet (31), Wewbet (35), 18bet (42)."
+      description: '• This API endpoint returns pre-match and in-play odds for multiple market lines (alternative lines), including Asian Handicap, 1X2, and over/under — with both full-match and first-half breakdowns.
+
+
+        • The content is consistent with the Pre-match and In-play Odds (Main) endpoint — the entry where handicapIndex = 1 represents the main market line.
+
+
+        • It covers upcoming matches scheduled within the next 14 days (where odds are available) and ongoing matches, including both pre-match and in-play (live) odds.
+
+
+        • Use it alongside the Live Odds Changes (All) endpoint for real-time updates, and Schedule & Results or Match Modify Record to get basic match information.
+
+
+        • Handicap and over/under line format: Lines are multiples of 0.25.
+
+
+        0 = 0 goals, 0.25 = 0/0.5, 0.5 = 0.5, 0.75 = 0.5/1, 1 = 1 goal, and so on. A positive value means the home team gives goals; a negative value means the away team gives goals.\
+
+
+        • The company ID corresponds to the company:
+
+
+        1: Macauslot, 3: Crown, 4: Ladbrokes, 7: SNAI, 8: Bet365, 9: William Hill, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:Bwin, 50:1xbet
+
+
+        • Odds format: All odds values are returned in Hong Kong Odds format.
+
+
+        To convert to other formats: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85); Malay Odds = HK if HK ≤ 1, or −(1 ÷ HK) if HK > 1 (e.g., 0.85 → 0.85, 1.5 → −0.67); Indonesian Odds = HK if HK ≥ 1, or −(1 ÷ HK) if HK < 1 (e.g., 0.85 → −1.18, 1.5 → 1.5); American Odds = HK × 100 if HK ≥ 1, or −(100 ÷ HK) if HK < 1 (e.g., 0.85 → −118, 1.5 → +150).
+
+
+        • close field: Only supported by selected bookmakers: Macauslot (1), Crown (3), Bet365 (8), Easybets (12), Mansion88 (17), 10BET (22), 12bet (24), Sbobet (31), Wewbet (35), 18bet (42).'
       tags:
       - Football Odds (18 Agencies)
       parameters:
@@ -1503,7 +1612,10 @@ paths:
     get:
       operationId: getFootballOddsAllChanges
       summary: Live Odds Changes (All)
-      description: "• This API endpoint returns all odds that changed in the past 20 seconds. \n\n\n\n• You can use it with the <a href=\"/docs.html?id=71\" style=\"color:blue\">Pre-match and In-play Odds (All)</a> endpoint— call that endpoint once to get the full odds list, then poll this endpoint every 2 seconds to receive incremental updates."
+      description: '• This API endpoint returns all odds that changed in the past 20 seconds.
+
+
+        • You can use it with the Pre-match and In-play Odds (All) endpoint— call that endpoint once to get the full odds list, then poll this endpoint every 2 seconds to receive incremental updates.'
       tags:
       - Football Odds (18 Agencies)
       parameters:
@@ -1709,11 +1821,7 @@ paths:
       description: '• This API endpoint returns in-play odds for the main market, covering Asian Handicap (handicap), 1X2 (europeOdds), and over/under (overUnder).
 
 
-
-
         • By default, returns in-play odds updated in the past 3 minutes for all matches.
-
-
 
 
         • The company ID corresponds to the company:
@@ -1722,12 +1830,9 @@ paths:
         1: Macauslot, 3: Crown, 4: Ladbrokes ,8: Bet365, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:BWin, 50:1xbet
 
 
+        • By using endpoints Schedule & Results (Basic)
 
-
-
-        • By using endpoints <a href="/docs.html?id=41" style="color:blue">Schedule & Results (Basic)
-
-        </a> and <a href="/docs.html?id=33" style="color:blue">Match Modify Record</a>, you can get basic information of matches.'
+        and Match Modify Record, you can get basic information of matches.'
       tags:
       - Football Odds (18 Agencies)
       parameters:
@@ -1815,7 +1920,28 @@ paths:
     get:
       operationId: getFootballOddsAllFuture
       summary: Future Odds (All)
-      description: "• This API endpoint returns pre-match odds across all available handicap and goal lines for matches starting more than 10 days from now, covering Asian Handicap (handicap), 1X2 (europeOdds), over/under (overUnder), and their first-half equivalents (handicapHalf, overUnderHalf).\n\n\n\n• Handicap and over/under line format: Lines are multiples of 0.25. \n\n0 = 0 goals, 0.25 = 0/0.5, 0.5 = 0.5, 0.75 = 0.5/1, 1 = 1 goal, and so on. A positive value means the home team gives goals; a negative value means the away team gives goals.\n\n\n\n• Odds format: All odds values are returned in Hong Kong Odds format. \n\nTo convert to other formats: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85); Malay Odds = HK if HK ≤ 1, or −(1 ÷ HK) if HK > 1 (e.g., 0.85 → 0.85, 1.5 → −0.67); Indonesian Odds = HK if HK ≥ 1, or −(1 ÷ HK) if HK < 1 (e.g., 0.85 → −1.18, 1.5 → 1.5); American Odds = HK × 100 if HK ≥ 1, or −(100 ÷ HK) if HK < 1 (e.g., 0.85 → −118, 1.5 → +150).\n\n\n\n• The company ID corresponds to the company:\n\n1: Macauslot, 3: Crown, 4: Ladbrokes, 7: SNAI, 8: Bet365, 9: William Hill, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:Bwin, 50:1xbet\n\n\n\n• close field: Only supported by selected bookmakers: Macauslot (1), Crown (3), Bet365 (8), Easybets (12), Mansion88 (17), 10BET (22), 12bet (24), Sbobet (31), Wewbet (35), 18bet (42)."
+      description: '• This API endpoint returns pre-match odds across all available handicap and goal lines for matches starting more than 10 days from now, covering Asian Handicap (handicap), 1X2 (europeOdds), over/under (overUnder), and their first-half equivalents (handicapHalf, overUnderHalf).
+
+
+        • Handicap and over/under line format: Lines are multiples of 0.25.
+
+
+        0 = 0 goals, 0.25 = 0/0.5, 0.5 = 0.5, 0.75 = 0.5/1, 1 = 1 goal, and so on. A positive value means the home team gives goals; a negative value means the away team gives goals.
+
+
+        • Odds format: All odds values are returned in Hong Kong Odds format.
+
+
+        To convert to other formats: Decimal Odds = HK + 1 (e.g., 0.85 → 1.85); Malay Odds = HK if HK ≤ 1, or −(1 ÷ HK) if HK > 1 (e.g., 0.85 → 0.85, 1.5 → −0.67); Indonesian Odds = HK if HK ≥ 1, or −(1 ÷ HK) if HK < 1 (e.g., 0.85 → −1.18, 1.5 → 1.5); American Odds = HK × 100 if HK ≥ 1, or −(100 ÷ HK) if HK < 1 (e.g., 0.85 → −118, 1.5 → +150).
+
+
+        • The company ID corresponds to the company:
+
+
+        1: Macauslot, 3: Crown, 4: Ladbrokes, 7: SNAI, 8: Bet365, 9: William Hill, 12: Easybets, 14: Vcbet, 17: Mansion88, 19: Interwetten, 22: 10BET, 24: 12bet, 31: Sbobet, 35: Wewbet, 42: 18bet, 48: HK Jockey Club, 49:Bwin, 50:1xbet
+
+
+        • close field: Only supported by selected bookmakers: Macauslot (1), Crown (3), Bet365 (8), Easybets (12), Mansion88 (17), 10BET (22), 12bet (24), Sbobet (31), Wewbet (35), 18bet (42).'
       tags:
       - Football Odds (18 Agencies)
       parameters:
@@ -2054,11 +2180,7 @@ paths:
       description: '• This API endpoint returns half-time in-play odds for the main market, covering Asian Handicap (handicapHalf), 1X2 (europeOddHalf), and over/under (overUnderHalf).
 
 
-
-
         • By default, returns in-play odds updated in the past 3 minutes for all matches.
-
-
 
 
         • The company ID corresponds to the company:
@@ -2152,7 +2274,19 @@ paths:
     get:
       operationId: getFootballOddsOddsbyid
       summary: Odd Modify Record
-      description: "• This API endpoint returns historical odds for matches whose odds changed within a specific time window, supporting three query modes:\n\n\n 1.type=match — Returns a list of matches with historical odds that may have increased or decreased in the last hour, along with the bookmaker that changed and the operation time.\n\n\n\n 2.matchId + companyId — Returns historical odds for a specific match and bookmaker, main market only (e.g., /sport/football/odds/oddsbyid?api_key&matchId=256921227&companyId=3).\n\n\n\n 3.type=multi + matchId + companyId — Returns historical odds for a specific match and bookmaker, all markets (e.g., /sport/football/odds/oddsbyid?api_key&type=multi&matchId=256921227&companyId=3).\n\n\n\n• In-play odds history is available for the past month. Opening and latest pre-match odds are available for up to one year."
+      description: '• This API endpoint returns historical odds for matches whose odds changed within a specific time window, supporting three query modes:
+
+
+        1.type=match — Returns a list of matches with historical odds that may have increased or decreased in the last hour, along with the bookmaker that changed and the operation time.
+
+
+        2.matchId + companyId — Returns historical odds for a specific match and bookmaker, main market only (e.g., /sport/football/odds/oddsbyid?api_key&matchId=256921227&companyId=3).
+
+
+        3.type=multi + matchId + companyId — Returns historical odds for a specific match and bookmaker, all markets (e.g., /sport/football/odds/oddsbyid?api_key&type=multi&matchId=256921227&companyId=3).
+
+
+        • In-play odds history is available for the past month. Opening and latest pre-match odds are available for up to one year.'
       tags:
       - Football Odds (18 Agencies)
       parameters:

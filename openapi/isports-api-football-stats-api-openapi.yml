@@ -2,13 +2,7 @@ openapi: 3.2.0
 info:
   title: iSports Football Stats API
   version: '2026-08-09'
-  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.
-
-
-    All operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).
-
-
-    This document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.'
+  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.'
   termsOfService: https://www.isportsapi.com/en/home/terms.html
   contact:
     name: iSports API
@@ -30,7 +24,15 @@ paths:
     get:
       operationId: getFootballPlayerstatsMatchList
       summary: List of Player Stats (Match)
-      description: "• This API endpoint returns match list which contains players' technical statistics within one day (24H). You can use it with the <a href=\"/docs.html?id=40\" style=\"color:blue\">Player Stats (Match)</a> endpoint.\n\n\n\n• Coverage is limited to selected top leagues. \n\n\n\n• By using endpoints <a href=\"/docs.html?id=41\" style=\"color:blue\">Schedule & Results (Basic)\n</a> and <a href=\"/docs.html?id=33\" style=\"color:blue\">Match Modify Record</a>, you can get basic information of matches."
+      description: '• This API endpoint returns match list which contains players'' technical statistics within one day (24H). You can use it with the Player Stats (Match) endpoint.
+
+
+        • Coverage is limited to selected top leagues.
+
+
+        • By using endpoints Schedule & Results (Basic)
+
+        and Match Modify Record, you can get basic information of matches.'
       tags:
       - Football Stats
       responses:
@@ -86,8 +88,6 @@ paths:
       description: '• This API endpoint returns a list of sub-leagues and stages for a specified league. Use the returned subLeagueId with the League Standing endpoint to retrieve standings for each stage.
 
 
-
-
         • Sub-leagues are used to differentiate divisions or multiple stages within a league (e.g., group stage, play-off). Use the League & Cup Profile endpoint to get full profile information for each league.'
       tags:
       - Football Stats
@@ -136,7 +136,15 @@ paths:
     get:
       operationId: getFootballTopscorer
       summary: Top Scorer
-      description: "• This API endpoint returns top scorer statistics for a specified league or cup, including goals broken down by home, away, and penalty. \n\n\n\n• Coverage is limited to selected major leagues and cups.\n\n\n\n• By using endpoint <a href=\"/docs.html?id=42\" style=\"color:blue\">League & Cup Profile (Basic)\n</a>, you can get basic information of leagues and cups."
+      description: '• This API endpoint returns top scorer statistics for a specified league or cup, including goals broken down by home, away, and penalty.
+
+
+        • Coverage is limited to selected major leagues and cups.
+
+
+        • By using endpoint League & Cup Profile (Basic)
+
+        , you can get basic information of leagues and cups.'
       tags:
       - Football Stats
       parameters:
@@ -224,14 +232,10 @@ paths:
     get:
       operationId: getFootballPlayerstatsMatch
       summary: Player Stats (Match)
-      description: '• This API endpoint returns players'' technical statistics of specified matchId. You can use it with the <a href="/docs.html?id=37" style="color:blue">List of Player Stats (Match)</a> endpoint.
-
-
+      description: '• This API endpoint returns players'' technical statistics of specified matchId. You can use it with the List of Player Stats (Match) endpoint.
 
 
         • Currently only some top leagues are supported.
-
-
 
 
         • support to check back the matches within a week.'
@@ -428,11 +432,7 @@ paths:
       description: '• This API endpoint returns league standings for a specified league, including total, home, away, and first-half breakdowns.
 
 
-
-
         • Use it with the League Standing (Get Subleague) endpoint to get available subLeagueId values when a league has multiple stages or divisions.
-
-
 
 
         • Without parameters, returns all leagues and cups with standings updated in the past 24 hours. Use the League & Cup Profile endpoint to get basic league information.'
@@ -730,7 +730,13 @@ paths:
     get:
       operationId: getFootballStandingCup
       summary: Cup Standing
-      description: "• This API endpoint returns group stage standings for a specified cup competition, organized by round and group. \n\n\n\n• Without parameter, returns all leagues and cups with standings updated in the past 24 hours. \n\n\n\n• Use the League & Cup Profile endpoint to get basic information for each cup."
+      description: '• This API endpoint returns group stage standings for a specified cup competition, organized by round and group.
+
+
+        • Without parameter, returns all leagues and cups with standings updated in the past 24 hours.
+
+
+        • Use the League & Cup Profile endpoint to get basic information for each cup.'
       tags:
       - Football Stats
       parameters:
@@ -843,7 +849,10 @@ paths:
     get:
       operationId: getFootballFifaranking
       summary: FIFA Ranking
-      description: "• This API endpoint returns FIFA rankings for men's national teams, women's national teams, and club teams. \n\n\n\n• Rankings are updated monthly."
+      description: '• This API endpoint returns FIFA rankings for men''s national teams, women''s national teams, and club teams.
+
+
+        • Rankings are updated monthly.'
       tags:
       - Football Stats
       responses:
@@ -905,14 +914,12 @@ paths:
     get:
       operationId: getFootballPlayerstatsLeagueList
       summary: List of Player Stats (League & Cup)
-      description: '• This API endpoint returns league list which contains players'' seasonal technical statistics. You can use it with <a href="/docs.html?id=51" style="color:blue">Player Stats (League&Cup)</a> endpoint.
+      description: '• This API endpoint returns league list which contains players'' seasonal technical statistics. You can use it with Player Stats (League&Cup) endpoint.
 
 
+        • By using endpoint League & Cup Profile (Basic)
 
-
-        • By using endpoint <a href="/docs.html?id=42" style="color:blue">League & Cup Profile (Basic)
-
-        </a>, you can get basic information of leagues and cups.'
+        , you can get basic information of leagues and cups.'
       tags:
       - Football Stats
       responses:
@@ -953,9 +960,7 @@ paths:
     get:
       operationId: getFootballPlayerstatsLeague
       summary: Player Stats (League & Cup)
-      description: '• This API endpoint returns players'' seasonal technical statistics of specified league or cup id. You can use it with <a href="/docs.html?id=49" style="color:blue">List of Player Stats (League&Cup)</a> endpoint.
-
-
+      description: '• This API endpoint returns players'' seasonal technical statistics of specified league or cup id. You can use it with List of Player Stats (League&Cup) endpoint.
 
 
         • Data is split by home and away matches — aggregate both to get full-season totals.'
@@ -1112,7 +1117,13 @@ paths:
     get:
       operationId: getFootballAnalysis
       summary: Matches Analysis
-      description: "• This API endpoint returns match analysis data for the past 24 hours and the next 7 days, including head-to-head history, recent form, future schedule, odds statistics, goals distribution, and half-time/full-time results.\n\n\n\n• Data is cached for 24 hours — no need for frequent polling. Use matchId to retrieve analysis for a specific match. \n\n\n\n• Data presentation：https://live9.nowgoal26.com/match/h2h-2591211"
+      description: '• This API endpoint returns match analysis data for the past 24 hours and the next 7 days, including head-to-head history, recent form, future schedule, odds statistics, goals distribution, and half-time/full-time results.
+
+
+        • Data is cached for 24 hours — no need for frequent polling. Use matchId to retrieve analysis for a specific match.
+
+
+        • Data presentation：https://live9.nowgoal26.com/match/h2h-2591211'
       tags:
       - Football Stats
       parameters:

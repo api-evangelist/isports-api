@@ -2,13 +2,7 @@ openapi: 3.2.0
 info:
   title: iSports Basketball Common API
   version: '2026-08-09'
-  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.
-
-
-    All operations are GET, authenticated with an `api_key` query parameter, and return the same `{code, message, data}` envelope with HTTP 200 — including on error (see `code`).
-
-
-    This document was derived by API Evangelist from the endpoint definitions the provider publishes at https://www.isportsapi.com/en/docs.html — iSports API does not publish an OpenAPI definition of its own.'
+  description: 'Key-authenticated REST/HTTP data feeds for football (soccer) and basketball: livescores, schedules and results, match events, lineups, live text, statistics, standings, player and team profiles, transfers, referees, multi-language name packs, live-animation feeds, and pre-match / in-play / historical odds across 200+ bookmakers.'
   termsOfService: https://www.isportsapi.com/en/home/terms.html
   contact:
     name: iSports API
@@ -30,7 +24,13 @@ paths:
     get:
       operationId: getBasketballScheduleModify
       summary: Match Modify Record
-      description: "• This API endpoint returns records of schedule deletions and match time modifications from the past 24 hours. \n\n\n\n• You can use it with the <a href=\"/docs.html?id=48\" style=\"color:blue\">Schedule & Results (Basic)</a> endpoint to keep locally stored match data in sync.\n\n\n\n• Tips: You have access to all the basketball Common API endpoints with any valid paid basketball plans."
+      description: '• This API endpoint returns records of schedule deletions and match time modifications from the past 24 hours.
+
+
+        • You can use it with the Schedule & Results (Basic) endpoint to keep locally stored match data in sync.
+
+
+        • Tips: You have access to all the basketball Common API endpoints with any valid paid basketball plans.'
       tags:
       - Basketball Common API
       responses:
@@ -80,7 +80,13 @@ paths:
     get:
       operationId: getBasketballScheduleBasic
       summary: Schedule & Results (Basic)
-      description: "• This API endpoint returns basic schedule and result information for basketball matches. You can use it with the <a href=\"/docs.html?id=34\" style=\"color:blue\">Match Modify Record</a> endpoint to track any post-publication corrections to match data.\n\n\n\n• One of the following parameters is required: date, leagueId, or matchId — these three cannot be used together in the same request. The season parameter can only be used in combination with leagueId, to retrieve matches for a specific season; if omitted, the current season is returned by default. \n\n\n\n• Tips: You have access to all the basketball Common API endpoints with any valid paid basketball plans."
+      description: '• This API endpoint returns basic schedule and result information for basketball matches. You can use it with the Match Modify Record endpoint to track any post-publication corrections to match data.
+
+
+        • One of the following parameters is required: date, leagueId, or matchId — these three cannot be used together in the same request. The season parameter can only be used in combination with leagueId, to retrieve matches for a specific season; if omitted, the current season is returned by default.
+
+
+        • Tips: You have access to all the basketball Common API endpoints with any valid paid basketball plans.'
       tags:
       - Basketball Common API
       parameters:
@@ -185,9 +191,7 @@ paths:
     get:
       operationId: getBasketballLeagueBasic
       summary: League & Cup Profile (Basic)
-      description: '• This API endpoint returns basic information for leagues and cups. Optionally filter by a specific leagueId; if omitted, the endpoint returns basic information for all leagues and cups. <a target="_blank" href="http://api.isportsapi.com/league.aspx?sport=basketball" style="color:blue">Click here</a> to view all leagues & cups.
-
-
+      description: '• This API endpoint returns basic information for leagues and cups. Optionally filter by a specific leagueId; if omitted, the endpoint returns basic information for all leagues and cups. Click here to view all leagues & cups.
 
 
         • Tips: You have access to all the basketball Common API endpoints with any valid paid basketball plans.'
@@ -249,7 +253,10 @@ paths:
     get:
       operationId: getBasketballCountry
       summary: List of Countries
-      description: "• This API endpoint returns a list of all countries covered by iSports API, along with each country's unique ID. \n\n\n\n• The countryId can be used to filter or reference country-specific data across other Basketball endpoints."
+      description: '• This API endpoint returns a list of all countries covered by iSports API, along with each country''s unique ID.
+
+
+        • The countryId can be used to filter or reference country-specific data across other Basketball endpoints.'
       tags:
       - Basketball Common API
       responses:
@@ -290,7 +297,10 @@ paths:
     get:
       operationId: getBasketballBookmaker
       summary: List of Agencies
-      description: "• This API endpoint returns a list of all bookmakers supported by iSports Basketball API, along with their corresponding bookmaker IDs. \n\n\n\n• Note that companyIdEu, companyIdMainSpread, and companyIdMainTotal belong to three independent ID systems used by different odds endpoints — the same bookmaker may have different IDs across these three fields, and they should not be used interchangeably."
+      description: '• This API endpoint returns a list of all bookmakers supported by iSports Basketball API, along with their corresponding bookmaker IDs.
+
+
+        • Note that companyIdEu, companyIdMainSpread, and companyIdMainTotal belong to three independent ID systems used by different odds endpoints — the same bookmaker may have different IDs across these three fields, and they should not be used interchangeably.'
       tags:
       - Basketball Common API
       responses:
