@@ -179,3 +179,93 @@ plans:
   prices: null
   notes: Priced on request — no published price on the product page.
   url: https://www.isportsapi.com/en/products/basketball.html
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models: []
+  units: []
+  plans:
+  - name: Football Live Animation
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Football Live Data
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Football Stats
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Football Odds
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Football Odds Pro
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Football Historical Database
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Football Language Packs
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Football Custom Plan
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Basketball Live Animation
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Basketball Live Data
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Basketball Stats
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Basketball Odds
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Basketball Historical Database
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Basketball Custom Plan
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
