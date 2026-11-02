@@ -1,0 +1,237 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-28'
+method: searched
+source: https://www.isportsapi.com/en/products/football.html
+sources:
+- https://www.isportsapi.com/en/products/football.html
+provenance:
+  tool: engine/economics/harvest_pricing.py
+  run: 20261028T161713
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: tiered-subscription
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-28'
+published: true
+note: Odds plan shares same prices as Live Data (Monthly $449 / Quarterly $1199 / Yearly $3999); listed
+  once to avoid duplicate entries. Free 15-day trial with all features mentioned.
+plan_count: 16
+currency: USD
+plans:
+- name: Live Animation - Monthly
+  price_text: Monthly $1299
+  price: 1299
+  currency: USD
+  period: month
+- name: Live Animation - Quarterly
+  price_text: Quarterly $3499
+  price: 3499
+  currency: USD
+  period: none
+  unit: quarter
+  included_quota: 10% off
+- name: Live Animation - Yearly
+  price_text: Yearly $10999
+  price: 10999
+  currency: USD
+  period: year
+  included_quota: 29% off
+- name: Live Data - Monthly
+  price_text: Monthly $449
+  price: 449
+  currency: USD
+  period: month
+- name: Live Data - Quarterly
+  price_text: Quarterly $1199
+  price: 1199
+  currency: USD
+  period: none
+  unit: quarter
+  included_quota: 11% off
+- name: Live Data - Yearly
+  price_text: Yearly $3999
+  price: 3999
+  currency: USD
+  period: year
+  included_quota: 26% off
+- name: Stats - Monthly
+  price_text: Monthly $299
+  price: 299
+  currency: USD
+  period: month
+- name: Stats - Quarterly
+  price_text: Quarterly $799
+  price: 799
+  currency: USD
+  period: none
+  unit: quarter
+  included_quota: 11% off
+- name: Stats - Yearly
+  price_text: Yearly $2699
+  price: 2699
+  currency: USD
+  period: year
+  included_quota: 25% off
+- name: Odds Pro - Monthly
+  price_text: Monthly $599
+  price: 599
+  currency: USD
+  period: month
+- name: Odds Pro - Quarterly
+  price_text: Quarterly $1599
+  price: 1599
+  currency: USD
+  period: none
+  unit: quarter
+  included_quota: 11% off
+- name: Odds Pro - Yearly
+  price_text: Yearly $5399
+  price: 5399
+  currency: USD
+  period: year
+  included_quota: 25% off
+- name: Language Packs - Quarterly
+  price_text: Quarterly $299
+  price: 299
+  currency: USD
+  period: none
+  unit: quarter
+- name: Language Packs - Yearly
+  price_text: Yearly $999
+  price: 999
+  currency: USD
+  period: year
+- name: Historical Database
+  price_text: Contact Sales
+  period: none
+  included_quota: 20 Years Historical Data, Covering 1600+ Leagues & Cups
+- name: Custom Plan
+  price_text: Contact Sales
+  period: none
+  included_quota: Custom leagues, features; flexible pricing
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - subscription
+  units: []
+  plans:
+  - name: Live Animation - Monthly
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Live Animation - Quarterly
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - none
+  - name: Live Animation - Yearly
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - year
+  - name: Live Data - Monthly
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Live Data - Quarterly
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - none
+  - name: Live Data - Yearly
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - year
+  - name: Stats - Monthly
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Stats - Quarterly
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - none
+  - name: Stats - Yearly
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - year
+  - name: Odds Pro - Monthly
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Odds Pro - Quarterly
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - none
+  - name: Odds Pro - Yearly
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - year
+  - name: Language Packs - Quarterly
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - none
+  - name: Language Packs - Yearly
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - year
+  - name: Historical Database
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Custom Plan
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
