@@ -112,11 +112,12 @@ plans:
   period: none
   included_quota: Custom leagues, features; flexible pricing
 x-canonical:
-  generated: '2026-11-02'
+  generated: '2026-11-06'
   vocabulary: engine/economics/plans-canonical.yml
   models:
   - subscription
-  units: []
+  units:
+  - period
   plans:
   - name: Live Animation - Monthly
     access: other
@@ -130,7 +131,7 @@ x-canonical:
     model: subscription
     model_how: derived
     units:
-    - other
+    - period
     periods:
     - none
   - name: Live Animation - Yearly
@@ -152,7 +153,7 @@ x-canonical:
     model: subscription
     model_how: derived
     units:
-    - other
+    - period
     periods:
     - none
   - name: Live Data - Yearly
@@ -174,7 +175,7 @@ x-canonical:
     model: subscription
     model_how: derived
     units:
-    - other
+    - period
     periods:
     - none
   - name: Stats - Yearly
@@ -196,7 +197,7 @@ x-canonical:
     model: subscription
     model_how: derived
     units:
-    - other
+    - period
     periods:
     - none
   - name: Odds Pro - Yearly
@@ -211,7 +212,7 @@ x-canonical:
     model: subscription
     model_how: derived
     units:
-    - other
+    - period
     periods:
     - none
   - name: Language Packs - Yearly
